@@ -43,7 +43,7 @@ export default class BaseTest {
 
   async teardown(): Promise<void> {
     await this.browser.close();
-    BaseTest.copyEnvToAllureProperties();
+    //BaseTest.copyEnvToAllureProperties();
   }
 
 

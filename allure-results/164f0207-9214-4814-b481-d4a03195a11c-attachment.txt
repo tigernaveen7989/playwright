@@ -1,2 +1,0 @@
-Tenant is: VA
-Copied environment.env to C:\Users\SG0704235\Documents\PlaywrightTypescript\allure-results\environment.properties

@@ -9,7 +9,7 @@ const config: PlaywrightTestConfig = defineConfig({
   testDir: './tests',
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
-  retries: 0, // Change to 1 or 2 as needed
+  retries: 0,
   workers: process.env.CI ? 1 : undefined,
 
   timeout: 30 * 1000,
@@ -21,9 +21,14 @@ const config: PlaywrightTestConfig = defineConfig({
     ['html', { outputFolder: 'playwright-report', open: 'never' }],
     ['allure-playwright', {
       resultsDir: 'allure-results',
-      suiteTitle: false, // disables default suite naming
+      detail: true,
+      suiteTitle: false,
+      environmentInfo: {
+        ENVIRONMENT: process.env.ENVIRONMENT,
+        SUBENVIRONMENT: process.env.SUBENVIRONMENT,
+        TENANT: process.env.TENANT
+      },
     }],
-
   ],
 
   use: {
@@ -34,8 +39,14 @@ const config: PlaywrightTestConfig = defineConfig({
 
   projects: [
     {
-      name: 'call-center', // replaces 'chromium' in Allure
+      name: 'call-center',
       use: { browserName: 'chromium' },
+    },
+    {
+      name: 'xml-api'
+    },
+    {
+      name: 'json-api'
     },
   ],
 });
