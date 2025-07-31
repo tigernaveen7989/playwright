@@ -1,6 +1,8 @@
 import { ShopJsonObject } from '../create-payload/shop-json-object';
+import { request, TestInfo } from '@playwright/test';
+import { activateJwtToken } from "../../api-base/create-jwt-token";
 
-export class shop {
+export class shopApi {
   private shopRequest: ShopJsonObject;
   private endpoint: string;
   private headers: Record<string, string>;
@@ -11,43 +13,30 @@ export class shop {
     day: number,
     month: number,
     year: number,
-    endpoint: string,
-    headers: Record<string, string>,
     currency: string = 'EUR'
   ) {
     this.shopRequest = new ShopJsonObject(origin, destination, day, month, year, currency);
-    this.endpoint = endpoint;
-    this.headers = headers;
   }
 
-  async execute(): Promise<any> {
-    const payload = this.shopRequest.getShopPayload();
-    return await this.sendRequestAndGetResponse(this.endpoint, payload, this.headers);
-  }
-
-  private async sendRequestAndGetResponse(
+  public async sendRequestAndGetResponse(
     endpoint: string,
-    payload: any,
-    headers: Record<string, string>
+    testInfo: TestInfo
   ): Promise<any> {
     try {
-      const response = await fetch(endpoint, {
-        method: 'POST',
-        // headers: {
-        //   'Content-Type': 'application/json',
-        //   ...headers
-        // },
-        headers,
-        body: JSON.stringify(payload)
-      });
-
-      console.log("response is ======== ",response.text);
-
-      if (!response.ok) {
-        throw new Error(`Request failed with status ${response.status}`);
-      }
-
-      return await response.json();
+        const payload = await JSON.parse(this.shopRequest.getShopPayload());
+        const apiContext = await request.newContext();
+        const headers = await activateJwtToken(testInfo);
+        const response = await apiContext.post(
+            'https://wolverine-retailing-mixer-wl-ut1-rmx-va.apps.cert-02.us-east4.cert.sabre-gcp.com/shop',
+            {
+                headers: {
+                    ...headers,
+                    'Content-Type': 'application/json'
+                },
+                data: JSON.stringify(payload)
+            }
+        );
+      return response;
     } catch (error) {
       console.error('Error in sendSabreRequest:', error);
       throw error;
