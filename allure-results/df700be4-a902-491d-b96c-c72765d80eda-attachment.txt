@@ -1,0 +1,26 @@
+header is  {
+  'x-sabre-auth-token': 'eyJraWQiOiJXb1FzNmRsM1ozR292MW50UWFqeXNDQmhMNUt1WEsyU3p1eF9rWWFVdnpjIiwiYWxnIjoiUlMyNTYifQ.eyJ2ZXIiOjEsImp0aSI6IkFULmd3cVVBQnFaMXNnMFQ4TVBpNlZOQ0ZWRmQ4dG5HZE9KNktGVzlCb21hSDgiLCJpc3MiOiJodHRwczovL3NhYnJlLXdsdi1jZXJ0LXZhLm9rdGFwcmV2aWV3LmNvbS9vYXV0aDIvYXVzZGZ1NjB0N0xXY0p5czkxZDciLCJhdWQiOiJ3b2x2ZXJpbmUtdmEuY2VydC5zYWJyZS1nY3AuY29tIiwiaWF0IjoxNzUzOTM4NDAyLCJleHAiOjE3NTM5NDIwMDIsImNpZCI6IjBvYWRvaXZ2YWZyaG1EdjBuMWQ3Iiwic2NwIjpbImFwaSJdLCJzdWIiOiIwb2Fkb2l2dmFmcmhtRHYwbjFkNyIsIm5hbWUiOiJwb3N0bWFuLW9hYy1hdWQtYWdlbnQifQ.Zvuh_mK4IrWj2yBUzUVGGtR45WGgK2CO9WpgDymaR0F7_7GV5EH3jXMhyEx4NE5gsQqSI2RUvLJde3z9ZKe2nqaXGxFKoI43KHd85vQHXTo6JvlBd0nG18X4-209-r9XC9MuvC_9gMu_GnjjXBPBc_hYeJdZHynGbefRqVllTb5Y7ziFplCUzKYNXEW6y7CGlfMk5mcS3oWmcMj28vjNeZtHgISoIgutvWMiuqjuVLdnCLBWleiq6djl9pt6WI4kwPZl2hsTS9mPZBb4v73pm-BvrNPCMX_9asxbE9f72oRzZ1r_ZRVGVUzzFXMLTtoNt8gIBOO2BlNzyquhCBR9Hg',
+  'x-request-id': '70ae904e-6ade-4eb7-a81a-37957b6ee1a0',
+  'x-correlation-id': 'E2E-AUTO-b5b33448-971b-47fb-a7f8-3c5ecffbe3f4'
+}
+========================================
+shop {
+  shopRequest: ShopJsonObject {
+    origin: 'SYD',
+    destination: 'BNE',
+    day: 10,
+    month: 8,
+    year: 2025,
+    currency: 'EUR'
+  },
+  endpoint: 'https://wolverine-retailing-mixer-wl-ut1-rmx-va.apps.cert-02.us-east4.cert.sabre-gcp.com/shop',
+  headers: {
+    'x-sabre-auth-token': 'eyJraWQiOiJXb1FzNmRsM1ozR292MW50UWFqeXNDQmhMNUt1WEsyU3p1eF9rWWFVdnpjIiwiYWxnIjoiUlMyNTYifQ.eyJ2ZXIiOjEsImp0aSI6IkFULmd3cVVBQnFaMXNnMFQ4TVBpNlZOQ0ZWRmQ4dG5HZE9KNktGVzlCb21hSDgiLCJpc3MiOiJodHRwczovL3NhYnJlLXdsdi1jZXJ0LXZhLm9rdGFwcmV2aWV3LmNvbS9vYXV0aDIvYXVzZGZ1NjB0N0xXY0p5czkxZDciLCJhdWQiOiJ3b2x2ZXJpbmUtdmEuY2VydC5zYWJyZS1nY3AuY29tIiwiaWF0IjoxNzUzOTM4NDAyLCJleHAiOjE3NTM5NDIwMDIsImNpZCI6IjBvYWRvaXZ2YWZyaG1EdjBuMWQ3Iiwic2NwIjpbImFwaSJdLCJzdWIiOiIwb2Fkb2l2dmFmcmhtRHYwbjFkNyIsIm5hbWUiOiJwb3N0bWFuLW9hYy1hdWQtYWdlbnQifQ.Zvuh_mK4IrWj2yBUzUVGGtR45WGgK2CO9WpgDymaR0F7_7GV5EH3jXMhyEx4NE5gsQqSI2RUvLJde3z9ZKe2nqaXGxFKoI43KHd85vQHXTo6JvlBd0nG18X4-209-r9XC9MuvC_9gMu_GnjjXBPBc_hYeJdZHynGbefRqVllTb5Y7ziFplCUzKYNXEW6y7CGlfMk5mcS3oWmcMj28vjNeZtHgISoIgutvWMiuqjuVLdnCLBWleiq6djl9pt6WI4kwPZl2hsTS9mPZBb4v73pm-BvrNPCMX_9asxbE9f72oRzZ1r_ZRVGVUzzFXMLTtoNt8gIBOO2BlNzyquhCBR9Hg',
+    'x-request-id': '70ae904e-6ade-4eb7-a81a-37957b6ee1a0',
+    'x-correlation-id': 'E2E-AUTO-b5b33448-971b-47fb-a7f8-3c5ecffbe3f4'
+  }
+}
+========================================
+response is
+Response from shop.execute(): { success: true, message: 'Mocked response received' }
+========================================

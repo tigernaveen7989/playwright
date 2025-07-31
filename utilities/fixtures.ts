@@ -1,17 +1,41 @@
-import { test as base, expect, TestInfo } from '@playwright/test';
+import { test as base, expect, TestInfo, request } from '@playwright/test';
 import jsonhandler from './jsonhandler';
+import * as path from 'path';
 
-type TestData = Record<string, any>; // You can replace `any` with a more specific type based on your JSON
+type TestData = Record<string, any>;
 
 const test = base.extend<{
   testData: TestData;
 }>({
   testData: async ({}, use, testInfo: TestInfo) => {
-    const testCaseName = testInfo.title;
-    const jsonHandler = new jsonhandler('../testData/testData.json');
-    const testData = jsonHandler.loadTestData(testCaseName.split('@')[0].trim());
+    const testCaseName = testInfo.title.split('@')[0].trim();
+
+    // Read environment variables
+    const ENVIRONMENT = process.env.ENVIRONMENT?.toLowerCase();
+    const SUBENVIRONMENT = process.env.SUBENVIRONMENT?.toLowerCase();
+    const TENANT = process.env.TENANT?.toLowerCase();
+    const PROJECT = testInfo.project.name.toLowerCase();
+
+    // Determine the correct JSON file name
+    const fileName =
+      PROJECT === 'call-center' ? 'call-center-ui.json' : `${PROJECT}.json`;
+
+    // Construct full path to the test data file
+    const testDataPath = path.join(
+      __dirname,
+      '..',
+      'testdata',
+      ENVIRONMENT || '',
+      SUBENVIRONMENT || '',
+      TENANT || '',
+      fileName
+    );
+
+    const jsonHandler = new jsonhandler(testDataPath);
+    const testData = jsonHandler.loadTestData(testCaseName);
+
     await use(testData);
   },
 });
 
-export { test, expect };
+export { test, expect, request };

@@ -1,0 +1,23 @@
+header is  {
+  'x-sabre-auth-token': 'eyJraWQiOiJXb1FzNmRsM1ozR292MW50UWFqeXNDQmhMNUt1WEsyU3p1eF9rWWFVdnpjIiwiYWxnIjoiUlMyNTYifQ.eyJ2ZXIiOjEsImp0aSI6IkFULm5PN1F3amVWVFVKbFlBNlY1X3MxLTA1N0lIdEp4YmpVS1IwdlpFQ2dTalkiLCJpc3MiOiJodHRwczovL3NhYnJlLXdsdi1jZXJ0LXZhLm9rdGFwcmV2aWV3LmNvbS9vYXV0aDIvYXVzZGZ1NjB0N0xXY0p5czkxZDciLCJhdWQiOiJ3b2x2ZXJpbmUtdmEuY2VydC5zYWJyZS1nY3AuY29tIiwiaWF0IjoxNzUzOTM4ODE5LCJleHAiOjE3NTM5NDI0MTksImNpZCI6IjBvYWRvaXZ2YWZyaG1EdjBuMWQ3Iiwic2NwIjpbImFwaSJdLCJzdWIiOiIwb2Fkb2l2dmFmcmhtRHYwbjFkNyIsIm5hbWUiOiJwb3N0bWFuLW9hYy1hdWQtYWdlbnQifQ.e_Klzzp1WcWvaRYVoljuAwVrPkBiG_Zec5hO-RCgXNrjPUi_RjjhpaxLivCcc5rFeqd_038SSFQ_yyaD13aJS4-XMlSE5n-i09E-7Sk3dzCcUrE022aUQ1DNy-Kq_PvbXC1uOKs7s1omSaygL9DfIHI-wAk-yCPdZMcrbH6sV6j12X_8uuCSZrSpgfTzdD7BQuMiLvd7zUjiFK7YSp-qf0mh05BF7qan4TxFN2yaDXoV2aM_EyO5Z_oIEL60D2KnNkgP5iCMi0vp_yOddOU2MWH2dKPhIthza4WGBbelt8Y3DzynV1tXp-yzVfSixoVBa4n5F9Xy25insShX-qJp6A',
+  'x-request-id': '0c3c9d8a-9926-43f3-87f0-86d81343d51c',
+  'x-correlation-id': 'E2E-AUTO-d86e774d-a780-4b23-826c-0f59eab6905f'
+}
+========================================
+shop {
+  shopRequest: ShopJsonObject {
+    origin: 'SYD',
+    destination: 'BNE',
+    day: 10,
+    month: 8,
+    year: 2025,
+    currency: 'EUR'
+  },
+  endpoint: 'https://wolverine-retailing-mixer-wl-ut1-rmx-va.apps.cert-02.us-east4.cert.sabre-gcp.com/shop',
+  headers: {
+    'x-sabre-auth-token': 'eyJraWQiOiJXb1FzNmRsM1ozR292MW50UWFqeXNDQmhMNUt1WEsyU3p1eF9rWWFVdnpjIiwiYWxnIjoiUlMyNTYifQ.eyJ2ZXIiOjEsImp0aSI6IkFULm5PN1F3amVWVFVKbFlBNlY1X3MxLTA1N0lIdEp4YmpVS1IwdlpFQ2dTalkiLCJpc3MiOiJodHRwczovL3NhYnJlLXdsdi1jZXJ0LXZhLm9rdGFwcmV2aWV3LmNvbS9vYXV0aDIvYXVzZGZ1NjB0N0xXY0p5czkxZDciLCJhdWQiOiJ3b2x2ZXJpbmUtdmEuY2VydC5zYWJyZS1nY3AuY29tIiwiaWF0IjoxNzUzOTM4ODE5LCJleHAiOjE3NTM5NDI0MTksImNpZCI6IjBvYWRvaXZ2YWZyaG1EdjBuMWQ3Iiwic2NwIjpbImFwaSJdLCJzdWIiOiIwb2Fkb2l2dmFmcmhtRHYwbjFkNyIsIm5hbWUiOiJwb3N0bWFuLW9hYy1hdWQtYWdlbnQifQ.e_Klzzp1WcWvaRYVoljuAwVrPkBiG_Zec5hO-RCgXNrjPUi_RjjhpaxLivCcc5rFeqd_038SSFQ_yyaD13aJS4-XMlSE5n-i09E-7Sk3dzCcUrE022aUQ1DNy-Kq_PvbXC1uOKs7s1omSaygL9DfIHI-wAk-yCPdZMcrbH6sV6j12X_8uuCSZrSpgfTzdD7BQuMiLvd7zUjiFK7YSp-qf0mh05BF7qan4TxFN2yaDXoV2aM_EyO5Z_oIEL60D2KnNkgP5iCMi0vp_yOddOU2MWH2dKPhIthza4WGBbelt8Y3DzynV1tXp-yzVfSixoVBa4n5F9Xy25insShX-qJp6A',
+    'x-request-id': '0c3c9d8a-9926-43f3-87f0-86d81343d51c',
+    'x-correlation-id': 'E2E-AUTO-d86e774d-a780-4b23-826c-0f59eab6905f'
+  }
+}
+response is ========  Promise { <pending> }

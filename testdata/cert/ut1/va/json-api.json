@@ -1,0 +1,17 @@
+{
+    "global": [
+        {
+
+        }
+    ],
+    "TC1_Verify_Add_One_Way_Single_Pax_One_Way_Create_Paid_Order": [
+        {
+            "paymentType": "CASH",
+            "cardType": "MasterCard",
+            "cardNumber": "7563828462827483",
+            "seatType":{
+                "PAX1": "PAID"
+            }
+        }
+    ]
+}
