@@ -1,11 +1,14 @@
 import { ShopJsonObject } from '../create-payload/shop-json-object';
 import { request, TestInfo } from '@playwright/test';
-import { activateJwtToken } from "../../api-base/create-jwt-token";
+import {
+  attachment,
+  step
+} from 'allure-js-commons';
+
+
 
 export class shopApi {
   private shopRequest: ShopJsonObject;
-  private endpoint: string;
-  private headers: Record<string, string>;
 
   constructor(
     origin: string,
@@ -18,28 +21,45 @@ export class shopApi {
     this.shopRequest = new ShopJsonObject(origin, destination, day, month, year, currency);
   }
 
-  public async sendRequestAndGetResponse(
+  
+public async sendRequestAndGetResponse(
     endpoint: string,
+    headers: Record<string, string>,
     testInfo: TestInfo
   ): Promise<any> {
-    try {
-        const payload = await JSON.parse(this.shopRequest.getShopPayload());
+    return await step('Send Shop API Request and Log Request/Response', async () => {
+      try {
+        const payload = JSON.parse(this.shopRequest.getShopPayload());
+
+        // Attach request payload
+        await attachment('Shop Request Payload', JSON.stringify(payload, null, 2), {
+          contentType: 'application/json'
+        });
+
         const apiContext = await request.newContext();
-        const headers = await activateJwtToken(testInfo);
-        const response = await apiContext.post(
-            'https://wolverine-retailing-mixer-wl-ut1-rmx-va.apps.cert-02.us-east4.cert.sabre-gcp.com/shop',
-            {
-                headers: {
-                    ...headers,
-                    'Content-Type': 'application/json'
-                },
-                data: JSON.stringify(payload)
-            }
-        );
-      return response;
-    } catch (error) {
-      console.error('Error in sendSabreRequest:', error);
-      throw error;
-    }
+        const response = await apiContext.post(endpoint, {
+          headers: {
+            ...headers,
+            'Content-Type': 'application/json'
+          },
+          data: JSON.stringify(payload)
+        });
+
+        const responseBody = await response.text();
+
+        // Attach response body
+        await attachment('Shop Response Body', responseBody, {
+          contentType: 'application/json'
+        });
+
+        return response;
+      } catch (error) {
+        await attachment('Shop API Error', JSON.stringify({ message: error.message }), {
+          contentType: 'application/json'
+        });
+        throw error;
+      }
+    });
   }
+
 }

@@ -1,12 +1,13 @@
 import { test, expect, request } from '../../utilities/fixtures';
-import { activateJwtToken } from "../../api-base/create-jwt-token";
+import { activateJwtToken } from "../../api-base/activatejwttoken";
 import { shopApi } from '../../json-api/request-and-get-response/shop-api-request';
 import { ShopJsonObject } from '../../json-api/create-payload/shop-json-object';
 test.describe.configure({ mode: 'parallel' });
 
 
 test('API test with JWT', async ({ request }, testInfo) => {
-    const headers = await activateJwtToken(testInfo);
+    const activatejwttoken = new activateJwtToken();
+    const headers = await activatejwttoken.getJwtToken(testInfo);
 
     const response = await request.get('https://your-api-endpoint.com', {
         headers,
@@ -22,7 +23,8 @@ test(
         const password: String = testData.get('password')?.toString();
         const seatType: String = testData.get('seatType')?.toString();
 
-        const headers = await activateJwtToken(testInfo);
+        const activatejwttoken = new activateJwtToken();
+        const headers = await activatejwttoken.getJwtToken(testInfo);
         console.log("header is ", headers);
         const apiContext = await request.newContext();
         const shopJsonObject = new ShopJsonObject("SYD", "BNE", 10, 8, 2025, "EUR");
@@ -50,16 +52,18 @@ test(
 
 test.only('shop class should send request and return mocked response', async ({ testData }, testInfo) => {
 
-    //const headers = await activateJwtToken(testInfo);
-
+    const activatejwttoken = new activateJwtToken();
+    const headers = await activatejwttoken.getJwtToken(testInfo);
+    const {rmxApiJson} = await activatejwttoken.loadConfig();
     const shop = new shopApi('SYD', 'BNE', 10, 8, 2025, 'EUR');
 
-    const response = await shop.sendRequestAndGetResponse("https://wolverine-retailing-mixer-wl-ut1-rmx-va.apps.cert-02.us-east4.cert.sabre-gcp.com/shop",
+    const response = await shop.sendRequestAndGetResponse(rmxApiJson+"/shop",
+        headers,
         testInfo
     );
 
     const responseBody = JSON.stringify(JSON.parse(await response.text()), null, 2);
 
-    //console.log(JSON.stringify(JSON.parse(responseBody), null, 2));
+    console.log(JSON.stringify(JSON.parse(responseBody), null, 2));
     expect(response.ok()).toBe(true);
 });

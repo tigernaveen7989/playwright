@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<IATA_AirShoppingRQ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.iata.org/IATA/2015/EASD/00/IATA_OffersAndOrdersMessage" xmlns:cns="http://www.iata.org/IATA/2015/EASD/00/IATA_OffersAndOrdersCommonTypes">
+   
+   <DistributionChain>
+      <cns:DistributionChainLink>
+         <cns:Ordinal>1</cns:Ordinal>
+         <cns:OrgRole>Seller</cns:OrgRole>
+         <cns:ParticipatingOrg>
+            <cns:OrgID>$SELLER_ORGID</cns:OrgID>
+         </cns:ParticipatingOrg>
+      </cns:DistributionChainLink>
+      <cns:DistributionChainLink>
+         <cns:Ordinal>2</cns:Ordinal>
+         <cns:OrgRole>Carrier</cns:OrgRole>
+         <cns:ParticipatingOrg>
+            <cns:OrgID>$CARRIER_ORGID</cns:OrgID>
+         </cns:ParticipatingOrg>
+      </cns:DistributionChainLink>
+   </DistributionChain>
+
+   <POS>
+      <cns:AgentDutyText>$AGENT_DUTY</cns:AgentDutyText>
+      <cns:City>
+         <cns:IATA_LocationCode>$CITY_CODE</cns:IATA_LocationCode>
+      </cns:City>
+      <cns:Country>
+         <cns:CountryCode>$COUNTRY_CODE</cns:CountryCode>
+      </cns:Country>
+   </POS>
+
+   <Request>
+      <cns:FlightRequest>
+         <cns:FlightRequestOriginDestinationsCriteria>
+            <cns:OriginDestCriteria>
+               <cns:DestArrivalCriteria>
+                  <cns:IATA_LocationCode>$DESTINATION</cns:IATA_LocationCode>
+               </cns:DestArrivalCriteria>
+               <cns:OriginDepCriteria>
+                  <cns:Date>$DATE</cns:Date>
+                  <cns:IATA_LocationCode>$ARRIVAL</cns:IATA_LocationCode>
+               </cns:OriginDepCriteria>
+            </cns:OriginDestCriteria>
+         </cns:FlightRequestOriginDestinationsCriteria>
+      </cns:FlightRequest>
+
+      <cns:PaxList>
+         <cns:Pax>
+            <cns:PaxID>$PAXID</cns:PaxID>
+            <cns:PTC>$PAXTYPE</cns:PTC>
+         </cns:Pax>
+      </cns:PaxList>
+
+      <cns:ResponseParameters>
+         <cns:CurParameter>
+            <cns:CurCode>$CURRENCY</cns:CurCode>
+         </cns:CurParameter>
+      </cns:ResponseParameters>
+   </Request>
+</IATA_AirShoppingRQ>

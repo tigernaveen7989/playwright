@@ -40,13 +40,16 @@ const config: PlaywrightTestConfig = defineConfig({
   projects: [
     {
       name: 'call-center',
+      testDir: './tests/call-center-tests',
       use: { browserName: 'chromium' },
     },
     {
-      name: 'xml-api'
+      name: 'xml-api',
+      testDir: './tests/xml-api-tests'
     },
     {
-      name: 'json-api'
+      name: 'json-api',
+      testDir: './tests/json-api-tests'
     },
   ],
 });
