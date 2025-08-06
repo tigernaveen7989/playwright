@@ -3,14 +3,13 @@ import { activateJwtToken } from "../../api-base/activatejwttoken";
 import { ShopApi } from '../../xml-api/request-and-get-response/shop-xml-request';
 test.describe.configure({ mode: 'parallel' });
 
-
-test(
+test.only(
     'TC1_Verify_Add_One_Way_Single_Pax_One_Way_Create_Paid_Order' +
     ' @allure.label.feature:JSON-SinglePax-PaidOrder', async ({ testData }, testInfo) => {
 
         const activatejwttoken = new activateJwtToken();
         const headers = await activatejwttoken.getJwtToken(testInfo);
-        const { rmxApiJson } = await activatejwttoken.loadConfig();
+        const { rmxNdcXml } = await activatejwttoken.loadConfig();
         const replacements: Record<string, string> = {
             '$DESTINATION': 'MEL',
             '$ARRIVAL': 'SYD',
@@ -26,13 +25,10 @@ test(
         };
 
         const shop = new ShopApi(replacements);
-        const response = await shop.sendRequestAndGetResponse(rmxApiJson + "/shop",
+        const response = await shop.sendRequestAndGetResponse(rmxNdcXml + "/shop",
             headers,
             testInfo
         );
 
-       // const responseBody = JSON.stringify(JSON.parse(await response.text()), null, 2);
-
-        //console.log(JSON.stringify(JSON.parse(responseBody), null, 2));
         expect(response.ok()).toBe(true);
     });

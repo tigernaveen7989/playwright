@@ -28,6 +28,8 @@ export class ShopApi {
         return await step('Send Shop API Request and Log Request/Response', async () => {
             try {
                 const xmlPayload = this.xmlProcessor.getXmlString();
+                const xmlDocument : Document = this.xmlProcessor.getXmlDocument();
+                
                 await attachment('Shop XML Request Payload', xmlPayload, {
                     contentType: 'application/xml'
                 });
@@ -42,8 +44,6 @@ export class ShopApi {
                 });
 
                 const responseBody = await response.text();
-                console.log(response.status());
-                console.log("response is ========== ", responseBody);
 
                 await attachment('Shop XML Response Body', responseBody, {
                     contentType: 'application/xml'
