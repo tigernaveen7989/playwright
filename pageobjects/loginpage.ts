@@ -1,4 +1,8 @@
 import { Page, Locator } from '@playwright/test';
+import { LoggerFactory } from '../utilities/logger';
+import { log } from 'console';
+const logger = LoggerFactory.getLogger(__filename);
+
 
 export default class loginpage {
   private page: Page;
@@ -23,5 +27,8 @@ export default class loginpage {
     await this.nextButton.click();
     await this.passwordInput.fill(password);
     await this.verifyButton.click();
+    logger.info("entered "+username+ " and password "+password);
+    logger.info("login successful");
+    logger.error("Login failed");
   }
 }

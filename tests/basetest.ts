@@ -2,7 +2,10 @@ import { Browser, BrowserContext, Page, chromium, firefox, webkit } from '@playw
 import LoginPage from '../pageobjects/loginpage';
 import HomePage from '../pageobjects/homepage';
 import * as fs from 'fs';
-import * as path from 'path'
+import * as path from 'path';
+import { LoggerFactory } from '../utilities/logger';
+const logger = LoggerFactory.getLogger(__filename);
+
 
 
 export default class BaseTest {
@@ -33,6 +36,7 @@ export default class BaseTest {
 
     // Navigate to login page
     await this.page.goto('https://callcenter-ju-ut1.sabre.com/Login');
+    logger.info('Navigating to call center');
 
     // Initialize Page Objects
     this.loginPage = new LoginPage(this.page);

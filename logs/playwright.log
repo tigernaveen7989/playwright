@@ -1,0 +1,54 @@
+[INFO] [06 08M 2025 12:19] PlaywrightTest :  : Navigating to call center
+[INFO] [06 08M 2025 12:19] PlaywrightTest :  : Navigating to call center
+[INFO] [06 08M 2025 12:19] PlaywrightTest :  : entered ut1agency2.admin1.ju.functional.e2e@sabre.com and password Pa$$word@2k25
+[INFO] [06 08M 2025 12:19] PlaywrightTest :  : login successful
+[INFO] [06 08M 2025 12:19] PlaywrightTest :  : Navigating to call center
+[INFO] [06 08M 2025 12:19] PlaywrightTest :  : Navigating to call center
+[INFO] [06 08M 2025 12:19] PlaywrightTest :  : entered ut1agency2.admin1.ju.functional.e2e@sabre.com and password Pa$$word@2k25
+[INFO] [06 08M 2025 12:19] PlaywrightTest :  : login successful
+[INFO] [2025-08-06 12:24:08] basetest :  : Navigating to call center
+[INFO] [2025-08-06 12:24:10] basetest :  : Navigating to call center
+[INFO] [2025-08-06 12:24:16] loginpage :  : entered ut1agency2.admin1.ju.functional.e2e@sabre.com and password Pa$$word@2k25
+[INFO] [2025-08-06 12:24:16] loginpage :  : login successful
+[INFO] [2025-08-06T06:57:41.463Z] C:\Users\SG0704235\Documents\PlaywrightTypescript\tests\basetest : C:\Users\SG0704235\Documents\PlaywrightTypescript\node_modules\log4js\lib\logger.js:195 : Navigating to call center
+[INFO] [2025-08-06T06:57:41.885Z] C:\Users\SG0704235\Documents\PlaywrightTypescript\tests\basetest : C:\Users\SG0704235\Documents\PlaywrightTypescript\node_modules\log4js\lib\logger.js:195 : Navigating to call center
+[INFO] [2025-08-06T06:57:47.783Z] C:\Users\SG0704235\Documents\PlaywrightTypescript\pageobjects\loginpage : C:\Users\SG0704235\Documents\PlaywrightTypescript\node_modules\log4js\lib\logger.js:195 : entered ut1agency2.admin1.ju.functional.e2e@sabre.com and password Pa$$word@2k25
+[INFO] [2025-08-06T06:57:47.787Z] C:\Users\SG0704235\Documents\PlaywrightTypescript\pageobjects\loginpage : C:\Users\SG0704235\Documents\PlaywrightTypescript\node_modules\log4js\lib\logger.js:195 : login successful
+[INFO] [2025-08-06T07:03:46Z] basetest : Navigating to call center (unknown)
+[INFO] [2025-08-06T07:03:46Z] basetest : Navigating to call center (unknown)
+[INFO] [2025-08-06T07:03:52Z] loginpage : entered ut1agency2.admin1.ju.functional.e2e@sabre.com and password Pa$$word@2k25 (unknown)
+[INFO] [2025-08-06T07:03:52Z] loginpage : login successful (unknown)
+[32m[INFO][0m [2025-08-06T07:05:24Z] basetest : Navigating to call center (logger.ts:58)
+[32m[INFO][0m [2025-08-06T07:05:24Z] basetest : Navigating to call center (logger.ts:58)
+[32m[INFO][0m [2025-08-06T07:05:30Z] loginpage : entered ut1agency2.admin1.ju.functional.e2e@sabre.com and password Pa$$word@2k25 (logger.ts:58)
+[32m[INFO][0m [2025-08-06T07:05:30Z] loginpage : login successful (logger.ts:58)
+[32m[INFO][0m [2025-08-06T07:08:52Z] basetest : Navigating to call center (basetest.ts:44)
+[32m[INFO][0m [2025-08-06T07:08:52Z] basetest : Navigating to call center (basetest.ts:44)
+[32m[INFO][0m [2025-08-06T07:08:57Z] loginpage : entered ut1agency2.admin1.ju.functional.e2e@sabre.com and password Pa$$word@2k25 (loginpage.ts:30)
+[32m[INFO][0m [2025-08-06T07:08:57Z] loginpage : login successful (loginpage.ts:31)
+[32m[INFO][0m [90m[2025-08-06T07:11:18Z][0m [34mlogger.ts:62[0m : Navigating to call center
+[32m[INFO][0m [90m[2025-08-06T07:11:18Z][0m [34mlogger.ts:62[0m : Navigating to call center
+[32m[INFO][0m [90m[2025-08-06T07:11:22Z][0m [34mlogger.ts:62[0m : entered ut1agency2.admin1.ju.functional.e2e@sabre.com and password Pa$$word@2k25
+[32m[INFO][0m [90m[2025-08-06T07:11:22Z][0m [34mlogger.ts:62[0m : login successful
+[32m[INFO][0m [91m[2025-08-06T07:12:27Z][0m [34mlogger.ts:59[0m : Navigating to call center
+[32m[INFO][0m [91m[2025-08-06T07:12:27Z][0m [34mlogger.ts:59[0m : Navigating to call center
+[32m[INFO][0m [91m[2025-08-06T07:12:31Z][0m [34mlogger.ts:59[0m : entered ut1agency2.admin1.ju.functional.e2e@sabre.com and password Pa$$word@2k25
+[32m[INFO][0m [91m[2025-08-06T07:12:31Z][0m [34mlogger.ts:59[0m : login successful
+[32m[INFO][0m [91m[2025-08-06 07:14:16][0m [34mlogger.ts:61[0m : Navigating to call center
+[32m[INFO][0m [91m[2025-08-06 07:14:17][0m [34mlogger.ts:61[0m : Navigating to call center
+[32m[INFO][0m [91m[2025-08-06 07:14:20][0m [34mlogger.ts:61[0m : entered ut1agency2.admin1.ju.functional.e2e@sabre.com and password Pa$$word@2k25
+[32m[INFO][0m [91m[2025-08-06 07:14:20][0m [34mlogger.ts:61[0m : login successful
+[32m[INFO][0m [91m[2025-08-06 07:17:22][0m [96mbasetest.ts:39[0m : Navigating to call center
+[32m[INFO][0m [91m[2025-08-06 07:17:22][0m [96mbasetest.ts:39[0m : Navigating to call center
+[32m[INFO][0m [91m[2025-08-06 07:17:26][0m [96mloginpage.ts:29[0m : entered ut1agency2.admin1.ju.functional.e2e@sabre.com and password Pa$$word@2k25
+[32m[INFO][0m [91m[2025-08-06 07:17:26][0m [96mloginpage.ts:30[0m : login successful
+[32m[INFO][0m [91m[2025-08-06 07:20:36][0m [96mbasetest.ts:39[0m : Navigating to call center
+[32m[INFO][0m [91m[2025-08-06 07:20:37][0m [96mbasetest.ts:39[0m : Navigating to call center
+[32m[INFO][0m [91m[2025-08-06 07:20:41][0m [96mloginpage.ts:30[0m : entered ut1agency2.admin1.ju.functional.e2e@sabre.com and password Pa$$word@2k25
+[32m[INFO][0m [91m[2025-08-06 07:20:41][0m [96mloginpage.ts:31[0m : login successful
+[31m[ERROR][0m [91m[2025-08-06 07:20:41][0m [96mloginpage.ts:32[0m : Login failed
+[32m[INFO][0m [35m[2025-08-06 07:23:12][0m [96mbasetest.ts:39[0m : Navigating to call center
+[32m[INFO][0m [35m[2025-08-06 07:23:14][0m [96mbasetest.ts:39[0m : Navigating to call center
+[32m[INFO][0m [35m[2025-08-06 07:23:19][0m [96mloginpage.ts:30[0m : entered ut1agency2.admin1.ju.functional.e2e@sabre.com and password Pa$$word@2k25
+[32m[INFO][0m [35m[2025-08-06 07:23:19][0m [96mloginpage.ts:31[0m : login successful
+[31m[ERROR][0m [35m[2025-08-06 07:23:19][0m [96mloginpage.ts:32[0m : Login failed
