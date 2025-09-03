@@ -1,6 +1,5 @@
 import { Page, Locator } from '@playwright/test';
 import { LoggerFactory } from '../utilities/logger';
-import { log } from 'console';
 const logger = LoggerFactory.getLogger(__filename);
 
 

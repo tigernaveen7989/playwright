@@ -22,13 +22,14 @@ test(
         const userName: String = testData.get('userName')?.toString();
         const password: String = testData.get('password')?.toString();
         const seatType: String = testData.get('seatType')?.toString();
+        const paxtype: string = testData.get('seatType')?.toString();
 
         const activatejwttoken = new activateJwtToken();
         const headers = await activatejwttoken.getJwtToken(testInfo);
         console.log("header is ", headers);
         const apiContext = await request.newContext();
         const shopJsonObject = new ShopJsonObject("SYD", "BNE", 10, 8, 2025, "EUR");
-        const payload = await JSON.parse(shopJsonObject.getShopPayload());
+        const payload = await JSON.parse(shopJsonObject.getShopPayload(paxtype));
         const response = await apiContext.post(
             'https://wolverine-retailing-mixer-wl-ut1-rmx-va.apps.cert-02.us-east4.cert.sabre-gcp.com/shop',
             {
@@ -50,20 +51,24 @@ test(
 );
 
 
-test.only('shop class should send request and return mocked response', async ({ testData }, testInfo) => {
+test.only('TC2_Verify_Multi_Pax_One_Way_Create_Paid_Order' +
+    ' @allure.label.feature:JSON-MultiPax-PaidOrder', async ({ testData }, testInfo) => {
+    const paxType: string = testData.get('paxType')?.toString();
+    const cityPair: string = testData.get('password')?.toString();
+    const seatType: string = testData.get('seatType')?.toString();
 
     const activatejwttoken = new activateJwtToken();
     const headers = await activatejwttoken.getJwtToken(testInfo);
     const {rmxApiJson} = await activatejwttoken.loadConfig();
-    const shop = new shopApi('SYD', 'BNE', 10, 8, 2025, 'EUR');
+    const shop = new shopApi('SYD', 'BNE', 10, 9, 2025, 'EUR');
 
     const response = await shop.sendRequestAndGetResponse(rmxApiJson+"/shop",
         headers,
-        testInfo
+        testInfo,
+        paxType
     );
 
     const responseBody = JSON.stringify(JSON.parse(await response.text()), null, 2);
-
-    console.log(JSON.stringify(JSON.parse(responseBody), null, 2));
+    //console.log(JSON.stringify(JSON.parse(responseBody), null, 2));
     expect(response.ok()).toBe(true);
 });

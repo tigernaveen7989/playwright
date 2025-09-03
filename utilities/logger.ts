@@ -4,6 +4,9 @@ export class LoggerFactory {
   private static readonly resetColor = '\x1b[0m';
   private static readonly timestampColor = '\x1b[35m'; // purple
   private static readonly fileColor = '\x1b[96m'; // cyan
+  private static readonly messageColor = '\x1b[30m'; // black
+  private static readonly valueColor = '\x1b[38;5;141m'; // violet
+
   private static readonly levelColors: Record<string, string> = {
     TRACE: '\x1b[90m',  // gray
     DEBUG: '\x1b[34m',  // blue
@@ -25,12 +28,17 @@ export class LoggerFactory {
         const coloredLevel = `${levelColor}[${levelStr}]${LoggerFactory.resetColor}`;
         const coloredTimestamp = `${LoggerFactory.timestampColor}[${timestamp}]${LoggerFactory.resetColor}`;
 
-        const [message, location] = logEvent.data;
+        // Destructure message, value, and location from logEvent.data
+        const [message, value, location] = logEvent.data;
+
         const coloredLocation = location
           ? `${LoggerFactory.fileColor}${location}${LoggerFactory.resetColor}`
           : 'unknown';
 
-        return `${coloredLevel} ${coloredTimestamp} ${coloredLocation} : ${message}`;
+        const coloredMessage = `${LoggerFactory.messageColor}${message}${LoggerFactory.resetColor}`;
+        const coloredValue = value ? `${LoggerFactory.valueColor}${value}${LoggerFactory.resetColor}` : '';
+
+        return `${coloredLevel} ${coloredTimestamp} ${coloredLocation} : ${coloredMessage} ${coloredValue}\n---------------------------------------------------------------------------------------------------------------------------------------------------`;
       };
     });
 
@@ -58,6 +66,7 @@ export class LoggerFactory {
           return (...args: any[]) => {
             const stack = new Error().stack?.split('\n') || [];
 
+            // Find caller outside LoggerFactory, log4js, node internals, etc.
             const callerLine = stack.find(line =>
               !line.includes('LoggerFactory') &&
               !line.includes('log4js') &&
@@ -78,7 +87,11 @@ export class LoggerFactory {
               }
             }
 
-            target[prop](args.join(' '), lineInfo);
+            // Pass message, value, and lineInfo separately to layout
+            const message = args[0] ?? '';
+            const value = args[1] ?? '';
+
+            target[prop](message, value, lineInfo);
           };
         }
 

@@ -1,10 +1,11 @@
 import { ShopJsonObject } from '../create-payload/shop-json-object';
 import { request, TestInfo } from '@playwright/test';
+import { LoggerFactory } from '../../utilities/logger';
+const logger = LoggerFactory.getLogger(__filename);
 import {
   attachment,
   step
 } from 'allure-js-commons';
-
 
 
 export class shopApi {
@@ -25,11 +26,12 @@ export class shopApi {
 public async sendRequestAndGetResponse(
     endpoint: string,
     headers: Record<string, string>,
-    testInfo: TestInfo
+    testInfo: TestInfo,
+    paxtype: string
   ): Promise<any> {
     return await step('Send Shop API Request and Log Request/Response', async () => {
       try {
-        const payload = JSON.parse(this.shopRequest.getShopPayload());
+        const payload = JSON.parse(this.shopRequest.getShopPayload(paxtype));
 
         // Attach request payload
         await attachment('Shop Request Payload', JSON.stringify(payload, null, 2), {

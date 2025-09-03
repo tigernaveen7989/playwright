@@ -1,3 +1,6 @@
+import { LoggerFactory } from '../../utilities/logger';
+const logger = LoggerFactory.getLogger(__filename);
+
 export class ShopJsonObject {
   origin: string;
   destination: string;
@@ -22,8 +25,9 @@ export class ShopJsonObject {
     this.currency = currency;
   }
 
-  getShopPayload(): string {
-    const payload = {
+  getShopPayload(paxtype: string): string {
+    const passengers = this.parsePaxtype(paxtype);
+    const payload: any = {
       request: {
         origin_destinations_criteria: [{
           origin_departure_criteria: {
@@ -38,7 +42,7 @@ export class ShopJsonObject {
             airportCode: this.destination
           }
         }],
-        passengers: [{ passenger_type_code: 'ADT', id: 'PAX1' }],
+        passengers,
         requestType: 'ADVCAL30',
         offer_criteria: { program: { programAccountIds: [] } },
         currency: this.currency
@@ -54,6 +58,33 @@ export class ShopJsonObject {
       }
     };
 
+    logger.info('shop payload request is : ', JSON.stringify(payload));
     return JSON.stringify(payload);
   }
+
+
+
+  // Method inside the class
+  parsePaxtype(paxtype: string): { passenger_type_code: string; id: string }[] {
+    const passengers: { passenger_type_code: string; id: string }[] = [];
+    let paxId = 1;
+
+    const matchAdult = paxtype.match(/(\d+)A/);
+    const matchChild = paxtype.match(/(\d+)C/);
+
+    const numAdults = matchAdult ? parseInt(matchAdult[1], 10) : 0;
+    const numChildren = matchChild ? parseInt(matchChild[1], 10) : 0;
+
+    for (let i = 0; i < numAdults; i++) {
+      passengers.push({ passenger_type_code: 'ADT', id: `PAX${paxId++}` });
+    }
+
+    for (let i = 0; i < numChildren; i++) {
+      passengers.push({ passenger_type_code: 'CNN', id: `PAX${paxId++}` });
+    }
+
+    logger.info('passenger object is : '+ passengers);
+    return passengers;
+  }
+
 }
