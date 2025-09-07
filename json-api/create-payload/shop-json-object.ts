@@ -26,7 +26,7 @@ export class ShopJsonObject {
   }
 
   getShopPayload(paxtype: string): string {
-    const passengers = this.parsePaxtype(paxtype);
+    const passengers = this.getPassengersJSONArray(paxtype);
     const payload: any = {
       request: {
         origin_destinations_criteria: [{
@@ -65,7 +65,7 @@ export class ShopJsonObject {
 
 
   // Method inside the class
-  parsePaxtype(paxtype: string): { passenger_type_code: string; id: string }[] {
+  getPassengersJSONArray(paxtype: string): { passenger_type_code: string; id: string }[] {
     const passengers: { passenger_type_code: string; id: string }[] = [];
     let paxId = 1;
 
