@@ -15,11 +15,11 @@ export class priceApi {
     this.priceRequest = new PriceJsonObject();
   }
 
-  
+
   /***
    * 
    */
-public async sendRequestAndGetResponse(
+  public async sendRequestAndGetResponse(
     endpoint: string,
     headers: Record<string, string>,
     testInfo: TestInfo,
@@ -43,7 +43,7 @@ public async sendRequestAndGetResponse(
           data: JSON.stringify(payload)
         });
 
-        let responseBody:any = await response.text();
+        let responseBody: any = await response.text();
 
         // Attach response body
         await attachment('Price Response Body', JSON.stringify(await response.json(), null, 2), {
@@ -58,6 +58,47 @@ public async sendRequestAndGetResponse(
         throw error;
       }
     });
+  }
+
+  public getPassengerDetailsMap(
+    responseJson: any,
+    passengerTypeMap: Map<string, string>
+  ): Map<string, Map<string, string>> {
+    const result = new Map<string, Map<string, string>>();
+
+    const offerItems = responseJson?.pricedOffer?.offerItems ?? [];
+
+    for (const offerItem of offerItems) {
+      const offerItemId = offerItem.id;
+      const price = offerItem.price?.totalAmount?.amount || "";
+      const services = offerItem.services ?? [];
+
+      for (const service of services) {
+        const paxIds = service.passengerIds ?? [];
+        const journeyIds = service.offerServiceAssociation?.journey?.passengerJourneyIds ?? [];
+
+        for (const paxId of paxIds) {
+          if (!passengerTypeMap.has(paxId)) continue;
+
+          const infoMap = result.get(paxId) ?? new Map<string, string>();
+
+          if (!infoMap.has("offerItemId")) {
+            infoMap.set("offerItemId", offerItemId);
+          }
+
+          if (!infoMap.has("price")) {
+            infoMap.set("price", price);
+          }
+
+          if (journeyIds.length > 0 && !infoMap.has("passengerJourneyIds")) {
+            infoMap.set("passengerJourneyIds", journeyIds.join(","));
+          }
+          result.set(paxId, infoMap);
+        }
+      }
+    }
+    logger.info('Passenger details map: ' ,JSON.stringify(Object.fromEntries([...result].map(([k, v]) => [k, Object.fromEntries(v)])), null, 2));
+    return result;
   }
 
 }

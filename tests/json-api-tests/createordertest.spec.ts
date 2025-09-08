@@ -76,7 +76,7 @@ test(
  * Test 3:
  * Verify multi-pax shop + price API integration and create paid order.
  */
-test.only(
+test(
   'TC2_Verify_Multi_Pax_One_Way_Create_Paid_Order @allure.label.feature:JSON-MultiPax-PaidOrder',
   async ({ testData }, testInfo) => {
     // 🔹 Declarations
@@ -129,9 +129,18 @@ test.only(
       paxIdOffersItemIdsMap
     );
 
-    responseBody = JSON.stringify(await priceResponse.json(), null, 2);
-    //logger.info('Price API Response:', responseBody);
+    // Parse JSON response **once**
+    const priceResponseJson = await priceResponse.json();
+
+    // Optional logging
+    responseBody = JSON.stringify(priceResponseJson, null, 2);
+    // logger.info('Price API Response:', responseBody);
+
+    // Validate response
     expect(priceResponse.ok()).toBe(true);
+
+    // Call your function with parsed JSON
+    const passengerDetailsMap: Map<string, Map<string, string>> = price.getPassengerDetailsMap(priceResponseJson, paxTypeMap);
   }
 );
 
@@ -139,7 +148,7 @@ test.only(
  * Test 4:
  * Verify single pax shop + price API integration and create paid order.
  */
-test(
+test.only(
   'TC3_Verify_Single_Pax_One_Way_Create_Paid_Order @allure.label.feature:JSON-SinglePax-PaidOrder',
   async ({ testData }, testInfo) => {
     // 🔹 Declarations
@@ -185,7 +194,6 @@ test(
     logger.info('Pax type map:', JSON.stringify(Object.fromEntries(paxTypeMap), null, 2));
 
     paxIdOffersItemIdsMap = await shop.getPaxOfferItemIdsMap(paxTypeMap, responseBody);
-    logger.info('Pax-Offer mapping:', JSON.stringify(Object.fromEntries(paxIdOffersItemIdsMap), null, 2));
 
     priceResponse = await price.sendRequestAndGetResponse(
       `${rmxApiJson}/price`,
@@ -194,8 +202,16 @@ test(
       paxIdOffersItemIdsMap
     );
 
-    responseBody = JSON.stringify(await priceResponse.json(), null, 2);
-    //logger.info('Price API Response:', responseBody);
+    // Parse JSON response **once**
+    const priceResponseJson = await priceResponse.json();
+
+    // Optional logging
+    responseBody = JSON.stringify(priceResponseJson, null, 2);
+    // logger.info('Price API Response:', responseBody);
+
+    // Validate response
     expect(priceResponse.ok()).toBe(true);
+
+    const passengerDetailsMap: Map<string, Map<string, string>> = await price.getPassengerDetailsMap(priceResponseJson, paxTypeMap);
   }
 );

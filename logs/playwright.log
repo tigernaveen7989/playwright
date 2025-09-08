@@ -56934,3 +56934,2293 @@
 ------------------------------------------------------------------------------------------------------------------------------------------
 [32m[INFO][0m [35m[2025-09-07 06:41:04][0m [36mprice-json-object.ts:39[0m : [30mprice payload request is : [0m [38;5;141m{"point_of_sale":{"channel":"STANDARD","country":{"code":"AU"},"city":{"code":"SYD"}},"sender":{"enabled_system":{},"marketing_carrier":{"airline_designator_code":"VA"}},"request":{"selected_offers":[{"id":"mf89lsua6x_69","selected_offer_items":[{"id":"mf89lsua6x_69_0","passenger_ids":["PAX1"],"selected_fares":[]},{"id":"mf89lsua6x_69_1","passenger_ids":["PAX2"],"selected_fares":[]},{"id":"mf89lsua6x_69_2","passenger_ids":["PAX3"],"selected_fares":[]}]}],"override_currency":"AUD","response_parameters":{"disable_availability_check":false,"disable_tax_calculation":false,"booking_category":"ALL"}},"diagnostics":{}}[0m
 ------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 05:14:33][0m [36mshop-json-object.ts:86[0m : [30mpassenger object is : [object Object],[object Object],[object Object][0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 05:14:33][0m [36mshop-json-object.ts:61[0m : [30mshop payload request is : [0m [38;5;141m{"request":{"origin_destinations_criteria":[{"origin_departure_criteria":{"date":{"month":9,"year":2025,"day":10},"airportCode":"SYD"},"destination_arrival_criteria":{"airportCode":"BNE"}}],"passengers":[{"passenger_type_code":"ADT","id":"PAX1"},{"passenger_type_code":"ADT","id":"PAX2"},{"passenger_type_code":"CNN","id":"PAX3"}],"requestType":"ADVCAL30","offer_criteria":{"program":{"programAccountIds":[]}},"currency":"EUR"},"sender":{"enabled_system":{"name":"POS"},"marketing_carrier":{"airline_designator_code":"VA"}},"point_of_sale":{"country":{"code":"CA"},"city":{"code":"ORD"},"channel":"STANDARD"}}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 05:14:40][0m [36mcreateordertest.spec.ts:120[0m : [30mPax type map:[0m [38;5;141m{
+  "PAX1": "ADT",
+  "PAX2": "ADT",
+  "PAX3": "CNN"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 05:14:40][0m [36mcreateordertest.spec.ts:123[0m : [30mPax-Offer mapping:[0m [38;5;141m{
+  "PAX1": "mf9vikmb67_68_0",
+  "PAX2": "mf9vikmb67_68_1",
+  "PAX3": "mf9vikmb67_68_2",
+  "OfferId": "mf9vikmb67_68"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 05:14:40][0m [36mprice-json-object.ts:17[0m : [30mpax id offer items map[0m [38;5;141m{
+  "PAX1": "mf9vikmb67_68_0",
+  "PAX2": "mf9vikmb67_68_1",
+  "PAX3": "mf9vikmb67_68_2",
+  "OfferId": "mf9vikmb67_68"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 05:14:40][0m [36mprice-json-object.ts:39[0m : [30mprice payload request is : [0m [38;5;141m{"point_of_sale":{"channel":"STANDARD","country":{"code":"AU"},"city":{"code":"SYD"}},"sender":{"enabled_system":{},"marketing_carrier":{"airline_designator_code":"VA"}},"request":{"selected_offers":[{"id":"mf9vikmb67_68","selected_offer_items":[{"id":"mf9vikmb67_68_0","passenger_ids":["PAX1"],"selected_fares":[]},{"id":"mf9vikmb67_68_1","passenger_ids":["PAX2"],"selected_fares":[]},{"id":"mf9vikmb67_68_2","passenger_ids":["PAX3"],"selected_fares":[]}]}],"override_currency":"AUD","response_parameters":{"disable_availability_check":false,"disable_tax_calculation":false,"booking_category":"ALL"}},"diagnostics":{}}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 05:36:19][0m [36mshop-json-object.ts:86[0m : [30mpassenger object is : [object Object],[object Object],[object Object][0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 05:36:19][0m [36mshop-json-object.ts:61[0m : [30mshop payload request is : [0m [38;5;141m{"request":{"origin_destinations_criteria":[{"origin_departure_criteria":{"date":{"month":9,"year":2025,"day":10},"airportCode":"SYD"},"destination_arrival_criteria":{"airportCode":"BNE"}}],"passengers":[{"passenger_type_code":"ADT","id":"PAX1"},{"passenger_type_code":"ADT","id":"PAX2"},{"passenger_type_code":"CNN","id":"PAX3"}],"requestType":"ADVCAL30","offer_criteria":{"program":{"programAccountIds":[]}},"currency":"EUR"},"sender":{"enabled_system":{"name":"POS"},"marketing_carrier":{"airline_designator_code":"VA"}},"point_of_sale":{"country":{"code":"CA"},"city":{"code":"ORD"},"channel":"STANDARD"}}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 05:36:26][0m [36mcreateordertest.spec.ts:120[0m : [30mPax type map:[0m [38;5;141m{
+  "PAX1": "ADT",
+  "PAX2": "ADT",
+  "PAX3": "CNN"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 05:36:26][0m [36mcreateordertest.spec.ts:123[0m : [30mPax-Offer mapping:[0m [38;5;141m{
+  "PAX1": "mf9un66i6y_68_0",
+  "PAX2": "mf9un66i6y_68_1",
+  "PAX3": "mf9un66i6y_68_2",
+  "OfferId": "mf9un66i6y_68"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 05:36:26][0m [36mprice-json-object.ts:17[0m : [30mpax id offer items map[0m [38;5;141m{
+  "PAX1": "mf9un66i6y_68_0",
+  "PAX2": "mf9un66i6y_68_1",
+  "PAX3": "mf9un66i6y_68_2",
+  "OfferId": "mf9un66i6y_68"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 05:36:26][0m [36mprice-json-object.ts:39[0m : [30mprice payload request is : [0m [38;5;141m{"point_of_sale":{"channel":"STANDARD","country":{"code":"AU"},"city":{"code":"SYD"}},"sender":{"enabled_system":{},"marketing_carrier":{"airline_designator_code":"VA"}},"request":{"selected_offers":[{"id":"mf9un66i6y_68","selected_offer_items":[{"id":"mf9un66i6y_68_0","passenger_ids":["PAX1"],"selected_fares":[]},{"id":"mf9un66i6y_68_1","passenger_ids":["PAX2"],"selected_fares":[]},{"id":"mf9un66i6y_68_2","passenger_ids":["PAX3"],"selected_fares":[]}]}],"override_currency":"AUD","response_parameters":{"disable_availability_check":false,"disable_tax_calculation":false,"booking_category":"ALL"}},"diagnostics":{}}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 05:39:59][0m [36mshop-json-object.ts:86[0m : [30mpassenger object is : [object Object],[object Object],[object Object][0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 05:39:59][0m [36mshop-json-object.ts:61[0m : [30mshop payload request is : [0m [38;5;141m{"request":{"origin_destinations_criteria":[{"origin_departure_criteria":{"date":{"month":9,"year":2025,"day":10},"airportCode":"SYD"},"destination_arrival_criteria":{"airportCode":"BNE"}}],"passengers":[{"passenger_type_code":"ADT","id":"PAX1"},{"passenger_type_code":"ADT","id":"PAX2"},{"passenger_type_code":"CNN","id":"PAX3"}],"requestType":"ADVCAL30","offer_criteria":{"program":{"programAccountIds":[]}},"currency":"EUR"},"sender":{"enabled_system":{"name":"POS"},"marketing_carrier":{"airline_designator_code":"VA"}},"point_of_sale":{"country":{"code":"CA"},"city":{"code":"ORD"},"channel":"STANDARD"}}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 05:40:05][0m [36mcreateordertest.spec.ts:120[0m : [30mPax type map:[0m [38;5;141m{
+  "PAX1": "ADT",
+  "PAX2": "ADT",
+  "PAX3": "CNN"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 05:40:05][0m [36mcreateordertest.spec.ts:123[0m : [30mPax-Offer mapping:[0m [38;5;141m{
+  "PAX1": "mf9un66i73_68_0",
+  "PAX2": "mf9un66i73_68_1",
+  "PAX3": "mf9un66i73_68_2",
+  "OfferId": "mf9un66i73_68"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 05:40:05][0m [36mprice-json-object.ts:17[0m : [30mpax id offer items map[0m [38;5;141m{
+  "PAX1": "mf9un66i73_68_0",
+  "PAX2": "mf9un66i73_68_1",
+  "PAX3": "mf9un66i73_68_2",
+  "OfferId": "mf9un66i73_68"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 05:40:05][0m [36mprice-json-object.ts:39[0m : [30mprice payload request is : [0m [38;5;141m{"point_of_sale":{"channel":"STANDARD","country":{"code":"AU"},"city":{"code":"SYD"}},"sender":{"enabled_system":{},"marketing_carrier":{"airline_designator_code":"VA"}},"request":{"selected_offers":[{"id":"mf9un66i73_68","selected_offer_items":[{"id":"mf9un66i73_68_0","passenger_ids":["PAX1"],"selected_fares":[]},{"id":"mf9un66i73_68_1","passenger_ids":["PAX2"],"selected_fares":[]},{"id":"mf9un66i73_68_2","passenger_ids":["PAX3"],"selected_fares":[]}]}],"override_currency":"AUD","response_parameters":{"disable_availability_check":false,"disable_tax_calculation":false,"booking_category":"ALL"}},"diagnostics":{}}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 05:42:57][0m [36mshop-json-object.ts:86[0m : [30mpassenger object is : [object Object],[object Object],[object Object][0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 05:42:57][0m [36mshop-json-object.ts:61[0m : [30mshop payload request is : [0m [38;5;141m{"request":{"origin_destinations_criteria":[{"origin_departure_criteria":{"date":{"month":9,"year":2025,"day":10},"airportCode":"SYD"},"destination_arrival_criteria":{"airportCode":"BNE"}}],"passengers":[{"passenger_type_code":"ADT","id":"PAX1"},{"passenger_type_code":"ADT","id":"PAX2"},{"passenger_type_code":"CNN","id":"PAX3"}],"requestType":"ADVCAL30","offer_criteria":{"program":{"programAccountIds":[]}},"currency":"EUR"},"sender":{"enabled_system":{"name":"POS"},"marketing_carrier":{"airline_designator_code":"VA"}},"point_of_sale":{"country":{"code":"CA"},"city":{"code":"ORD"},"channel":"STANDARD"}}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 05:43:03][0m [36mcreateordertest.spec.ts:120[0m : [30mPax type map:[0m [38;5;141m{
+  "PAX1": "ADT",
+  "PAX2": "ADT",
+  "PAX3": "CNN"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 05:43:03][0m [36mcreateordertest.spec.ts:123[0m : [30mPax-Offer mapping:[0m [38;5;141m{
+  "PAX1": "mf9vikmb6s_68_0",
+  "PAX2": "mf9vikmb6s_68_1",
+  "PAX3": "mf9vikmb6s_68_2",
+  "OfferId": "mf9vikmb6s_68"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 05:43:03][0m [36mprice-json-object.ts:17[0m : [30mpax id offer items map[0m [38;5;141m{
+  "PAX1": "mf9vikmb6s_68_0",
+  "PAX2": "mf9vikmb6s_68_1",
+  "PAX3": "mf9vikmb6s_68_2",
+  "OfferId": "mf9vikmb6s_68"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 05:43:03][0m [36mprice-json-object.ts:39[0m : [30mprice payload request is : [0m [38;5;141m{"point_of_sale":{"channel":"STANDARD","country":{"code":"AU"},"city":{"code":"SYD"}},"sender":{"enabled_system":{},"marketing_carrier":{"airline_designator_code":"VA"}},"request":{"selected_offers":[{"id":"mf9vikmb6s_68","selected_offer_items":[{"id":"mf9vikmb6s_68_0","passenger_ids":["PAX1"],"selected_fares":[]},{"id":"mf9vikmb6s_68_1","passenger_ids":["PAX2"],"selected_fares":[]},{"id":"mf9vikmb6s_68_2","passenger_ids":["PAX3"],"selected_fares":[]}]}],"override_currency":"AUD","response_parameters":{"disable_availability_check":false,"disable_tax_calculation":false,"booking_category":"ALL"}},"diagnostics":{}}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 05:43:04][0m [36mcreateordertest.spec.ts:137[0m : [30mpassenger details map is:[0m [38;5;141m{}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 05:44:39][0m [36mshop-json-object.ts:86[0m : [30mpassenger object is : [object Object],[object Object],[object Object][0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 05:44:39][0m [36mshop-json-object.ts:61[0m : [30mshop payload request is : [0m [38;5;141m{"request":{"origin_destinations_criteria":[{"origin_departure_criteria":{"date":{"month":9,"year":2025,"day":10},"airportCode":"SYD"},"destination_arrival_criteria":{"airportCode":"BNE"}}],"passengers":[{"passenger_type_code":"ADT","id":"PAX1"},{"passenger_type_code":"ADT","id":"PAX2"},{"passenger_type_code":"CNN","id":"PAX3"}],"requestType":"ADVCAL30","offer_criteria":{"program":{"programAccountIds":[]}},"currency":"EUR"},"sender":{"enabled_system":{"name":"POS"},"marketing_carrier":{"airline_designator_code":"VA"}},"point_of_sale":{"country":{"code":"CA"},"city":{"code":"ORD"},"channel":"STANDARD"}}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 05:44:46][0m [36mcreateordertest.spec.ts:120[0m : [30mPax type map:[0m [38;5;141m{
+  "PAX1": "ADT",
+  "PAX2": "ADT",
+  "PAX3": "CNN"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 05:44:46][0m [36mcreateordertest.spec.ts:123[0m : [30mPax-Offer mapping:[0m [38;5;141m{
+  "PAX1": "mfap647n0_68_0",
+  "PAX2": "mfap647n0_68_1",
+  "PAX3": "mfap647n0_68_2",
+  "OfferId": "mfap647n0_68"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 05:44:46][0m [36mprice-json-object.ts:17[0m : [30mpax id offer items map[0m [38;5;141m{
+  "PAX1": "mfap647n0_68_0",
+  "PAX2": "mfap647n0_68_1",
+  "PAX3": "mfap647n0_68_2",
+  "OfferId": "mfap647n0_68"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 05:44:46][0m [36mprice-json-object.ts:39[0m : [30mprice payload request is : [0m [38;5;141m{"point_of_sale":{"channel":"STANDARD","country":{"code":"AU"},"city":{"code":"SYD"}},"sender":{"enabled_system":{},"marketing_carrier":{"airline_designator_code":"VA"}},"request":{"selected_offers":[{"id":"mfap647n0_68","selected_offer_items":[{"id":"mfap647n0_68_0","passenger_ids":["PAX1"],"selected_fares":[]},{"id":"mfap647n0_68_1","passenger_ids":["PAX2"],"selected_fares":[]},{"id":"mfap647n0_68_2","passenger_ids":["PAX3"],"selected_fares":[]}]}],"override_currency":"AUD","response_parameters":{"disable_availability_check":false,"disable_tax_calculation":false,"booking_category":"ALL"}},"diagnostics":{}}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[31m[ERROR][0m [35m[2025-09-08 05:44:47][0m [36mprice-api-request.ts:71[0m : [30mInvalid or missing offerItems in priceResponse[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 05:44:47][0m [36mcreateordertest.spec.ts:137[0m : [30mpassenger details map is:[0m [38;5;141m{}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 05:47:54][0m [36mshop-json-object.ts:86[0m : [30mpassenger object is : [object Object],[object Object],[object Object][0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 05:47:54][0m [36mshop-json-object.ts:61[0m : [30mshop payload request is : [0m [38;5;141m{"request":{"origin_destinations_criteria":[{"origin_departure_criteria":{"date":{"month":9,"year":2025,"day":10},"airportCode":"SYD"},"destination_arrival_criteria":{"airportCode":"BNE"}}],"passengers":[{"passenger_type_code":"ADT","id":"PAX1"},{"passenger_type_code":"ADT","id":"PAX2"},{"passenger_type_code":"CNN","id":"PAX3"}],"requestType":"ADVCAL30","offer_criteria":{"program":{"programAccountIds":[]}},"currency":"EUR"},"sender":{"enabled_system":{"name":"POS"},"marketing_carrier":{"airline_designator_code":"VA"}},"point_of_sale":{"country":{"code":"CA"},"city":{"code":"ORD"},"channel":"STANDARD"}}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 05:48:04][0m [36mcreateordertest.spec.ts:120[0m : [30mPax type map:[0m [38;5;141m{
+  "PAX1": "ADT",
+  "PAX2": "ADT",
+  "PAX3": "CNN"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 05:48:04][0m [36mcreateordertest.spec.ts:123[0m : [30mPax-Offer mapping:[0m [38;5;141m{
+  "PAX1": "mf9un66i7b_68_0",
+  "PAX2": "mf9un66i7b_68_1",
+  "PAX3": "mf9un66i7b_68_2",
+  "OfferId": "mf9un66i7b_68"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 05:48:04][0m [36mprice-json-object.ts:17[0m : [30mpax id offer items map[0m [38;5;141m{
+  "PAX1": "mf9un66i7b_68_0",
+  "PAX2": "mf9un66i7b_68_1",
+  "PAX3": "mf9un66i7b_68_2",
+  "OfferId": "mf9un66i7b_68"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 05:48:04][0m [36mprice-json-object.ts:39[0m : [30mprice payload request is : [0m [38;5;141m{"point_of_sale":{"channel":"STANDARD","country":{"code":"AU"},"city":{"code":"SYD"}},"sender":{"enabled_system":{},"marketing_carrier":{"airline_designator_code":"VA"}},"request":{"selected_offers":[{"id":"mf9un66i7b_68","selected_offer_items":[{"id":"mf9un66i7b_68_0","passenger_ids":["PAX1"],"selected_fares":[]},{"id":"mf9un66i7b_68_1","passenger_ids":["PAX2"],"selected_fares":[]},{"id":"mf9un66i7b_68_2","passenger_ids":["PAX3"],"selected_fares":[]}]}],"override_currency":"AUD","response_parameters":{"disable_availability_check":false,"disable_tax_calculation":false,"booking_category":"ALL"}},"diagnostics":{}}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[31m[ERROR][0m [35m[2025-09-08 05:48:05][0m [36mprice-api-request.ts:75[0m : [30mInvalid or missing offerItems in priceResponse:[0m [38;5;141m{
+  "dataLists": {
+    "baggageAllowances": [
+      {
+        "id": "BAGGAGE_ALLOWANCE_1_1757310485492",
+        "typeCode": "Checked",
+        "pieceAllowance": {
+          "totalQuantity": 2
+        },
+        "weightAllowances": [
+          {
+            "maximumWeightMeasure": 70,
+            "weightUnitOfMeasurement": "LBR"
+          },
+          {
+            "maximumWeightMeasure": 32,
+            "weightUnitOfMeasurement": "KGM"
+          }
+        ],
+        "descriptions": [
+          "FREE BAGGAGE ALLOWANCE",
+          "DOM ISH AIRPORT BAG UP TO 32KG",
+          "UP TO 70 POUNDS/32 KILOGRAMS",
+          "UP TO 55 LINEAR INCHES/140 LINEAR CENTIMETERS"
+        ],
+        "provisionCarrier": "VA",
+        "maximumDimensionAllowances": [
+          {
+            "linearMeasure": 55,
+            "unitCodeType": "INCH"
+          },
+          {
+            "linearMeasure": 140,
+            "unitCodeType": "CENTIMETER"
+          }
+        ]
+      },
+      {
+        "id": "BAGGAGE_ALLOWANCE_2_1757310485492",
+        "typeCode": "CarryOn",
+        "pieceAllowance": {
+          "totalQuantity": 2
+        },
+        "weightAllowances": [
+          {
+            "maximumWeightMeasure": 15,
+            "weightUnitOfMeasurement": "LBR"
+          },
+          {
+            "maximumWeightMeasure": 7,
+            "weightUnitOfMeasurement": "KGM"
+          }
+        ],
+        "descriptions": [
+          "CARRYON HAND BAGGAGE ALLOWANCE",
+          "CARRY7KG 15LB UPTO45LI 115LCM",
+          "CARRY ON HAND BAGGAGE",
+          "UP TO 15 POUNDS/7 KILOGRAMS",
+          "UP TO 45 LINEAR INCHES/115 LINEAR CENTIMETERS"
+        ],
+        "provisionCarrier": "VA",
+        "maximumDimensionAllowances": [
+          {
+            "linearMeasure": 45,
+            "unitCodeType": "INCH"
+          },
+          {
+            "linearMeasure": 115,
+            "unitCodeType": "CENTIMETER"
+          }
+        ]
+      }
+    ],
+    "originDestinations": [
+      {
+        "destinationCode": "BNE",
+        "originCode": "SYD",
+        "id": "OD_1_1757310485492",
+        "passengerJourneyIds": [
+          "JOURNEY_1_1757310485492"
+        ]
+      }
+    ],
+    "passengerJourneys": [
+      {
+        "duration": {
+          "weeks": 0,
+          "days": 0,
+          "hours": 1,
+          "minutes": 25
+        },
+        "id": "JOURNEY_1_1757310485492",
+        "passengerSegmentIds": [
+          "SEGMENT_1_1757310485492"
+        ]
+      }
+    ],
+    "passengers": [
+      {
+        "passengerTypeCode": "ADT",
+        "id": "PAX1"
+      },
+      {
+        "passengerTypeCode": "ADT",
+        "id": "PAX2"
+      },
+      {
+        "passengerTypeCode": "CNN",
+        "id": "PAX3"
+      }
+    ],
+    "passengerSegments": [
+      {
+        "arrival": {
+          "aircraftScheduled": {
+            "date": {
+              "year": 2025,
+              "month": 9,
+              "day": 10
+            },
+            "time": {
+              "hours": 15,
+              "minutes": 15,
+              "seconds": 0,
+              "nanos": 0
+            },
+            "utcOffsetMinutes": 600
+          },
+          "code": "BNE",
+          "utcOffset": 10
+        },
+        "cabinType": {
+          "typeCode": "C",
+          "name": "BUSINESS"
+        },
+        "datedOperatingLegs": [
+          {
+            "arrival": {
+              "aircraftScheduled": {
+                "date": {
+                  "year": 2025,
+                  "month": 9,
+                  "day": 10
+                },
+                "time": {
+                  "hours": 15,
+                  "minutes": 15,
+                  "seconds": 0,
+                  "nanos": 0
+                },
+                "utcOffsetMinutes": 600
+              },
+              "code": "BNE",
+              "utcOffset": 10
+            },
+            "carrierAircraftType": {
+              "code": "73H"
+            },
+            "legId": "1",
+            "departure": {
+              "aircraftScheduled": {
+                "date": {
+                  "year": 2025,
+                  "month": 9,
+                  "day": 10
+                },
+                "time": {
+                  "hours": 13,
+                  "minutes": 50,
+                  "seconds": 0,
+                  "nanos": 0
+                },
+                "utcOffsetMinutes": 600
+              },
+              "code": "SYD",
+              "utcOffset": 10
+            }
+          }
+        ],
+        "departure": {
+          "aircraftScheduled": {
+            "date": {
+              "year": 2025,
+              "month": 9,
+              "day": 10
+            },
+            "time": {
+              "hours": 13,
+              "minutes": 50,
+              "seconds": 0,
+              "nanos": 0
+            },
+            "utcOffsetMinutes": 600
+          },
+          "code": "SYD",
+          "utcOffset": 10
+        },
+        "duration": {
+          "weeks": 0,
+          "days": 0,
+          "hours": 1,
+          "minutes": 25
+        },
+        "marketingCarrierInfo": {
+          "carrierDesignatorCode": "VA",
+          "marketingCarrierFlightNumber": "1705",
+          "bookingClassCode": "C"
+        },
+        "operatingCarrierInfo": {
+          "carrierDesignatorCode": "VA",
+          "operatingCarrierFlightNumber": "1705"
+        },
+        "id": "SEGMENT_1_1757310485492"
+      }
+    ],
+    "priceClasses": [
+      {
+        "descriptions": [
+          {
+            "text": "DOM/VAA4/2 FCR LT STRUCTURE"
+          },
+          {
+            "text": "<font><p>Flight change more than 14 days to departure* - Included. 0AUD</p></font><font><p>Flight change less than 14 days to departure* - Included. 0AUD</p></font><font><p>Flight cancellations* - Included. 0AUD</p></font><font><p>Checked Baggage - 2 pieces included (32kg). Additional may be purchased.</p></font><font><p>Seat Selection prior to check-in - Included</p></font><font><p>Food and Drink - Included</p></font><font><p>Priority Checkin and Boarding - Included</p></font><font><p>Lounge access - Included</p></font><font><p>In-flight Entertainment - Included, refer to virginaustralia.com for details.</p></font><font><p>Velocity Points - Yes</p></font><font><p>Status Credits - Yes</p></font><font><p>Eligible Sectors - Yes</p></font><font><p>Upgrade with Points - No</p></font><font><p>Tiered Baggage - Yes</p></font>"
+          }
+        ],
+        "displayOrder": 1,
+        "name": "BUSINESS",
+        "id": "PRICE_CLASS_0_1757310485492",
+        "code": "BU"
+      }
+    ],
+    "baggageDisclosures": [
+      {
+        "id": "BAGGAGE_DISCLOSURE_1_1757310485492",
+        "provisionType": "CHECKED_BAGGAGE_ALLOWANCE",
+        "typeCode": "DISCLOSURE_NOT_DOT",
+        "firstOccurrence": 1,
+        "lastOccurrence": 2,
+        "provisionCarrier": "VA",
+        "passengerRefIds": [
+          "PAX1",
+          "PAX2",
+          "PAX3"
+        ],
+        "passengerSegmentRefIds": [
+          "SEGMENT_1_1757310485492"
+        ],
+        "descriptions": [
+          "FREE BAGGAGE ALLOWANCE",
+          "DOM ISH AIRPORT BAG UP TO 32KG",
+          "UP TO 70 POUNDS/32 KILOGRAMS",
+          "UP TO 55 LINEAR INCHES/140 LINEAR CENTIMETERS"
+        ]
+      },
+      {
+        "id": "BAGGAGE_DISCLOSURE_2_1757310485492",
+        "provisionType": "CARRY_ON_BAGGAGE_ALLOWANCE",
+        "typeCode": "DISCLOSURE_NOT_DOT",
+        "firstOccurrence": 1,
+        "lastOccurrence": 3,
+        "provisionCarrier": "VA",
+        "passengerRefIds": [
+          "PAX1",
+          "PAX2",
+          "PAX3"
+        ],
+        "passengerSegmentRefIds": [
+          "SEGMENT_1_1757310485492"
+        ],
+        "descriptions": [
+          "CARRYON HAND BAGGAGE ALLOWANCE",
+          "CARRY7KG 15LB UPTO45LI 115LCM",
+          "CARRY ON HAND BAGGAGE",
+          "UP TO 15 POUNDS/7 KILOGRAMS",
+          "UP TO 45 LINEAR INCHES/115 LINEAR CENTIMETERS"
+        ]
+      }
+    ]
+  },
+  "pricedOffer": {
+    "definition": {
+      "id": "mf9vikmb6w",
+      "totalPrice": {
+        "baseAmount": {
+          "currency": "AUD",
+          "amount": "1359.60"
+        },
+        "totalAmount": {
+          "currency": "AUD",
+          "amount": "1602.00"
+        },
+        "taxSummaries": [
+          {
+            "totalTaxAmount": {
+              "currency": "AUD",
+              "amount": "242.40"
+            }
+          }
+        ],
+        "equivalentAmount": {
+          "currency": "AUD",
+          "amount": "1359.60"
+        }
+      },
+      "offerExpirationTimeLimit": {
+        "date": {
+          "year": 2025,
+          "month": 9,
+          "day": 8
+        },
+        "time": {
+          "hours": 6,
+          "minutes": 48,
+          "seconds": 5,
+          "nanos": 499415000
+        },
+        "utcOffsetMinutes": 0
+      },
+      "baggageAssociations": [
+        {
+          "baggageAllowanceId": "BAGGAGE_ALLOWANCE_1_1757310485492",
+          "offerFlightAssociations": {
+            "passengerSegmentIds": [
+              "SEGMENT_1_1757310485492"
+            ]
+          },
+          "passengerIds": [
+            "PAX1",
+            "PAX2",
+            "PAX3"
+          ]
+        },
+        {
+          "baggageAllowanceId": "BAGGAGE_ALLOWANCE_2_1757310485492",
+          "offerFlightAssociations": {
+            "passengerSegmentIds": [
+              "SEGMENT_1_1757310485492"
+            ]
+          },
+          "passengerIds": [
+            "PAX1",
+            "PAX2",
+            "PAX3"
+          ]
+        }
+      ],
+      "baggageDisclosureIds": [
+        "BAGGAGE_DISCLOSURE_1_1757310485492",
+        "BAGGAGE_DISCLOSURE_2_1757310485492"
+      ],
+      "ownerCode": "VA"
+    },
+    "offerItems": [
+      {
+        "cancelRestrictions": [
+          {
+            "allowedModification": true,
+            "fee": {
+              "amount": {
+                "currency": "AUD",
+                "amount": "0.00"
+              }
+            },
+            "journeyStageCode": "PRIOR_TO_DEPARTURE"
+          },
+          {
+            "allowedModification": false,
+            "journeyStageCode": "AFTER_DEPARTURE"
+          },
+          {
+            "refund": {
+              "nonRefundableAmount": {
+                "currency": "AUD",
+                "amount": "453.20"
+              }
+            }
+          }
+        ],
+        "changeRestrictions": [
+          {
+            "allowedModification": true,
+            "fee": {
+              "amount": {
+                "currency": "AUD",
+                "amount": "0.00"
+              }
+            },
+            "journeyStageCode": "PRIOR_TO_DEPARTURE"
+          },
+          {
+            "allowedModification": false,
+            "journeyStageCode": "AFTER_DEPARTURE"
+          },
+          {
+            "refund": {
+              "nonRefundableAmount": {
+                "currency": "AUD",
+                "amount": "453.20"
+              }
+            }
+          }
+        ],
+        "fareDetails": [
+          {
+            "fareComponents": [
+              {
+                "cabinType": {
+                  "typeCode": "C"
+                },
+                "fareBasisCityPair": "SYDBNEVA",
+                "fareBasisCode": "CZBU0",
+                "fareRules": [
+                  {
+                    "remarks": [
+                      {
+                        "remark": "NON ENDORSABLE"
+                      }
+                    ]
+                  }
+                ],
+                "fareTypeCode": "BU",
+                "passengerSegmentIds": [
+                  "SEGMENT_1_1757310485492"
+                ],
+                "price": {
+                  "taxSummaries": [
+                    {
+                      "taxes": [
+                        {
+                          "amount": {
+                            "currency": "AUD",
+                            "amount": "3.23"
+                          },
+                          "country": {
+                            "code": "AU"
+                          },
+                          "description": "GOODS AND SERVICES TAX GST",
+                          "filedAmount": {
+                            "currency": "AUD",
+                            "amount": "3.23"
+                          },
+                          "code": "UO9"
+                        },
+                        {
+                          "amount": {
+                            "currency": "AUD",
+                            "amount": "7.18"
+                          },
+                          "country": {
+                            "code": "AU"
+                          },
+                          "description": "SAFETY AND SECURITY CHARGE  DEPARTURE",
+                          "filedAmount": {
+                            "currency": "AUD",
+                            "amount": "7.18"
+                          },
+                          "code": "WG"
+                        },
+                        {
+                          "amount": {
+                            "currency": "AUD",
+                            "amount": "45.32"
+                          },
+                          "country": {
+                            "code": "AU"
+                          },
+                          "description": "GOODS AND SERVICES TAX GST",
+                          "filedAmount": {
+                            "currency": "AUD",
+                            "amount": "45.32"
+                          },
+                          "code": "UO2"
+                        },
+                        {
+                          "amount": {
+                            "currency": "AUD",
+                            "amount": "14.33"
+                          },
+                          "country": {
+                            "code": "AU"
+                          },
+                          "description": "PASSENGER SERVICE CHARGE DOMESTIC ARRIVAL",
+                          "filedAmount": {
+                            "currency": "AUD",
+                            "amount": "14.33"
+                          },
+                          "code": "QR2"
+                        },
+                        {
+                          "amount": {
+                            "currency": "AUD",
+                            "amount": "10.74"
+                          },
+                          "country": {
+                            "code": "AU"
+                          },
+                          "description": "PASSENGER SERVICE CHARGE DOMESTIC DEPARTURE",
+                          "filedAmount": {
+                            "currency": "AUD",
+                            "amount": "10.74"
+                          },
+                          "code": "QR"
+                        }
+                      ]
+                    }
+                  ],
+                  "equivalentAmount": {
+                    "currency": "AUD",
+                    "amount": "453.20"
+                  }
+                },
+                "priceClassId": "PRICE_CLASS_0_1757310485492",
+                "privateFareIndicator": true,
+                "governingCarrierDesignatorCode": "VA",
+                "fareVctr": {
+                  "vendorCode": "ATP",
+                  "carrierCode": "VA",
+                  "tariffCode": "912",
+                  "rule": "3330"
+                },
+                "fareCalculationAmount": {
+                  "currency": "AUD",
+                  "amount": "453.20"
+                },
+                "offerAttributes": [
+                  {
+                    "name": "couponValidity",
+                    "attributes": {
+                      "values": [
+                        {
+                          "name": "segmentId",
+                          "string": "SEGMENT_1_1757310485492"
+                        },
+                        {
+                          "name": "couponValidityAfterDateInfo",
+                          "string": "2026-09-10"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            ],
+            "passengerRefIds": [
+              "PAX1"
+            ],
+            "price": {
+              "baseAmount": {
+                "currency": "AUD",
+                "amount": "453.20"
+              },
+              "totalAmount": {
+                "currency": "AUD",
+                "amount": "534.00"
+              },
+              "taxSummaries": [
+                {
+                  "taxes": [
+                    {
+                      "amount": {
+                        "currency": "AUD",
+                        "amount": "7.18"
+                      },
+                      "country": {
+                        "code": "AU"
+                      },
+                      "description": "SAFETY AND SECURITY CHARGE  DEPARTURE",
+                      "filedAmount": {
+                        "currency": "AUD",
+                        "amount": "7.18"
+                      },
+                      "code": "WG"
+                    },
+                    {
+                      "amount": {
+                        "currency": "AUD",
+                        "amount": "3.23"
+                      },
+                      "country": {
+                        "code": "AU"
+                      },
+                      "description": "GOODS AND SERVICES TAX GST",
+                      "filedAmount": {
+                        "currency": "AUD",
+                        "amount": "3.23"
+                      },
+                      "code": "UO9"
+                    },
+                    {
+                      "amount": {
+                        "currency": "AUD",
+                        "amount": "45.32"
+                      },
+                      "country": {
+                        "code": "AU"
+                      },
+                      "description": "GOODS AND SERVICES TAX GST",
+                      "filedAmount": {
+                        "currency": "AUD",
+                        "amount": "45.32"
+                      },
+                      "code": "UO2"
+                    },
+                    {
+                      "amount": {
+                        "currency": "AUD",
+                        "amount": "14.33"
+                      },
+                      "country": {
+                        "code": "AU"
+                      },
+                      "description": "PASSENGER SERVICE CHARGE DOMESTIC ARRIVAL",
+                      "filedAmount": {
+                        "currency": "AUD",
+                        "amount": "14.33"
+                      },
+                      "code": "QR2"
+                    },
+                    {
+                      "amount": {
+                        "currency": "AUD",
+                        "amount": "10.74"
+                      },
+                      "country": {
+                        "code": "AU"
+                      },
+                      "description": "PASSENGER SERVICE CHARGE DOMESTIC DEPARTURE",
+                      "filedAmount": {
+                        "currency": "AUD",
+                        "amount": "10.74"
+                      },
+                      "code": "QR"
+                    }
+                  ],
+                  "totalTaxAmount": {
+                    "currency": "AUD",
+                    "amount": "80.80"
+                  }
+                }
+              ],
+              "equivalentAmount": {
+                "currency": "AUD",
+                "amount": "453.20"
+              }
+            },
+            "fareCalcLine": "SYD VA BNE453.20AUD453.20END",
+            "fareCalcModeInd": 4
+          }
+        ],
+        "mandatory": true,
+        "id": "mf9vikmb6w-0",
+        "price": {
+          "baseAmount": {
+            "currency": "AUD",
+            "amount": "453.20"
+          },
+          "totalAmount": {
+            "currency": "AUD",
+            "amount": "534.00"
+          },
+          "taxSummaries": [
+            {
+              "taxes": [
+                {
+                  "amount": {
+                    "currency": "AUD",
+                    "amount": "7.18"
+                  },
+                  "country": {
+                    "code": "AU"
+                  },
+                  "description": "SAFETY AND SECURITY CHARGE  DEPARTURE",
+                  "filedAmount": {
+                    "currency": "AUD",
+                    "amount": "7.18"
+                  },
+                  "code": "WG"
+                },
+                {
+                  "amount": {
+                    "currency": "AUD",
+                    "amount": "3.23"
+                  },
+                  "country": {
+                    "code": "AU"
+                  },
+                  "description": "GOODS AND SERVICES TAX GST",
+                  "filedAmount": {
+                    "currency": "AUD",
+                    "amount": "3.23"
+                  },
+                  "code": "UO9"
+                },
+                {
+                  "amount": {
+                    "currency": "AUD",
+                    "amount": "45.32"
+                  },
+                  "country": {
+                    "code": "AU"
+                  },
+                  "description": "GOODS AND SERVICES TAX GST",
+                  "filedAmount": {
+                    "currency": "AUD",
+                    "amount": "45.32"
+                  },
+                  "code": "UO2"
+                },
+                {
+                  "amount": {
+                    "currency": "AUD",
+                    "amount": "14.33"
+                  },
+                  "country": {
+                    "code": "AU"
+                  },
+                  "description": "PASSENGER SERVICE CHARGE DOMESTIC ARRIVAL",
+                  "filedAmount": {
+                    "currency": "AUD",
+                    "amount": "14.33"
+                  },
+                  "code": "QR2"
+                },
+                {
+                  "amount": {
+                    "currency": "AUD",
+                    "amount": "10.74"
+                  },
+                  "country": {
+                    "code": "AU"
+                  },
+                  "description": "PASSENGER SERVICE CHARGE DOMESTIC DEPARTURE",
+                  "filedAmount": {
+                    "currency": "AUD",
+                    "amount": "10.74"
+                  },
+                  "code": "QR"
+                }
+              ],
+              "totalTaxAmount": {
+                "currency": "AUD",
+                "amount": "80.80"
+              }
+            }
+          ],
+          "equivalentAmount": {
+            "currency": "AUD",
+            "amount": "453.20"
+          }
+        },
+        "priceGuaranteeTimeLimit": {
+          "date": {
+            "year": 2025,
+            "month": 9,
+            "day": 9
+          },
+          "time": {
+            "hours": 13,
+            "minutes": 59,
+            "seconds": 0,
+            "nanos": 0
+          },
+          "utcOffsetMinutes": 0
+        },
+        "services": [
+          {
+            "offerServiceAssociation": {
+              "journey": {
+                "passengerJourneyIds": [
+                  "JOURNEY_1_1757310485492"
+                ]
+              }
+            },
+            "passengerIds": [
+              "PAX1"
+            ],
+            "id": "0"
+          }
+        ],
+        "ofsBaggageDisclosureInd": "6"
+      },
+      {
+        "cancelRestrictions": [
+          {
+            "allowedModification": true,
+            "fee": {
+              "amount": {
+                "currency": "AUD",
+                "amount": "0.00"
+              }
+            },
+            "journeyStageCode": "PRIOR_TO_DEPARTURE"
+          },
+          {
+            "allowedModification": false,
+            "journeyStageCode": "AFTER_DEPARTURE"
+          },
+          {
+            "refund": {
+              "nonRefundableAmount": {
+                "currency": "AUD",
+                "amount": "453.20"
+              }
+            }
+          }
+        ],
+        "changeRestrictions": [
+          {
+            "allowedModification": true,
+            "fee": {
+              "amount": {
+                "currency": "AUD",
+                "amount": "0.00"
+              }
+            },
+            "journeyStageCode": "PRIOR_TO_DEPARTURE"
+          },
+          {
+            "allowedModification": false,
+            "journeyStageCode": "AFTER_DEPARTURE"
+          },
+          {
+            "refund": {
+              "nonRefundableAmount": {
+                "currency": "AUD",
+                "amount": "453.20"
+              }
+            }
+          }
+        ],
+        "fareDetails": [
+          {
+            "fareComponents": [
+              {
+                "cabinType": {
+                  "typeCode": "C"
+                },
+                "fareBasisCityPair": "SYDBNEVA",
+                "fareBasisCode": "CZBU0CH",
+                "fareRules": [
+                  {
+                    "remarks": [
+                      {
+                        "remark": "NON ENDORSABLE"
+                      }
+                    ]
+                  }
+                ],
+                "fareTypeCode": "BU",
+                "passengerSegmentIds": [
+                  "SEGMENT_1_1757310485492"
+                ],
+                "price": {
+                  "taxSummaries": [
+                    {
+                      "taxes": [
+                        {
+                          "amount": {
+                            "currency": "AUD",
+                            "amount": "3.23"
+                          },
+                          "country": {
+                            "code": "AU"
+                          },
+                          "description": "GOODS AND SERVICES TAX GST",
+                          "filedAmount": {
+                            "currency": "AUD",
+                            "amount": "3.23"
+                          },
+                          "code": "UO9"
+                        },
+                        {
+                          "amount": {
+                            "currency": "AUD",
+                            "amount": "7.18"
+                          },
+                          "country": {
+                            "code": "AU"
+                          },
+                          "description": "SAFETY AND SECURITY CHARGE  DEPARTURE",
+                          "filedAmount": {
+                            "currency": "AUD",
+                            "amount": "7.18"
+                          },
+                          "code": "WG"
+                        },
+                        {
+                          "amount": {
+                            "currency": "AUD",
+                            "amount": "45.32"
+                          },
+                          "country": {
+                            "code": "AU"
+                          },
+                          "description": "GOODS AND SERVICES TAX GST",
+                          "filedAmount": {
+                            "currency": "AUD",
+                            "amount": "45.32"
+                          },
+                          "code": "UO2"
+                        },
+                        {
+                          "amount": {
+                            "currency": "AUD",
+                            "amount": "14.33"
+                          },
+                          "country": {
+                            "code": "AU"
+                          },
+                          "description": "PASSENGER SERVICE CHARGE DOMESTIC ARRIVAL",
+                          "filedAmount": {
+                            "currency": "AUD",
+                            "amount": "14.33"
+                          },
+                          "code": "QR2"
+                        },
+                        {
+                          "amount": {
+                            "currency": "AUD",
+                            "amount": "10.74"
+                          },
+                          "country": {
+                            "code": "AU"
+                          },
+                          "description": "PASSENGER SERVICE CHARGE DOMESTIC DEPARTURE",
+                          "filedAmount": {
+                            "currency": "AUD",
+                            "amount": "10.74"
+                          },
+                          "code": "QR"
+                        }
+                      ]
+                    }
+                  ],
+                  "equivalentAmount": {
+                    "currency": "AUD",
+                    "amount": "453.20"
+                  }
+                },
+                "priceClassId": "PRICE_CLASS_0_1757310485492",
+                "privateFareIndicator": true,
+                "governingCarrierDesignatorCode": "VA",
+                "fareVctr": {
+                  "vendorCode": "ATP",
+                  "carrierCode": "VA",
+                  "tariffCode": "912",
+                  "rule": "3330"
+                },
+                "fareCalculationAmount": {
+                  "currency": "AUD",
+                  "amount": "453.20"
+                },
+                "offerAttributes": [
+                  {
+                    "name": "couponValidity",
+                    "attributes": {
+                      "values": [
+                        {
+                          "name": "segmentId",
+                          "string": "SEGMENT_1_1757310485492"
+                        },
+                        {
+                          "name": "couponValidityAfterDateInfo",
+                          "string": "2026-09-10"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            ],
+            "passengerRefIds": [
+              "PAX3"
+            ],
+            "price": {
+              "baseAmount": {
+                "currency": "AUD",
+                "amount": "453.20"
+              },
+              "totalAmount": {
+                "currency": "AUD",
+                "amount": "534.00"
+              },
+              "taxSummaries": [
+                {
+                  "taxes": [
+                    {
+                      "amount": {
+                        "currency": "AUD",
+                        "amount": "7.18"
+                      },
+                      "country": {
+                        "code": "AU"
+                      },
+                      "description": "SAFETY AND SECURITY CHARGE  DEPARTURE",
+                      "filedAmount": {
+                        "currency": "AUD",
+                        "amount": "7.18"
+                      },
+                      "code": "WG"
+                    },
+                    {
+                      "amount": {
+                        "currency": "AUD",
+                        "amount": "3.23"
+                      },
+                      "country": {
+                        "code": "AU"
+                      },
+                      "description": "GOODS AND SERVICES TAX GST",
+                      "filedAmount": {
+                        "currency": "AUD",
+                        "amount": "3.23"
+                      },
+                      "code": "UO9"
+                    },
+                    {
+                      "amount": {
+                        "currency": "AUD",
+                        "amount": "45.32"
+                      },
+                      "country": {
+                        "code": "AU"
+                      },
+                      "description": "GOODS AND SERVICES TAX GST",
+                      "filedAmount": {
+                        "currency": "AUD",
+                        "amount": "45.32"
+                      },
+                      "code": "UO2"
+                    },
+                    {
+                      "amount": {
+                        "currency": "AUD",
+                        "amount": "14.33"
+                      },
+                      "country": {
+                        "code": "AU"
+                      },
+                      "description": "PASSENGER SERVICE CHARGE DOMESTIC ARRIVAL",
+                      "filedAmount": {
+                        "currency": "AUD",
+                        "amount": "14.33"
+                      },
+                      "code": "QR2"
+                    },
+                    {
+                      "amount": {
+                        "currency": "AUD",
+                        "amount": "10.74"
+                      },
+                      "country": {
+                        "code": "AU"
+                      },
+                      "description": "PASSENGER SERVICE CHARGE DOMESTIC DEPARTURE",
+                      "filedAmount": {
+                        "currency": "AUD",
+                        "amount": "10.74"
+                      },
+                      "code": "QR"
+                    }
+                  ],
+                  "totalTaxAmount": {
+                    "currency": "AUD",
+                    "amount": "80.80"
+                  }
+                }
+              ],
+              "equivalentAmount": {
+                "currency": "AUD",
+                "amount": "453.20"
+              }
+            },
+            "fareCalcLine": "SYD VA BNE453.20AUD453.20END",
+            "fareCalcModeInd": 4
+          }
+        ],
+        "mandatory": true,
+        "id": "mf9vikmb6w-2",
+        "price": {
+          "baseAmount": {
+            "currency": "AUD",
+            "amount": "453.20"
+          },
+          "totalAmount": {
+            "currency": "AUD",
+            "amount": "534.00"
+          },
+          "taxSummaries": [
+            {
+              "taxes": [
+                {
+                  "amount": {
+                    "currency": "AUD",
+                    "amount": "7.18"
+                  },
+                  "country": {
+                    "code": "AU"
+                  },
+                  "description": "SAFETY AND SECURITY CHARGE  DEPARTURE",
+                  "filedAmount": {
+                    "currency": "AUD",
+                    "amount": "7.18"
+                  },
+                  "code": "WG"
+                },
+                {
+                  "amount": {
+                    "currency": "AUD",
+                    "amount": "3.23"
+                  },
+                  "country": {
+                    "code": "AU"
+                  },
+                  "description": "GOODS AND SERVICES TAX GST",
+                  "filedAmount": {
+                    "currency": "AUD",
+                    "amount": "3.23"
+                  },
+                  "code": "UO9"
+                },
+                {
+                  "amount": {
+                    "currency": "AUD",
+                    "amount": "45.32"
+                  },
+                  "country": {
+                    "code": "AU"
+                  },
+                  "description": "GOODS AND SERVICES TAX GST",
+                  "filedAmount": {
+                    "currency": "AUD",
+                    "amount": "45.32"
+                  },
+                  "code": "UO2"
+                },
+                {
+                  "amount": {
+                    "currency": "AUD",
+                    "amount": "14.33"
+                  },
+                  "country": {
+                    "code": "AU"
+                  },
+                  "description": "PASSENGER SERVICE CHARGE DOMESTIC ARRIVAL",
+                  "filedAmount": {
+                    "currency": "AUD",
+                    "amount": "14.33"
+                  },
+                  "code": "QR2"
+                },
+                {
+                  "amount": {
+                    "currency": "AUD",
+                    "amount": "10.74"
+                  },
+                  "country": {
+                    "code": "AU"
+                  },
+                  "description": "PASSENGER SERVICE CHARGE DOMESTIC DEPARTURE",
+                  "filedAmount": {
+                    "currency": "AUD",
+                    "amount": "10.74"
+                  },
+                  "code": "QR"
+                }
+              ],
+              "totalTaxAmount": {
+                "currency": "AUD",
+                "amount": "80.80"
+              }
+            }
+          ],
+          "equivalentAmount": {
+            "currency": "AUD",
+            "amount": "453.20"
+          }
+        },
+        "priceGuaranteeTimeLimit": {
+          "date": {
+            "year": 2025,
+            "month": 9,
+            "day": 9
+          },
+          "time": {
+            "hours": 13,
+            "minutes": 59,
+            "seconds": 0,
+            "nanos": 0
+          },
+          "utcOffsetMinutes": 0
+        },
+        "services": [
+          {
+            "offerServiceAssociation": {
+              "journey": {
+                "passengerJourneyIds": [
+                  "JOURNEY_1_1757310485492"
+                ]
+              }
+            },
+            "passengerIds": [
+              "PAX3"
+            ],
+            "id": "1"
+          }
+        ],
+        "ofsBaggageDisclosureInd": "6"
+      },
+      {
+        "cancelRestrictions": [
+          {
+            "allowedModification": true,
+            "fee": {
+              "amount": {
+                "currency": "AUD",
+                "amount": "0.00"
+              }
+            },
+            "journeyStageCode": "PRIOR_TO_DEPARTURE"
+          },
+          {
+            "allowedModification": false,
+            "journeyStageCode": "AFTER_DEPARTURE"
+          },
+          {
+            "refund": {
+              "nonRefundableAmount": {
+                "currency": "AUD",
+                "amount": "453.20"
+              }
+            }
+          }
+        ],
+        "changeRestrictions": [
+          {
+            "allowedModification": true,
+            "fee": {
+              "amount": {
+                "currency": "AUD",
+                "amount": "0.00"
+              }
+            },
+            "journeyStageCode": "PRIOR_TO_DEPARTURE"
+          },
+          {
+            "allowedModification": false,
+            "journeyStageCode": "AFTER_DEPARTURE"
+          },
+          {
+            "refund": {
+              "nonRefundableAmount": {
+                "currency": "AUD",
+                "amount": "453.20"
+              }
+            }
+          }
+        ],
+        "fareDetails": [
+          {
+            "fareComponents": [
+              {
+                "cabinType": {
+                  "typeCode": "C"
+                },
+                "fareBasisCityPair": "SYDBNEVA",
+                "fareBasisCode": "CZBU0",
+                "fareRules": [
+                  {
+                    "remarks": [
+                      {
+                        "remark": "NON ENDORSABLE"
+                      }
+                    ]
+                  }
+                ],
+                "fareTypeCode": "BU",
+                "passengerSegmentIds": [
+                  "SEGMENT_1_1757310485492"
+                ],
+                "price": {
+                  "taxSummaries": [
+                    {
+                      "taxes": [
+                        {
+                          "amount": {
+                            "currency": "AUD",
+                            "amount": "3.23"
+                          },
+                          "country": {
+                            "code": "AU"
+                          },
+                          "description": "GOODS AND SERVICES TAX GST",
+                          "filedAmount": {
+                            "currency": "AUD",
+                            "amount": "3.23"
+                          },
+                          "code": "UO9"
+                        },
+                        {
+                          "amount": {
+                            "currency": "AUD",
+                            "amount": "7.18"
+                          },
+                          "country": {
+                            "code": "AU"
+                          },
+                          "description": "SAFETY AND SECURITY CHARGE  DEPARTURE",
+                          "filedAmount": {
+                            "currency": "AUD",
+                            "amount": "7.18"
+                          },
+                          "code": "WG"
+                        },
+                        {
+                          "amount": {
+                            "currency": "AUD",
+                            "amount": "45.32"
+                          },
+                          "country": {
+                            "code": "AU"
+                          },
+                          "description": "GOODS AND SERVICES TAX GST",
+                          "filedAmount": {
+                            "currency": "AUD",
+                            "amount": "45.32"
+                          },
+                          "code": "UO2"
+                        },
+                        {
+                          "amount": {
+                            "currency": "AUD",
+                            "amount": "14.33"
+                          },
+                          "country": {
+                            "code": "AU"
+                          },
+                          "description": "PASSENGER SERVICE CHARGE DOMESTIC ARRIVAL",
+                          "filedAmount": {
+                            "currency": "AUD",
+                            "amount": "14.33"
+                          },
+                          "code": "QR2"
+                        },
+                        {
+                          "amount": {
+                            "currency": "AUD",
+                            "amount": "10.74"
+                          },
+                          "country": {
+                            "code": "AU"
+                          },
+                          "description": "PASSENGER SERVICE CHARGE DOMESTIC DEPARTURE",
+                          "filedAmount": {
+                            "currency": "AUD",
+                            "amount": "10.74"
+                          },
+                          "code": "QR"
+                        }
+                      ]
+                    }
+                  ],
+                  "equivalentAmount": {
+                    "currency": "AUD",
+                    "amount": "453.20"
+                  }
+                },
+                "priceClassId": "PRICE_CLASS_0_1757310485492",
+                "privateFareIndicator": true,
+                "governingCarrierDesignatorCode": "VA",
+                "fareVctr": {
+                  "vendorCode": "ATP",
+                  "carrierCode": "VA",
+                  "tariffCode": "912",
+                  "rule": "3330"
+                },
+                "fareCalculationAmount": {
+                  "currency": "AUD",
+                  "amount": "453.20"
+                },
+                "offerAttributes": [
+                  {
+                    "name": "couponValidity",
+                    "attributes": {
+                      "values": [
+                        {
+                          "name": "segmentId",
+                          "string": "SEGMENT_1_1757310485492"
+                        },
+                        {
+                          "name": "couponValidityAfterDateInfo",
+                          "string": "2026-09-10"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            ],
+            "passengerRefIds": [
+              "PAX2"
+            ],
+            "price": {
+              "baseAmount": {
+                "currency": "AUD",
+                "amount": "453.20"
+              },
+              "totalAmount": {
+                "currency": "AUD",
+                "amount": "534.00"
+              },
+              "taxSummaries": [
+                {
+                  "taxes": [
+                    {
+                      "amount": {
+                        "currency": "AUD",
+                        "amount": "7.18"
+                      },
+                      "country": {
+                        "code": "AU"
+                      },
+                      "description": "SAFETY AND SECURITY CHARGE  DEPARTURE",
+                      "filedAmount": {
+                        "currency": "AUD",
+                        "amount": "7.18"
+                      },
+                      "code": "WG"
+                    },
+                    {
+                      "amount": {
+                        "currency": "AUD",
+                        "amount": "3.23"
+                      },
+                      "country": {
+                        "code": "AU"
+                      },
+                      "description": "GOODS AND SERVICES TAX GST",
+                      "filedAmount": {
+                        "currency": "AUD",
+                        "amount": "3.23"
+                      },
+                      "code": "UO9"
+                    },
+                    {
+                      "amount": {
+                        "currency": "AUD",
+                        "amount": "45.32"
+                      },
+                      "country": {
+                        "code": "AU"
+                      },
+                      "description": "GOODS AND SERVICES TAX GST",
+                      "filedAmount": {
+                        "currency": "AUD",
+                        "amount": "45.32"
+                      },
+                      "code": "UO2"
+                    },
+                    {
+                      "amount": {
+                        "currency": "AUD",
+                        "amount": "14.33"
+                      },
+                      "country": {
+                        "code": "AU"
+                      },
+                      "description": "PASSENGER SERVICE CHARGE DOMESTIC ARRIVAL",
+                      "filedAmount": {
+                        "currency": "AUD",
+                        "amount": "14.33"
+                      },
+                      "code": "QR2"
+                    },
+                    {
+                      "amount": {
+                        "currency": "AUD",
+                        "amount": "10.74"
+                      },
+                      "country": {
+                        "code": "AU"
+                      },
+                      "description": "PASSENGER SERVICE CHARGE DOMESTIC DEPARTURE",
+                      "filedAmount": {
+                        "currency": "AUD",
+                        "amount": "10.74"
+                      },
+                      "code": "QR"
+                    }
+                  ],
+                  "totalTaxAmount": {
+                    "currency": "AUD",
+                    "amount": "80.80"
+                  }
+                }
+              ],
+              "equivalentAmount": {
+                "currency": "AUD",
+                "amount": "453.20"
+              }
+            },
+            "fareCalcLine": "SYD VA BNE453.20AUD453.20END",
+            "fareCalcModeInd": 4
+          }
+        ],
+        "mandatory": true,
+        "id": "mf9vikmb6w-1",
+        "price": {
+          "baseAmount": {
+            "currency": "AUD",
+            "amount": "453.20"
+          },
+          "totalAmount": {
+            "currency": "AUD",
+            "amount": "534.00"
+          },
+          "taxSummaries": [
+            {
+              "taxes": [
+                {
+                  "amount": {
+                    "currency": "AUD",
+                    "amount": "7.18"
+                  },
+                  "country": {
+                    "code": "AU"
+                  },
+                  "description": "SAFETY AND SECURITY CHARGE  DEPARTURE",
+                  "filedAmount": {
+                    "currency": "AUD",
+                    "amount": "7.18"
+                  },
+                  "code": "WG"
+                },
+                {
+                  "amount": {
+                    "currency": "AUD",
+                    "amount": "3.23"
+                  },
+                  "country": {
+                    "code": "AU"
+                  },
+                  "description": "GOODS AND SERVICES TAX GST",
+                  "filedAmount": {
+                    "currency": "AUD",
+                    "amount": "3.23"
+                  },
+                  "code": "UO9"
+                },
+                {
+                  "amount": {
+                    "currency": "AUD",
+                    "amount": "45.32"
+                  },
+                  "country": {
+                    "code": "AU"
+                  },
+                  "description": "GOODS AND SERVICES TAX GST",
+                  "filedAmount": {
+                    "currency": "AUD",
+                    "amount": "45.32"
+                  },
+                  "code": "UO2"
+                },
+                {
+                  "amount": {
+                    "currency": "AUD",
+                    "amount": "14.33"
+                  },
+                  "country": {
+                    "code": "AU"
+                  },
+                  "description": "PASSENGER SERVICE CHARGE DOMESTIC ARRIVAL",
+                  "filedAmount": {
+                    "currency": "AUD",
+                    "amount": "14.33"
+                  },
+                  "code": "QR2"
+                },
+                {
+                  "amount": {
+                    "currency": "AUD",
+                    "amount": "10.74"
+                  },
+                  "country": {
+                    "code": "AU"
+                  },
+                  "description": "PASSENGER SERVICE CHARGE DOMESTIC DEPARTURE",
+                  "filedAmount": {
+                    "currency": "AUD",
+                    "amount": "10.74"
+                  },
+                  "code": "QR"
+                }
+              ],
+              "totalTaxAmount": {
+                "currency": "AUD",
+                "amount": "80.80"
+              }
+            }
+          ],
+          "equivalentAmount": {
+            "currency": "AUD",
+            "amount": "453.20"
+          }
+        },
+        "priceGuaranteeTimeLimit": {
+          "date": {
+            "year": 2025,
+            "month": 9,
+            "day": 9
+          },
+          "time": {
+            "hours": 13,
+            "minutes": 59,
+            "seconds": 0,
+            "nanos": 0
+          },
+          "utcOffsetMinutes": 0
+        },
+        "services": [
+          {
+            "offerServiceAssociation": {
+              "journey": {
+                "passengerJourneyIds": [
+                  "JOURNEY_1_1757310485492"
+                ]
+              }
+            },
+            "passengerIds": [
+              "PAX2"
+            ],
+            "id": "2"
+          }
+        ],
+        "ofsBaggageDisclosureInd": "6"
+      }
+    ]
+  }
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 05:48:05][0m [36mcreateordertest.spec.ts:137[0m : [30mpassenger details map is:[0m [38;5;141m{}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 05:50:20][0m [36mshop-json-object.ts:86[0m : [30mpassenger object is : [object Object],[object Object],[object Object][0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 05:50:20][0m [36mshop-json-object.ts:61[0m : [30mshop payload request is : [0m [38;5;141m{"request":{"origin_destinations_criteria":[{"origin_departure_criteria":{"date":{"month":9,"year":2025,"day":10},"airportCode":"SYD"},"destination_arrival_criteria":{"airportCode":"BNE"}}],"passengers":[{"passenger_type_code":"ADT","id":"PAX1"},{"passenger_type_code":"ADT","id":"PAX2"},{"passenger_type_code":"CNN","id":"PAX3"}],"requestType":"ADVCAL30","offer_criteria":{"program":{"programAccountIds":[]}},"currency":"EUR"},"sender":{"enabled_system":{"name":"POS"},"marketing_carrier":{"airline_designator_code":"VA"}},"point_of_sale":{"country":{"code":"CA"},"city":{"code":"ORD"},"channel":"STANDARD"}}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 05:50:26][0m [36mcreateordertest.spec.ts:120[0m : [30mPax type map:[0m [38;5;141m{
+  "PAX1": "ADT",
+  "PAX2": "ADT",
+  "PAX3": "CNN"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 05:50:26][0m [36mcreateordertest.spec.ts:123[0m : [30mPax-Offer mapping:[0m [38;5;141m{
+  "PAX1": "mf9un66i7c_68_0",
+  "PAX2": "mf9un66i7c_68_1",
+  "PAX3": "mf9un66i7c_68_2",
+  "OfferId": "mf9un66i7c_68"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 05:50:26][0m [36mprice-json-object.ts:17[0m : [30mpax id offer items map[0m [38;5;141m{
+  "PAX1": "mf9un66i7c_68_0",
+  "PAX2": "mf9un66i7c_68_1",
+  "PAX3": "mf9un66i7c_68_2",
+  "OfferId": "mf9un66i7c_68"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 05:50:26][0m [36mprice-json-object.ts:39[0m : [30mprice payload request is : [0m [38;5;141m{"point_of_sale":{"channel":"STANDARD","country":{"code":"AU"},"city":{"code":"SYD"}},"sender":{"enabled_system":{},"marketing_carrier":{"airline_designator_code":"VA"}},"request":{"selected_offers":[{"id":"mf9un66i7c_68","selected_offer_items":[{"id":"mf9un66i7c_68_0","passenger_ids":["PAX1"],"selected_fares":[]},{"id":"mf9un66i7c_68_1","passenger_ids":["PAX2"],"selected_fares":[]},{"id":"mf9un66i7c_68_2","passenger_ids":["PAX3"],"selected_fares":[]}]}],"override_currency":"AUD","response_parameters":{"disable_availability_check":false,"disable_tax_calculation":false,"booking_category":"ALL"}},"diagnostics":{}}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 05:50:27][0m [36mcreateordertest.spec.ts:137[0m : [30mpassenger details map is:[0m [38;5;141m{}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 05:51:53][0m [36mshop-json-object.ts:86[0m : [30mpassenger object is : [object Object],[object Object],[object Object][0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 05:51:53][0m [36mshop-json-object.ts:61[0m : [30mshop payload request is : [0m [38;5;141m{"request":{"origin_destinations_criteria":[{"origin_departure_criteria":{"date":{"month":9,"year":2025,"day":10},"airportCode":"SYD"},"destination_arrival_criteria":{"airportCode":"BNE"}}],"passengers":[{"passenger_type_code":"ADT","id":"PAX1"},{"passenger_type_code":"ADT","id":"PAX2"},{"passenger_type_code":"CNN","id":"PAX3"}],"requestType":"ADVCAL30","offer_criteria":{"program":{"programAccountIds":[]}},"currency":"EUR"},"sender":{"enabled_system":{"name":"POS"},"marketing_carrier":{"airline_designator_code":"VA"}},"point_of_sale":{"country":{"code":"CA"},"city":{"code":"ORD"},"channel":"STANDARD"}}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 05:52:08][0m [36mcreateordertest.spec.ts:120[0m : [30mPax type map:[0m [38;5;141m{
+  "PAX1": "ADT",
+  "PAX2": "ADT",
+  "PAX3": "CNN"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 05:52:08][0m [36mcreateordertest.spec.ts:123[0m : [30mPax-Offer mapping:[0m [38;5;141m{
+  "PAX1": "mf9vikmb6y_68_0",
+  "PAX2": "mf9vikmb6y_68_1",
+  "PAX3": "mf9vikmb6y_68_2",
+  "OfferId": "mf9vikmb6y_68"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 05:52:08][0m [36mprice-json-object.ts:17[0m : [30mpax id offer items map[0m [38;5;141m{
+  "PAX1": "mf9vikmb6y_68_0",
+  "PAX2": "mf9vikmb6y_68_1",
+  "PAX3": "mf9vikmb6y_68_2",
+  "OfferId": "mf9vikmb6y_68"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 05:52:08][0m [36mprice-json-object.ts:39[0m : [30mprice payload request is : [0m [38;5;141m{"point_of_sale":{"channel":"STANDARD","country":{"code":"AU"},"city":{"code":"SYD"}},"sender":{"enabled_system":{},"marketing_carrier":{"airline_designator_code":"VA"}},"request":{"selected_offers":[{"id":"mf9vikmb6y_68","selected_offer_items":[{"id":"mf9vikmb6y_68_0","passenger_ids":["PAX1"],"selected_fares":[]},{"id":"mf9vikmb6y_68_1","passenger_ids":["PAX2"],"selected_fares":[]},{"id":"mf9vikmb6y_68_2","passenger_ids":["PAX3"],"selected_fares":[]}]}],"override_currency":"AUD","response_parameters":{"disable_availability_check":false,"disable_tax_calculation":false,"booking_category":"ALL"}},"diagnostics":{}}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 05:52:09][0m [36mcreateordertest.spec.ts:137[0m : [30mpassenger details map is:[0m [38;5;141m{}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 05:52:34][0m [36mshop-json-object.ts:86[0m : [30mpassenger object is : [object Object],[object Object],[object Object][0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 05:52:34][0m [36mshop-json-object.ts:61[0m : [30mshop payload request is : [0m [38;5;141m{"request":{"origin_destinations_criteria":[{"origin_departure_criteria":{"date":{"month":9,"year":2025,"day":10},"airportCode":"SYD"},"destination_arrival_criteria":{"airportCode":"BNE"}}],"passengers":[{"passenger_type_code":"ADT","id":"PAX1"},{"passenger_type_code":"ADT","id":"PAX2"},{"passenger_type_code":"CNN","id":"PAX3"}],"requestType":"ADVCAL30","offer_criteria":{"program":{"programAccountIds":[]}},"currency":"EUR"},"sender":{"enabled_system":{"name":"POS"},"marketing_carrier":{"airline_designator_code":"VA"}},"point_of_sale":{"country":{"code":"CA"},"city":{"code":"ORD"},"channel":"STANDARD"}}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 05:52:40][0m [36mcreateordertest.spec.ts:120[0m : [30mPax type map:[0m [38;5;141m{
+  "PAX1": "ADT",
+  "PAX2": "ADT",
+  "PAX3": "CNN"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 05:52:40][0m [36mcreateordertest.spec.ts:123[0m : [30mPax-Offer mapping:[0m [38;5;141m{
+  "PAX1": "mf9vikmb6z_68_0",
+  "PAX2": "mf9vikmb6z_68_1",
+  "PAX3": "mf9vikmb6z_68_2",
+  "OfferId": "mf9vikmb6z_68"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 05:52:40][0m [36mprice-json-object.ts:17[0m : [30mpax id offer items map[0m [38;5;141m{
+  "PAX1": "mf9vikmb6z_68_0",
+  "PAX2": "mf9vikmb6z_68_1",
+  "PAX3": "mf9vikmb6z_68_2",
+  "OfferId": "mf9vikmb6z_68"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 05:52:40][0m [36mprice-json-object.ts:39[0m : [30mprice payload request is : [0m [38;5;141m{"point_of_sale":{"channel":"STANDARD","country":{"code":"AU"},"city":{"code":"SYD"}},"sender":{"enabled_system":{},"marketing_carrier":{"airline_designator_code":"VA"}},"request":{"selected_offers":[{"id":"mf9vikmb6z_68","selected_offer_items":[{"id":"mf9vikmb6z_68_0","passenger_ids":["PAX1"],"selected_fares":[]},{"id":"mf9vikmb6z_68_1","passenger_ids":["PAX2"],"selected_fares":[]},{"id":"mf9vikmb6z_68_2","passenger_ids":["PAX3"],"selected_fares":[]}]}],"override_currency":"AUD","response_parameters":{"disable_availability_check":false,"disable_tax_calculation":false,"booking_category":"ALL"}},"diagnostics":{}}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 05:52:41][0m [36mcreateordertest.spec.ts:137[0m : [30mpassenger details map is:[0m [38;5;141m{}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 05:52:41][0m [36mcreateordertest.spec.ts:138[0m : [30mpassenger details map is:[0m [38;5;141m[object Map][0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 05:55:14][0m [36mshop-json-object.ts:86[0m : [30mpassenger object is : [object Object],[object Object],[object Object][0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 05:55:14][0m [36mshop-json-object.ts:61[0m : [30mshop payload request is : [0m [38;5;141m{"request":{"origin_destinations_criteria":[{"origin_departure_criteria":{"date":{"month":9,"year":2025,"day":10},"airportCode":"SYD"},"destination_arrival_criteria":{"airportCode":"BNE"}}],"passengers":[{"passenger_type_code":"ADT","id":"PAX1"},{"passenger_type_code":"ADT","id":"PAX2"},{"passenger_type_code":"CNN","id":"PAX3"}],"requestType":"ADVCAL30","offer_criteria":{"program":{"programAccountIds":[]}},"currency":"EUR"},"sender":{"enabled_system":{"name":"POS"},"marketing_carrier":{"airline_designator_code":"VA"}},"point_of_sale":{"country":{"code":"CA"},"city":{"code":"ORD"},"channel":"STANDARD"}}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 05:55:19][0m [36mcreateordertest.spec.ts:120[0m : [30mPax type map:[0m [38;5;141m{
+  "PAX1": "ADT",
+  "PAX2": "ADT",
+  "PAX3": "CNN"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 05:55:19][0m [36mcreateordertest.spec.ts:123[0m : [30mPax-Offer mapping:[0m [38;5;141m{
+  "PAX1": "mf9un66i7g_68_0",
+  "PAX2": "mf9un66i7g_68_1",
+  "PAX3": "mf9un66i7g_68_2",
+  "OfferId": "mf9un66i7g_68"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 05:55:19][0m [36mprice-json-object.ts:17[0m : [30mpax id offer items map[0m [38;5;141m{
+  "PAX1": "mf9un66i7g_68_0",
+  "PAX2": "mf9un66i7g_68_1",
+  "PAX3": "mf9un66i7g_68_2",
+  "OfferId": "mf9un66i7g_68"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 05:55:19][0m [36mprice-json-object.ts:39[0m : [30mprice payload request is : [0m [38;5;141m{"point_of_sale":{"channel":"STANDARD","country":{"code":"AU"},"city":{"code":"SYD"}},"sender":{"enabled_system":{},"marketing_carrier":{"airline_designator_code":"VA"}},"request":{"selected_offers":[{"id":"mf9un66i7g_68","selected_offer_items":[{"id":"mf9un66i7g_68_0","passenger_ids":["PAX1"],"selected_fares":[]},{"id":"mf9un66i7g_68_1","passenger_ids":["PAX2"],"selected_fares":[]},{"id":"mf9un66i7g_68_2","passenger_ids":["PAX3"],"selected_fares":[]}]}],"override_currency":"AUD","response_parameters":{"disable_availability_check":false,"disable_tax_calculation":false,"booking_category":"ALL"}},"diagnostics":{}}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 05:55:20][0m [36mcreateordertest.spec.ts:137[0m : [30mpassenger details map is:[0m [38;5;141m{}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 05:55:20][0m [36mcreateordertest.spec.ts:138[0m : [30mpassenger details map is:[0m [38;5;141m[object Map][0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 05:55:20][0m [36mcreateordertest.spec.ts:139[0m : [30mPassenger details map is:
+{}[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 05:56:29][0m [36mshop-json-object.ts:86[0m : [30mpassenger object is : [object Object],[object Object],[object Object][0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 05:56:29][0m [36mshop-json-object.ts:61[0m : [30mshop payload request is : [0m [38;5;141m{"request":{"origin_destinations_criteria":[{"origin_departure_criteria":{"date":{"month":9,"year":2025,"day":10},"airportCode":"SYD"},"destination_arrival_criteria":{"airportCode":"BNE"}}],"passengers":[{"passenger_type_code":"ADT","id":"PAX1"},{"passenger_type_code":"ADT","id":"PAX2"},{"passenger_type_code":"CNN","id":"PAX3"}],"requestType":"ADVCAL30","offer_criteria":{"program":{"programAccountIds":[]}},"currency":"EUR"},"sender":{"enabled_system":{"name":"POS"},"marketing_carrier":{"airline_designator_code":"VA"}},"point_of_sale":{"country":{"code":"CA"},"city":{"code":"ORD"},"channel":"STANDARD"}}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 05:56:35][0m [36mcreateordertest.spec.ts:120[0m : [30mPax type map:[0m [38;5;141m{
+  "PAX1": "ADT",
+  "PAX2": "ADT",
+  "PAX3": "CNN"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 05:56:35][0m [36mcreateordertest.spec.ts:123[0m : [30mPax-Offer mapping:[0m [38;5;141m{
+  "PAX1": "mf9vikmb73_68_0",
+  "PAX2": "mf9vikmb73_68_1",
+  "PAX3": "mf9vikmb73_68_2",
+  "OfferId": "mf9vikmb73_68"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 05:56:35][0m [36mprice-json-object.ts:17[0m : [30mpax id offer items map[0m [38;5;141m{
+  "PAX1": "mf9vikmb73_68_0",
+  "PAX2": "mf9vikmb73_68_1",
+  "PAX3": "mf9vikmb73_68_2",
+  "OfferId": "mf9vikmb73_68"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 05:56:35][0m [36mprice-json-object.ts:39[0m : [30mprice payload request is : [0m [38;5;141m{"point_of_sale":{"channel":"STANDARD","country":{"code":"AU"},"city":{"code":"SYD"}},"sender":{"enabled_system":{},"marketing_carrier":{"airline_designator_code":"VA"}},"request":{"selected_offers":[{"id":"mf9vikmb73_68","selected_offer_items":[{"id":"mf9vikmb73_68_0","passenger_ids":["PAX1"],"selected_fares":[]},{"id":"mf9vikmb73_68_1","passenger_ids":["PAX2"],"selected_fares":[]},{"id":"mf9vikmb73_68_2","passenger_ids":["PAX3"],"selected_fares":[]}]}],"override_currency":"AUD","response_parameters":{"disable_availability_check":false,"disable_tax_calculation":false,"booking_category":"ALL"}},"diagnostics":{}}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 05:56:37][0m [36mcreateordertest.spec.ts:137[0m : [30mpassenger details map is:[0m [38;5;141m{}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 05:56:37][0m [36mcreateordertest.spec.ts:138[0m : [30mpassenger details map is:[0m [38;5;141m[object Map][0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 05:56:37][0m [36mcreateordertest.spec.ts:139[0m : [30mPassenger details map is:
+{}[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 08:36:23][0m [36mbasetest.ts:39[0m : [30mNavigating to call center[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 08:36:40][0m [36mbasetest.ts:39[0m : [30mNavigating to call center[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 08:38:25][0m [36mloginpage.ts:29[0m : [30mentered ut1agency2.admin1.ju.functional.e2e@sabre.com and password Pa$$word@2k25[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 08:38:25][0m [36mloginpage.ts:30[0m : [30mlogin successful[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[31m[ERROR][0m [35m[2025-09-08 08:38:25][0m [36mloginpage.ts:31[0m : [30mLogin failed[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 08:38:55][0m [36mshop-json-object.ts:86[0m : [30mpassenger object is : [object Object],[object Object],[object Object][0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 08:38:55][0m [36mshop-json-object.ts:61[0m : [30mshop payload request is : [0m [38;5;141m{"request":{"origin_destinations_criteria":[{"origin_departure_criteria":{"date":{"month":9,"year":2025,"day":10},"airportCode":"SYD"},"destination_arrival_criteria":{"airportCode":"BNE"}}],"passengers":[{"passenger_type_code":"ADT","id":"PAX1"},{"passenger_type_code":"ADT","id":"PAX2"},{"passenger_type_code":"CNN","id":"PAX3"}],"requestType":"ADVCAL30","offer_criteria":{"program":{"programAccountIds":[]}},"currency":"EUR"},"sender":{"enabled_system":{"name":"POS"},"marketing_carrier":{"airline_designator_code":"VA"}},"point_of_sale":{"country":{"code":"CA"},"city":{"code":"ORD"},"channel":"STANDARD"}}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 08:39:46][0m [36mshop-json-object.ts:86[0m : [30mpassenger object is : [object Object],[object Object],[object Object][0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 08:39:46][0m [36mshop-json-object.ts:61[0m : [30mshop payload request is : [0m [38;5;141m{"request":{"origin_destinations_criteria":[{"origin_departure_criteria":{"date":{"month":9,"year":2025,"day":10},"airportCode":"SYD"},"destination_arrival_criteria":{"airportCode":"BNE"}}],"passengers":[{"passenger_type_code":"ADT","id":"PAX1"},{"passenger_type_code":"ADT","id":"PAX2"},{"passenger_type_code":"CNN","id":"PAX3"}],"requestType":"ADVCAL30","offer_criteria":{"program":{"programAccountIds":[]}},"currency":"EUR"},"sender":{"enabled_system":{"name":"POS"},"marketing_carrier":{"airline_designator_code":"VA"}},"point_of_sale":{"country":{"code":"CA"},"city":{"code":"ORD"},"channel":"STANDARD"}}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 08:54:13][0m [36mshop-json-object.ts:86[0m : [30mpassenger object is : [object Object],[object Object],[object Object][0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 08:54:13][0m [36mshop-json-object.ts:61[0m : [30mshop payload request is : [0m [38;5;141m{"request":{"origin_destinations_criteria":[{"origin_departure_criteria":{"date":{"month":9,"year":2025,"day":10},"airportCode":"SYD"},"destination_arrival_criteria":{"airportCode":"BNE"}}],"passengers":[{"passenger_type_code":"ADT","id":"PAX1"},{"passenger_type_code":"ADT","id":"PAX2"},{"passenger_type_code":"CNN","id":"PAX3"}],"requestType":"ADVCAL30","offer_criteria":{"program":{"programAccountIds":[]}},"currency":"EUR"},"sender":{"enabled_system":{"name":"POS"},"marketing_carrier":{"airline_designator_code":"VA"}},"point_of_sale":{"country":{"code":"CA"},"city":{"code":"ORD"},"channel":"STANDARD"}}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 10:20:17][0m [36mshop-json-object.ts:86[0m : [30mpassenger object is : [object Object],[object Object],[object Object][0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 10:20:17][0m [36mshop-json-object.ts:61[0m : [30mshop payload request is : [0m [38;5;141m{"request":{"origin_destinations_criteria":[{"origin_departure_criteria":{"date":{"month":9,"year":2025,"day":10},"airportCode":"SYD"},"destination_arrival_criteria":{"airportCode":"BNE"}}],"passengers":[{"passenger_type_code":"ADT","id":"PAX1"},{"passenger_type_code":"ADT","id":"PAX2"},{"passenger_type_code":"CNN","id":"PAX3"}],"requestType":"ADVCAL30","offer_criteria":{"program":{"programAccountIds":[]}},"currency":"EUR"},"sender":{"enabled_system":{"name":"POS"},"marketing_carrier":{"airline_designator_code":"VA"}},"point_of_sale":{"country":{"code":"CA"},"city":{"code":"ORD"},"channel":"STANDARD"}}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 10:29:08][0m [36mshop-json-object.ts:86[0m : [30mpassenger object is : [object Object],[object Object],[object Object][0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 10:29:08][0m [36mshop-json-object.ts:61[0m : [30mshop payload request is : [0m [38;5;141m{"request":{"origin_destinations_criteria":[{"origin_departure_criteria":{"date":{"month":9,"year":2025,"day":10},"airportCode":"SYD"},"destination_arrival_criteria":{"airportCode":"BNE"}}],"passengers":[{"passenger_type_code":"ADT","id":"PAX1"},{"passenger_type_code":"ADT","id":"PAX2"},{"passenger_type_code":"CNN","id":"PAX3"}],"requestType":"ADVCAL30","offer_criteria":{"program":{"programAccountIds":[]}},"currency":"EUR"},"sender":{"enabled_system":{"name":"POS"},"marketing_carrier":{"airline_designator_code":"VA"}},"point_of_sale":{"country":{"code":"CA"},"city":{"code":"ORD"},"channel":"STANDARD"}}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 11:32:14][0m [36mshop-json-object.ts:86[0m : [30mpassenger object is : [object Object],[object Object],[object Object][0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 11:32:14][0m [36mshop-json-object.ts:61[0m : [30mshop payload request is : [0m [38;5;141m{"request":{"origin_destinations_criteria":[{"origin_departure_criteria":{"date":{"month":9,"year":2025,"day":10},"airportCode":"SYD"},"destination_arrival_criteria":{"airportCode":"BNE"}}],"passengers":[{"passenger_type_code":"ADT","id":"PAX1"},{"passenger_type_code":"ADT","id":"PAX2"},{"passenger_type_code":"CNN","id":"PAX3"}],"requestType":"ADVCAL30","offer_criteria":{"program":{"programAccountIds":[]}},"currency":"EUR"},"sender":{"enabled_system":{"name":"POS"},"marketing_carrier":{"airline_designator_code":"VA"}},"point_of_sale":{"country":{"code":"CA"},"city":{"code":"ORD"},"channel":"STANDARD"}}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 11:48:42][0m [36mshop-json-object.ts:86[0m : [30mpassenger object is : [object Object],[object Object],[object Object][0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 11:48:42][0m [36mshop-json-object.ts:61[0m : [30mshop payload request is : [0m [38;5;141m{"request":{"origin_destinations_criteria":[{"origin_departure_criteria":{"date":{"month":9,"year":2025,"day":10},"airportCode":"SYD"},"destination_arrival_criteria":{"airportCode":"BNE"}}],"passengers":[{"passenger_type_code":"ADT","id":"PAX1"},{"passenger_type_code":"ADT","id":"PAX2"},{"passenger_type_code":"CNN","id":"PAX3"}],"requestType":"ADVCAL30","offer_criteria":{"program":{"programAccountIds":[]}},"currency":"EUR"},"sender":{"enabled_system":{"name":"POS"},"marketing_carrier":{"airline_designator_code":"VA"}},"point_of_sale":{"country":{"code":"CA"},"city":{"code":"ORD"},"channel":"STANDARD"}}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 12:16:13][0m [36mshop-json-object.ts:86[0m : [30mpassenger object is : [object Object],[object Object],[object Object][0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 12:16:13][0m [36mshop-json-object.ts:61[0m : [30mshop payload request is : [0m [38;5;141m{"request":{"origin_destinations_criteria":[{"origin_departure_criteria":{"date":{"month":9,"year":2025,"day":10},"airportCode":"SYD"},"destination_arrival_criteria":{"airportCode":"BNE"}}],"passengers":[{"passenger_type_code":"ADT","id":"PAX1"},{"passenger_type_code":"ADT","id":"PAX2"},{"passenger_type_code":"CNN","id":"PAX3"}],"requestType":"ADVCAL30","offer_criteria":{"program":{"programAccountIds":[]}},"currency":"EUR"},"sender":{"enabled_system":{"name":"POS"},"marketing_carrier":{"airline_designator_code":"VA"}},"point_of_sale":{"country":{"code":"CA"},"city":{"code":"ORD"},"channel":"STANDARD"}}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 12:16:18][0m [36mcreateordertest.spec.ts:120[0m : [30mPax type map:[0m [38;5;141m{
+  "PAX1": "ADT",
+  "PAX2": "ADT",
+  "PAX3": "CNN"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 12:16:18][0m [36mcreateordertest.spec.ts:123[0m : [30mPax-Offer mapping:[0m [38;5;141m{
+  "PAX1": "mf9vikmbcw_62_0",
+  "PAX2": "mf9vikmbcw_62_1",
+  "PAX3": "mf9vikmbcw_62_2",
+  "OfferId": "mf9vikmbcw_62"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 12:16:18][0m [36mprice-json-object.ts:17[0m : [30mpax id offer items map[0m [38;5;141m{
+  "PAX1": "mf9vikmbcw_62_0",
+  "PAX2": "mf9vikmbcw_62_1",
+  "PAX3": "mf9vikmbcw_62_2",
+  "OfferId": "mf9vikmbcw_62"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 12:16:18][0m [36mprice-json-object.ts:39[0m : [30mprice payload request is : [0m [38;5;141m{"point_of_sale":{"channel":"STANDARD","country":{"code":"AU"},"city":{"code":"SYD"}},"sender":{"enabled_system":{},"marketing_carrier":{"airline_designator_code":"VA"}},"request":{"selected_offers":[{"id":"mf9vikmbcw_62","selected_offer_items":[{"id":"mf9vikmbcw_62_0","passenger_ids":["PAX1"],"selected_fares":[]},{"id":"mf9vikmbcw_62_1","passenger_ids":["PAX2"],"selected_fares":[]},{"id":"mf9vikmbcw_62_2","passenger_ids":["PAX3"],"selected_fares":[]}]}],"override_currency":"AUD","response_parameters":{"disable_availability_check":false,"disable_tax_calculation":false,"booking_category":"ALL"}},"diagnostics":{}}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 12:16:20][0m [36mcreateordertest.spec.ts:137[0m : [30mpassenger details map is:[0m [38;5;141m{}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 12:16:20][0m [36mcreateordertest.spec.ts:138[0m : [30mpassenger details map is:[0m [38;5;141m[object Map][0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 12:16:20][0m [36mcreateordertest.spec.ts:139[0m : [30mPassenger details map is:
+{}[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 12:23:32][0m [36mshop-json-object.ts:86[0m : [30mpassenger object is : [object Object],[object Object],[object Object][0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 12:23:32][0m [36mshop-json-object.ts:61[0m : [30mshop payload request is : [0m [38;5;141m{"request":{"origin_destinations_criteria":[{"origin_departure_criteria":{"date":{"month":9,"year":2025,"day":10},"airportCode":"SYD"},"destination_arrival_criteria":{"airportCode":"BNE"}}],"passengers":[{"passenger_type_code":"ADT","id":"PAX1"},{"passenger_type_code":"ADT","id":"PAX2"},{"passenger_type_code":"CNN","id":"PAX3"}],"requestType":"ADVCAL30","offer_criteria":{"program":{"programAccountIds":[]}},"currency":"EUR"},"sender":{"enabled_system":{"name":"POS"},"marketing_carrier":{"airline_designator_code":"VA"}},"point_of_sale":{"country":{"code":"CA"},"city":{"code":"ORD"},"channel":"STANDARD"}}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 12:23:37][0m [36mcreateordertest.spec.ts:120[0m : [30mPax type map:[0m [38;5;141m{
+  "PAX1": "ADT",
+  "PAX2": "ADT",
+  "PAX3": "CNN"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 12:23:38][0m [36mcreateordertest.spec.ts:123[0m : [30mPax-Offer mapping:[0m [38;5;141m{
+  "PAX1": "mf9vikmbd3_62_0",
+  "PAX2": "mf9vikmbd3_62_1",
+  "PAX3": "mf9vikmbd3_62_2",
+  "OfferId": "mf9vikmbd3_62"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 12:23:38][0m [36mprice-json-object.ts:17[0m : [30mpax id offer items map[0m [38;5;141m{
+  "PAX1": "mf9vikmbd3_62_0",
+  "PAX2": "mf9vikmbd3_62_1",
+  "PAX3": "mf9vikmbd3_62_2",
+  "OfferId": "mf9vikmbd3_62"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 12:23:38][0m [36mprice-json-object.ts:39[0m : [30mprice payload request is : [0m [38;5;141m{"point_of_sale":{"channel":"STANDARD","country":{"code":"AU"},"city":{"code":"SYD"}},"sender":{"enabled_system":{},"marketing_carrier":{"airline_designator_code":"VA"}},"request":{"selected_offers":[{"id":"mf9vikmbd3_62","selected_offer_items":[{"id":"mf9vikmbd3_62_0","passenger_ids":["PAX1"],"selected_fares":[]},{"id":"mf9vikmbd3_62_1","passenger_ids":["PAX2"],"selected_fares":[]},{"id":"mf9vikmbd3_62_2","passenger_ids":["PAX3"],"selected_fares":[]}]}],"override_currency":"AUD","response_parameters":{"disable_availability_check":false,"disable_tax_calculation":false,"booking_category":"ALL"}},"diagnostics":{}}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 12:25:24][0m [36mcreateordertest.spec.ts:137[0m : [30mpassenger details map is:[0m [38;5;141m{}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 12:25:24][0m [36mcreateordertest.spec.ts:138[0m : [30mpassenger details map is:[0m [38;5;141m[object Map][0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 12:25:24][0m [36mcreateordertest.spec.ts:139[0m : [30mPassenger details map is:
+{}[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 12:26:20][0m [36mshop-json-object.ts:86[0m : [30mpassenger object is : [object Object],[object Object],[object Object][0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 12:26:20][0m [36mshop-json-object.ts:61[0m : [30mshop payload request is : [0m [38;5;141m{"request":{"origin_destinations_criteria":[{"origin_departure_criteria":{"date":{"month":9,"year":2025,"day":10},"airportCode":"SYD"},"destination_arrival_criteria":{"airportCode":"BNE"}}],"passengers":[{"passenger_type_code":"ADT","id":"PAX1"},{"passenger_type_code":"ADT","id":"PAX2"},{"passenger_type_code":"CNN","id":"PAX3"}],"requestType":"ADVCAL30","offer_criteria":{"program":{"programAccountIds":[]}},"currency":"EUR"},"sender":{"enabled_system":{"name":"POS"},"marketing_carrier":{"airline_designator_code":"VA"}},"point_of_sale":{"country":{"code":"CA"},"city":{"code":"ORD"},"channel":"STANDARD"}}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 12:26:25][0m [36mcreateordertest.spec.ts:120[0m : [30mPax type map:[0m [38;5;141m{
+  "PAX1": "ADT",
+  "PAX2": "ADT",
+  "PAX3": "CNN"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 12:26:25][0m [36mcreateordertest.spec.ts:123[0m : [30mPax-Offer mapping:[0m [38;5;141m{
+  "PAX1": "mf9vikmbd6_62_0",
+  "PAX2": "mf9vikmbd6_62_1",
+  "PAX3": "mf9vikmbd6_62_2",
+  "OfferId": "mf9vikmbd6_62"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 12:26:25][0m [36mprice-json-object.ts:17[0m : [30mpax id offer items map[0m [38;5;141m{
+  "PAX1": "mf9vikmbd6_62_0",
+  "PAX2": "mf9vikmbd6_62_1",
+  "PAX3": "mf9vikmbd6_62_2",
+  "OfferId": "mf9vikmbd6_62"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 12:26:25][0m [36mprice-json-object.ts:39[0m : [30mprice payload request is : [0m [38;5;141m{"point_of_sale":{"channel":"STANDARD","country":{"code":"AU"},"city":{"code":"SYD"}},"sender":{"enabled_system":{},"marketing_carrier":{"airline_designator_code":"VA"}},"request":{"selected_offers":[{"id":"mf9vikmbd6_62","selected_offer_items":[{"id":"mf9vikmbd6_62_0","passenger_ids":["PAX1"],"selected_fares":[]},{"id":"mf9vikmbd6_62_1","passenger_ids":["PAX2"],"selected_fares":[]},{"id":"mf9vikmbd6_62_2","passenger_ids":["PAX3"],"selected_fares":[]}]}],"override_currency":"AUD","response_parameters":{"disable_availability_check":false,"disable_tax_calculation":false,"booking_category":"ALL"}},"diagnostics":{}}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 12:27:25][0m [36mcreateordertest.spec.ts:137[0m : [30mpassenger details map is:[0m [38;5;141m{}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 12:27:25][0m [36mcreateordertest.spec.ts:138[0m : [30mpassenger details map is:[0m [38;5;141m[object Map][0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 12:27:25][0m [36mcreateordertest.spec.ts:139[0m : [30mPassenger details map:
+{}[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 12:34:32][0m [36mshop-json-object.ts:86[0m : [30mpassenger object is : [object Object],[object Object],[object Object][0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 12:34:32][0m [36mshop-json-object.ts:61[0m : [30mshop payload request is : [0m [38;5;141m{"request":{"origin_destinations_criteria":[{"origin_departure_criteria":{"date":{"month":9,"year":2025,"day":10},"airportCode":"SYD"},"destination_arrival_criteria":{"airportCode":"BNE"}}],"passengers":[{"passenger_type_code":"ADT","id":"PAX1"},{"passenger_type_code":"ADT","id":"PAX2"},{"passenger_type_code":"CNN","id":"PAX3"}],"requestType":"ADVCAL30","offer_criteria":{"program":{"programAccountIds":[]}},"currency":"EUR"},"sender":{"enabled_system":{"name":"POS"},"marketing_carrier":{"airline_designator_code":"VA"}},"point_of_sale":{"country":{"code":"CA"},"city":{"code":"ORD"},"channel":"STANDARD"}}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 12:34:37][0m [36mcreateordertest.spec.ts:120[0m : [30mPax type map:[0m [38;5;141m{
+  "PAX1": "ADT",
+  "PAX2": "ADT",
+  "PAX3": "CNN"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 12:34:37][0m [36mcreateordertest.spec.ts:123[0m : [30mPax-Offer mapping:[0m [38;5;141m{
+  "PAX1": "mf9un66idn_62_0",
+  "PAX2": "mf9un66idn_62_1",
+  "PAX3": "mf9un66idn_62_2",
+  "OfferId": "mf9un66idn_62"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 12:34:37][0m [36mprice-json-object.ts:17[0m : [30mpax id offer items map[0m [38;5;141m{
+  "PAX1": "mf9un66idn_62_0",
+  "PAX2": "mf9un66idn_62_1",
+  "PAX3": "mf9un66idn_62_2",
+  "OfferId": "mf9un66idn_62"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 12:34:37][0m [36mprice-json-object.ts:39[0m : [30mprice payload request is : [0m [38;5;141m{"point_of_sale":{"channel":"STANDARD","country":{"code":"AU"},"city":{"code":"SYD"}},"sender":{"enabled_system":{},"marketing_carrier":{"airline_designator_code":"VA"}},"request":{"selected_offers":[{"id":"mf9un66idn_62","selected_offer_items":[{"id":"mf9un66idn_62_0","passenger_ids":["PAX1"],"selected_fares":[]},{"id":"mf9un66idn_62_1","passenger_ids":["PAX2"],"selected_fares":[]},{"id":"mf9un66idn_62_2","passenger_ids":["PAX3"],"selected_fares":[]}]}],"override_currency":"AUD","response_parameters":{"disable_availability_check":false,"disable_tax_calculation":false,"booking_category":"ALL"}},"diagnostics":{}}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 12:37:57][0m [36mcreateordertest.spec.ts:144[0m : [30mpassenger details map is:[0m [38;5;141m{
+  "PAX1": {},
+  "PAX3": {},
+  "PAX2": {}
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 12:38:05][0m [36mcreateordertest.spec.ts:145[0m : [30mpassenger details map is:[0m [38;5;141m[object Map][0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 12:38:17][0m [36mcreateordertest.spec.ts:146[0m : [30mPassenger details map:
+{
+  "PAX1": {
+    "offerItemId": "mf9vikmbde-0",
+    "price": "534.00",
+    "passengerJourneyIds": "JOURNEY_1_1757334879224"
+  },
+  "PAX3": {
+    "offerItemId": "mf9vikmbde-2",
+    "price": "534.00",
+    "passengerJourneyIds": "JOURNEY_1_1757334879224"
+  },
+  "PAX2": {
+    "offerItemId": "mf9vikmbde-1",
+    "price": "534.00",
+    "passengerJourneyIds": "JOURNEY_1_1757334879224"
+  }
+}[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 12:39:01][0m [36mshop-json-object.ts:86[0m : [30mpassenger object is : [object Object],[object Object],[object Object][0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 12:39:01][0m [36mshop-json-object.ts:61[0m : [30mshop payload request is : [0m [38;5;141m{"request":{"origin_destinations_criteria":[{"origin_departure_criteria":{"date":{"month":9,"year":2025,"day":10},"airportCode":"SYD"},"destination_arrival_criteria":{"airportCode":"BNE"}}],"passengers":[{"passenger_type_code":"ADT","id":"PAX1"},{"passenger_type_code":"ADT","id":"PAX2"},{"passenger_type_code":"CNN","id":"PAX3"}],"requestType":"ADVCAL30","offer_criteria":{"program":{"programAccountIds":[]}},"currency":"EUR"},"sender":{"enabled_system":{"name":"POS"},"marketing_carrier":{"airline_designator_code":"VA"}},"point_of_sale":{"country":{"code":"CA"},"city":{"code":"ORD"},"channel":"STANDARD"}}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 12:39:07][0m [36mcreateordertest.spec.ts:120[0m : [30mPax type map:[0m [38;5;141m{
+  "PAX1": "ADT",
+  "PAX2": "ADT",
+  "PAX3": "CNN"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 12:39:07][0m [36mcreateordertest.spec.ts:123[0m : [30mPax-Offer mapping:[0m [38;5;141m{
+  "PAX1": "mf9vikmbdf_62_0",
+  "PAX2": "mf9vikmbdf_62_1",
+  "PAX3": "mf9vikmbdf_62_2",
+  "OfferId": "mf9vikmbdf_62"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 12:39:07][0m [36mprice-json-object.ts:17[0m : [30mpax id offer items map[0m [38;5;141m{
+  "PAX1": "mf9vikmbdf_62_0",
+  "PAX2": "mf9vikmbdf_62_1",
+  "PAX3": "mf9vikmbdf_62_2",
+  "OfferId": "mf9vikmbdf_62"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 12:39:07][0m [36mprice-json-object.ts:39[0m : [30mprice payload request is : [0m [38;5;141m{"point_of_sale":{"channel":"STANDARD","country":{"code":"AU"},"city":{"code":"SYD"}},"sender":{"enabled_system":{},"marketing_carrier":{"airline_designator_code":"VA"}},"request":{"selected_offers":[{"id":"mf9vikmbdf_62","selected_offer_items":[{"id":"mf9vikmbdf_62_0","passenger_ids":["PAX1"],"selected_fares":[]},{"id":"mf9vikmbdf_62_1","passenger_ids":["PAX2"],"selected_fares":[]},{"id":"mf9vikmbdf_62_2","passenger_ids":["PAX3"],"selected_fares":[]}]}],"override_currency":"AUD","response_parameters":{"disable_availability_check":false,"disable_tax_calculation":false,"booking_category":"ALL"}},"diagnostics":{}}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 12:41:19][0m [36mcreateordertest.spec.ts:144[0m : [30mPassenger details map:
+[0m [38;5;141m{
+  "PAX1": {
+    "offerItemId": "mf9un66idp-0",
+    "price": "534.00",
+    "passengerJourneyIds": "JOURNEY_1_1757335148714"
+  },
+  "PAX3": {
+    "offerItemId": "mf9un66idp-2",
+    "price": "534.00",
+    "passengerJourneyIds": "JOURNEY_1_1757335148714"
+  },
+  "PAX2": {
+    "offerItemId": "mf9un66idp-1",
+    "price": "534.00",
+    "passengerJourneyIds": "JOURNEY_1_1757335148714"
+  }
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 13:32:20][0m [36mshop-json-object.ts:86[0m : [30mpassenger object is : [object Object],[object Object],[object Object][0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 13:32:20][0m [36mshop-json-object.ts:61[0m : [30mshop payload request is : [0m [38;5;141m{"request":{"origin_destinations_criteria":[{"origin_departure_criteria":{"date":{"month":9,"year":2025,"day":10},"airportCode":"SYD"},"destination_arrival_criteria":{"airportCode":"BNE"}}],"passengers":[{"passenger_type_code":"ADT","id":"PAX1"},{"passenger_type_code":"ADT","id":"PAX2"},{"passenger_type_code":"CNN","id":"PAX3"}],"requestType":"ADVCAL30","offer_criteria":{"program":{"programAccountIds":[]}},"currency":"EUR"},"sender":{"enabled_system":{"name":"POS"},"marketing_carrier":{"airline_designator_code":"VA"}},"point_of_sale":{"country":{"code":"CA"},"city":{"code":"ORD"},"channel":"STANDARD"}}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 13:32:29][0m [36mcreateordertest.spec.ts:120[0m : [30mPax type map:[0m [38;5;141m{
+  "PAX1": "ADT",
+  "PAX2": "ADT",
+  "PAX3": "CNN"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 13:32:29][0m [36mcreateordertest.spec.ts:123[0m : [30mPax-Offer mapping:[0m [38;5;141m{
+  "PAX1": "mf9vikmbeu_62_0",
+  "PAX2": "mf9vikmbeu_62_1",
+  "PAX3": "mf9vikmbeu_62_2",
+  "OfferId": "mf9vikmbeu_62"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 13:32:29][0m [36mprice-json-object.ts:17[0m : [30mpax id offer items map[0m [38;5;141m{
+  "PAX1": "mf9vikmbeu_62_0",
+  "PAX2": "mf9vikmbeu_62_1",
+  "PAX3": "mf9vikmbeu_62_2",
+  "OfferId": "mf9vikmbeu_62"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 13:32:29][0m [36mprice-json-object.ts:39[0m : [30mprice payload request is : [0m [38;5;141m{"point_of_sale":{"channel":"STANDARD","country":{"code":"AU"},"city":{"code":"SYD"}},"sender":{"enabled_system":{},"marketing_carrier":{"airline_designator_code":"VA"}},"request":{"selected_offers":[{"id":"mf9vikmbeu_62","selected_offer_items":[{"id":"mf9vikmbeu_62_0","passenger_ids":["PAX1"],"selected_fares":[]},{"id":"mf9vikmbeu_62_1","passenger_ids":["PAX2"],"selected_fares":[]},{"id":"mf9vikmbeu_62_2","passenger_ids":["PAX3"],"selected_fares":[]}]}],"override_currency":"AUD","response_parameters":{"disable_availability_check":false,"disable_tax_calculation":false,"booking_category":"ALL"}},"diagnostics":{}}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 13:32:30][0m [36mprice-api-request.ts:100[0m : [30mPassenger details map: {
+  "PAX1": {
+    "offerItemId": "mf9un66if7-0",
+    "price": "534.00",
+    "passengerJourneyIds": "JOURNEY_1_1757338350574"
+  },
+  "PAX3": {
+    "offerItemId": "mf9un66if7-2",
+    "price": "534.00",
+    "passengerJourneyIds": "JOURNEY_1_1757338350574"
+  },
+  "PAX2": {
+    "offerItemId": "mf9un66if7-1",
+    "price": "534.00",
+    "passengerJourneyIds": "JOURNEY_1_1757338350574"
+  }
+}[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 13:36:42][0m [36mcreateordertest.spec.ts:174[0m : [30mPaxtype:[0m [38;5;141m1A[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 13:36:46][0m [36mshop-json-object.ts:86[0m : [30mpassenger object is : [object Object][0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 13:36:46][0m [36mshop-json-object.ts:61[0m : [30mshop payload request is : [0m [38;5;141m{"request":{"origin_destinations_criteria":[{"origin_departure_criteria":{"date":{"month":9,"year":2025,"day":10},"airportCode":"SYD"},"destination_arrival_criteria":{"airportCode":"BNE"}}],"passengers":[{"passenger_type_code":"ADT","id":"PAX1"}],"requestType":"ADVCAL30","offer_criteria":{"program":{"programAccountIds":[]}},"currency":"EUR"},"sender":{"enabled_system":{"name":"POS"},"marketing_carrier":{"airline_designator_code":"VA"}},"point_of_sale":{"country":{"code":"CA"},"city":{"code":"ORD"},"channel":"STANDARD"}}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 13:36:50][0m [36mcreateordertest.spec.ts:194[0m : [30mPax type map:[0m [38;5;141m{
+  "PAX1": "ADT"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 13:36:50][0m [36mcreateordertest.spec.ts:197[0m : [30mPax-Offer mapping:[0m [38;5;141m{
+  "PAX1": "mf9vikmbev_63_0",
+  "OfferId": "mf9vikmbev_63"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 13:36:50][0m [36mprice-json-object.ts:17[0m : [30mpax id offer items map[0m [38;5;141m{
+  "PAX1": "mf9vikmbev_63_0",
+  "OfferId": "mf9vikmbev_63"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 13:36:50][0m [36mprice-json-object.ts:39[0m : [30mprice payload request is : [0m [38;5;141m{"point_of_sale":{"channel":"STANDARD","country":{"code":"AU"},"city":{"code":"SYD"}},"sender":{"enabled_system":{},"marketing_carrier":{"airline_designator_code":"VA"}},"request":{"selected_offers":[{"id":"mf9vikmbev_63","selected_offer_items":[{"id":"mf9vikmbev_63_0","passenger_ids":["PAX1"],"selected_fares":[]}]}],"override_currency":"AUD","response_parameters":{"disable_availability_check":false,"disable_tax_calculation":false,"booking_category":"ALL"}},"diagnostics":{}}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 13:36:52][0m [36mprice-api-request.ts:100[0m : [30mPassenger details map: [0m [38;5;141m{}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 13:37:43][0m [36mcreateordertest.spec.ts:174[0m : [30mPaxtype:[0m [38;5;141m1A[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 13:37:45][0m [36mshop-json-object.ts:86[0m : [30mpassenger object is : [object Object][0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 13:37:45][0m [36mshop-json-object.ts:61[0m : [30mshop payload request is : [0m [38;5;141m{"request":{"origin_destinations_criteria":[{"origin_departure_criteria":{"date":{"month":9,"year":2025,"day":10},"airportCode":"SYD"},"destination_arrival_criteria":{"airportCode":"BNE"}}],"passengers":[{"passenger_type_code":"ADT","id":"PAX1"}],"requestType":"ADVCAL30","offer_criteria":{"program":{"programAccountIds":[]}},"currency":"EUR"},"sender":{"enabled_system":{"name":"POS"},"marketing_carrier":{"airline_designator_code":"VA"}},"point_of_sale":{"country":{"code":"CA"},"city":{"code":"ORD"},"channel":"STANDARD"}}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 13:37:51][0m [36mcreateordertest.spec.ts:194[0m : [30mPax type map:[0m [38;5;141m{
+  "PAX1": "ADT"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 13:37:51][0m [36mcreateordertest.spec.ts:197[0m : [30mPax-Offer mapping:[0m [38;5;141m{
+  "PAX1": "mf9un66if9_63_0",
+  "OfferId": "mf9un66if9_63"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 13:37:51][0m [36mprice-json-object.ts:17[0m : [30mpax id offer items map[0m [38;5;141m{
+  "PAX1": "mf9un66if9_63_0",
+  "OfferId": "mf9un66if9_63"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 13:37:51][0m [36mprice-json-object.ts:39[0m : [30mprice payload request is : [0m [38;5;141m{"point_of_sale":{"channel":"STANDARD","country":{"code":"AU"},"city":{"code":"SYD"}},"sender":{"enabled_system":{},"marketing_carrier":{"airline_designator_code":"VA"}},"request":{"selected_offers":[{"id":"mf9un66if9_63","selected_offer_items":[{"id":"mf9un66if9_63_0","passenger_ids":["PAX1"],"selected_fares":[]}]}],"override_currency":"AUD","response_parameters":{"disable_availability_check":false,"disable_tax_calculation":false,"booking_category":"ALL"}},"diagnostics":{}}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-08 13:37:52][0m [36mprice-api-request.ts:100[0m : [30mPassenger details map: [0m [38;5;141m{
+  "PAX1": {
+    "offerItemId": "mf9vikmbew-0",
+    "price": "534.00",
+    "passengerJourneyIds": "JOURNEY_1_1757338672458"
+  }
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
