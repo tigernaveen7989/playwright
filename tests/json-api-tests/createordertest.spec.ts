@@ -2,6 +2,7 @@ import { test, expect, request } from '../../utilities/fixtures';
 import { activateJwtToken } from "../../api-base/activatejwttoken";
 import { shopApi } from '../../json-api/request-and-get-response/shop-api-request';
 import { priceApi } from '../../json-api/request-and-get-response/price-api-request';
+import { createOrderApi } from '../../json-api/request-and-get-response/create-order-api-request';
 import { ShopJsonObject } from '../../json-api/create-payload/shop-json-object';
 import { LoggerFactory } from '../../utilities/logger';
 
@@ -76,7 +77,7 @@ test(
  * Test 3:
  * Verify multi-pax shop + price API integration and create paid order.
  */
-test(
+test.only(
   'TC2_Verify_Multi_Pax_One_Way_Create_Paid_Order @allure.label.feature:JSON-MultiPax-PaidOrder',
   async ({ testData }, testInfo) => {
     // 🔹 Declarations
@@ -86,10 +87,13 @@ test(
     let activatejwttoken: activateJwtToken;
     let headers: Record<string, string>;
     let rmxApiJson: string;
+    let omsApiJson: string;
     let shop: shopApi;
     let price: priceApi;
+    let createOrder: createOrderApi;
     let shopResponse: any;
     let priceResponse: any;
+    let createOrderResponse: any;
     let responseBody: string;
     let paxTypeMap: Map<string, string>;
     let paxIdOffersItemIdsMap: Map<string, string>;
@@ -101,10 +105,11 @@ test(
 
     activatejwttoken = new activateJwtToken();
     headers = await activatejwttoken.getJwtToken(testInfo);
-    ({ rmxApiJson } = await activatejwttoken.loadConfig());
+    ({ rmxApiJson, omsApiJson } = await activatejwttoken.loadConfig());
 
     shop = new shopApi('SYD', 'BNE', 10, 9, 2025, 'EUR');
     price = new priceApi();
+    createOrder = new createOrderApi();
 
     shopResponse = await shop.sendRequestAndGetResponse(
       `${rmxApiJson}/shop`,
@@ -141,6 +146,24 @@ test(
 
     // Call your function with parsed JSON
     const passengerDetailsMap: Map<string, Map<string, string>> = price.getPassengerDetailsMap(priceResponseJson, paxTypeMap);
+    const offerId: string = await price.getOfferId(priceResponseJson);
+
+    createOrderResponse = await createOrder.sendRequestAndGetResponse(
+      `${omsApiJson}/create`,
+      headers,
+      testInfo,
+      passengerDetailsMap,
+      offerId
+    );
+
+    // Parse JSON response **once**
+    const createOrderResponseJson = await createOrderResponse.json();
+
+    // Optional logging
+    responseBody = JSON.stringify(createOrderResponseJson, null, 2);
+
+    // Validate response
+    expect(createOrderResponse.ok()).toBe(true);
   }
 );
 
@@ -148,7 +171,7 @@ test(
  * Test 4:
  * Verify single pax shop + price API integration and create paid order.
  */
-test.only(
+test(
   'TC3_Verify_Single_Pax_One_Way_Create_Paid_Order @allure.label.feature:JSON-SinglePax-PaidOrder',
   async ({ testData }, testInfo) => {
     // 🔹 Declarations
@@ -158,10 +181,13 @@ test.only(
     let activatejwttoken: activateJwtToken;
     let headers: Record<string, string>;
     let rmxApiJson: string;
+    let omsApiJson: string;
     let shop: shopApi;
     let price: priceApi;
+    let createOrder: createOrderApi;
     let shopResponse: any;
     let priceResponse: any;
+    let createOrderResponse: any;
     let responseBody: string;
     let paxTypeMap: Map<string, string>;
     let paxIdOffersItemIdsMap: Map<string, string>;
@@ -175,10 +201,11 @@ test.only(
 
     activatejwttoken = new activateJwtToken();
     headers = await activatejwttoken.getJwtToken(testInfo);
-    ({ rmxApiJson } = await activatejwttoken.loadConfig());
+    ({ rmxApiJson, omsApiJson } = await activatejwttoken.loadConfig());
 
     shop = new shopApi('SYD', 'BNE', 10, 9, 2025, 'EUR');
     price = new priceApi();
+    createOrder = new createOrderApi();
 
     shopResponse = await shop.sendRequestAndGetResponse(
       `${rmxApiJson}/shop`,
@@ -213,5 +240,23 @@ test.only(
     expect(priceResponse.ok()).toBe(true);
 
     const passengerDetailsMap: Map<string, Map<string, string>> = await price.getPassengerDetailsMap(priceResponseJson, paxTypeMap);
+    const offerId: string = await price.getOfferId(priceResponseJson);
+
+    createOrderResponse = await createOrder.sendRequestAndGetResponse(
+      `${omsApiJson}/create`,
+      headers,
+      testInfo,
+      passengerDetailsMap,
+      offerId
+    );
+
+    // Parse JSON response **once**
+    const createOrderResponseJson = await createOrderResponse.json();
+
+    // Optional logging
+    responseBody = JSON.stringify(createOrderResponseJson, null, 2);
+
+    // Validate response
+    expect(createOrderResponse.ok()).toBe(true);
   }
 );

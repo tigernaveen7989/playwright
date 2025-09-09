@@ -59224,3 +59224,3839 @@
   }
 }[0m
 ------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 04:10:59][0m [36mcreateordertest.spec.ts:174[0m : [30mPaxtype:[0m [38;5;141m1A[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 04:11:00][0m [36mshop-json-object.ts:86[0m : [30mpassenger object is : [object Object][0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 04:11:00][0m [36mshop-json-object.ts:61[0m : [30mshop payload request is : [0m [38;5;141m{"request":{"origin_destinations_criteria":[{"origin_departure_criteria":{"date":{"month":9,"year":2025,"day":10},"airportCode":"SYD"},"destination_arrival_criteria":{"airportCode":"BNE"}}],"passengers":[{"passenger_type_code":"ADT","id":"PAX1"}],"requestType":"ADVCAL30","offer_criteria":{"program":{"programAccountIds":[]}},"currency":"EUR"},"sender":{"enabled_system":{"name":"POS"},"marketing_carrier":{"airline_designator_code":"VA"}},"point_of_sale":{"country":{"code":"CA"},"city":{"code":"ORD"},"channel":"STANDARD"}}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 04:11:04][0m [36mcreateordertest.spec.ts:194[0m : [30mPax type map:[0m [38;5;141m{
+  "PAX1": "ADT"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 04:11:04][0m [36mprice-json-object.ts:17[0m : [30mpax id offer items map[0m [38;5;141m{
+  "PAX1": "mfazeh57ef_63_0",
+  "OfferId": "mfazeh57ef_63"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 04:11:04][0m [36mprice-json-object.ts:39[0m : [30mprice payload request is : [0m [38;5;141m{"point_of_sale":{"channel":"STANDARD","country":{"code":"AU"},"city":{"code":"SYD"}},"sender":{"enabled_system":{},"marketing_carrier":{"airline_designator_code":"VA"}},"request":{"selected_offers":[{"id":"mfazeh57ef_63","selected_offer_items":[{"id":"mfazeh57ef_63_0","passenger_ids":["PAX1"],"selected_fares":[]}]}],"override_currency":"AUD","response_parameters":{"disable_availability_check":false,"disable_tax_calculation":false,"booking_category":"ALL"}},"diagnostics":{}}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 04:11:05][0m [36mprice-api-request.ts:100[0m : [30mPassenger details map: [0m [38;5;141m{
+  "PAX1": {
+    "offerItemId": "mfaz6mxned-0",
+    "price": "534.00",
+    "passengerJourneyIds": "JOURNEY_1_1757391066300"
+  }
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 04:41:35][0m [36mshop-json-object.ts:86[0m : [30mpassenger object is : [object Object],[object Object],[object Object][0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 04:41:35][0m [36mshop-json-object.ts:61[0m : [30mshop payload request is : [0m [38;5;141m{"request":{"origin_destinations_criteria":[{"origin_departure_criteria":{"date":{"month":9,"year":2025,"day":10},"airportCode":"SYD"},"destination_arrival_criteria":{"airportCode":"BNE"}}],"passengers":[{"passenger_type_code":"ADT","id":"PAX1"},{"passenger_type_code":"ADT","id":"PAX2"},{"passenger_type_code":"CNN","id":"PAX3"}],"requestType":"ADVCAL30","offer_criteria":{"program":{"programAccountIds":[]}},"currency":"EUR"},"sender":{"enabled_system":{"name":"POS"},"marketing_carrier":{"airline_designator_code":"VA"}},"point_of_sale":{"country":{"code":"CA"},"city":{"code":"ORD"},"channel":"STANDARD"}}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 04:41:39][0m [36mcreateordertest.spec.ts:120[0m : [30mPax type map:[0m [38;5;141m{
+  "PAX1": "ADT",
+  "PAX2": "ADT",
+  "PAX3": "CNN"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 04:41:39][0m [36mcreateordertest.spec.ts:123[0m : [30mPax-Offer mapping:[0m [38;5;141m{
+  "PAX1": "mfazeh57ew_62_0",
+  "PAX2": "mfazeh57ew_62_1",
+  "PAX3": "mfazeh57ew_62_2",
+  "OfferId": "mfazeh57ew_62"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 04:41:39][0m [36mprice-json-object.ts:17[0m : [30mpax id offer items map[0m [38;5;141m{
+  "PAX1": "mfazeh57ew_62_0",
+  "PAX2": "mfazeh57ew_62_1",
+  "PAX3": "mfazeh57ew_62_2",
+  "OfferId": "mfazeh57ew_62"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 04:41:39][0m [36mprice-json-object.ts:39[0m : [30mprice payload request is : [0m [38;5;141m{"point_of_sale":{"channel":"STANDARD","country":{"code":"AU"},"city":{"code":"SYD"}},"sender":{"enabled_system":{},"marketing_carrier":{"airline_designator_code":"VA"}},"request":{"selected_offers":[{"id":"mfazeh57ew_62","selected_offer_items":[{"id":"mfazeh57ew_62_0","passenger_ids":["PAX1"],"selected_fares":[]},{"id":"mfazeh57ew_62_1","passenger_ids":["PAX2"],"selected_fares":[]},{"id":"mfazeh57ew_62_2","passenger_ids":["PAX3"],"selected_fares":[]}]}],"override_currency":"AUD","response_parameters":{"disable_availability_check":false,"disable_tax_calculation":false,"booking_category":"ALL"}},"diagnostics":{}}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 04:41:41][0m [36mprice-api-request.ts:100[0m : [30mPassenger details map: [0m [38;5;141m{
+  "PAX1": {
+    "offerItemId": "mfaz6mxneu-0",
+    "price": "534.00",
+    "passengerJourneyIds": "JOURNEY_1_1757392901939"
+  },
+  "PAX3": {
+    "offerItemId": "mfaz6mxneu-2",
+    "price": "534.00",
+    "passengerJourneyIds": "JOURNEY_1_1757392901939"
+  },
+  "PAX2": {
+    "offerItemId": "mfaz6mxneu-1",
+    "price": "534.00",
+    "passengerJourneyIds": "JOURNEY_1_1757392901939"
+  }
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 05:27:57][0m [36mcreateordertest.spec.ts:178[0m : [30mPaxtype:[0m [38;5;141m1A[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 05:27:59][0m [36mshop-json-object.ts:86[0m : [30mpassenger object is : [object Object][0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 05:27:59][0m [36mshop-json-object.ts:61[0m : [30mshop payload request is : [0m [38;5;141m{"request":{"origin_destinations_criteria":[{"origin_departure_criteria":{"date":{"month":9,"year":2025,"day":10},"airportCode":"SYD"},"destination_arrival_criteria":{"airportCode":"BNE"}}],"passengers":[{"passenger_type_code":"ADT","id":"PAX1"}],"requestType":"ADVCAL30","offer_criteria":{"program":{"programAccountIds":[]}},"currency":"EUR"},"sender":{"enabled_system":{"name":"POS"},"marketing_carrier":{"airline_designator_code":"VA"}},"point_of_sale":{"country":{"code":"CA"},"city":{"code":"ORD"},"channel":"STANDARD"}}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 05:28:05][0m [36mcreateordertest.spec.ts:199[0m : [30mPax type map:[0m [38;5;141m{
+  "PAX1": "ADT"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 05:28:06][0m [36mprice-json-object.ts:17[0m : [30mpax id offer items map[0m [38;5;141m{
+  "PAX1": "mfazeh57fh_63_0",
+  "OfferId": "mfazeh57fh_63"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 05:28:06][0m [36mprice-json-object.ts:39[0m : [30mprice payload request is : [0m [38;5;141m{"point_of_sale":{"channel":"STANDARD","country":{"code":"AU"},"city":{"code":"SYD"}},"sender":{"enabled_system":{},"marketing_carrier":{"airline_designator_code":"VA"}},"request":{"selected_offers":[{"id":"mfazeh57fh_63","selected_offer_items":[{"id":"mfazeh57fh_63_0","passenger_ids":["PAX1"],"selected_fares":[]}]}],"override_currency":"AUD","response_parameters":{"disable_availability_check":false,"disable_tax_calculation":false,"booking_category":"ALL"}},"diagnostics":{}}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 05:28:07][0m [36mprice-api-request.ts:100[0m : [30mPassenger details map: [0m [38;5;141m{
+  "PAX1": {
+    "offerItemId": "mfaz6mxnfi-0",
+    "price": "534.00",
+    "passengerJourneyIds": "JOURNEY_1_1757395687864"
+  }
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 05:28:07][0m [36mcreate-order-json-object.ts:141[0m : [30mCreate order payload:[0m [38;5;141m{
+  "point_of_sale": {
+    "channel": "STANDARD",
+    "city": {
+      "name": "New York",
+      "code": "NY"
+    },
+    "country": {
+      "name": "United States",
+      "code": "US"
+    },
+    "ip_address": "127.1.1.1"
+  },
+  "acceptOffers": [
+    {
+      "offerId": "mfaz6mxnfi",
+      "offerItems": [
+        {
+          "offerItemId": "mfaz6mxnfi-0"
+        }
+      ]
+    }
+  ],
+  "paymentFunctions": [
+    {
+      "offerAssociations": [
+        {
+          "offerId": "mfaz6mxnfi",
+          "offerItemIds": [
+            [
+              "mfaz6mxnfi-0"
+            ]
+          ]
+        }
+      ],
+      "paymentProcessingSummary": {
+        "paymentMethod": "PAYMENT_METHOD_PAYMENT_CARD",
+        "typeCodeIata": "CC",
+        "amount": {
+          "currency": "EUR",
+          "amount": "534.00"
+        },
+        "payerInfo": {
+          "title": "Mr.",
+          "givenName": "John",
+          "surname": "Doe",
+          "dateOfBirth": {
+            "year": 1989,
+            "month": 1,
+            "day": 11
+          },
+          "gender": "GENDER_MALE",
+          "emailAddresses": [
+            {
+              "label": "EmailAddress",
+              "purposeCodes": [
+                "EMAIL_PURPOSE_GENERAL"
+              ],
+              "email": "john.smith@example.com"
+            }
+          ],
+          "phoneNumbers": [
+            {
+              "label": "HomePhone",
+              "purposeCodes": [
+                "PHONE_PURPOSE_HOME"
+              ],
+              "structured": {
+                "countryCallingCode": "1",
+                "areaCode": "001",
+                "localNumber": "1234567",
+                "extension": "1234"
+              }
+            }
+          ],
+          "addresses": [
+            {
+              "label": "homePostalAddress",
+              "purposeCodes": [
+                "ADDRESS_PURPOSE_HOME_ADDRESS"
+              ],
+              "addressLine1": "Baker Street 23/14",
+              "city": "Warsaw",
+              "postalCode": "32-100",
+              "countryCode": "PL"
+            },
+            {
+              "label": "destinationPostalAddress",
+              "purposeCodes": [
+                "ADDRESS_PURPOSE_DESTINATION_ADDRESS"
+              ],
+              "addressLine1": "12, Main road",
+              "addressLine2": "apt 123",
+              "city": "New York",
+              "stateProvinceCode": "NJ",
+              "postalCode": "111-1234",
+              "countryCode": "US"
+            }
+          ]
+        },
+        "paymentMethodDetails": {
+          "paymentCard": {
+            "cardHolderName": {
+              "fullName": "John Doe"
+            },
+            "billingAddress": {
+              "label": "homePostalAddress",
+              "purposeCodes": [
+                "ADDRESS_PURPOSE_HOME_ADDRESS"
+              ],
+              "addressLine1": "Baker Street 23",
+              "addressLine2": "Apartment 14",
+              "city": "Warsaw",
+              "stateProvinceCode": "TX",
+              "postalCode": "32-100",
+              "countryCode": "PL",
+              "postOfficeBoxCode": "PO Box"
+            },
+            "tokenizedCardId": "5123P10JZCC02346",
+            "securityCode": "123",
+            "cardVendorCode": "CA",
+            "expirationDate": "1229"
+          }
+        }
+      }
+    }
+  ],
+  "passengers": [
+    {
+      "id": "PAX1",
+      "passengerTypeCode": "ADT",
+      "person": {
+        "title": "Mrs",
+        "givenName": "Janet",
+        "middleName": "Juliet",
+        "surname": "Doe",
+        "dateOfBirth": {
+          "year": 1988,
+          "month": 4,
+          "day": 3
+        },
+        "gender": "GENDER_FEMALE",
+        "emailAddresses": [
+          {
+            "label": "EmailAddress",
+            "purposeCodes": [
+              "EMAIL_PURPOSE_GENERAL"
+            ],
+            "email": "abc@google.com"
+          }
+        ],
+        "phoneNumbers": [
+          {
+            "label": "HomePhone",
+            "purposeCodes": [
+              "PHONE_PURPOSE_HOME"
+            ],
+            "structured": {
+              "countryCallingCode": "1",
+              "areaCode": "907",
+              "localNumber": "123456789",
+              "extension": "012"
+            }
+          }
+        ],
+        "addresses": [
+          {
+            "label": "homePostalAddress",
+            "purposeCodes": [
+              "ADDRESS_PURPOSE_HOME_ADDRESS"
+            ],
+            "addressLine1": "Baker Street 23/14",
+            "city": "Warsaw",
+            "postalCode": "32-100",
+            "countryCode": "PL"
+          },
+          {
+            "label": "destinationPostalAddress",
+            "purposeCodes": [
+              "ADDRESS_PURPOSE_DESTINATION_ADDRESS"
+            ],
+            "addressLine1": "12, Main road",
+            "addressLine2": "apt 123",
+            "city": "New York",
+            "stateProvinceCode": "NJ",
+            "postalCode": "111-1234",
+            "countryCode": "US"
+          }
+        ]
+      },
+      "identityDocuments": [],
+      "isPrimaryPassenger": true,
+      "preferredCommunicationMethod": "PREFERRED_COMMUNICATION_METHOD_SMS"
+    }
+  ]
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 05:40:55][0m [36mcreateordertest.spec.ts:178[0m : [30mPaxtype:[0m [38;5;141m1A[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 05:40:56][0m [36mshop-json-object.ts:86[0m : [30mpassenger object is : [object Object][0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 05:40:56][0m [36mshop-json-object.ts:61[0m : [30mshop payload request is : [0m [38;5;141m{"request":{"origin_destinations_criteria":[{"origin_departure_criteria":{"date":{"month":9,"year":2025,"day":10},"airportCode":"SYD"},"destination_arrival_criteria":{"airportCode":"BNE"}}],"passengers":[{"passenger_type_code":"ADT","id":"PAX1"}],"requestType":"ADVCAL30","offer_criteria":{"program":{"programAccountIds":[]}},"currency":"EUR"},"sender":{"enabled_system":{"name":"POS"},"marketing_carrier":{"airline_designator_code":"VA"}},"point_of_sale":{"country":{"code":"CA"},"city":{"code":"ORD"},"channel":"STANDARD"}}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 05:41:00][0m [36mcreateordertest.spec.ts:199[0m : [30mPax type map:[0m [38;5;141m{
+  "PAX1": "ADT"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 05:41:00][0m [36mprice-json-object.ts:17[0m : [30mpax id offer items map[0m [38;5;141m{
+  "PAX1": "mfaz6mxnfq_63_0",
+  "OfferId": "mfaz6mxnfq_63"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 05:41:00][0m [36mprice-json-object.ts:39[0m : [30mprice payload request is : [0m [38;5;141m{"point_of_sale":{"channel":"STANDARD","country":{"code":"AU"},"city":{"code":"SYD"}},"sender":{"enabled_system":{},"marketing_carrier":{"airline_designator_code":"VA"}},"request":{"selected_offers":[{"id":"mfaz6mxnfq_63","selected_offer_items":[{"id":"mfaz6mxnfq_63_0","passenger_ids":["PAX1"],"selected_fares":[]}]}],"override_currency":"AUD","response_parameters":{"disable_availability_check":false,"disable_tax_calculation":false,"booking_category":"ALL"}},"diagnostics":{}}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 05:41:02][0m [36mprice-api-request.ts:100[0m : [30mPassenger details map: [0m [38;5;141m{
+  "PAX1": {
+    "offerItemId": "mfazeh57fq-0",
+    "price": "534.00",
+    "passengerJourneyIds": "JOURNEY_1_1757396462765"
+  }
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 05:41:02][0m [36mcreate-order-json-object.ts:141[0m : [30mCreate order payload:[0m [38;5;141m{
+  "point_of_sale": {
+    "channel": "STANDARD",
+    "city": {
+      "name": "New York",
+      "code": "NY"
+    },
+    "country": {
+      "name": "United States",
+      "code": "US"
+    },
+    "ip_address": "127.1.1.1"
+  },
+  "acceptOffers": [
+    {
+      "offerId": "mfazeh57fq",
+      "offerItems": [
+        {
+          "offerItemId": "mfazeh57fq-0"
+        }
+      ]
+    }
+  ],
+  "paymentFunctions": [
+    {
+      "offerAssociations": [
+        {
+          "offerId": "mfazeh57fq",
+          "offerItemIds": [
+            [
+              "mfazeh57fq-0"
+            ]
+          ]
+        }
+      ],
+      "paymentProcessingSummary": {
+        "paymentMethod": "PAYMENT_METHOD_PAYMENT_CARD",
+        "typeCodeIata": "CC",
+        "amount": {
+          "currency": "EUR",
+          "amount": "534.00"
+        },
+        "payerInfo": {
+          "title": "Mr.",
+          "givenName": "John",
+          "surname": "Doe",
+          "dateOfBirth": {
+            "year": 1989,
+            "month": 1,
+            "day": 11
+          },
+          "gender": "GENDER_MALE",
+          "emailAddresses": [
+            {
+              "label": "EmailAddress",
+              "purposeCodes": [
+                "EMAIL_PURPOSE_GENERAL"
+              ],
+              "email": "john.smith@example.com"
+            }
+          ],
+          "phoneNumbers": [
+            {
+              "label": "HomePhone",
+              "purposeCodes": [
+                "PHONE_PURPOSE_HOME"
+              ],
+              "structured": {
+                "countryCallingCode": "1",
+                "areaCode": "001",
+                "localNumber": "1234567",
+                "extension": "1234"
+              }
+            }
+          ],
+          "addresses": [
+            {
+              "label": "homePostalAddress",
+              "purposeCodes": [
+                "ADDRESS_PURPOSE_HOME_ADDRESS"
+              ],
+              "addressLine1": "Baker Street 23/14",
+              "city": "Warsaw",
+              "postalCode": "32-100",
+              "countryCode": "PL"
+            },
+            {
+              "label": "destinationPostalAddress",
+              "purposeCodes": [
+                "ADDRESS_PURPOSE_DESTINATION_ADDRESS"
+              ],
+              "addressLine1": "12, Main road",
+              "addressLine2": "apt 123",
+              "city": "New York",
+              "stateProvinceCode": "NJ",
+              "postalCode": "111-1234",
+              "countryCode": "US"
+            }
+          ]
+        },
+        "paymentMethodDetails": {
+          "paymentCard": {
+            "cardHolderName": {
+              "fullName": "John Doe"
+            },
+            "billingAddress": {
+              "label": "homePostalAddress",
+              "purposeCodes": [
+                "ADDRESS_PURPOSE_HOME_ADDRESS"
+              ],
+              "addressLine1": "Baker Street 23",
+              "addressLine2": "Apartment 14",
+              "city": "Warsaw",
+              "stateProvinceCode": "TX",
+              "postalCode": "32-100",
+              "countryCode": "PL",
+              "postOfficeBoxCode": "PO Box"
+            },
+            "tokenizedCardId": "5123P10JZCC02346",
+            "securityCode": "123",
+            "cardVendorCode": "CA",
+            "expirationDate": "1229"
+          }
+        }
+      }
+    }
+  ],
+  "passengers": [
+    {
+      "id": "PAX1",
+      "passengerTypeCode": "ADT",
+      "person": {
+        "title": "Mrs",
+        "givenName": "Janet",
+        "middleName": "Juliet",
+        "surname": "Doe",
+        "dateOfBirth": {
+          "year": 1988,
+          "month": 4,
+          "day": 3
+        },
+        "gender": "GENDER_FEMALE",
+        "emailAddresses": [
+          {
+            "label": "EmailAddress",
+            "purposeCodes": [
+              "EMAIL_PURPOSE_GENERAL"
+            ],
+            "email": "abc@google.com"
+          }
+        ],
+        "phoneNumbers": [
+          {
+            "label": "HomePhone",
+            "purposeCodes": [
+              "PHONE_PURPOSE_HOME"
+            ],
+            "structured": {
+              "countryCallingCode": "1",
+              "areaCode": "907",
+              "localNumber": "123456789",
+              "extension": "012"
+            }
+          }
+        ],
+        "addresses": [
+          {
+            "label": "homePostalAddress",
+            "purposeCodes": [
+              "ADDRESS_PURPOSE_HOME_ADDRESS"
+            ],
+            "addressLine1": "Baker Street 23/14",
+            "city": "Warsaw",
+            "postalCode": "32-100",
+            "countryCode": "PL"
+          },
+          {
+            "label": "destinationPostalAddress",
+            "purposeCodes": [
+              "ADDRESS_PURPOSE_DESTINATION_ADDRESS"
+            ],
+            "addressLine1": "12, Main road",
+            "addressLine2": "apt 123",
+            "city": "New York",
+            "stateProvinceCode": "NJ",
+            "postalCode": "111-1234",
+            "countryCode": "US"
+          }
+        ]
+      },
+      "identityDocuments": [],
+      "isPrimaryPassenger": true,
+      "preferredCommunicationMethod": "PREFERRED_COMMUNICATION_METHOD_SMS"
+    }
+  ]
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 05:51:48][0m [36mcreateordertest.spec.ts:178[0m : [30mPaxtype:[0m [38;5;141m1A[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 05:51:49][0m [36mshop-json-object.ts:86[0m : [30mpassenger object is : [object Object][0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 05:51:49][0m [36mshop-json-object.ts:61[0m : [30mshop payload request is : [0m [38;5;141m{"request":{"origin_destinations_criteria":[{"origin_departure_criteria":{"date":{"month":9,"year":2025,"day":10},"airportCode":"SYD"},"destination_arrival_criteria":{"airportCode":"BNE"}}],"passengers":[{"passenger_type_code":"ADT","id":"PAX1"}],"requestType":"ADVCAL30","offer_criteria":{"program":{"programAccountIds":[]}},"currency":"EUR"},"sender":{"enabled_system":{"name":"POS"},"marketing_carrier":{"airline_designator_code":"VA"}},"point_of_sale":{"country":{"code":"CA"},"city":{"code":"ORD"},"channel":"STANDARD"}}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 05:51:53][0m [36mcreateordertest.spec.ts:199[0m : [30mPax type map:[0m [38;5;141m{
+  "PAX1": "ADT"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 05:51:53][0m [36mprice-json-object.ts:17[0m : [30mpax id offer items map[0m [38;5;141m{
+  "PAX1": "mfazeh57g5_59_0",
+  "OfferId": "mfazeh57g5_59"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 05:51:53][0m [36mprice-json-object.ts:39[0m : [30mprice payload request is : [0m [38;5;141m{"point_of_sale":{"channel":"STANDARD","country":{"code":"AU"},"city":{"code":"SYD"}},"sender":{"enabled_system":{},"marketing_carrier":{"airline_designator_code":"VA"}},"request":{"selected_offers":[{"id":"mfazeh57g5_59","selected_offer_items":[{"id":"mfazeh57g5_59_0","passenger_ids":["PAX1"],"selected_fares":[]}]}],"override_currency":"AUD","response_parameters":{"disable_availability_check":false,"disable_tax_calculation":false,"booking_category":"ALL"}},"diagnostics":{}}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 05:52:02][0m [36mprice-api-request.ts:100[0m : [30mPassenger details map: [0m [38;5;141m{
+  "PAX1": {
+    "offerItemId": "mfc4pmg86-0",
+    "price": "534.00",
+    "passengerJourneyIds": "JOURNEY_1_1757397115440"
+  }
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 05:52:02][0m [36mcreate-order-json-object.ts:141[0m : [30mCreate order payload:[0m [38;5;141m{
+  "point_of_sale": {
+    "channel": "STANDARD",
+    "city": {
+      "name": "New York",
+      "code": "NY"
+    },
+    "country": {
+      "name": "United States",
+      "code": "US"
+    },
+    "ip_address": "127.1.1.1"
+  },
+  "acceptOffers": [
+    {
+      "offerId": "mfc4pmg86",
+      "offerItems": [
+        {
+          "offerItemId": "mfc4pmg86-0"
+        }
+      ]
+    }
+  ],
+  "paymentFunctions": [
+    {
+      "offerAssociations": [
+        {
+          "offerId": "mfc4pmg86",
+          "offerItemIds": [
+            [
+              "mfc4pmg86-0"
+            ]
+          ]
+        }
+      ],
+      "paymentProcessingSummary": {
+        "paymentMethod": "PAYMENT_METHOD_PAYMENT_CARD",
+        "typeCodeIata": "CC",
+        "amount": {
+          "currency": "EUR",
+          "amount": "534.00"
+        },
+        "payerInfo": {
+          "title": "Mr.",
+          "givenName": "John",
+          "surname": "Doe",
+          "dateOfBirth": {
+            "year": 1989,
+            "month": 1,
+            "day": 11
+          },
+          "gender": "GENDER_MALE",
+          "emailAddresses": [
+            {
+              "label": "EmailAddress",
+              "purposeCodes": [
+                "EMAIL_PURPOSE_GENERAL"
+              ],
+              "email": "john.smith@example.com"
+            }
+          ],
+          "phoneNumbers": [
+            {
+              "label": "HomePhone",
+              "purposeCodes": [
+                "PHONE_PURPOSE_HOME"
+              ],
+              "structured": {
+                "countryCallingCode": "1",
+                "areaCode": "001",
+                "localNumber": "1234567",
+                "extension": "1234"
+              }
+            }
+          ],
+          "addresses": [
+            {
+              "label": "homePostalAddress",
+              "purposeCodes": [
+                "ADDRESS_PURPOSE_HOME_ADDRESS"
+              ],
+              "addressLine1": "Baker Street 23/14",
+              "city": "Warsaw",
+              "postalCode": "32-100",
+              "countryCode": "PL"
+            },
+            {
+              "label": "destinationPostalAddress",
+              "purposeCodes": [
+                "ADDRESS_PURPOSE_DESTINATION_ADDRESS"
+              ],
+              "addressLine1": "12, Main road",
+              "addressLine2": "apt 123",
+              "city": "New York",
+              "stateProvinceCode": "NJ",
+              "postalCode": "111-1234",
+              "countryCode": "US"
+            }
+          ]
+        },
+        "paymentMethodDetails": {
+          "paymentCard": {
+            "cardHolderName": {
+              "fullName": "John Doe"
+            },
+            "billingAddress": {
+              "label": "homePostalAddress",
+              "purposeCodes": [
+                "ADDRESS_PURPOSE_HOME_ADDRESS"
+              ],
+              "addressLine1": "Baker Street 23",
+              "addressLine2": "Apartment 14",
+              "city": "Warsaw",
+              "stateProvinceCode": "TX",
+              "postalCode": "32-100",
+              "countryCode": "PL",
+              "postOfficeBoxCode": "PO Box"
+            },
+            "tokenizedCardId": "5123P10JZCC02346",
+            "securityCode": "123",
+            "cardVendorCode": "CA",
+            "expirationDate": "1229"
+          }
+        }
+      }
+    }
+  ],
+  "passengers": [
+    {
+      "id": "PAX1",
+      "passengerTypeCode": "ADT",
+      "person": {
+        "title": "Mrs",
+        "givenName": "Janet",
+        "middleName": "Juliet",
+        "surname": "Doe",
+        "dateOfBirth": {
+          "year": 1988,
+          "month": 4,
+          "day": 3
+        },
+        "gender": "GENDER_FEMALE",
+        "emailAddresses": [
+          {
+            "label": "EmailAddress",
+            "purposeCodes": [
+              "EMAIL_PURPOSE_GENERAL"
+            ],
+            "email": "abc@google.com"
+          }
+        ],
+        "phoneNumbers": [
+          {
+            "label": "HomePhone",
+            "purposeCodes": [
+              "PHONE_PURPOSE_HOME"
+            ],
+            "structured": {
+              "countryCallingCode": "1",
+              "areaCode": "907",
+              "localNumber": "123456789",
+              "extension": "012"
+            }
+          }
+        ],
+        "addresses": [
+          {
+            "label": "homePostalAddress",
+            "purposeCodes": [
+              "ADDRESS_PURPOSE_HOME_ADDRESS"
+            ],
+            "addressLine1": "Baker Street 23/14",
+            "city": "Warsaw",
+            "postalCode": "32-100",
+            "countryCode": "PL"
+          },
+          {
+            "label": "destinationPostalAddress",
+            "purposeCodes": [
+              "ADDRESS_PURPOSE_DESTINATION_ADDRESS"
+            ],
+            "addressLine1": "12, Main road",
+            "addressLine2": "apt 123",
+            "city": "New York",
+            "stateProvinceCode": "NJ",
+            "postalCode": "111-1234",
+            "countryCode": "US"
+          }
+        ]
+      },
+      "identityDocuments": [],
+      "isPrimaryPassenger": true,
+      "preferredCommunicationMethod": "PREFERRED_COMMUNICATION_METHOD_SMS"
+    }
+  ]
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 05:55:32][0m [36mcreateordertest.spec.ts:178[0m : [30mPaxtype:[0m [38;5;141m1A[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 05:55:33][0m [36mshop-json-object.ts:86[0m : [30mpassenger object is : [object Object][0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 05:55:33][0m [36mshop-json-object.ts:61[0m : [30mshop payload request is : [0m [38;5;141m{"request":{"origin_destinations_criteria":[{"origin_departure_criteria":{"date":{"month":9,"year":2025,"day":10},"airportCode":"SYD"},"destination_arrival_criteria":{"airportCode":"BNE"}}],"passengers":[{"passenger_type_code":"ADT","id":"PAX1"}],"requestType":"ADVCAL30","offer_criteria":{"program":{"programAccountIds":[]}},"currency":"EUR"},"sender":{"enabled_system":{"name":"POS"},"marketing_carrier":{"airline_designator_code":"VA"}},"point_of_sale":{"country":{"code":"CA"},"city":{"code":"ORD"},"channel":"STANDARD"}}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 05:55:37][0m [36mcreateordertest.spec.ts:199[0m : [30mPax type map:[0m [38;5;141m{
+  "PAX1": "ADT"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 05:55:37][0m [36mprice-json-object.ts:17[0m : [30mpax id offer items map[0m [38;5;141m{
+  "PAX1": "mfaz6mxng7_59_0",
+  "OfferId": "mfaz6mxng7_59"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 05:55:37][0m [36mprice-json-object.ts:39[0m : [30mprice payload request is : [0m [38;5;141m{"point_of_sale":{"channel":"STANDARD","country":{"code":"AU"},"city":{"code":"SYD"}},"sender":{"enabled_system":{},"marketing_carrier":{"airline_designator_code":"VA"}},"request":{"selected_offers":[{"id":"mfaz6mxng7_59","selected_offer_items":[{"id":"mfaz6mxng7_59_0","passenger_ids":["PAX1"],"selected_fares":[]}]}],"override_currency":"AUD","response_parameters":{"disable_availability_check":false,"disable_tax_calculation":false,"booking_category":"ALL"}},"diagnostics":{}}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 05:55:43][0m [36mprice-api-request.ts:100[0m : [30mPassenger details map: [0m [38;5;141m{
+  "PAX1": {
+    "offerItemId": "mfazeh57g7-0",
+    "price": "534.00",
+    "passengerJourneyIds": "JOURNEY_1_1757397339398"
+  }
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 05:55:43][0m [36mcreate-order-json-object.ts:141[0m : [30mCreate order payload:[0m [38;5;141m{
+  "point_of_sale": {
+    "channel": "STANDARD",
+    "city": {
+      "name": "New York",
+      "code": "NY"
+    },
+    "country": {
+      "name": "United States",
+      "code": "US"
+    },
+    "ip_address": "127.1.1.1"
+  },
+  "acceptOffers": [
+    {
+      "offerId": "mfazeh57g7",
+      "offerItems": [
+        {
+          "offerItemId": "mfazeh57g7-0"
+        }
+      ]
+    }
+  ],
+  "paymentFunctions": [
+    {
+      "offerAssociations": [
+        {
+          "offerId": "mfazeh57g7",
+          "offerItemIds": [
+            [
+              "mfazeh57g7-0"
+            ]
+          ]
+        }
+      ],
+      "paymentProcessingSummary": {
+        "paymentMethod": "PAYMENT_METHOD_PAYMENT_CARD",
+        "typeCodeIata": "CC",
+        "amount": {
+          "currency": "EUR",
+          "amount": "534.00"
+        },
+        "payerInfo": {
+          "title": "Mr.",
+          "givenName": "John",
+          "surname": "Doe",
+          "dateOfBirth": {
+            "year": 1989,
+            "month": 1,
+            "day": 11
+          },
+          "gender": "GENDER_MALE",
+          "emailAddresses": [
+            {
+              "label": "EmailAddress",
+              "purposeCodes": [
+                "EMAIL_PURPOSE_GENERAL"
+              ],
+              "email": "john.smith@example.com"
+            }
+          ],
+          "phoneNumbers": [
+            {
+              "label": "HomePhone",
+              "purposeCodes": [
+                "PHONE_PURPOSE_HOME"
+              ],
+              "structured": {
+                "countryCallingCode": "1",
+                "areaCode": "001",
+                "localNumber": "1234567",
+                "extension": "1234"
+              }
+            }
+          ],
+          "addresses": [
+            {
+              "label": "homePostalAddress",
+              "purposeCodes": [
+                "ADDRESS_PURPOSE_HOME_ADDRESS"
+              ],
+              "addressLine1": "Baker Street 23/14",
+              "city": "Warsaw",
+              "postalCode": "32-100",
+              "countryCode": "PL"
+            },
+            {
+              "label": "destinationPostalAddress",
+              "purposeCodes": [
+                "ADDRESS_PURPOSE_DESTINATION_ADDRESS"
+              ],
+              "addressLine1": "12, Main road",
+              "addressLine2": "apt 123",
+              "city": "New York",
+              "stateProvinceCode": "NJ",
+              "postalCode": "111-1234",
+              "countryCode": "US"
+            }
+          ]
+        },
+        "paymentMethodDetails": {
+          "paymentCard": {
+            "cardHolderName": {
+              "fullName": "John Doe"
+            },
+            "billingAddress": {
+              "label": "homePostalAddress",
+              "purposeCodes": [
+                "ADDRESS_PURPOSE_HOME_ADDRESS"
+              ],
+              "addressLine1": "Baker Street 23",
+              "addressLine2": "Apartment 14",
+              "city": "Warsaw",
+              "stateProvinceCode": "TX",
+              "postalCode": "32-100",
+              "countryCode": "PL",
+              "postOfficeBoxCode": "PO Box"
+            },
+            "tokenizedCardId": "5123P10JZCC02346",
+            "securityCode": "123",
+            "cardVendorCode": "CA",
+            "expirationDate": "1229"
+          }
+        }
+      }
+    }
+  ],
+  "passengers": [
+    {
+      "id": "PAX1",
+      "passengerTypeCode": "ADT",
+      "person": {
+        "title": "Mrs",
+        "givenName": "Janet",
+        "middleName": "Juliet",
+        "surname": "Doe",
+        "dateOfBirth": {
+          "year": 1988,
+          "month": 4,
+          "day": 3
+        },
+        "gender": "GENDER_FEMALE",
+        "emailAddresses": [
+          {
+            "label": "EmailAddress",
+            "purposeCodes": [
+              "EMAIL_PURPOSE_GENERAL"
+            ],
+            "email": "abc@google.com"
+          }
+        ],
+        "phoneNumbers": [
+          {
+            "label": "HomePhone",
+            "purposeCodes": [
+              "PHONE_PURPOSE_HOME"
+            ],
+            "structured": {
+              "countryCallingCode": "1",
+              "areaCode": "907",
+              "localNumber": "123456789",
+              "extension": "012"
+            }
+          }
+        ],
+        "addresses": [
+          {
+            "label": "homePostalAddress",
+            "purposeCodes": [
+              "ADDRESS_PURPOSE_HOME_ADDRESS"
+            ],
+            "addressLine1": "Baker Street 23/14",
+            "city": "Warsaw",
+            "postalCode": "32-100",
+            "countryCode": "PL"
+          },
+          {
+            "label": "destinationPostalAddress",
+            "purposeCodes": [
+              "ADDRESS_PURPOSE_DESTINATION_ADDRESS"
+            ],
+            "addressLine1": "12, Main road",
+            "addressLine2": "apt 123",
+            "city": "New York",
+            "stateProvinceCode": "NJ",
+            "postalCode": "111-1234",
+            "countryCode": "US"
+          }
+        ]
+      },
+      "identityDocuments": [],
+      "isPrimaryPassenger": true,
+      "preferredCommunicationMethod": "PREFERRED_COMMUNICATION_METHOD_SMS"
+    }
+  ]
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 06:01:24][0m [36mcreateordertest.spec.ts:178[0m : [30mPaxtype:[0m [38;5;141m1A[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 06:01:26][0m [36mshop-json-object.ts:86[0m : [30mpassenger object is : [object Object][0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 06:01:26][0m [36mshop-json-object.ts:61[0m : [30mshop payload request is : [0m [38;5;141m{"request":{"origin_destinations_criteria":[{"origin_departure_criteria":{"date":{"month":9,"year":2025,"day":10},"airportCode":"SYD"},"destination_arrival_criteria":{"airportCode":"BNE"}}],"passengers":[{"passenger_type_code":"ADT","id":"PAX1"}],"requestType":"ADVCAL30","offer_criteria":{"program":{"programAccountIds":[]}},"currency":"EUR"},"sender":{"enabled_system":{"name":"POS"},"marketing_carrier":{"airline_designator_code":"VA"}},"point_of_sale":{"country":{"code":"CA"},"city":{"code":"ORD"},"channel":"STANDARD"}}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 06:01:29][0m [36mcreateordertest.spec.ts:199[0m : [30mPax type map:[0m [38;5;141m{
+  "PAX1": "ADT"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 06:01:29][0m [36mprice-json-object.ts:17[0m : [30mpax id offer items map[0m [38;5;141m{
+  "PAX1": "mfaz6mxngf_59_0",
+  "OfferId": "mfaz6mxngf_59"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 06:01:29][0m [36mprice-json-object.ts:39[0m : [30mprice payload request is : [0m [38;5;141m{"point_of_sale":{"channel":"STANDARD","country":{"code":"AU"},"city":{"code":"SYD"}},"sender":{"enabled_system":{},"marketing_carrier":{"airline_designator_code":"VA"}},"request":{"selected_offers":[{"id":"mfaz6mxngf_59","selected_offer_items":[{"id":"mfaz6mxngf_59_0","passenger_ids":["PAX1"],"selected_fares":[]}]}],"override_currency":"AUD","response_parameters":{"disable_availability_check":false,"disable_tax_calculation":false,"booking_category":"ALL"}},"diagnostics":{}}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 06:01:30][0m [36mprice-api-request.ts:100[0m : [30mPassenger details map: [0m [38;5;141m{
+  "PAX1": {
+    "offerItemId": "mfazeh57gh-0",
+    "price": "534.00",
+    "passengerJourneyIds": "JOURNEY_1_1757397691522"
+  }
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 07:25:35][0m [36mcreateordertest.spec.ts:178[0m : [30mPaxtype:[0m [38;5;141m1A[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 07:25:36][0m [36mshop-json-object.ts:86[0m : [30mpassenger object is : [object Object][0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 07:25:36][0m [36mshop-json-object.ts:61[0m : [30mshop payload request is : [0m [38;5;141m{"request":{"origin_destinations_criteria":[{"origin_departure_criteria":{"date":{"month":9,"year":2025,"day":10},"airportCode":"SYD"},"destination_arrival_criteria":{"airportCode":"BNE"}}],"passengers":[{"passenger_type_code":"ADT","id":"PAX1"}],"requestType":"ADVCAL30","offer_criteria":{"program":{"programAccountIds":[]}},"currency":"EUR"},"sender":{"enabled_system":{"name":"POS"},"marketing_carrier":{"airline_designator_code":"VA"}},"point_of_sale":{"country":{"code":"CA"},"city":{"code":"ORD"},"channel":"STANDARD"}}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 07:25:40][0m [36mcreateordertest.spec.ts:199[0m : [30mPax type map:[0m [38;5;141m{
+  "PAX1": "ADT"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 07:25:40][0m [36mprice-json-object.ts:17[0m : [30mpax id offer items map[0m [38;5;141m{
+  "PAX1": "mfazeh57i2_63_0",
+  "OfferId": "mfazeh57i2_63"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 07:25:40][0m [36mprice-json-object.ts:39[0m : [30mprice payload request is : [0m [38;5;141m{"point_of_sale":{"channel":"STANDARD","country":{"code":"AU"},"city":{"code":"SYD"}},"sender":{"enabled_system":{},"marketing_carrier":{"airline_designator_code":"VA"}},"request":{"selected_offers":[{"id":"mfazeh57i2_63","selected_offer_items":[{"id":"mfazeh57i2_63_0","passenger_ids":["PAX1"],"selected_fares":[]}]}],"override_currency":"AUD","response_parameters":{"disable_availability_check":false,"disable_tax_calculation":false,"booking_category":"ALL"}},"diagnostics":{}}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 07:25:41][0m [36mprice-api-request.ts:100[0m : [30mPassenger details map: [0m [38;5;141m{
+  "PAX1": {
+    "offerItemId": "mfaz6mxni9-0",
+    "price": "534.00",
+    "passengerJourneyIds": "JOURNEY_1_1757402742231"
+  }
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 07:30:11][0m [36mcreateordertest.spec.ts:178[0m : [30mPaxtype:[0m [38;5;141m1A[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 07:30:13][0m [36mshop-json-object.ts:86[0m : [30mpassenger object is : [object Object][0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 07:30:13][0m [36mshop-json-object.ts:61[0m : [30mshop payload request is : [0m [38;5;141m{"request":{"origin_destinations_criteria":[{"origin_departure_criteria":{"date":{"month":9,"year":2025,"day":10},"airportCode":"SYD"},"destination_arrival_criteria":{"airportCode":"BNE"}}],"passengers":[{"passenger_type_code":"ADT","id":"PAX1"}],"requestType":"ADVCAL30","offer_criteria":{"program":{"programAccountIds":[]}},"currency":"EUR"},"sender":{"enabled_system":{"name":"POS"},"marketing_carrier":{"airline_designator_code":"VA"}},"point_of_sale":{"country":{"code":"CA"},"city":{"code":"ORD"},"channel":"STANDARD"}}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 07:30:16][0m [36mcreateordertest.spec.ts:199[0m : [30mPax type map:[0m [38;5;141m{
+  "PAX1": "ADT"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 07:30:16][0m [36mprice-json-object.ts:17[0m : [30mpax id offer items map[0m [38;5;141m{
+  "PAX1": "mfazeh57i5_63_0",
+  "OfferId": "mfazeh57i5_63"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 07:30:16][0m [36mprice-json-object.ts:39[0m : [30mprice payload request is : [0m [38;5;141m{"point_of_sale":{"channel":"STANDARD","country":{"code":"AU"},"city":{"code":"SYD"}},"sender":{"enabled_system":{},"marketing_carrier":{"airline_designator_code":"VA"}},"request":{"selected_offers":[{"id":"mfazeh57i5_63","selected_offer_items":[{"id":"mfazeh57i5_63_0","passenger_ids":["PAX1"],"selected_fares":[]}]}],"override_currency":"AUD","response_parameters":{"disable_availability_check":false,"disable_tax_calculation":false,"booking_category":"ALL"}},"diagnostics":{}}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 07:30:18][0m [36mprice-api-request.ts:100[0m : [30mPassenger details map: [0m [38;5;141m{
+  "PAX1": {
+    "offerItemId": "mfaz6mxnic-0",
+    "price": "534.00",
+    "passengerJourneyIds": "JOURNEY_1_1757403018915"
+  }
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 07:31:23][0m [36mcreateordertest.spec.ts:236[0m : [30mCreate Order API Response:[0m [38;5;141m{
+  "order": {
+    "id": "VA795CP8SANNE",
+    "orderItems": [
+      {
+        "id": "1",
+        "services": [
+          {
+            "id": "1",
+            "status": "SERVICE_STATUS_CONFIRMED",
+            "deliveryStatus": "SERVICE_DELIVERY_STATUS_CONFIRMED",
+            "passengerId": "PAX1",
+            "bookingRefIds": [
+              "BOOKING_REF_1"
+            ],
+            "airService": {
+              "segmentId": "SEGMENT_1_1757403018915"
+            }
+          },
+          {
+            "id": "2",
+            "status": "SERVICE_STATUS_CONFIRMED",
+            "deliveryStatus": "SERVICE_DELIVERY_STATUS_CONFIRMED",
+            "passengerId": "PAX1",
+            "bookingRefIds": [
+              "BOOKING_REF_1"
+            ],
+            "baggageAllowanceService": {
+              "segmentId": "SEGMENT_1_1757403018915",
+              "baggageAllowanceId": "BAGGAGE_ALLOWANCE_1_1757403018915"
+            }
+          },
+          {
+            "id": "3",
+            "status": "SERVICE_STATUS_CONFIRMED",
+            "deliveryStatus": "SERVICE_DELIVERY_STATUS_CONFIRMED",
+            "passengerId": "PAX1",
+            "bookingRefIds": [
+              "BOOKING_REF_1"
+            ],
+            "baggageAllowanceService": {
+              "segmentId": "SEGMENT_1_1757403018915",
+              "baggageAllowanceId": "BAGGAGE_ALLOWANCE_2_1757403018915"
+            }
+          }
+        ],
+        "fareDetails": [
+          {
+            "fareComponents": [
+              {
+                "cabinType": {
+                  "typeCode": "C"
+                },
+                "fareBasisCityPair": "SYDBNEVA",
+                "fareBasisCode": "CZBU0",
+                "fareRules": [
+                  {
+                    "remarks": [
+                      {
+                        "remark": "NON ENDORSABLE"
+                      }
+                    ]
+                  }
+                ],
+                "fareTypeCode": "BU",
+                "passengerSegmentIds": [
+                  "SEGMENT_1_1757403018915"
+                ],
+                "price": {
+                  "taxSummaries": [
+                    {
+                      "taxes": [
+                        {
+                          "amount": {
+                            "currency": "AUD",
+                            "amount": "3.23"
+                          },
+                          "country": {
+                            "code": "AU"
+                          },
+                          "description": "GOODS AND SERVICES TAX GST",
+                          "filedAmount": {
+                            "currency": "AUD",
+                            "amount": "3.23"
+                          },
+                          "code": "UO9"
+                        },
+                        {
+                          "amount": {
+                            "currency": "AUD",
+                            "amount": "7.18"
+                          },
+                          "country": {
+                            "code": "AU"
+                          },
+                          "description": "SAFETY AND SECURITY CHARGE  DEPARTURE",
+                          "filedAmount": {
+                            "currency": "AUD",
+                            "amount": "7.18"
+                          },
+                          "code": "WG"
+                        },
+                        {
+                          "amount": {
+                            "currency": "AUD",
+                            "amount": "45.32"
+                          },
+                          "country": {
+                            "code": "AU"
+                          },
+                          "description": "GOODS AND SERVICES TAX GST",
+                          "filedAmount": {
+                            "currency": "AUD",
+                            "amount": "45.32"
+                          },
+                          "code": "UO2"
+                        },
+                        {
+                          "amount": {
+                            "currency": "AUD",
+                            "amount": "14.33"
+                          },
+                          "country": {
+                            "code": "AU"
+                          },
+                          "description": "PASSENGER SERVICE CHARGE DOMESTIC ARRIVAL",
+                          "filedAmount": {
+                            "currency": "AUD",
+                            "amount": "14.33"
+                          },
+                          "code": "QR2"
+                        },
+                        {
+                          "amount": {
+                            "currency": "AUD",
+                            "amount": "10.74"
+                          },
+                          "country": {
+                            "code": "AU"
+                          },
+                          "description": "PASSENGER SERVICE CHARGE DOMESTIC DEPARTURE",
+                          "filedAmount": {
+                            "currency": "AUD",
+                            "amount": "10.74"
+                          },
+                          "code": "QR"
+                        }
+                      ]
+                    }
+                  ],
+                  "equivalentAmount": {
+                    "currency": "AUD",
+                    "amount": "453.20"
+                  }
+                },
+                "priceClassId": "PRICE_CLASS_0_1757403018915",
+                "privateFareIndicator": true,
+                "governingCarrierDesignatorCode": "VA",
+                "fareVctr": {
+                  "vendorCode": "ATP",
+                  "carrierCode": "VA",
+                  "tariffCode": "912",
+                  "rule": "3330"
+                },
+                "fareCalculationAmount": {
+                  "currency": "AUD",
+                  "amount": "453.20"
+                },
+                "offerAttributes": [
+                  {
+                    "name": "couponValidity",
+                    "attributes": {
+                      "values": [
+                        {
+                          "name": "segmentId",
+                          "string": "SEGMENT_1_1757403018915"
+                        },
+                        {
+                          "name": "couponValidityAfterDateInfo",
+                          "string": "2026-09-10"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            ],
+            "passengerRefIds": [
+              "PAX1"
+            ],
+            "price": {
+              "baseAmount": {
+                "currency": "AUD",
+                "amount": "453.20"
+              },
+              "totalAmount": {
+                "currency": "AUD",
+                "amount": "534.00"
+              },
+              "taxSummaries": [
+                {
+                  "taxes": [
+                    {
+                      "amount": {
+                        "currency": "AUD",
+                        "amount": "7.18"
+                      },
+                      "country": {
+                        "code": "AU"
+                      },
+                      "description": "SAFETY AND SECURITY CHARGE  DEPARTURE",
+                      "filedAmount": {
+                        "currency": "AUD",
+                        "amount": "7.18"
+                      },
+                      "code": "WG"
+                    },
+                    {
+                      "amount": {
+                        "currency": "AUD",
+                        "amount": "3.23"
+                      },
+                      "country": {
+                        "code": "AU"
+                      },
+                      "description": "GOODS AND SERVICES TAX GST",
+                      "filedAmount": {
+                        "currency": "AUD",
+                        "amount": "3.23"
+                      },
+                      "code": "UO9"
+                    },
+                    {
+                      "amount": {
+                        "currency": "AUD",
+                        "amount": "45.32"
+                      },
+                      "country": {
+                        "code": "AU"
+                      },
+                      "description": "GOODS AND SERVICES TAX GST",
+                      "filedAmount": {
+                        "currency": "AUD",
+                        "amount": "45.32"
+                      },
+                      "code": "UO2"
+                    },
+                    {
+                      "amount": {
+                        "currency": "AUD",
+                        "amount": "14.33"
+                      },
+                      "country": {
+                        "code": "AU"
+                      },
+                      "description": "PASSENGER SERVICE CHARGE DOMESTIC ARRIVAL",
+                      "filedAmount": {
+                        "currency": "AUD",
+                        "amount": "14.33"
+                      },
+                      "code": "QR2"
+                    },
+                    {
+                      "amount": {
+                        "currency": "AUD",
+                        "amount": "10.74"
+                      },
+                      "country": {
+                        "code": "AU"
+                      },
+                      "description": "PASSENGER SERVICE CHARGE DOMESTIC DEPARTURE",
+                      "filedAmount": {
+                        "currency": "AUD",
+                        "amount": "10.74"
+                      },
+                      "code": "QR"
+                    }
+                  ],
+                  "totalTaxAmount": {
+                    "currency": "AUD",
+                    "amount": "80.80"
+                  }
+                }
+              ],
+              "equivalentAmount": {
+                "currency": "AUD",
+                "amount": "453.20"
+              }
+            },
+            "fareCalcLine": "SYD VA BNE453.20AUD453.20END",
+            "fareCalcModeInd": 4
+          }
+        ],
+        "price": {
+          "baseAmount": {
+            "currency": "AUD",
+            "amount": "453.20"
+          },
+          "totalAmount": {
+            "currency": "AUD",
+            "amount": "534.00"
+          },
+          "taxSummaries": [
+            {
+              "taxes": [
+                {
+                  "amount": {
+                    "currency": "AUD",
+                    "amount": "7.18"
+                  },
+                  "country": {
+                    "code": "AU"
+                  },
+                  "description": "SAFETY AND SECURITY CHARGE  DEPARTURE",
+                  "filedAmount": {
+                    "currency": "AUD",
+                    "amount": "7.18"
+                  },
+                  "code": "WG"
+                },
+                {
+                  "amount": {
+                    "currency": "AUD",
+                    "amount": "3.23"
+                  },
+                  "country": {
+                    "code": "AU"
+                  },
+                  "description": "GOODS AND SERVICES TAX GST",
+                  "filedAmount": {
+                    "currency": "AUD",
+                    "amount": "3.23"
+                  },
+                  "code": "UO9"
+                },
+                {
+                  "amount": {
+                    "currency": "AUD",
+                    "amount": "45.32"
+                  },
+                  "country": {
+                    "code": "AU"
+                  },
+                  "description": "GOODS AND SERVICES TAX GST",
+                  "filedAmount": {
+                    "currency": "AUD",
+                    "amount": "45.32"
+                  },
+                  "code": "UO2"
+                },
+                {
+                  "amount": {
+                    "currency": "AUD",
+                    "amount": "14.33"
+                  },
+                  "country": {
+                    "code": "AU"
+                  },
+                  "description": "PASSENGER SERVICE CHARGE DOMESTIC ARRIVAL",
+                  "filedAmount": {
+                    "currency": "AUD",
+                    "amount": "14.33"
+                  },
+                  "code": "QR2"
+                },
+                {
+                  "amount": {
+                    "currency": "AUD",
+                    "amount": "10.74"
+                  },
+                  "country": {
+                    "code": "AU"
+                  },
+                  "description": "PASSENGER SERVICE CHARGE DOMESTIC DEPARTURE",
+                  "filedAmount": {
+                    "currency": "AUD",
+                    "amount": "10.74"
+                  },
+                  "code": "QR"
+                }
+              ],
+              "totalTaxAmount": {
+                "currency": "AUD",
+                "amount": "80.80"
+              }
+            }
+          ],
+          "equivalentAmount": {
+            "currency": "AUD",
+            "amount": "453.20"
+          }
+        },
+        "paymentTimeLimit": {
+          "dateTime": {
+            "date": {
+              "year": 2025,
+              "month": 9,
+              "day": 10
+            },
+            "time": {
+              "hours": 7,
+              "minutes": 30,
+              "seconds": 54,
+              "nanos": 526249064
+            }
+          }
+        },
+        "orderItemStatus": "ORDER_ITEM_STATUS_ACTIVE",
+        "priceClassId": "PRICE_CLASS_0_1757403018915",
+        "offerItemId": "mfaz6mxnic-0",
+        "cancelRestrictions": [
+          {
+            "allowedModification": true,
+            "fee": {
+              "amount": {
+                "currency": "AUD",
+                "amount": "0.00"
+              }
+            },
+            "journeyStageCode": "PRIOR_TO_DEPARTURE"
+          },
+          {
+            "allowedModification": false,
+            "journeyStageCode": "AFTER_DEPARTURE"
+          },
+          {
+            "refund": {
+              "nonRefundableAmount": {
+                "currency": "AUD",
+                "amount": "453.20"
+              }
+            }
+          }
+        ],
+        "createAuditEvent": {
+          "timestamp": "2025-09-09T07:30:54.511409094Z",
+          "channel": "STANDARD",
+          "user": {
+            "identityAccountId": "OKTA:F:0oadoivvafrhmDv0n1d7",
+            "partnerProfileId": "c67b0126-76f7-45e0-8399-89a72e0ed7b2",
+            "identityDisplayName": "postman-oac-aud-agent"
+          }
+        },
+        "changeRestrictions": [
+          {
+            "allowedModification": true,
+            "fee": {
+              "amount": {
+                "currency": "AUD",
+                "amount": "0.00"
+              }
+            },
+            "journeyStageCode": "PRIOR_TO_DEPARTURE"
+          },
+          {
+            "allowedModification": false,
+            "journeyStageCode": "AFTER_DEPARTURE"
+          },
+          {
+            "refund": {
+              "nonRefundableAmount": {
+                "currency": "AUD",
+                "amount": "453.20"
+              }
+            }
+          }
+        ],
+        "baggageDisclosureInd": "6",
+        "lastUpdateAuditEvent": {
+          "timestamp": "2025-09-09T07:30:54.511409094Z",
+          "channel": "STANDARD",
+          "user": {
+            "identityAccountId": "OKTA:F:0oadoivvafrhmDv0n1d7",
+            "partnerProfileId": "c67b0126-76f7-45e0-8399-89a72e0ed7b2",
+            "identityDisplayName": "postman-oac-aud-agent"
+          }
+        },
+        "priceGuaranteeTimeLimit": {
+          "date": {
+            "year": 2025,
+            "month": 9,
+            "day": 9
+          },
+          "time": {
+            "hours": 13,
+            "minutes": 59,
+            "seconds": 0,
+            "nanos": 0
+          },
+          "utcOffsetMinutes": 0
+        },
+        "priceGuaranteeTimeLimitSource": "PRICE_GUARANTEE_TIME_LIMIT_SOURCE_OFFER"
+      }
+    ],
+    "passengers": [
+      {
+        "id": "PAX1",
+        "passengerTypeCode": "ADT",
+        "person": {
+          "title": "Mrs",
+          "givenName": "Janet",
+          "middleName": "Juliet",
+          "surname": "Doe",
+          "dateOfBirth": {
+            "year": 1988,
+            "month": 4,
+            "day": 3
+          },
+          "gender": "GENDER_FEMALE",
+          "emailAddresses": [
+            {
+              "label": "EmailAddress",
+              "email": "abc@google.com",
+              "id": "PAX1_EmailAddress_1",
+              "purposeCodes": [
+                "EMAIL_PURPOSE_GENERAL"
+              ]
+            }
+          ],
+          "phoneNumbers": [
+            {
+              "label": "HomePhone",
+              "structured": {
+                "countryCallingCode": "1",
+                "areaCode": "907",
+                "localNumber": "123456789",
+                "extension": "012"
+              },
+              "id": "PAX1_PhoneNumber_1",
+              "purposeCodes": [
+                "PHONE_PURPOSE_HOME"
+              ]
+            }
+          ],
+          "addresses": [
+            {
+              "label": "homePostalAddress",
+              "addressLine1": "Baker Street 23/14",
+              "city": "Warsaw",
+              "postalCode": "32-100",
+              "countryCode": "PL",
+              "id": "PAX1_Address_1",
+              "purposeCodes": [
+                "ADDRESS_PURPOSE_HOME_ADDRESS"
+              ]
+            },
+            {
+              "label": "destinationPostalAddress",
+              "addressLine1": "12, Main road",
+              "addressLine2": "apt 123",
+              "city": "New York",
+              "stateProvinceCode": "NJ",
+              "postalCode": "111-1234",
+              "countryCode": "US",
+              "id": "PAX1_Address_2",
+              "purposeCodes": [
+                "ADDRESS_PURPOSE_DESTINATION_ADDRESS"
+              ]
+            }
+          ]
+        },
+        "isPrimaryPassenger": true,
+        "preferredCommunicationMethod": "PREFERRED_COMMUNICATION_METHOD_SMS"
+      }
+    ],
+    "totalPrice": {
+      "baseAmount": {
+        "currency": "AUD",
+        "amount": "453.20"
+      },
+      "totalAmount": {
+        "currency": "AUD",
+        "amount": "534.00"
+      },
+      "discount": {},
+      "taxSummaries": [
+        {
+          "totalTaxAmount": {
+            "currency": "AUD",
+            "amount": "80.80"
+          }
+        }
+      ],
+      "equivalentAmount": {
+        "currency": "AUD",
+        "amount": "453.20"
+      }
+    },
+    "paymentInfo": {
+      "paymentFunctions": [
+        {
+          "id": "1",
+          "paymentProcessingSummary": {
+            "status": "PAYMENT_PROCESSING_STATUS_FAILURE",
+            "paymentMethod": "PAYMENT_METHOD_PAYMENT_CARD",
+            "typeCodeIata": "CC",
+            "amount": {
+              "currency": "AUD",
+              "amount": "534.00"
+            },
+            "transactionId": "01711757403057113253",
+            "transactionTimestamp": "2025-09-09T07:30:57.285Z",
+            "payerInfo": {
+              "title": "Mr.",
+              "givenName": "John",
+              "surname": "Doe",
+              "dateOfBirth": {
+                "year": 1989,
+                "month": 1,
+                "day": 11
+              },
+              "gender": "GENDER_MALE",
+              "emailAddresses": [
+                {
+                  "label": "EmailAddress",
+                  "email": "john.smith@example.com",
+                  "purposeCodes": [
+                    "EMAIL_PURPOSE_GENERAL"
+                  ]
+                }
+              ],
+              "phoneNumbers": [
+                {
+                  "label": "HomePhone",
+                  "structured": {
+                    "countryCallingCode": "1",
+                    "areaCode": "001",
+                    "localNumber": "1234567",
+                    "extension": "1234"
+                  },
+                  "purposeCodes": [
+                    "PHONE_PURPOSE_HOME"
+                  ]
+                }
+              ],
+              "addresses": [
+                {
+                  "label": "homePostalAddress",
+                  "addressLine1": "Baker Street 23/14",
+                  "city": "Warsaw",
+                  "postalCode": "32-100",
+                  "countryCode": "PL",
+                  "purposeCodes": [
+                    "ADDRESS_PURPOSE_HOME_ADDRESS"
+                  ]
+                },
+                {
+                  "label": "destinationPostalAddress",
+                  "addressLine1": "12, Main road",
+                  "addressLine2": "apt 123",
+                  "city": "New York",
+                  "stateProvinceCode": "NJ",
+                  "postalCode": "111-1234",
+                  "countryCode": "US",
+                  "purposeCodes": [
+                    "ADDRESS_PURPOSE_DESTINATION_ADDRESS"
+                  ]
+                }
+              ]
+            },
+            "paymentMethodDetails": {
+              "paymentCard": {
+                "cardHolderName": {
+                  "fullName": "John Doe"
+                },
+                "billingAddress": {
+                  "label": "homePostalAddress",
+                  "addressLine1": "Baker Street 23",
+                  "addressLine2": "Apartment 14",
+                  "city": "Warsaw",
+                  "stateProvinceCode": "TX",
+                  "postalCode": "32-100",
+                  "countryCode": "PL",
+                  "postOfficeBoxCode": "PO Box",
+                  "purposeCodes": [
+                    "ADDRESS_PURPOSE_HOME_ADDRESS"
+                  ]
+                },
+                "maskedCardId": "xxxxxxxxxxxx2346",
+                "cardVendorCode": "CA",
+                "expirationDate": "1229",
+                "paymentRemarks": [
+                  {
+                    "text": "AUTH-WPAY/CA2346/09SEP/01711757403057113253"
+                  },
+                  {
+                    "text": "  AUTH-SYS/INVALID CARD/05/AUD534.00"
+                  }
+                ]
+              }
+            },
+            "paymentOperationType": "PAYMENT_OPERATION_TYPE_PAYMENT"
+          },
+          "orderItemIds": [
+            "1"
+          ],
+          "offerAssociations": [
+            {
+              "offerId": "mfaz6mxnic",
+              "offerItemIds": [
+                "mfaz6mxnic-0"
+              ]
+            }
+          ],
+          "accountingDetails": {
+            "cityCode": "ABG",
+            "accountingCode": "WN",
+            "stationNumber": "9980101",
+            "ticketingAirlineCode": "VA",
+            "countryCode": "AU"
+          },
+          "lastUpdateAuditEvent": {
+            "timestamp": "2025-09-09T07:30:54.511409094Z",
+            "channel": "STANDARD",
+            "user": {
+              "identityAccountId": "OKTA:F:0oadoivvafrhmDv0n1d7",
+              "partnerProfileId": "c67b0126-76f7-45e0-8399-89a72e0ed7b2",
+              "identityDisplayName": "postman-oac-aud-agent"
+            }
+          }
+        }
+      ],
+      "totalBalance": {
+        "differentialTypeCode": "DIFFERENTIAL_TYPE_CODE_ADD_COL",
+        "amount": {
+          "currency": "AUD",
+          "amount": "534.00"
+        }
+      }
+    },
+    "createAuditEvent": {
+      "timestamp": "2025-09-09T07:30:54.511409094Z",
+      "channel": "STANDARD",
+      "user": {
+        "identityAccountId": "OKTA:F:0oadoivvafrhmDv0n1d7",
+        "partnerProfileId": "c67b0126-76f7-45e0-8399-89a72e0ed7b2",
+        "identityDisplayName": "postman-oac-aud-agent"
+      }
+    },
+    "lastUpdateAuditEvent": {
+      "timestamp": "2025-09-09T07:30:54.511409094Z",
+      "channel": "STANDARD",
+      "user": {
+        "identityAccountId": "OKTA:F:0oadoivvafrhmDv0n1d7",
+        "partnerProfileId": "c67b0126-76f7-45e0-8399-89a72e0ed7b2",
+        "identityDisplayName": "postman-oac-aud-agent"
+      }
+    },
+    "orderStatus": "ORDER_STATUS_OPENED",
+    "orderVersionNumber": 1,
+    "orderVersions": [
+      {
+        "orderVersionNumber": 1,
+        "modificationTimestamp": "2025-09-09T07:30:54.511409094Z"
+      }
+    ],
+    "dataLists": {
+      "segments": [
+        {
+          "arrival": {
+            "aircraftScheduled": {
+              "date": {
+                "year": 2025,
+                "month": 9,
+                "day": 10
+              },
+              "time": {
+                "hours": 18,
+                "minutes": 30,
+                "seconds": 0,
+                "nanos": 0
+              },
+              "utcOffsetMinutes": 600
+            },
+            "code": "BNE",
+            "utcOffset": 10,
+            "terminal": "D"
+          },
+          "cabinType": {
+            "typeCode": "C",
+            "name": "BUSINESS"
+          },
+          "datedOperatingLegs": [
+            {
+              "arrival": {
+                "aircraftScheduled": {
+                  "date": {
+                    "year": 2025,
+                    "month": 9,
+                    "day": 10
+                  },
+                  "time": {
+                    "hours": 18,
+                    "minutes": 30,
+                    "seconds": 0,
+                    "nanos": 0
+                  },
+                  "utcOffsetMinutes": 600
+                },
+                "code": "BNE",
+                "utcOffset": 10,
+                "terminal": "D"
+              },
+              "carrierAircraftType": {
+                "code": "73H"
+              },
+              "legId": "1",
+              "departure": {
+                "aircraftScheduled": {
+                  "date": {
+                    "year": 2025,
+                    "month": 9,
+                    "day": 10
+                  },
+                  "time": {
+                    "hours": 17,
+                    "minutes": 0,
+                    "seconds": 0,
+                    "nanos": 0
+                  },
+                  "utcOffsetMinutes": 600
+                },
+                "code": "SYD",
+                "utcOffset": 10,
+                "terminal": "2"
+              }
+            }
+          ],
+          "departure": {
+            "aircraftScheduled": {
+              "date": {
+                "year": 2025,
+                "month": 9,
+                "day": 10
+              },
+              "time": {
+                "hours": 17,
+                "minutes": 0,
+                "seconds": 0,
+                "nanos": 0
+              },
+              "utcOffsetMinutes": 600
+            },
+            "code": "SYD",
+            "utcOffset": 10,
+            "terminal": "2"
+          },
+          "duration": {
+            "weeks": 0,
+            "days": 0,
+            "hours": 1,
+            "minutes": 30
+          },
+          "marketingCarrierInfo": {
+            "carrierDesignatorCode": "VA",
+            "marketingCarrierFlightNumber": "965",
+            "bookingClassCode": "C"
+          },
+          "operatingCarrierInfo": {
+            "carrierDesignatorCode": "VA",
+            "operatingCarrierFlightNumber": "965"
+          },
+          "id": "SEGMENT_1_1757403018915"
+        }
+      ],
+      "journeys": [
+        {
+          "duration": {
+            "weeks": 0,
+            "days": 0,
+            "hours": 1,
+            "minutes": 30
+          },
+          "id": "JOURNEY_1_1757403018915",
+          "passengerSegmentIds": [
+            "SEGMENT_1_1757403018915"
+          ]
+        }
+      ],
+      "priceClasses": [
+        {
+          "descriptions": [
+            {
+              "text": "DOM/VAA4/2 FCR LT STRUCTURE"
+            },
+            {
+              "text": "<font><p>Flight change more than 14 days to departure* - Included. 0AUD</p></font><font><p>Flight change less than 14 days to departure* - Included. 0AUD</p></font><font><p>Flight cancellations* - Included. 0AUD</p></font><font><p>Checked Baggage - 2 pieces included (32kg). Additional may be purchased.</p></font><font><p>Seat Selection prior to check-in - Included</p></font><font><p>Food and Drink - Included</p></font><font><p>Priority Checkin and Boarding - Included</p></font><font><p>Lounge access - Included</p></font><font><p>In-flight Entertainment - Included, refer to virginaustralia.com for details.</p></font><font><p>Velocity Points - Yes</p></font><font><p>Status Credits - Yes</p></font><font><p>Eligible Sectors - Yes</p></font><font><p>Upgrade with Points - No</p></font><font><p>Tiered Baggage - Yes</p></font>"
+            }
+          ],
+          "displayOrder": 1,
+          "name": "BUSINESS",
+          "id": "PRICE_CLASS_0_1757403018915",
+          "code": "BU"
+        }
+      ],
+      "originDestinations": [
+        {
+          "destinationCode": "BNE",
+          "originCode": "SYD",
+          "id": "OD_1_1757403018915",
+          "passengerJourneyIds": [
+            "JOURNEY_1_1757403018915"
+          ]
+        }
+      ],
+      "bookingRefs": [
+        {
+          "id": "BOOKING_REF_1",
+          "confirmationId": "SZMNLB",
+          "vendor": {
+            "code": "ssres",
+            "name": "Sabre Sonic PSS",
+            "type": "1",
+            "vendorContactInfo": {}
+          }
+        }
+      ],
+      "promotion": {},
+      "contributingOffers": [
+        {
+          "offerId": "mfaz6mxnic",
+          "offerModifier": {}
+        }
+      ],
+      "baggageDisclosures": [
+        {
+          "id": "BAGGAGE_DISCLOSURE_1_1757403018915",
+          "provisionType": "CHECKED_BAGGAGE_ALLOWANCE",
+          "typeCode": "DISCLOSURE_NOT_DOT",
+          "firstOccurrence": 1,
+          "lastOccurrence": 2,
+          "provisionCarrier": "VA",
+          "passengerRefIds": [
+            "PAX1"
+          ],
+          "passengerSegmentRefIds": [
+            "SEGMENT_1_1757403018915"
+          ],
+          "descriptions": [
+            "FREE BAGGAGE ALLOWANCE",
+            "DOM ISH AIRPORT BAG UP TO 32KG",
+            "UP TO 70 POUNDS/32 KILOGRAMS",
+            "UP TO 55 LINEAR INCHES/140 LINEAR CENTIMETERS"
+          ]
+        },
+        {
+          "id": "BAGGAGE_DISCLOSURE_2_1757403018915",
+          "provisionType": "CARRY_ON_BAGGAGE_ALLOWANCE",
+          "typeCode": "DISCLOSURE_NOT_DOT",
+          "firstOccurrence": 1,
+          "lastOccurrence": 3,
+          "provisionCarrier": "VA",
+          "passengerRefIds": [
+            "PAX1"
+          ],
+          "passengerSegmentRefIds": [
+            "SEGMENT_1_1757403018915"
+          ],
+          "descriptions": [
+            "CARRYON HAND BAGGAGE ALLOWANCE",
+            "CARRY7KG 15LB UPTO45LI 115LCM",
+            "CARRY ON HAND BAGGAGE",
+            "UP TO 15 POUNDS/7 KILOGRAMS",
+            "UP TO 45 LINEAR INCHES/115 LINEAR CENTIMETERS"
+          ]
+        }
+      ],
+      "baggageAllowances": [
+        {
+          "id": "BAGGAGE_ALLOWANCE_1_1757403018915",
+          "typeCode": "Checked",
+          "pieceAllowance": {
+            "totalQuantity": 2
+          },
+          "weightAllowances": [
+            {
+              "maximumWeightMeasure": 70,
+              "weightUnitOfMeasurement": "LBR"
+            },
+            {
+              "maximumWeightMeasure": 32,
+              "weightUnitOfMeasurement": "KGM"
+            }
+          ],
+          "descriptions": [
+            "FREE BAGGAGE ALLOWANCE",
+            "DOM ISH AIRPORT BAG UP TO 32KG",
+            "UP TO 70 POUNDS/32 KILOGRAMS",
+            "UP TO 55 LINEAR INCHES/140 LINEAR CENTIMETERS"
+          ],
+          "provisionCarrier": "VA",
+          "maximumDimensionAllowances": [
+            {
+              "linearMeasure": 55,
+              "unitCodeType": "INCH"
+            },
+            {
+              "linearMeasure": 140,
+              "unitCodeType": "CENTIMETER"
+            }
+          ]
+        },
+        {
+          "id": "BAGGAGE_ALLOWANCE_2_1757403018915",
+          "typeCode": "CarryOn",
+          "pieceAllowance": {
+            "totalQuantity": 2
+          },
+          "weightAllowances": [
+            {
+              "maximumWeightMeasure": 15,
+              "weightUnitOfMeasurement": "LBR"
+            },
+            {
+              "maximumWeightMeasure": 7,
+              "weightUnitOfMeasurement": "KGM"
+            }
+          ],
+          "descriptions": [
+            "CARRYON HAND BAGGAGE ALLOWANCE",
+            "CARRY7KG 15LB UPTO45LI 115LCM",
+            "CARRY ON HAND BAGGAGE",
+            "UP TO 15 POUNDS/7 KILOGRAMS",
+            "UP TO 45 LINEAR INCHES/115 LINEAR CENTIMETERS"
+          ],
+          "provisionCarrier": "VA",
+          "maximumDimensionAllowances": [
+            {
+              "linearMeasure": 45,
+              "unitCodeType": "INCH"
+            },
+            {
+              "linearMeasure": 115,
+              "unitCodeType": "CENTIMETER"
+            }
+          ]
+        }
+      ]
+    },
+    "externalReservationConfirmationId": "SZMNLB"
+  },
+  "warnings": [
+    {
+      "description": "Payment Wrapper service has returned an error: SEPG_RESULT_CODE_PLAUSIBILITY_ERR (BLOCKED CARD).",
+      "id": "4882a14e-9ea2-420c-b157-b1f7ad264347",
+      "timestamp": "2025-09-09T07:30:57.289436216Z",
+      "component": "COMPONENT_OMS",
+      "severity": "SEVERITY_WARNING",
+      "category": "WARNING_CATEGORY_TECHNICAL",
+      "omsDetails": {
+        "warningDetails": [
+          {
+            "paymentFailure": {
+              "reason": "REASON_PAYMENT_DECLINED",
+              "actionType": "ACTION_TYPE_PAYMENT",
+              "paymentFunctionId": "1",
+              "orderItemIds": [
+                "1"
+              ],
+              "paymentErrorDetails": "Payment processing error for order: VA795CP8SANNE"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 07:34:02][0m [36mcreateordertest.spec.ts:178[0m : [30mPaxtype:[0m [38;5;141m1A[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 07:34:04][0m [36mshop-json-object.ts:86[0m : [30mpassenger object is : [object Object][0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 07:34:04][0m [36mshop-json-object.ts:61[0m : [30mshop payload request is : [0m [38;5;141m{"request":{"origin_destinations_criteria":[{"origin_departure_criteria":{"date":{"month":9,"year":2025,"day":10},"airportCode":"SYD"},"destination_arrival_criteria":{"airportCode":"BNE"}}],"passengers":[{"passenger_type_code":"ADT","id":"PAX1"}],"requestType":"ADVCAL30","offer_criteria":{"program":{"programAccountIds":[]}},"currency":"EUR"},"sender":{"enabled_system":{"name":"POS"},"marketing_carrier":{"airline_designator_code":"VA"}},"point_of_sale":{"country":{"code":"CA"},"city":{"code":"ORD"},"channel":"STANDARD"}}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 07:34:07][0m [36mcreateordertest.spec.ts:199[0m : [30mPax type map:[0m [38;5;141m{
+  "PAX1": "ADT"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 07:34:07][0m [36mprice-json-object.ts:17[0m : [30mpax id offer items map[0m [38;5;141m{
+  "PAX1": "mfazeh57ia_63_0",
+  "OfferId": "mfazeh57ia_63"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 07:34:07][0m [36mprice-json-object.ts:39[0m : [30mprice payload request is : [0m [38;5;141m{"point_of_sale":{"channel":"STANDARD","country":{"code":"AU"},"city":{"code":"SYD"}},"sender":{"enabled_system":{},"marketing_carrier":{"airline_designator_code":"VA"}},"request":{"selected_offers":[{"id":"mfazeh57ia_63","selected_offer_items":[{"id":"mfazeh57ia_63_0","passenger_ids":["PAX1"],"selected_fares":[]}]}],"override_currency":"AUD","response_parameters":{"disable_availability_check":false,"disable_tax_calculation":false,"booking_category":"ALL"}},"diagnostics":{}}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 07:34:09][0m [36mprice-api-request.ts:100[0m : [30mPassenger details map: [0m [38;5;141m{
+  "PAX1": {
+    "offerItemId": "mfaz6mxnig-0",
+    "price": "534.00",
+    "passengerJourneyIds": "JOURNEY_1_1757403249865"
+  }
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 07:38:49][0m [36mshop-json-object.ts:86[0m : [30mpassenger object is : [object Object],[object Object],[object Object][0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 07:38:49][0m [36mshop-json-object.ts:61[0m : [30mshop payload request is : [0m [38;5;141m{"request":{"origin_destinations_criteria":[{"origin_departure_criteria":{"date":{"month":9,"year":2025,"day":10},"airportCode":"SYD"},"destination_arrival_criteria":{"airportCode":"BNE"}}],"passengers":[{"passenger_type_code":"ADT","id":"PAX1"},{"passenger_type_code":"ADT","id":"PAX2"},{"passenger_type_code":"CNN","id":"PAX3"}],"requestType":"ADVCAL30","offer_criteria":{"program":{"programAccountIds":[]}},"currency":"EUR"},"sender":{"enabled_system":{"name":"POS"},"marketing_carrier":{"airline_designator_code":"VA"}},"point_of_sale":{"country":{"code":"CA"},"city":{"code":"ORD"},"channel":"STANDARD"}}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 07:38:53][0m [36mcreateordertest.spec.ts:125[0m : [30mPax type map:[0m [38;5;141m{
+  "PAX1": "ADT",
+  "PAX2": "ADT",
+  "PAX3": "CNN"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 07:38:54][0m [36mcreateordertest.spec.ts:128[0m : [30mPax-Offer mapping:[0m [38;5;141m{
+  "PAX1": "mfazeh57ie_61_0",
+  "PAX2": "mfazeh57ie_61_1",
+  "PAX3": "mfazeh57ie_61_2",
+  "OfferId": "mfazeh57ie_61"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 07:38:54][0m [36mprice-json-object.ts:17[0m : [30mpax id offer items map[0m [38;5;141m{
+  "PAX1": "mfazeh57ie_61_0",
+  "PAX2": "mfazeh57ie_61_1",
+  "PAX3": "mfazeh57ie_61_2",
+  "OfferId": "mfazeh57ie_61"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 07:38:54][0m [36mprice-json-object.ts:39[0m : [30mprice payload request is : [0m [38;5;141m{"point_of_sale":{"channel":"STANDARD","country":{"code":"AU"},"city":{"code":"SYD"}},"sender":{"enabled_system":{},"marketing_carrier":{"airline_designator_code":"VA"}},"request":{"selected_offers":[{"id":"mfazeh57ie_61","selected_offer_items":[{"id":"mfazeh57ie_61_0","passenger_ids":["PAX1"],"selected_fares":[]},{"id":"mfazeh57ie_61_1","passenger_ids":["PAX2"],"selected_fares":[]},{"id":"mfazeh57ie_61_2","passenger_ids":["PAX3"],"selected_fares":[]}]}],"override_currency":"AUD","response_parameters":{"disable_availability_check":false,"disable_tax_calculation":false,"booking_category":"ALL"}},"diagnostics":{}}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 07:38:55][0m [36mprice-api-request.ts:100[0m : [30mPassenger details map: [0m [38;5;141m{
+  "PAX1": {
+    "offerItemId": "mfaz6mxnij-0",
+    "price": "534.00",
+    "passengerJourneyIds": "JOURNEY_1_1757403535979"
+  },
+  "PAX3": {
+    "offerItemId": "mfaz6mxnij-2",
+    "price": "534.00",
+    "passengerJourneyIds": "JOURNEY_1_1757403535979"
+  },
+  "PAX2": {
+    "offerItemId": "mfaz6mxnij-1",
+    "price": "534.00",
+    "passengerJourneyIds": "JOURNEY_1_1757403535979"
+  }
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 07:38:55][0m [36mcreate-order-json-object.ts:138[0m : [30mCreate order payload:[0m [38;5;141m{
+  "point_of_sale": {
+    "channel": "STANDARD",
+    "country": {
+      "code": "AU"
+    },
+    "city": {
+      "code": "SYD"
+    }
+  },
+  "acceptOffers": [
+    {
+      "offerId": "mfaz6mxnij",
+      "offerItems": [
+        {
+          "offerItemId": "mfaz6mxnij-0"
+        },
+        {
+          "offerItemId": "mfaz6mxnij-2"
+        },
+        {
+          "offerItemId": "mfaz6mxnij-1"
+        }
+      ]
+    }
+  ],
+  "paymentFunctions": [
+    {
+      "offerAssociations": [
+        {
+          "offerId": "mfaz6mxnij",
+          "offerItemIds": [
+            [
+              "mfaz6mxnij-0",
+              "mfaz6mxnij-2",
+              "mfaz6mxnij-1"
+            ]
+          ]
+        }
+      ],
+      "paymentProcessingSummary": {
+        "paymentMethod": "PAYMENT_METHOD_PAYMENT_CARD",
+        "typeCodeIata": "CC",
+        "amount": {
+          "currency": "AUD",
+          "amount": "1602.00"
+        },
+        "payerInfo": {
+          "title": "Mr.",
+          "givenName": "John",
+          "surname": "Doe",
+          "dateOfBirth": {
+            "year": 1989,
+            "month": 1,
+            "day": 11
+          },
+          "gender": "GENDER_MALE",
+          "emailAddresses": [
+            {
+              "label": "EmailAddress",
+              "purposeCodes": [
+                "EMAIL_PURPOSE_GENERAL"
+              ],
+              "email": "john.smith@example.com"
+            }
+          ],
+          "phoneNumbers": [
+            {
+              "label": "HomePhone",
+              "purposeCodes": [
+                "PHONE_PURPOSE_HOME"
+              ],
+              "structured": {
+                "countryCallingCode": "1",
+                "areaCode": "001",
+                "localNumber": "1234567",
+                "extension": "1234"
+              }
+            }
+          ],
+          "addresses": [
+            {
+              "label": "homePostalAddress",
+              "purposeCodes": [
+                "ADDRESS_PURPOSE_HOME_ADDRESS"
+              ],
+              "addressLine1": "Baker Street 23/14",
+              "city": "Warsaw",
+              "postalCode": "32-100",
+              "countryCode": "PL"
+            },
+            {
+              "label": "destinationPostalAddress",
+              "purposeCodes": [
+                "ADDRESS_PURPOSE_DESTINATION_ADDRESS"
+              ],
+              "addressLine1": "12, Main road",
+              "addressLine2": "apt 123",
+              "city": "New York",
+              "stateProvinceCode": "NJ",
+              "postalCode": "111-1234",
+              "countryCode": "US"
+            }
+          ]
+        },
+        "paymentMethodDetails": {
+          "paymentCard": {
+            "cardHolderName": {
+              "fullName": "John Doe"
+            },
+            "billingAddress": {
+              "label": "homePostalAddress",
+              "purposeCodes": [
+                "ADDRESS_PURPOSE_HOME_ADDRESS"
+              ],
+              "addressLine1": "Baker Street 23",
+              "addressLine2": "Apartment 14",
+              "city": "Warsaw",
+              "stateProvinceCode": "TX",
+              "postalCode": "32-100",
+              "countryCode": "PL",
+              "postOfficeBoxCode": "PO Box"
+            },
+            "tokenizedCardId": "5123P10JZCC02346",
+            "securityCode": "123",
+            "cardVendorCode": "CA",
+            "expirationDate": "1229"
+          }
+        }
+      }
+    }
+  ],
+  "passengers": [
+    {
+      "id": "PAX1",
+      "passengerTypeCode": "ADT",
+      "person": {
+        "title": "Mrs",
+        "givenName": "Janet",
+        "middleName": "Juliet",
+        "surname": "Doe",
+        "dateOfBirth": {
+          "year": 1988,
+          "month": 4,
+          "day": 3
+        },
+        "gender": "GENDER_FEMALE",
+        "emailAddresses": [
+          {
+            "label": "EmailAddress",
+            "purposeCodes": [
+              "EMAIL_PURPOSE_GENERAL"
+            ],
+            "email": "abc@google.com"
+          }
+        ],
+        "phoneNumbers": [
+          {
+            "label": "HomePhone",
+            "purposeCodes": [
+              "PHONE_PURPOSE_HOME"
+            ],
+            "structured": {
+              "countryCallingCode": "1",
+              "areaCode": "907",
+              "localNumber": "123456789",
+              "extension": "012"
+            }
+          }
+        ],
+        "addresses": [
+          {
+            "label": "homePostalAddress",
+            "purposeCodes": [
+              "ADDRESS_PURPOSE_HOME_ADDRESS"
+            ],
+            "addressLine1": "Baker Street 23/14",
+            "city": "Warsaw",
+            "postalCode": "32-100",
+            "countryCode": "PL"
+          },
+          {
+            "label": "destinationPostalAddress",
+            "purposeCodes": [
+              "ADDRESS_PURPOSE_DESTINATION_ADDRESS"
+            ],
+            "addressLine1": "12, Main road",
+            "addressLine2": "apt 123",
+            "city": "New York",
+            "stateProvinceCode": "NJ",
+            "postalCode": "111-1234",
+            "countryCode": "US"
+          }
+        ]
+      },
+      "identityDocuments": [],
+      "isPrimaryPassenger": true,
+      "preferredCommunicationMethod": "PREFERRED_COMMUNICATION_METHOD_SMS"
+    },
+    {
+      "id": "PAX3",
+      "passengerTypeCode": "ADT",
+      "person": {
+        "title": "Mrs",
+        "givenName": "Janet",
+        "middleName": "Juliet",
+        "surname": "Doe",
+        "dateOfBirth": {
+          "year": 1988,
+          "month": 4,
+          "day": 3
+        },
+        "gender": "GENDER_FEMALE",
+        "emailAddresses": [
+          {
+            "label": "EmailAddress",
+            "purposeCodes": [
+              "EMAIL_PURPOSE_GENERAL"
+            ],
+            "email": "abc@google.com"
+          }
+        ],
+        "phoneNumbers": [
+          {
+            "label": "HomePhone",
+            "purposeCodes": [
+              "PHONE_PURPOSE_HOME"
+            ],
+            "structured": {
+              "countryCallingCode": "1",
+              "areaCode": "907",
+              "localNumber": "123456789",
+              "extension": "012"
+            }
+          }
+        ],
+        "addresses": [
+          {
+            "label": "homePostalAddress",
+            "purposeCodes": [
+              "ADDRESS_PURPOSE_HOME_ADDRESS"
+            ],
+            "addressLine1": "Baker Street 23/14",
+            "city": "Warsaw",
+            "postalCode": "32-100",
+            "countryCode": "PL"
+          },
+          {
+            "label": "destinationPostalAddress",
+            "purposeCodes": [
+              "ADDRESS_PURPOSE_DESTINATION_ADDRESS"
+            ],
+            "addressLine1": "12, Main road",
+            "addressLine2": "apt 123",
+            "city": "New York",
+            "stateProvinceCode": "NJ",
+            "postalCode": "111-1234",
+            "countryCode": "US"
+          }
+        ]
+      },
+      "identityDocuments": [],
+      "isPrimaryPassenger": false,
+      "preferredCommunicationMethod": "PREFERRED_COMMUNICATION_METHOD_SMS"
+    },
+    {
+      "id": "PAX2",
+      "passengerTypeCode": "ADT",
+      "person": {
+        "title": "Mrs",
+        "givenName": "Janet",
+        "middleName": "Juliet",
+        "surname": "Doe",
+        "dateOfBirth": {
+          "year": 1988,
+          "month": 4,
+          "day": 3
+        },
+        "gender": "GENDER_FEMALE",
+        "emailAddresses": [
+          {
+            "label": "EmailAddress",
+            "purposeCodes": [
+              "EMAIL_PURPOSE_GENERAL"
+            ],
+            "email": "abc@google.com"
+          }
+        ],
+        "phoneNumbers": [
+          {
+            "label": "HomePhone",
+            "purposeCodes": [
+              "PHONE_PURPOSE_HOME"
+            ],
+            "structured": {
+              "countryCallingCode": "1",
+              "areaCode": "907",
+              "localNumber": "123456789",
+              "extension": "012"
+            }
+          }
+        ],
+        "addresses": [
+          {
+            "label": "homePostalAddress",
+            "purposeCodes": [
+              "ADDRESS_PURPOSE_HOME_ADDRESS"
+            ],
+            "addressLine1": "Baker Street 23/14",
+            "city": "Warsaw",
+            "postalCode": "32-100",
+            "countryCode": "PL"
+          },
+          {
+            "label": "destinationPostalAddress",
+            "purposeCodes": [
+              "ADDRESS_PURPOSE_DESTINATION_ADDRESS"
+            ],
+            "addressLine1": "12, Main road",
+            "addressLine2": "apt 123",
+            "city": "New York",
+            "stateProvinceCode": "NJ",
+            "postalCode": "111-1234",
+            "countryCode": "US"
+          }
+        ]
+      },
+      "identityDocuments": [],
+      "isPrimaryPassenger": false,
+      "preferredCommunicationMethod": "PREFERRED_COMMUNICATION_METHOD_SMS"
+    }
+  ]
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 08:04:59][0m [36mshop-json-object.ts:86[0m : [30mpassenger object is : [object Object],[object Object],[object Object][0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 08:04:59][0m [36mshop-json-object.ts:61[0m : [30mshop payload request is : [0m [38;5;141m{"request":{"origin_destinations_criteria":[{"origin_departure_criteria":{"date":{"month":9,"year":2025,"day":10},"airportCode":"SYD"},"destination_arrival_criteria":{"airportCode":"BNE"}}],"passengers":[{"passenger_type_code":"ADT","id":"PAX1"},{"passenger_type_code":"ADT","id":"PAX2"},{"passenger_type_code":"CNN","id":"PAX3"}],"requestType":"ADVCAL30","offer_criteria":{"program":{"programAccountIds":[]}},"currency":"EUR"},"sender":{"enabled_system":{"name":"POS"},"marketing_carrier":{"airline_designator_code":"VA"}},"point_of_sale":{"country":{"code":"CA"},"city":{"code":"ORD"},"channel":"STANDARD"}}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 08:05:03][0m [36mcreateordertest.spec.ts:125[0m : [30mPax type map:[0m [38;5;141m{
+  "PAX1": "ADT",
+  "PAX2": "ADT",
+  "PAX3": "CNN"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 08:05:03][0m [36mcreateordertest.spec.ts:128[0m : [30mPax-Offer mapping:[0m [38;5;141m{
+  "PAX1": "mfaz6mxnj7_61_0",
+  "PAX2": "mfaz6mxnj7_61_1",
+  "PAX3": "mfaz6mxnj7_61_2",
+  "OfferId": "mfaz6mxnj7_61"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 08:05:03][0m [36mprice-json-object.ts:17[0m : [30mpax id offer items map[0m [38;5;141m{
+  "PAX1": "mfaz6mxnj7_61_0",
+  "PAX2": "mfaz6mxnj7_61_1",
+  "PAX3": "mfaz6mxnj7_61_2",
+  "OfferId": "mfaz6mxnj7_61"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 08:05:03][0m [36mprice-json-object.ts:39[0m : [30mprice payload request is : [0m [38;5;141m{"point_of_sale":{"channel":"STANDARD","country":{"code":"AU"},"city":{"code":"SYD"}},"sender":{"enabled_system":{},"marketing_carrier":{"airline_designator_code":"VA"}},"request":{"selected_offers":[{"id":"mfaz6mxnj7_61","selected_offer_items":[{"id":"mfaz6mxnj7_61_0","passenger_ids":["PAX1"],"selected_fares":[]},{"id":"mfaz6mxnj7_61_1","passenger_ids":["PAX2"],"selected_fares":[]},{"id":"mfaz6mxnj7_61_2","passenger_ids":["PAX3"],"selected_fares":[]}]}],"override_currency":"AUD","response_parameters":{"disable_availability_check":false,"disable_tax_calculation":false,"booking_category":"ALL"}},"diagnostics":{}}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 08:05:04][0m [36mprice-api-request.ts:100[0m : [30mPassenger details map: [0m [38;5;141m{
+  "PAX1": {
+    "offerItemId": "mfazeh57j3-0",
+    "price": "534.00",
+    "passengerJourneyIds": "JOURNEY_1_1757405105627"
+  },
+  "PAX3": {
+    "offerItemId": "mfazeh57j3-2",
+    "price": "534.00",
+    "passengerJourneyIds": "JOURNEY_1_1757405105627"
+  },
+  "PAX2": {
+    "offerItemId": "mfazeh57j3-1",
+    "price": "534.00",
+    "passengerJourneyIds": "JOURNEY_1_1757405105627"
+  }
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 08:05:04][0m [36mcreate-order-json-object.ts:139[0m : [30mCreate order payload:[0m [38;5;141m{
+  "point_of_sale": {
+    "channel": "STANDARD",
+    "country": {
+      "code": "AU"
+    },
+    "city": {
+      "code": "SYD"
+    }
+  },
+  "acceptOffers": [
+    {
+      "offerId": "mfazeh57j3",
+      "offerItems": [
+        {
+          "offerItemId": "mfazeh57j3-0"
+        },
+        {
+          "offerItemId": "mfazeh57j3-2"
+        },
+        {
+          "offerItemId": "mfazeh57j3-1"
+        }
+      ]
+    }
+  ],
+  "paymentFunctions": [
+    {
+      "offerAssociations": [
+        {
+          "offerId": "mfazeh57j3",
+          "offerItemIds": [
+            [
+              "mfazeh57j3-0",
+              "mfazeh57j3-2",
+              "mfazeh57j3-1"
+            ]
+          ]
+        }
+      ],
+      "paymentProcessingSummary": {
+        "paymentMethod": "PAYMENT_METHOD_PAYMENT_CARD",
+        "typeCodeIata": "CC",
+        "amount": {
+          "currency": "AUD",
+          "amount": "1602.00"
+        },
+        "payerInfo": {
+          "title": "Mr.",
+          "givenName": "John",
+          "surname": "Doe",
+          "dateOfBirth": {
+            "year": 1989,
+            "month": 1,
+            "day": 11
+          },
+          "gender": "GENDER_MALE",
+          "emailAddresses": [
+            {
+              "label": "EmailAddress",
+              "purposeCodes": [
+                "EMAIL_PURPOSE_GENERAL"
+              ],
+              "email": "john.smith@example.com"
+            }
+          ],
+          "phoneNumbers": [
+            {
+              "label": "HomePhone",
+              "purposeCodes": [
+                "PHONE_PURPOSE_HOME"
+              ],
+              "structured": {
+                "countryCallingCode": "1",
+                "areaCode": "001",
+                "localNumber": "1234567",
+                "extension": "1234"
+              }
+            }
+          ],
+          "addresses": [
+            {
+              "label": "homePostalAddress",
+              "purposeCodes": [
+                "ADDRESS_PURPOSE_HOME_ADDRESS"
+              ],
+              "addressLine1": "Baker Street 23/14",
+              "city": "Warsaw",
+              "postalCode": "32-100",
+              "countryCode": "PL"
+            },
+            {
+              "label": "destinationPostalAddress",
+              "purposeCodes": [
+                "ADDRESS_PURPOSE_DESTINATION_ADDRESS"
+              ],
+              "addressLine1": "12, Main road",
+              "addressLine2": "apt 123",
+              "city": "New York",
+              "stateProvinceCode": "NJ",
+              "postalCode": "111-1234",
+              "countryCode": "US"
+            }
+          ]
+        },
+        "paymentMethodDetails": {
+          "paymentCard": {
+            "cardHolderName": {
+              "fullName": "John Doe"
+            },
+            "billingAddress": {
+              "label": "homePostalAddress",
+              "purposeCodes": [
+                "ADDRESS_PURPOSE_HOME_ADDRESS"
+              ],
+              "addressLine1": "Baker Street 23",
+              "addressLine2": "Apartment 14",
+              "city": "Warsaw",
+              "stateProvinceCode": "TX",
+              "postalCode": "32-100",
+              "countryCode": "PL",
+              "postOfficeBoxCode": "PO Box"
+            },
+            "tokenizedCardId": "5123P10JZCC02346",
+            "securityCode": "123",
+            "cardVendorCode": "CA",
+            "expirationDate": "1229"
+          }
+        }
+      }
+    }
+  ],
+  "passengers": [
+    {
+      "id": "PAX1",
+      "passengerTypeCode": "ADT",
+      "person": {
+        "title": "Mrs",
+        "dateOfBirth": {
+          "year": 1988,
+          "month": 4,
+          "day": 3
+        },
+        "gender": "GENDER_FEMALE",
+        "emailAddresses": [
+          {
+            "label": "EmailAddress",
+            "purposeCodes": [
+              "EMAIL_PURPOSE_GENERAL"
+            ],
+            "email": "function () { [native code] }.function () { [native code] }@sabre.com"
+          }
+        ],
+        "phoneNumbers": [
+          {
+            "label": "HomePhone",
+            "purposeCodes": [
+              "PHONE_PURPOSE_HOME"
+            ],
+            "structured": {
+              "countryCallingCode": "1",
+              "areaCode": "907",
+              "localNumber": "123456789",
+              "extension": "012"
+            }
+          }
+        ],
+        "addresses": [
+          {
+            "label": "homePostalAddress",
+            "purposeCodes": [
+              "ADDRESS_PURPOSE_HOME_ADDRESS"
+            ],
+            "addressLine1": "Baker Street 23/14",
+            "city": "Warsaw",
+            "postalCode": "32-100",
+            "countryCode": "PL"
+          },
+          {
+            "label": "destinationPostalAddress",
+            "purposeCodes": [
+              "ADDRESS_PURPOSE_DESTINATION_ADDRESS"
+            ],
+            "addressLine1": "12, Main road",
+            "addressLine2": "apt 123",
+            "city": "New York",
+            "stateProvinceCode": "NJ",
+            "postalCode": "111-1234",
+            "countryCode": "US"
+          }
+        ]
+      },
+      "identityDocuments": [],
+      "isPrimaryPassenger": true,
+      "preferredCommunicationMethod": "PREFERRED_COMMUNICATION_METHOD_SMS"
+    },
+    {
+      "id": "PAX3",
+      "passengerTypeCode": "ADT",
+      "person": {
+        "title": "Mrs",
+        "dateOfBirth": {
+          "year": 1988,
+          "month": 4,
+          "day": 3
+        },
+        "gender": "GENDER_FEMALE",
+        "emailAddresses": [
+          {
+            "label": "EmailAddress",
+            "purposeCodes": [
+              "EMAIL_PURPOSE_GENERAL"
+            ],
+            "email": "function () { [native code] }.function () { [native code] }@sabre.com"
+          }
+        ],
+        "phoneNumbers": [
+          {
+            "label": "HomePhone",
+            "purposeCodes": [
+              "PHONE_PURPOSE_HOME"
+            ],
+            "structured": {
+              "countryCallingCode": "1",
+              "areaCode": "907",
+              "localNumber": "123456789",
+              "extension": "012"
+            }
+          }
+        ],
+        "addresses": [
+          {
+            "label": "homePostalAddress",
+            "purposeCodes": [
+              "ADDRESS_PURPOSE_HOME_ADDRESS"
+            ],
+            "addressLine1": "Baker Street 23/14",
+            "city": "Warsaw",
+            "postalCode": "32-100",
+            "countryCode": "PL"
+          },
+          {
+            "label": "destinationPostalAddress",
+            "purposeCodes": [
+              "ADDRESS_PURPOSE_DESTINATION_ADDRESS"
+            ],
+            "addressLine1": "12, Main road",
+            "addressLine2": "apt 123",
+            "city": "New York",
+            "stateProvinceCode": "NJ",
+            "postalCode": "111-1234",
+            "countryCode": "US"
+          }
+        ]
+      },
+      "identityDocuments": [],
+      "isPrimaryPassenger": false,
+      "preferredCommunicationMethod": "PREFERRED_COMMUNICATION_METHOD_SMS"
+    },
+    {
+      "id": "PAX2",
+      "passengerTypeCode": "ADT",
+      "person": {
+        "title": "Mrs",
+        "dateOfBirth": {
+          "year": 1988,
+          "month": 4,
+          "day": 3
+        },
+        "gender": "GENDER_FEMALE",
+        "emailAddresses": [
+          {
+            "label": "EmailAddress",
+            "purposeCodes": [
+              "EMAIL_PURPOSE_GENERAL"
+            ],
+            "email": "function () { [native code] }.function () { [native code] }@sabre.com"
+          }
+        ],
+        "phoneNumbers": [
+          {
+            "label": "HomePhone",
+            "purposeCodes": [
+              "PHONE_PURPOSE_HOME"
+            ],
+            "structured": {
+              "countryCallingCode": "1",
+              "areaCode": "907",
+              "localNumber": "123456789",
+              "extension": "012"
+            }
+          }
+        ],
+        "addresses": [
+          {
+            "label": "homePostalAddress",
+            "purposeCodes": [
+              "ADDRESS_PURPOSE_HOME_ADDRESS"
+            ],
+            "addressLine1": "Baker Street 23/14",
+            "city": "Warsaw",
+            "postalCode": "32-100",
+            "countryCode": "PL"
+          },
+          {
+            "label": "destinationPostalAddress",
+            "purposeCodes": [
+              "ADDRESS_PURPOSE_DESTINATION_ADDRESS"
+            ],
+            "addressLine1": "12, Main road",
+            "addressLine2": "apt 123",
+            "city": "New York",
+            "stateProvinceCode": "NJ",
+            "postalCode": "111-1234",
+            "countryCode": "US"
+          }
+        ]
+      },
+      "identityDocuments": [],
+      "isPrimaryPassenger": false,
+      "preferredCommunicationMethod": "PREFERRED_COMMUNICATION_METHOD_SMS"
+    }
+  ]
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 08:17:14][0m [36mshop-json-object.ts:86[0m : [30mpassenger object is : [object Object],[object Object],[object Object][0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 08:17:14][0m [36mshop-json-object.ts:61[0m : [30mshop payload request is : [0m [38;5;141m{"request":{"origin_destinations_criteria":[{"origin_departure_criteria":{"date":{"month":9,"year":2025,"day":10},"airportCode":"SYD"},"destination_arrival_criteria":{"airportCode":"BNE"}}],"passengers":[{"passenger_type_code":"ADT","id":"PAX1"},{"passenger_type_code":"ADT","id":"PAX2"},{"passenger_type_code":"CNN","id":"PAX3"}],"requestType":"ADVCAL30","offer_criteria":{"program":{"programAccountIds":[]}},"currency":"EUR"},"sender":{"enabled_system":{"name":"POS"},"marketing_carrier":{"airline_designator_code":"VA"}},"point_of_sale":{"country":{"code":"CA"},"city":{"code":"ORD"},"channel":"STANDARD"}}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 08:17:19][0m [36mcreateordertest.spec.ts:125[0m : [30mPax type map:[0m [38;5;141m{
+  "PAX1": "ADT",
+  "PAX2": "ADT",
+  "PAX3": "CNN"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 08:17:19][0m [36mcreateordertest.spec.ts:128[0m : [30mPax-Offer mapping:[0m [38;5;141m{
+  "PAX1": "mfbwfbnk0_61_0",
+  "PAX2": "mfbwfbnk0_61_1",
+  "PAX3": "mfbwfbnk0_61_2",
+  "OfferId": "mfbwfbnk0_61"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 08:17:19][0m [36mprice-json-object.ts:17[0m : [30mpax id offer items map[0m [38;5;141m{
+  "PAX1": "mfbwfbnk0_61_0",
+  "PAX2": "mfbwfbnk0_61_1",
+  "PAX3": "mfbwfbnk0_61_2",
+  "OfferId": "mfbwfbnk0_61"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 08:17:19][0m [36mprice-json-object.ts:39[0m : [30mprice payload request is : [0m [38;5;141m{"point_of_sale":{"channel":"STANDARD","country":{"code":"AU"},"city":{"code":"SYD"}},"sender":{"enabled_system":{},"marketing_carrier":{"airline_designator_code":"VA"}},"request":{"selected_offers":[{"id":"mfbwfbnk0_61","selected_offer_items":[{"id":"mfbwfbnk0_61_0","passenger_ids":["PAX1"],"selected_fares":[]},{"id":"mfbwfbnk0_61_1","passenger_ids":["PAX2"],"selected_fares":[]},{"id":"mfbwfbnk0_61_2","passenger_ids":["PAX3"],"selected_fares":[]}]}],"override_currency":"AUD","response_parameters":{"disable_availability_check":false,"disable_tax_calculation":false,"booking_category":"ALL"}},"diagnostics":{}}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 08:17:20][0m [36mprice-api-request.ts:100[0m : [30mPassenger details map: [0m [38;5;141m{
+  "PAX1": {
+    "offerItemId": "mfbwfqt83-0",
+    "price": "534.00",
+    "passengerJourneyIds": "JOURNEY_1_1757405841621"
+  },
+  "PAX3": {
+    "offerItemId": "mfbwfqt83-2",
+    "price": "534.00",
+    "passengerJourneyIds": "JOURNEY_1_1757405841621"
+  },
+  "PAX2": {
+    "offerItemId": "mfbwfqt83-1",
+    "price": "534.00",
+    "passengerJourneyIds": "JOURNEY_1_1757405841621"
+  }
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 08:17:20][0m [36mcreate-order-json-object.ts:151[0m : [30mMariana[0m [38;5;141mDaniel[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 08:17:20][0m [36mcreate-order-json-object.ts:139[0m : [30mCreate order payload:[0m [38;5;141m{
+  "point_of_sale": {
+    "channel": "STANDARD",
+    "country": {
+      "code": "AU"
+    },
+    "city": {
+      "code": "SYD"
+    }
+  },
+  "acceptOffers": [
+    {
+      "offerId": "mfbwfqt83",
+      "offerItems": [
+        {
+          "offerItemId": "mfbwfqt83-0"
+        },
+        {
+          "offerItemId": "mfbwfqt83-2"
+        },
+        {
+          "offerItemId": "mfbwfqt83-1"
+        }
+      ]
+    }
+  ],
+  "paymentFunctions": [
+    {
+      "offerAssociations": [
+        {
+          "offerId": "mfbwfqt83",
+          "offerItemIds": [
+            [
+              "mfbwfqt83-0",
+              "mfbwfqt83-2",
+              "mfbwfqt83-1"
+            ]
+          ]
+        }
+      ],
+      "paymentProcessingSummary": {
+        "paymentMethod": "PAYMENT_METHOD_PAYMENT_CARD",
+        "typeCodeIata": "CC",
+        "amount": {
+          "currency": "AUD",
+          "amount": "1602.00"
+        },
+        "payerInfo": {
+          "title": "Mr.",
+          "givenName": "John",
+          "surname": "Doe",
+          "dateOfBirth": {
+            "year": 1989,
+            "month": 1,
+            "day": 11
+          },
+          "gender": "GENDER_MALE",
+          "emailAddresses": [
+            {
+              "label": "EmailAddress",
+              "purposeCodes": [
+                "EMAIL_PURPOSE_GENERAL"
+              ],
+              "email": "john.smith@example.com"
+            }
+          ],
+          "phoneNumbers": [
+            {
+              "label": "HomePhone",
+              "purposeCodes": [
+                "PHONE_PURPOSE_HOME"
+              ],
+              "structured": {
+                "countryCallingCode": "1",
+                "areaCode": "001",
+                "localNumber": "1234567",
+                "extension": "1234"
+              }
+            }
+          ],
+          "addresses": [
+            {
+              "label": "homePostalAddress",
+              "purposeCodes": [
+                "ADDRESS_PURPOSE_HOME_ADDRESS"
+              ],
+              "addressLine1": "Baker Street 23/14",
+              "city": "Warsaw",
+              "postalCode": "32-100",
+              "countryCode": "PL"
+            },
+            {
+              "label": "destinationPostalAddress",
+              "purposeCodes": [
+                "ADDRESS_PURPOSE_DESTINATION_ADDRESS"
+              ],
+              "addressLine1": "12, Main road",
+              "addressLine2": "apt 123",
+              "city": "New York",
+              "stateProvinceCode": "NJ",
+              "postalCode": "111-1234",
+              "countryCode": "US"
+            }
+          ]
+        },
+        "paymentMethodDetails": {
+          "paymentCard": {
+            "cardHolderName": {
+              "fullName": "John Doe"
+            },
+            "billingAddress": {
+              "label": "homePostalAddress",
+              "purposeCodes": [
+                "ADDRESS_PURPOSE_HOME_ADDRESS"
+              ],
+              "addressLine1": "Baker Street 23",
+              "addressLine2": "Apartment 14",
+              "city": "Warsaw",
+              "stateProvinceCode": "TX",
+              "postalCode": "32-100",
+              "countryCode": "PL",
+              "postOfficeBoxCode": "PO Box"
+            },
+            "tokenizedCardId": "5123P10JZCC02346",
+            "securityCode": "123",
+            "cardVendorCode": "CA",
+            "expirationDate": "1229"
+          }
+        }
+      }
+    }
+  ],
+  "passengers": [
+    {
+      "id": "PAX1",
+      "passengerTypeCode": "ADT",
+      "person": {
+        "title": "Mrs",
+        "givenName": "Mariana",
+        "middleName": "Kendall",
+        "surname": "Daniel",
+        "dateOfBirth": {
+          "year": 1988,
+          "month": 4,
+          "day": 3
+        },
+        "gender": "GENDER_FEMALE",
+        "emailAddresses": [
+          {
+            "label": "EmailAddress",
+            "purposeCodes": [
+              "EMAIL_PURPOSE_GENERAL"
+            ],
+            "email": "Mariana.Daniel@sabre.com"
+          }
+        ],
+        "phoneNumbers": [
+          {
+            "label": "HomePhone",
+            "purposeCodes": [
+              "PHONE_PURPOSE_HOME"
+            ],
+            "structured": {
+              "countryCallingCode": "1",
+              "areaCode": "907",
+              "localNumber": "123456789",
+              "extension": "012"
+            }
+          }
+        ],
+        "addresses": [
+          {
+            "label": "homePostalAddress",
+            "purposeCodes": [
+              "ADDRESS_PURPOSE_HOME_ADDRESS"
+            ],
+            "addressLine1": "Baker Street 23/14",
+            "city": "Warsaw",
+            "postalCode": "32-100",
+            "countryCode": "PL"
+          },
+          {
+            "label": "destinationPostalAddress",
+            "purposeCodes": [
+              "ADDRESS_PURPOSE_DESTINATION_ADDRESS"
+            ],
+            "addressLine1": "12, Main road",
+            "addressLine2": "apt 123",
+            "city": "New York",
+            "stateProvinceCode": "NJ",
+            "postalCode": "111-1234",
+            "countryCode": "US"
+          }
+        ]
+      },
+      "identityDocuments": [],
+      "isPrimaryPassenger": true,
+      "preferredCommunicationMethod": "PREFERRED_COMMUNICATION_METHOD_SMS"
+    },
+    {
+      "id": "PAX3",
+      "passengerTypeCode": "ADT",
+      "person": {
+        "title": "Mrs",
+        "givenName": "Mariana",
+        "middleName": "Kendall",
+        "surname": "Daniel",
+        "dateOfBirth": {
+          "year": 1988,
+          "month": 4,
+          "day": 3
+        },
+        "gender": "GENDER_FEMALE",
+        "emailAddresses": [
+          {
+            "label": "EmailAddress",
+            "purposeCodes": [
+              "EMAIL_PURPOSE_GENERAL"
+            ],
+            "email": "Mariana.Daniel@sabre.com"
+          }
+        ],
+        "phoneNumbers": [
+          {
+            "label": "HomePhone",
+            "purposeCodes": [
+              "PHONE_PURPOSE_HOME"
+            ],
+            "structured": {
+              "countryCallingCode": "1",
+              "areaCode": "907",
+              "localNumber": "123456789",
+              "extension": "012"
+            }
+          }
+        ],
+        "addresses": [
+          {
+            "label": "homePostalAddress",
+            "purposeCodes": [
+              "ADDRESS_PURPOSE_HOME_ADDRESS"
+            ],
+            "addressLine1": "Baker Street 23/14",
+            "city": "Warsaw",
+            "postalCode": "32-100",
+            "countryCode": "PL"
+          },
+          {
+            "label": "destinationPostalAddress",
+            "purposeCodes": [
+              "ADDRESS_PURPOSE_DESTINATION_ADDRESS"
+            ],
+            "addressLine1": "12, Main road",
+            "addressLine2": "apt 123",
+            "city": "New York",
+            "stateProvinceCode": "NJ",
+            "postalCode": "111-1234",
+            "countryCode": "US"
+          }
+        ]
+      },
+      "identityDocuments": [],
+      "isPrimaryPassenger": false,
+      "preferredCommunicationMethod": "PREFERRED_COMMUNICATION_METHOD_SMS"
+    },
+    {
+      "id": "PAX2",
+      "passengerTypeCode": "ADT",
+      "person": {
+        "title": "Mrs",
+        "givenName": "Mariana",
+        "middleName": "Kendall",
+        "surname": "Daniel",
+        "dateOfBirth": {
+          "year": 1988,
+          "month": 4,
+          "day": 3
+        },
+        "gender": "GENDER_FEMALE",
+        "emailAddresses": [
+          {
+            "label": "EmailAddress",
+            "purposeCodes": [
+              "EMAIL_PURPOSE_GENERAL"
+            ],
+            "email": "Mariana.Daniel@sabre.com"
+          }
+        ],
+        "phoneNumbers": [
+          {
+            "label": "HomePhone",
+            "purposeCodes": [
+              "PHONE_PURPOSE_HOME"
+            ],
+            "structured": {
+              "countryCallingCode": "1",
+              "areaCode": "907",
+              "localNumber": "123456789",
+              "extension": "012"
+            }
+          }
+        ],
+        "addresses": [
+          {
+            "label": "homePostalAddress",
+            "purposeCodes": [
+              "ADDRESS_PURPOSE_HOME_ADDRESS"
+            ],
+            "addressLine1": "Baker Street 23/14",
+            "city": "Warsaw",
+            "postalCode": "32-100",
+            "countryCode": "PL"
+          },
+          {
+            "label": "destinationPostalAddress",
+            "purposeCodes": [
+              "ADDRESS_PURPOSE_DESTINATION_ADDRESS"
+            ],
+            "addressLine1": "12, Main road",
+            "addressLine2": "apt 123",
+            "city": "New York",
+            "stateProvinceCode": "NJ",
+            "postalCode": "111-1234",
+            "countryCode": "US"
+          }
+        ]
+      },
+      "identityDocuments": [],
+      "isPrimaryPassenger": false,
+      "preferredCommunicationMethod": "PREFERRED_COMMUNICATION_METHOD_SMS"
+    }
+  ]
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 08:21:21][0m [36mshop-json-object.ts:86[0m : [30mpassenger object is : [object Object],[object Object],[object Object][0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 08:21:21][0m [36mshop-json-object.ts:61[0m : [30mshop payload request is : [0m [38;5;141m{"request":{"origin_destinations_criteria":[{"origin_departure_criteria":{"date":{"month":9,"year":2025,"day":10},"airportCode":"SYD"},"destination_arrival_criteria":{"airportCode":"BNE"}}],"passengers":[{"passenger_type_code":"ADT","id":"PAX1"},{"passenger_type_code":"ADT","id":"PAX2"},{"passenger_type_code":"CNN","id":"PAX3"}],"requestType":"ADVCAL30","offer_criteria":{"program":{"programAccountIds":[]}},"currency":"EUR"},"sender":{"enabled_system":{"name":"POS"},"marketing_carrier":{"airline_designator_code":"VA"}},"point_of_sale":{"country":{"code":"CA"},"city":{"code":"ORD"},"channel":"STANDARD"}}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 08:21:26][0m [36mcreateordertest.spec.ts:125[0m : [30mPax type map:[0m [38;5;141m{
+  "PAX1": "ADT",
+  "PAX2": "ADT",
+  "PAX3": "CNN"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 08:21:26][0m [36mcreateordertest.spec.ts:128[0m : [30mPax-Offer mapping:[0m [38;5;141m{
+  "PAX1": "mfbwfqt85_61_0",
+  "PAX2": "mfbwfqt85_61_1",
+  "PAX3": "mfbwfqt85_61_2",
+  "OfferId": "mfbwfqt85_61"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 08:21:26][0m [36mprice-json-object.ts:17[0m : [30mpax id offer items map[0m [38;5;141m{
+  "PAX1": "mfbwfqt85_61_0",
+  "PAX2": "mfbwfqt85_61_1",
+  "PAX3": "mfbwfqt85_61_2",
+  "OfferId": "mfbwfqt85_61"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 08:21:26][0m [36mprice-json-object.ts:39[0m : [30mprice payload request is : [0m [38;5;141m{"point_of_sale":{"channel":"STANDARD","country":{"code":"AU"},"city":{"code":"SYD"}},"sender":{"enabled_system":{},"marketing_carrier":{"airline_designator_code":"VA"}},"request":{"selected_offers":[{"id":"mfbwfqt85_61","selected_offer_items":[{"id":"mfbwfqt85_61_0","passenger_ids":["PAX1"],"selected_fares":[]},{"id":"mfbwfqt85_61_1","passenger_ids":["PAX2"],"selected_fares":[]},{"id":"mfbwfqt85_61_2","passenger_ids":["PAX3"],"selected_fares":[]}]}],"override_currency":"AUD","response_parameters":{"disable_availability_check":false,"disable_tax_calculation":false,"booking_category":"ALL"}},"diagnostics":{}}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 08:21:27][0m [36mprice-api-request.ts:100[0m : [30mPassenger details map: [0m [38;5;141m{
+  "PAX1": {
+    "offerItemId": "mfbwfbnk1-0",
+    "price": "534.00",
+    "passengerJourneyIds": "JOURNEY_1_1757406088157"
+  },
+  "PAX3": {
+    "offerItemId": "mfbwfbnk1-2",
+    "price": "534.00",
+    "passengerJourneyIds": "JOURNEY_1_1757406088157"
+  },
+  "PAX2": {
+    "offerItemId": "mfbwfbnk1-1",
+    "price": "534.00",
+    "passengerJourneyIds": "JOURNEY_1_1757406088157"
+  }
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 08:21:27][0m [36mcreate-order-json-object.ts:153[0m : [30mfaker names and email[0m [38;5;141mChaseMayerChase.Mayer@sabre.com[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 08:21:27][0m [36mcreate-order-json-object.ts:153[0m : [30mfaker names and email[0m [38;5;141mMargaretMooreMargaret.Moore@sabre.com[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 08:21:27][0m [36mcreate-order-json-object.ts:153[0m : [30mfaker names and email[0m [38;5;141mPedroHettingerPedro.Hettinger@sabre.com[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 08:21:27][0m [36mcreate-order-json-object.ts:139[0m : [30mCreate order payload:[0m [38;5;141m{
+  "point_of_sale": {
+    "channel": "STANDARD",
+    "country": {
+      "code": "AU"
+    },
+    "city": {
+      "code": "SYD"
+    }
+  },
+  "acceptOffers": [
+    {
+      "offerId": "mfbwfbnk1",
+      "offerItems": [
+        {
+          "offerItemId": "mfbwfbnk1-0"
+        },
+        {
+          "offerItemId": "mfbwfbnk1-2"
+        },
+        {
+          "offerItemId": "mfbwfbnk1-1"
+        }
+      ]
+    }
+  ],
+  "paymentFunctions": [
+    {
+      "offerAssociations": [
+        {
+          "offerId": "mfbwfbnk1",
+          "offerItemIds": [
+            [
+              "mfbwfbnk1-0",
+              "mfbwfbnk1-2",
+              "mfbwfbnk1-1"
+            ]
+          ]
+        }
+      ],
+      "paymentProcessingSummary": {
+        "paymentMethod": "PAYMENT_METHOD_PAYMENT_CARD",
+        "typeCodeIata": "CC",
+        "amount": {
+          "currency": "AUD",
+          "amount": "1602.00"
+        },
+        "payerInfo": {
+          "title": "Mr.",
+          "givenName": "John",
+          "surname": "Doe",
+          "dateOfBirth": {
+            "year": 1989,
+            "month": 1,
+            "day": 11
+          },
+          "gender": "GENDER_MALE",
+          "emailAddresses": [
+            {
+              "label": "EmailAddress",
+              "purposeCodes": [
+                "EMAIL_PURPOSE_GENERAL"
+              ],
+              "email": "john.smith@example.com"
+            }
+          ],
+          "phoneNumbers": [
+            {
+              "label": "HomePhone",
+              "purposeCodes": [
+                "PHONE_PURPOSE_HOME"
+              ],
+              "structured": {
+                "countryCallingCode": "1",
+                "areaCode": "001",
+                "localNumber": "1234567",
+                "extension": "1234"
+              }
+            }
+          ],
+          "addresses": [
+            {
+              "label": "homePostalAddress",
+              "purposeCodes": [
+                "ADDRESS_PURPOSE_HOME_ADDRESS"
+              ],
+              "addressLine1": "Baker Street 23/14",
+              "city": "Warsaw",
+              "postalCode": "32-100",
+              "countryCode": "PL"
+            },
+            {
+              "label": "destinationPostalAddress",
+              "purposeCodes": [
+                "ADDRESS_PURPOSE_DESTINATION_ADDRESS"
+              ],
+              "addressLine1": "12, Main road",
+              "addressLine2": "apt 123",
+              "city": "New York",
+              "stateProvinceCode": "NJ",
+              "postalCode": "111-1234",
+              "countryCode": "US"
+            }
+          ]
+        },
+        "paymentMethodDetails": {
+          "paymentCard": {
+            "cardHolderName": {
+              "fullName": "John Doe"
+            },
+            "billingAddress": {
+              "label": "homePostalAddress",
+              "purposeCodes": [
+                "ADDRESS_PURPOSE_HOME_ADDRESS"
+              ],
+              "addressLine1": "Baker Street 23",
+              "addressLine2": "Apartment 14",
+              "city": "Warsaw",
+              "stateProvinceCode": "TX",
+              "postalCode": "32-100",
+              "countryCode": "PL",
+              "postOfficeBoxCode": "PO Box"
+            },
+            "tokenizedCardId": "5123P10JZCC02346",
+            "securityCode": "123",
+            "cardVendorCode": "CA",
+            "expirationDate": "1229"
+          }
+        }
+      }
+    }
+  ],
+  "passengers": [
+    {
+      "id": "PAX1",
+      "passengerTypeCode": "ADT",
+      "person": {
+        "title": "Mrs",
+        "givenName": "Chase",
+        "middleName": "Kennedy",
+        "surname": "Mayer",
+        "dateOfBirth": {
+          "year": 1988,
+          "month": 4,
+          "day": 3
+        },
+        "gender": "GENDER_FEMALE",
+        "emailAddresses": [
+          {
+            "label": "EmailAddress",
+            "purposeCodes": [
+              "EMAIL_PURPOSE_GENERAL"
+            ],
+            "email": "Chase.Mayer@sabre.com"
+          }
+        ],
+        "phoneNumbers": [
+          {
+            "label": "HomePhone",
+            "purposeCodes": [
+              "PHONE_PURPOSE_HOME"
+            ],
+            "structured": {
+              "countryCallingCode": "1",
+              "areaCode": "907",
+              "localNumber": "123456789",
+              "extension": "012"
+            }
+          }
+        ],
+        "addresses": [
+          {
+            "label": "homePostalAddress",
+            "purposeCodes": [
+              "ADDRESS_PURPOSE_HOME_ADDRESS"
+            ],
+            "addressLine1": "Baker Street 23/14",
+            "city": "Warsaw",
+            "postalCode": "32-100",
+            "countryCode": "PL"
+          },
+          {
+            "label": "destinationPostalAddress",
+            "purposeCodes": [
+              "ADDRESS_PURPOSE_DESTINATION_ADDRESS"
+            ],
+            "addressLine1": "12, Main road",
+            "addressLine2": "apt 123",
+            "city": "New York",
+            "stateProvinceCode": "NJ",
+            "postalCode": "111-1234",
+            "countryCode": "US"
+          }
+        ]
+      },
+      "identityDocuments": [],
+      "isPrimaryPassenger": true,
+      "preferredCommunicationMethod": "PREFERRED_COMMUNICATION_METHOD_SMS"
+    },
+    {
+      "id": "PAX3",
+      "passengerTypeCode": "ADT",
+      "person": {
+        "title": "Mrs",
+        "givenName": "Margaret",
+        "middleName": "Robin",
+        "surname": "Moore",
+        "dateOfBirth": {
+          "year": 1988,
+          "month": 4,
+          "day": 3
+        },
+        "gender": "GENDER_FEMALE",
+        "emailAddresses": [
+          {
+            "label": "EmailAddress",
+            "purposeCodes": [
+              "EMAIL_PURPOSE_GENERAL"
+            ],
+            "email": "Margaret.Moore@sabre.com"
+          }
+        ],
+        "phoneNumbers": [
+          {
+            "label": "HomePhone",
+            "purposeCodes": [
+              "PHONE_PURPOSE_HOME"
+            ],
+            "structured": {
+              "countryCallingCode": "1",
+              "areaCode": "907",
+              "localNumber": "123456789",
+              "extension": "012"
+            }
+          }
+        ],
+        "addresses": [
+          {
+            "label": "homePostalAddress",
+            "purposeCodes": [
+              "ADDRESS_PURPOSE_HOME_ADDRESS"
+            ],
+            "addressLine1": "Baker Street 23/14",
+            "city": "Warsaw",
+            "postalCode": "32-100",
+            "countryCode": "PL"
+          },
+          {
+            "label": "destinationPostalAddress",
+            "purposeCodes": [
+              "ADDRESS_PURPOSE_DESTINATION_ADDRESS"
+            ],
+            "addressLine1": "12, Main road",
+            "addressLine2": "apt 123",
+            "city": "New York",
+            "stateProvinceCode": "NJ",
+            "postalCode": "111-1234",
+            "countryCode": "US"
+          }
+        ]
+      },
+      "identityDocuments": [],
+      "isPrimaryPassenger": false,
+      "preferredCommunicationMethod": "PREFERRED_COMMUNICATION_METHOD_SMS"
+    },
+    {
+      "id": "PAX2",
+      "passengerTypeCode": "ADT",
+      "person": {
+        "title": "Mrs",
+        "givenName": "Pedro",
+        "middleName": "Ryan",
+        "surname": "Hettinger",
+        "dateOfBirth": {
+          "year": 1988,
+          "month": 4,
+          "day": 3
+        },
+        "gender": "GENDER_FEMALE",
+        "emailAddresses": [
+          {
+            "label": "EmailAddress",
+            "purposeCodes": [
+              "EMAIL_PURPOSE_GENERAL"
+            ],
+            "email": "Pedro.Hettinger@sabre.com"
+          }
+        ],
+        "phoneNumbers": [
+          {
+            "label": "HomePhone",
+            "purposeCodes": [
+              "PHONE_PURPOSE_HOME"
+            ],
+            "structured": {
+              "countryCallingCode": "1",
+              "areaCode": "907",
+              "localNumber": "123456789",
+              "extension": "012"
+            }
+          }
+        ],
+        "addresses": [
+          {
+            "label": "homePostalAddress",
+            "purposeCodes": [
+              "ADDRESS_PURPOSE_HOME_ADDRESS"
+            ],
+            "addressLine1": "Baker Street 23/14",
+            "city": "Warsaw",
+            "postalCode": "32-100",
+            "countryCode": "PL"
+          },
+          {
+            "label": "destinationPostalAddress",
+            "purposeCodes": [
+              "ADDRESS_PURPOSE_DESTINATION_ADDRESS"
+            ],
+            "addressLine1": "12, Main road",
+            "addressLine2": "apt 123",
+            "city": "New York",
+            "stateProvinceCode": "NJ",
+            "postalCode": "111-1234",
+            "countryCode": "US"
+          }
+        ]
+      },
+      "identityDocuments": [],
+      "isPrimaryPassenger": false,
+      "preferredCommunicationMethod": "PREFERRED_COMMUNICATION_METHOD_SMS"
+    }
+  ]
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 08:47:30][0m [36mshop-json-object.ts:86[0m : [30mpassenger object is : [object Object],[object Object],[object Object][0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 08:47:30][0m [36mshop-json-object.ts:61[0m : [30mshop payload request is : [0m [38;5;141m{"request":{"origin_destinations_criteria":[{"origin_departure_criteria":{"date":{"month":9,"year":2025,"day":10},"airportCode":"SYD"},"destination_arrival_criteria":{"airportCode":"BNE"}}],"passengers":[{"passenger_type_code":"ADT","id":"PAX1"},{"passenger_type_code":"ADT","id":"PAX2"},{"passenger_type_code":"CNN","id":"PAX3"}],"requestType":"ADVCAL30","offer_criteria":{"program":{"programAccountIds":[]}},"currency":"EUR"},"sender":{"enabled_system":{"name":"POS"},"marketing_carrier":{"airline_designator_code":"VA"}},"point_of_sale":{"country":{"code":"CA"},"city":{"code":"ORD"},"channel":"STANDARD"}}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 08:47:35][0m [36mcreateordertest.spec.ts:125[0m : [30mPax type map:[0m [38;5;141m{
+  "PAX1": "ADT",
+  "PAX2": "ADT",
+  "PAX3": "CNN"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 08:47:35][0m [36mcreateordertest.spec.ts:128[0m : [30mPax-Offer mapping:[0m [38;5;141m{
+  "PAX1": "mfbwfbnkd_61_0",
+  "PAX2": "mfbwfbnkd_61_1",
+  "PAX3": "mfbwfbnkd_61_2",
+  "OfferId": "mfbwfbnkd_61"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 08:47:35][0m [36mprice-json-object.ts:17[0m : [30mpax id offer items map[0m [38;5;141m{
+  "PAX1": "mfbwfbnkd_61_0",
+  "PAX2": "mfbwfbnkd_61_1",
+  "PAX3": "mfbwfbnkd_61_2",
+  "OfferId": "mfbwfbnkd_61"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 08:47:35][0m [36mprice-json-object.ts:39[0m : [30mprice payload request is : [0m [38;5;141m{"point_of_sale":{"channel":"STANDARD","country":{"code":"AU"},"city":{"code":"SYD"}},"sender":{"enabled_system":{},"marketing_carrier":{"airline_designator_code":"VA"}},"request":{"selected_offers":[{"id":"mfbwfbnkd_61","selected_offer_items":[{"id":"mfbwfbnkd_61_0","passenger_ids":["PAX1"],"selected_fares":[]},{"id":"mfbwfbnkd_61_1","passenger_ids":["PAX2"],"selected_fares":[]},{"id":"mfbwfbnkd_61_2","passenger_ids":["PAX3"],"selected_fares":[]}]}],"override_currency":"AUD","response_parameters":{"disable_availability_check":false,"disable_tax_calculation":false,"booking_category":"ALL"}},"diagnostics":{}}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 08:47:36][0m [36mprice-api-request.ts:116[0m : [30mPassenger details map: [0m [38;5;141m{
+  "PAX1": {
+    "offerItemId": "mfbwfqt8g-0",
+    "price": "534.00",
+    "passengerJourneyIds": "JOURNEY_1_1757407657519",
+    "paxTypeCode": "ADT"
+  },
+  "PAX3": {
+    "offerItemId": "mfbwfqt8g-2",
+    "price": "534.00",
+    "passengerJourneyIds": "JOURNEY_1_1757407657519",
+    "paxTypeCode": "CNN"
+  },
+  "PAX2": {
+    "offerItemId": "mfbwfqt8g-1",
+    "price": "534.00",
+    "passengerJourneyIds": "JOURNEY_1_1757407657519",
+    "paxTypeCode": "ADT"
+  }
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 08:47:36][0m [36mcreate-order-json-object.ts:153[0m : [30mfaker names and email[0m [38;5;141mOscarSchmelerOscar.Schmeler@sabre.com[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 08:47:36][0m [36mcreate-order-json-object.ts:153[0m : [30mfaker names and email[0m [38;5;141mPatTillmanPat.Tillman@sabre.com[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 08:47:36][0m [36mcreate-order-json-object.ts:153[0m : [30mfaker names and email[0m [38;5;141mRaphaelleLockmanRaphaelle.Lockman@sabre.com[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 08:50:30][0m [36mshop-json-object.ts:86[0m : [30mpassenger object is : [object Object],[object Object],[object Object][0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 08:50:30][0m [36mshop-json-object.ts:61[0m : [30mshop payload request is : [0m [38;5;141m{"request":{"origin_destinations_criteria":[{"origin_departure_criteria":{"date":{"month":9,"year":2025,"day":10},"airportCode":"SYD"},"destination_arrival_criteria":{"airportCode":"BNE"}}],"passengers":[{"passenger_type_code":"ADT","id":"PAX1"},{"passenger_type_code":"ADT","id":"PAX2"},{"passenger_type_code":"CNN","id":"PAX3"}],"requestType":"ADVCAL30","offer_criteria":{"program":{"programAccountIds":[]}},"currency":"EUR"},"sender":{"enabled_system":{"name":"POS"},"marketing_carrier":{"airline_designator_code":"VA"}},"point_of_sale":{"country":{"code":"CA"},"city":{"code":"ORD"},"channel":"STANDARD"}}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 08:50:34][0m [36mcreateordertest.spec.ts:125[0m : [30mPax type map:[0m [38;5;141m{
+  "PAX1": "ADT",
+  "PAX2": "ADT",
+  "PAX3": "CNN"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 08:50:34][0m [36mcreateordertest.spec.ts:128[0m : [30mPax-Offer mapping:[0m [38;5;141m{
+  "PAX1": "mfbwfbnkf_61_0",
+  "PAX2": "mfbwfbnkf_61_1",
+  "PAX3": "mfbwfbnkf_61_2",
+  "OfferId": "mfbwfbnkf_61"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 08:50:34][0m [36mprice-json-object.ts:17[0m : [30mpax id offer items map[0m [38;5;141m{
+  "PAX1": "mfbwfbnkf_61_0",
+  "PAX2": "mfbwfbnkf_61_1",
+  "PAX3": "mfbwfbnkf_61_2",
+  "OfferId": "mfbwfbnkf_61"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 08:50:34][0m [36mprice-json-object.ts:39[0m : [30mprice payload request is : [0m [38;5;141m{"point_of_sale":{"channel":"STANDARD","country":{"code":"AU"},"city":{"code":"SYD"}},"sender":{"enabled_system":{},"marketing_carrier":{"airline_designator_code":"VA"}},"request":{"selected_offers":[{"id":"mfbwfbnkf_61","selected_offer_items":[{"id":"mfbwfbnkf_61_0","passenger_ids":["PAX1"],"selected_fares":[]},{"id":"mfbwfbnkf_61_1","passenger_ids":["PAX2"],"selected_fares":[]},{"id":"mfbwfbnkf_61_2","passenger_ids":["PAX3"],"selected_fares":[]}]}],"override_currency":"AUD","response_parameters":{"disable_availability_check":false,"disable_tax_calculation":false,"booking_category":"ALL"}},"diagnostics":{}}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 08:50:35][0m [36mprice-api-request.ts:116[0m : [30mPassenger details map: [0m [38;5;141m{
+  "PAX1": {
+    "offerItemId": "mfbwfqt8i-0",
+    "price": "534.00",
+    "passengerJourneyIds": "JOURNEY_1_1757407836689",
+    "paxTypeCode": "ADT"
+  },
+  "PAX3": {
+    "offerItemId": "mfbwfqt8i-2",
+    "price": "534.00",
+    "passengerJourneyIds": "JOURNEY_1_1757407836689",
+    "paxTypeCode": "CNN"
+  },
+  "PAX2": {
+    "offerItemId": "mfbwfqt8i-1",
+    "price": "534.00",
+    "passengerJourneyIds": "JOURNEY_1_1757407836689",
+    "paxTypeCode": "ADT"
+  }
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 08:50:35][0m [36mcreate-order-json-object.ts:139[0m : [30mCreate order payload:[0m [38;5;141m{"point_of_sale":{"channel":"STANDARD","country":{"code":"AU"},"city":{"code":"SYD"}},"acceptOffers":[{"offerId":"mfbwfqt8i","offerItems":[{"offerItemId":"mfbwfqt8i-0"},{"offerItemId":"mfbwfqt8i-2"},{"offerItemId":"mfbwfqt8i-1"}]}],"paymentFunctions":[{"offerAssociations":[{"offerId":"mfbwfqt8i","offerItemIds":[["mfbwfqt8i-0","mfbwfqt8i-2","mfbwfqt8i-1"]]}],"paymentProcessingSummary":{"paymentMethod":"PAYMENT_METHOD_PAYMENT_CARD","typeCodeIata":"CC","amount":{"currency":"AUD","amount":"1602.00"},"payerInfo":{"title":"Mr.","givenName":"John","surname":"Doe","dateOfBirth":{"year":1989,"month":1,"day":11},"gender":"GENDER_MALE","emailAddresses":[{"label":"EmailAddress","purposeCodes":["EMAIL_PURPOSE_GENERAL"],"email":"john.smith@example.com"}],"phoneNumbers":[{"label":"HomePhone","purposeCodes":["PHONE_PURPOSE_HOME"],"structured":{"countryCallingCode":"1","areaCode":"001","localNumber":"1234567","extension":"1234"}}],"addresses":[{"label":"homePostalAddress","purposeCodes":["ADDRESS_PURPOSE_HOME_ADDRESS"],"addressLine1":"Baker Street 23/14","city":"Warsaw","postalCode":"32-100","countryCode":"PL"},{"label":"destinationPostalAddress","purposeCodes":["ADDRESS_PURPOSE_DESTINATION_ADDRESS"],"addressLine1":"12, Main road","addressLine2":"apt 123","city":"New York","stateProvinceCode":"NJ","postalCode":"111-1234","countryCode":"US"}]},"paymentMethodDetails":{"paymentCard":{"cardHolderName":{"fullName":"John Doe"},"billingAddress":{"label":"homePostalAddress","purposeCodes":["ADDRESS_PURPOSE_HOME_ADDRESS"],"addressLine1":"Baker Street 23","addressLine2":"Apartment 14","city":"Warsaw","stateProvinceCode":"TX","postalCode":"32-100","countryCode":"PL","postOfficeBoxCode":"PO Box"},"tokenizedCardId":"5123P10JZCC02346","securityCode":"123","cardVendorCode":"CA","expirationDate":"1229"}}}}],"passengers":[{"id":"PAX1","passengerTypeCode":"ADT","person":{"title":"Mrs","givenName":"Pamela","middleName":"Bowie","surname":"Grady","dateOfBirth":{"year":1988,"month":4,"day":3},"gender":"GENDER_FEMALE","emailAddresses":[{"label":"EmailAddress","purposeCodes":["EMAIL_PURPOSE_GENERAL"],"email":"Pamela.Grady@sabre.com"}],"phoneNumbers":[{"label":"HomePhone","purposeCodes":["PHONE_PURPOSE_HOME"],"structured":{"countryCallingCode":"1","areaCode":"907","localNumber":"123456789","extension":"012"}}],"addresses":[{"label":"homePostalAddress","purposeCodes":["ADDRESS_PURPOSE_HOME_ADDRESS"],"addressLine1":"Baker Street 23/14","city":"Warsaw","postalCode":"32-100","countryCode":"PL"},{"label":"destinationPostalAddress","purposeCodes":["ADDRESS_PURPOSE_DESTINATION_ADDRESS"],"addressLine1":"12, Main road","addressLine2":"apt 123","city":"New York","stateProvinceCode":"NJ","postalCode":"111-1234","countryCode":"US"}]},"identityDocuments":[],"isPrimaryPassenger":true,"preferredCommunicationMethod":"PREFERRED_COMMUNICATION_METHOD_SMS"},{"id":"PAX3","passengerTypeCode":"CNN","person":{"title":"Mrs","givenName":"Lesly","middleName":"Ryan","surname":"Heaney","dateOfBirth":{"year":1988,"month":4,"day":3},"gender":"GENDER_FEMALE","emailAddresses":[{"label":"EmailAddress","purposeCodes":["EMAIL_PURPOSE_GENERAL"],"email":"Lesly.Heaney@sabre.com"}],"phoneNumbers":[{"label":"HomePhone","purposeCodes":["PHONE_PURPOSE_HOME"],"structured":{"countryCallingCode":"1","areaCode":"907","localNumber":"123456789","extension":"012"}}],"addresses":[{"label":"homePostalAddress","purposeCodes":["ADDRESS_PURPOSE_HOME_ADDRESS"],"addressLine1":"Baker Street 23/14","city":"Warsaw","postalCode":"32-100","countryCode":"PL"},{"label":"destinationPostalAddress","purposeCodes":["ADDRESS_PURPOSE_DESTINATION_ADDRESS"],"addressLine1":"12, Main road","addressLine2":"apt 123","city":"New York","stateProvinceCode":"NJ","postalCode":"111-1234","countryCode":"US"}]},"identityDocuments":[],"isPrimaryPassenger":false,"preferredCommunicationMethod":"PREFERRED_COMMUNICATION_METHOD_SMS"},{"id":"PAX2","passengerTypeCode":"ADT","person":{"title":"Mrs","givenName":"Alysa","middleName":"Brooklyn","surname":"Skiles","dateOfBirth":{"year":1988,"month":4,"day":3},"gender":"GENDER_FEMALE","emailAddresses":[{"label":"EmailAddress","purposeCodes":["EMAIL_PURPOSE_GENERAL"],"email":"Alysa.Skiles@sabre.com"}],"phoneNumbers":[{"label":"HomePhone","purposeCodes":["PHONE_PURPOSE_HOME"],"structured":{"countryCallingCode":"1","areaCode":"907","localNumber":"123456789","extension":"012"}}],"addresses":[{"label":"homePostalAddress","purposeCodes":["ADDRESS_PURPOSE_HOME_ADDRESS"],"addressLine1":"Baker Street 23/14","city":"Warsaw","postalCode":"32-100","countryCode":"PL"},{"label":"destinationPostalAddress","purposeCodes":["ADDRESS_PURPOSE_DESTINATION_ADDRESS"],"addressLine1":"12, Main road","addressLine2":"apt 123","city":"New York","stateProvinceCode":"NJ","postalCode":"111-1234","countryCode":"US"}]},"identityDocuments":[],"isPrimaryPassenger":false,"preferredCommunicationMethod":"PREFERRED_COMMUNICATION_METHOD_SMS"}]}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 08:55:20][0m [36mshop-json-object.ts:86[0m : [30mpassenger object is : [object Object],[object Object],[object Object][0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 08:55:20][0m [36mshop-json-object.ts:61[0m : [30mshop payload request is : [0m [38;5;141m{"request":{"origin_destinations_criteria":[{"origin_departure_criteria":{"date":{"month":9,"year":2025,"day":10},"airportCode":"SYD"},"destination_arrival_criteria":{"airportCode":"BNE"}}],"passengers":[{"passenger_type_code":"ADT","id":"PAX1"},{"passenger_type_code":"ADT","id":"PAX2"},{"passenger_type_code":"CNN","id":"PAX3"}],"requestType":"ADVCAL30","offer_criteria":{"program":{"programAccountIds":[]}},"currency":"EUR"},"sender":{"enabled_system":{"name":"POS"},"marketing_carrier":{"airline_designator_code":"VA"}},"point_of_sale":{"country":{"code":"CA"},"city":{"code":"ORD"},"channel":"STANDARD"}}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 08:55:25][0m [36mcreateordertest.spec.ts:125[0m : [30mPax type map:[0m [38;5;141m{
+  "PAX1": "ADT",
+  "PAX2": "ADT",
+  "PAX3": "CNN"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 08:55:25][0m [36mcreateordertest.spec.ts:128[0m : [30mPax-Offer mapping:[0m [38;5;141m{
+  "PAX1": "mfbwfbnkg_61_0",
+  "PAX2": "mfbwfbnkg_61_1",
+  "PAX3": "mfbwfbnkg_61_2",
+  "OfferId": "mfbwfbnkg_61"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 08:55:25][0m [36mprice-json-object.ts:17[0m : [30mpax id offer items map[0m [38;5;141m{
+  "PAX1": "mfbwfbnkg_61_0",
+  "PAX2": "mfbwfbnkg_61_1",
+  "PAX3": "mfbwfbnkg_61_2",
+  "OfferId": "mfbwfbnkg_61"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 08:55:25][0m [36mprice-json-object.ts:39[0m : [30mprice payload request is : [0m [38;5;141m{"point_of_sale":{"channel":"STANDARD","country":{"code":"AU"},"city":{"code":"SYD"}},"sender":{"enabled_system":{},"marketing_carrier":{"airline_designator_code":"VA"}},"request":{"selected_offers":[{"id":"mfbwfbnkg_61","selected_offer_items":[{"id":"mfbwfbnkg_61_0","passenger_ids":["PAX1"],"selected_fares":[]},{"id":"mfbwfbnkg_61_1","passenger_ids":["PAX2"],"selected_fares":[]},{"id":"mfbwfbnkg_61_2","passenger_ids":["PAX3"],"selected_fares":[]}]}],"override_currency":"AUD","response_parameters":{"disable_availability_check":false,"disable_tax_calculation":false,"booking_category":"ALL"}},"diagnostics":{}}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 08:55:26][0m [36mprice-api-request.ts:116[0m : [30mPassenger details map: [0m [38;5;141m{
+  "PAX1": {
+    "offerItemId": "mfbwfqt8l-0",
+    "price": "534.00",
+    "passengerJourneyIds": "JOURNEY_1_1757408127106",
+    "paxTypeCode": "ADT"
+  },
+  "PAX3": {
+    "offerItemId": "mfbwfqt8l-2",
+    "price": "534.00",
+    "passengerJourneyIds": "JOURNEY_1_1757408127106",
+    "paxTypeCode": "CNN"
+  },
+  "PAX2": {
+    "offerItemId": "mfbwfqt8l-1",
+    "price": "534.00",
+    "passengerJourneyIds": "JOURNEY_1_1757408127106",
+    "paxTypeCode": "ADT"
+  }
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 08:55:26][0m [36mcreate-order-json-object.ts:139[0m : [30mCreate order payload:[0m [38;5;141m{"point_of_sale":{"channel":"STANDARD","country":{"code":"AU"},"city":{"code":"SYD"}},"acceptOffers":[{"offerId":"mfbwfqt8l","offerItems":[{"offerItemId":"mfbwfqt8l-0"},{"offerItemId":"mfbwfqt8l-2"},{"offerItemId":"mfbwfqt8l-1"}]}],"paymentFunctions":[{"offerAssociations":[{"offerId":"mfbwfqt8l","offerItemIds":[["mfbwfqt8l-0","mfbwfqt8l-2","mfbwfqt8l-1"]]}],"paymentProcessingSummary":{"paymentMethod":"PAYMENT_METHOD_PAYMENT_CARD","typeCodeIata":"CC","amount":{"currency":"AUD","amount":"1602.00"},"payerInfo":{"title":"Mr.","givenName":"John","surname":"Doe","dateOfBirth":{"year":1989,"month":1,"day":11},"gender":"GENDER_MALE","emailAddresses":[{"label":"EmailAddress","purposeCodes":["EMAIL_PURPOSE_GENERAL"],"email":"john.smith@example.com"}],"phoneNumbers":[{"label":"HomePhone","purposeCodes":["PHONE_PURPOSE_HOME"],"structured":{"countryCallingCode":"1","areaCode":"001","localNumber":"1234567","extension":"1234"}}],"addresses":[{"label":"homePostalAddress","purposeCodes":["ADDRESS_PURPOSE_HOME_ADDRESS"],"addressLine1":"Baker Street 23/14","city":"Warsaw","postalCode":"32-100","countryCode":"PL"},{"label":"destinationPostalAddress","purposeCodes":["ADDRESS_PURPOSE_DESTINATION_ADDRESS"],"addressLine1":"12, Main road","addressLine2":"apt 123","city":"New York","stateProvinceCode":"NJ","postalCode":"111-1234","countryCode":"US"}]},"paymentMethodDetails":{"paymentCard":{"cardHolderName":{"fullName":"John Doe"},"billingAddress":{"label":"homePostalAddress","purposeCodes":["ADDRESS_PURPOSE_HOME_ADDRESS"],"addressLine1":"Baker Street 23","addressLine2":"Apartment 14","city":"Warsaw","stateProvinceCode":"TX","postalCode":"32-100","countryCode":"PL","postOfficeBoxCode":"PO Box"},"tokenizedCardId":"5123P10JZCC02346","securityCode":"123","cardVendorCode":"CA","expirationDate":"1229"}}}}],"passengers":[{"id":"PAX1","passengerTypeCode":"ADT","person":{"title":"Mrs","givenName":"Ayana","middleName":"Billie","surname":"Dach","dateOfBirth":{"year":1999,"month":4,"day":3},"gender":"GENDER_FEMALE","emailAddresses":[{"label":"EmailAddress","purposeCodes":["EMAIL_PURPOSE_GENERAL"],"email":"Ayana.Dach@sabre.com"}],"phoneNumbers":[{"label":"HomePhone","purposeCodes":["PHONE_PURPOSE_HOME"],"structured":{"countryCallingCode":"1","areaCode":"907","localNumber":"123456789","extension":"012"}}],"addresses":[{"label":"homePostalAddress","purposeCodes":["ADDRESS_PURPOSE_HOME_ADDRESS"],"addressLine1":"Baker Street 23/14","city":"Warsaw","postalCode":"32-100","countryCode":"PL"},{"label":"destinationPostalAddress","purposeCodes":["ADDRESS_PURPOSE_DESTINATION_ADDRESS"],"addressLine1":"12, Main road","addressLine2":"apt 123","city":"New York","stateProvinceCode":"NJ","postalCode":"111-1234","countryCode":"US"}]},"identityDocuments":[],"isPrimaryPassenger":true,"preferredCommunicationMethod":"PREFERRED_COMMUNICATION_METHOD_SMS"},{"id":"PAX3","passengerTypeCode":"CNN","person":{"title":"Mrs","givenName":"Dane","middleName":"Bowie","surname":"Moore","dateOfBirth":{"year":2018,"month":4,"day":3},"gender":"GENDER_FEMALE","emailAddresses":[{"label":"EmailAddress","purposeCodes":["EMAIL_PURPOSE_GENERAL"],"email":"Dane.Moore@sabre.com"}],"phoneNumbers":[{"label":"HomePhone","purposeCodes":["PHONE_PURPOSE_HOME"],"structured":{"countryCallingCode":"1","areaCode":"907","localNumber":"123456789","extension":"012"}}],"addresses":[{"label":"homePostalAddress","purposeCodes":["ADDRESS_PURPOSE_HOME_ADDRESS"],"addressLine1":"Baker Street 23/14","city":"Warsaw","postalCode":"32-100","countryCode":"PL"},{"label":"destinationPostalAddress","purposeCodes":["ADDRESS_PURPOSE_DESTINATION_ADDRESS"],"addressLine1":"12, Main road","addressLine2":"apt 123","city":"New York","stateProvinceCode":"NJ","postalCode":"111-1234","countryCode":"US"}]},"identityDocuments":[],"isPrimaryPassenger":false,"preferredCommunicationMethod":"PREFERRED_COMMUNICATION_METHOD_SMS"},{"id":"PAX2","passengerTypeCode":"ADT","person":{"title":"Mrs","givenName":"Jazmyn","middleName":"Anderson","surname":"Waters","dateOfBirth":{"year":1999,"month":4,"day":3},"gender":"GENDER_FEMALE","emailAddresses":[{"label":"EmailAddress","purposeCodes":["EMAIL_PURPOSE_GENERAL"],"email":"Jazmyn.Waters@sabre.com"}],"phoneNumbers":[{"label":"HomePhone","purposeCodes":["PHONE_PURPOSE_HOME"],"structured":{"countryCallingCode":"1","areaCode":"907","localNumber":"123456789","extension":"012"}}],"addresses":[{"label":"homePostalAddress","purposeCodes":["ADDRESS_PURPOSE_HOME_ADDRESS"],"addressLine1":"Baker Street 23/14","city":"Warsaw","postalCode":"32-100","countryCode":"PL"},{"label":"destinationPostalAddress","purposeCodes":["ADDRESS_PURPOSE_DESTINATION_ADDRESS"],"addressLine1":"12, Main road","addressLine2":"apt 123","city":"New York","stateProvinceCode":"NJ","postalCode":"111-1234","countryCode":"US"}]},"identityDocuments":[],"isPrimaryPassenger":false,"preferredCommunicationMethod":"PREFERRED_COMMUNICATION_METHOD_SMS"}]}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 09:38:58][0m [36mshop-json-object.ts:86[0m : [30mpassenger object is : [object Object],[object Object],[object Object][0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 09:38:58][0m [36mshop-json-object.ts:61[0m : [30mshop payload request is : [0m [38;5;141m{"request":{"origin_destinations_criteria":[{"origin_departure_criteria":{"date":{"month":9,"year":2025,"day":10},"airportCode":"SYD"},"destination_arrival_criteria":{"airportCode":"BNE"}}],"passengers":[{"passenger_type_code":"ADT","id":"PAX1"},{"passenger_type_code":"ADT","id":"PAX2"},{"passenger_type_code":"CNN","id":"PAX3"}],"requestType":"ADVCAL30","offer_criteria":{"program":{"programAccountIds":[]}},"currency":"EUR"},"sender":{"enabled_system":{"name":"POS"},"marketing_carrier":{"airline_designator_code":"VA"}},"point_of_sale":{"country":{"code":"CA"},"city":{"code":"ORD"},"channel":"STANDARD"}}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 09:39:03][0m [36mcreateordertest.spec.ts:125[0m : [30mPax type map:[0m [38;5;141m{
+  "PAX1": "ADT",
+  "PAX2": "ADT",
+  "PAX3": "CNN"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 09:39:03][0m [36mcreateordertest.spec.ts:128[0m : [30mPax-Offer mapping:[0m [38;5;141m{
+  "PAX1": "mfbwfqt81h_60_0",
+  "PAX2": "mfbwfqt81h_60_1",
+  "PAX3": "mfbwfqt81h_60_2",
+  "OfferId": "mfbwfqt81h_60"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 09:39:03][0m [36mprice-json-object.ts:17[0m : [30mpax id offer items map[0m [38;5;141m{
+  "PAX1": "mfbwfqt81h_60_0",
+  "PAX2": "mfbwfqt81h_60_1",
+  "PAX3": "mfbwfqt81h_60_2",
+  "OfferId": "mfbwfqt81h_60"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 09:39:03][0m [36mprice-json-object.ts:39[0m : [30mprice payload request is : [0m [38;5;141m{"point_of_sale":{"channel":"STANDARD","country":{"code":"AU"},"city":{"code":"SYD"}},"sender":{"enabled_system":{},"marketing_carrier":{"airline_designator_code":"VA"}},"request":{"selected_offers":[{"id":"mfbwfqt81h_60","selected_offer_items":[{"id":"mfbwfqt81h_60_0","passenger_ids":["PAX1"],"selected_fares":[]},{"id":"mfbwfqt81h_60_1","passenger_ids":["PAX2"],"selected_fares":[]},{"id":"mfbwfqt81h_60_2","passenger_ids":["PAX3"],"selected_fares":[]}]}],"override_currency":"AUD","response_parameters":{"disable_availability_check":false,"disable_tax_calculation":false,"booking_category":"ALL"}},"diagnostics":{}}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 09:39:04][0m [36mprice-api-request.ts:116[0m : [30mPassenger details map: [0m [38;5;141m{
+  "PAX1": {
+    "offerItemId": "mfbwfbnk1i-0",
+    "price": "534.00",
+    "passengerJourneyIds": "JOURNEY_1_1757410745132",
+    "paxTypeCode": "ADT"
+  },
+  "PAX3": {
+    "offerItemId": "mfbwfbnk1i-2",
+    "price": "534.00",
+    "passengerJourneyIds": "JOURNEY_1_1757410745132",
+    "paxTypeCode": "CNN"
+  },
+  "PAX2": {
+    "offerItemId": "mfbwfbnk1i-1",
+    "price": "534.00",
+    "passengerJourneyIds": "JOURNEY_1_1757410745132",
+    "paxTypeCode": "ADT"
+  }
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-09 09:39:04][0m [36mcreate-order-json-object.ts:139[0m : [30mCreate order payload:[0m [38;5;141m{"point_of_sale":{"channel":"STANDARD","country":{"code":"AU"},"city":{"code":"SYD"}},"acceptOffers":[{"offerId":"mfbwfbnk1i","offerItems":[{"offerItemId":"mfbwfbnk1i-0"},{"offerItemId":"mfbwfbnk1i-2"},{"offerItemId":"mfbwfbnk1i-1"}]}],"paymentFunctions":[{"offerAssociations":[{"offerId":"mfbwfbnk1i","offerItemIds":[["mfbwfbnk1i-0","mfbwfbnk1i-2","mfbwfbnk1i-1"]]}],"paymentProcessingSummary":{"paymentMethod":"PAYMENT_METHOD_PAYMENT_CARD","typeCodeIata":"CC","amount":{"currency":"AUD","amount":"1602.00"},"payerInfo":{"title":"Mr.","givenName":"John","surname":"Doe","dateOfBirth":{"year":1989,"month":1,"day":11},"gender":"GENDER_MALE","emailAddresses":[{"label":"EmailAddress","purposeCodes":["EMAIL_PURPOSE_GENERAL"],"email":"john.smith@example.com"}],"phoneNumbers":[{"label":"HomePhone","purposeCodes":["PHONE_PURPOSE_HOME"],"structured":{"countryCallingCode":"1","areaCode":"001","localNumber":"1234567","extension":"1234"}}],"addresses":[{"label":"homePostalAddress","purposeCodes":["ADDRESS_PURPOSE_HOME_ADDRESS"],"addressLine1":"Baker Street 23/14","city":"Warsaw","postalCode":"32-100","countryCode":"PL"},{"label":"destinationPostalAddress","purposeCodes":["ADDRESS_PURPOSE_DESTINATION_ADDRESS"],"addressLine1":"12, Main road","addressLine2":"apt 123","city":"New York","stateProvinceCode":"NJ","postalCode":"111-1234","countryCode":"US"}]},"paymentMethodDetails":{"paymentCard":{"cardHolderName":{"fullName":"John Doe"},"billingAddress":{"label":"homePostalAddress","purposeCodes":["ADDRESS_PURPOSE_HOME_ADDRESS"],"addressLine1":"Baker Street 23","addressLine2":"Apartment 14","city":"Warsaw","stateProvinceCode":"TX","postalCode":"32-100","countryCode":"PL","postOfficeBoxCode":"PO Box"},"tokenizedCardId":"5123P10JZCC02346","securityCode":"123","cardVendorCode":"CA","expirationDate":"1229"}}}}],"passengers":[{"id":"PAX1","passengerTypeCode":"ADT","person":{"title":"Mrs","givenName":"Ruby","middleName":"Greer","surname":"Graham","dateOfBirth":{"year":1999,"month":4,"day":3},"gender":"GENDER_FEMALE","emailAddresses":[{"label":"EmailAddress","purposeCodes":["EMAIL_PURPOSE_GENERAL"],"email":"Ruby.Graham@sabre.com"}],"phoneNumbers":[{"label":"HomePhone","purposeCodes":["PHONE_PURPOSE_HOME"],"structured":{"countryCallingCode":"1","areaCode":"907","localNumber":"123456789","extension":"012"}}],"addresses":[{"label":"homePostalAddress","purposeCodes":["ADDRESS_PURPOSE_HOME_ADDRESS"],"addressLine1":"Baker Street 23/14","city":"Warsaw","postalCode":"32-100","countryCode":"PL"},{"label":"destinationPostalAddress","purposeCodes":["ADDRESS_PURPOSE_DESTINATION_ADDRESS"],"addressLine1":"12, Main road","addressLine2":"apt 123","city":"New York","stateProvinceCode":"NJ","postalCode":"111-1234","countryCode":"US"}]},"identityDocuments":[],"isPrimaryPassenger":true,"preferredCommunicationMethod":"PREFERRED_COMMUNICATION_METHOD_SMS"},{"id":"PAX3","passengerTypeCode":"CNN","person":{"title":"Mrs","givenName":"Eldridge","middleName":"Kennedy","surname":"Ruecker","dateOfBirth":{"year":2018,"month":4,"day":3},"gender":"GENDER_FEMALE","emailAddresses":[{"label":"EmailAddress","purposeCodes":["EMAIL_PURPOSE_GENERAL"],"email":"Eldridge.Ruecker@sabre.com"}],"phoneNumbers":[{"label":"HomePhone","purposeCodes":["PHONE_PURPOSE_HOME"],"structured":{"countryCallingCode":"1","areaCode":"907","localNumber":"123456789","extension":"012"}}],"addresses":[{"label":"homePostalAddress","purposeCodes":["ADDRESS_PURPOSE_HOME_ADDRESS"],"addressLine1":"Baker Street 23/14","city":"Warsaw","postalCode":"32-100","countryCode":"PL"},{"label":"destinationPostalAddress","purposeCodes":["ADDRESS_PURPOSE_DESTINATION_ADDRESS"],"addressLine1":"12, Main road","addressLine2":"apt 123","city":"New York","stateProvinceCode":"NJ","postalCode":"111-1234","countryCode":"US"}]},"identityDocuments":[],"isPrimaryPassenger":false,"preferredCommunicationMethod":"PREFERRED_COMMUNICATION_METHOD_SMS"},{"id":"PAX2","passengerTypeCode":"ADT","person":{"title":"Mrs","givenName":"Lina","middleName":"Robin","surname":"Hansen","dateOfBirth":{"year":1999,"month":4,"day":3},"gender":"GENDER_FEMALE","emailAddresses":[{"label":"EmailAddress","purposeCodes":["EMAIL_PURPOSE_GENERAL"],"email":"Lina.Hansen@sabre.com"}],"phoneNumbers":[{"label":"HomePhone","purposeCodes":["PHONE_PURPOSE_HOME"],"structured":{"countryCallingCode":"1","areaCode":"907","localNumber":"123456789","extension":"012"}}],"addresses":[{"label":"homePostalAddress","purposeCodes":["ADDRESS_PURPOSE_HOME_ADDRESS"],"addressLine1":"Baker Street 23/14","city":"Warsaw","postalCode":"32-100","countryCode":"PL"},{"label":"destinationPostalAddress","purposeCodes":["ADDRESS_PURPOSE_DESTINATION_ADDRESS"],"addressLine1":"12, Main road","addressLine2":"apt 123","city":"New York","stateProvinceCode":"NJ","postalCode":"111-1234","countryCode":"US"}]},"identityDocuments":[],"isPrimaryPassenger":false,"preferredCommunicationMethod":"PREFERRED_COMMUNICATION_METHOD_SMS"}]}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
