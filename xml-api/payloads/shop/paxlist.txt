@@ -1,0 +1,4 @@
+<cns:Pax>
+   <cns:PaxID>$PAXID</cns:PaxID>
+   <cns:PTC>$PAXTYPE</cns:PTC>
+</cns:Pax>

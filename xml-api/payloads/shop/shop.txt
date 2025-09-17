@@ -44,10 +44,7 @@
       </cns:FlightRequest>
 
       <cns:PaxList>
-         <cns:Pax>
-            <cns:PaxID>$PAXID</cns:PaxID>
-            <cns:PTC>$PAXTYPE</cns:PTC>
-         </cns:Pax>
+         #{@PAXLIST}
       </cns:PaxList>
 
       <cns:ResponseParameters>

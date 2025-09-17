@@ -4,20 +4,23 @@ import { DOMParser } from 'xmldom';
 export class XmlTemplateProcessor {
   private xmlContent: string;
 
-  constructor(private filePath: string) {
-    this.xmlContent = readFileSync(this.filePath, 'utf-8');
+  constructor() {
+
   }
 
   /**
    * Replaces placeholders in the XML with actual values.
    * @param replacements A key-value map of placeholders and their replacements.
    */
-  replacePlaceholders(replacements: Record<string, string>): void {
+  replacePlaceholders(replacements: Record<string, string>, filePath: string): string {
+    this.xmlContent = readFileSync(filePath, 'utf-8');
+
     for (const [key, value] of Object.entries(replacements)) {
       const escapedKey = key.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
       const regex = new RegExp(escapedKey, 'g');
       this.xmlContent = this.xmlContent.replace(regex, value);
     }
+    return this.xmlContent;
   }
 
 
@@ -31,8 +34,8 @@ export class XmlTemplateProcessor {
   /**
    * Parses the XML string into a DOM object.
    */
-  getXmlDocument(): Document {
+  getXmlDocument(xmlContent: string): Document {
     const parser = new DOMParser();
-    return parser.parseFromString(this.xmlContent, 'application/xml');
+    return parser.parseFromString(xmlContent, 'application/xml');
   }
 }

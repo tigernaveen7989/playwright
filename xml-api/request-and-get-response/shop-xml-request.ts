@@ -1,16 +1,16 @@
 import { request, TestInfo } from '@playwright/test';
 import { attachment, step } from 'allure-js-commons';
+import { readFileSync } from 'fs';
 import { XmlTemplateProcessor } from '../../api-base/xml-template-processor'; // Adjust path as needed
 
 export class ShopApi {
     private xmlProcessor: XmlTemplateProcessor;
-    private readonly xmlTemplatePath: string = process.cwd()+'/xml-api/payloads/shop/shop.txt';
+    //private readonly replacements: Record<string, string>
+    private readonly paxListXmlTemplatePath: string = process.cwd() + '/xml-api/payloads/shop/paxlist.txt';
+    private readonly shopXmlTemplatePath: string = process.cwd() + '/xml-api/payloads/shop/shop.txt';
 
-    constructor(
-        private readonly replacements: Record<string, string>
-    ) {
-        this.xmlProcessor = new XmlTemplateProcessor(this.xmlTemplatePath);
-        this.xmlProcessor.replacePlaceholders(this.replacements);
+    constructor() {
+
     }
 
     /**
@@ -23,15 +23,20 @@ export class ShopApi {
     public async sendRequestAndGetResponse(
         endpoint: string,
         headers: Record<string, string>,
-        testInfo: TestInfo
+        testInfo: TestInfo,
+        replacements: Record<string, string>,
+        paxTypeMap: Map<string, string>
     ): Promise<any> {
         return await step('Send Shop API Request and Log Request/Response', async () => {
             try {
-                const xmlPayload = this.xmlProcessor.getXmlString();
-                const xmlDocument : Document = this.xmlProcessor.getXmlDocument();
-                
+                this.xmlProcessor = new XmlTemplateProcessor();
+                const paxListXMLObject = this.getPaxListXMLObject(paxTypeMap, this.paxListXmlTemplatePath);
+                replacements['#{@PAXLIST}'] = paxListXMLObject;
+                const xmlPayload = this.xmlProcessor.replacePlaceholders(replacements, this.shopXmlTemplatePath);
+                const xmlDocument: Document = this.xmlProcessor.getXmlDocument(xmlPayload);
+
                 await attachment('Shop XML Request Payload', xmlPayload, {
-                    contentType: 'application/xml'
+                    contentType: 'text/plain'
                 });
 
                 const apiContext = await request.newContext();
@@ -46,7 +51,7 @@ export class ShopApi {
                 const responseBody = await response.text();
 
                 await attachment('Shop XML Response Body', responseBody, {
-                    contentType: 'application/xml'
+                    contentType: 'text/plain'
                 });
 
                 return response;
@@ -57,5 +62,129 @@ export class ShopApi {
                 throw error;
             }
         });
+    }
+
+
+    /**
+     * 
+     * @param paxType 
+     * @returns 
+     */
+    public getPaxType(paxType: string): Map<string, string> {
+        const paxMap = new Map<string, string>();
+        let paxIndex = 1;
+
+        // Match all occurrences of number + type (A, C, I, INS)
+        const regex = /(\d+)(INS|A|C|I)/g;
+        let match: RegExpExecArray | null;
+
+        while ((match = regex.exec(paxType)) !== null) {
+            const count = parseInt(match[1], 10);
+            const typeCode = match[2];
+
+            let paxTypeLabel: string;
+            switch (typeCode) {
+                case "A":
+                    paxTypeLabel = "ADT";
+                    break;
+                case "C":
+                    paxTypeLabel = "CNN";
+                    break;
+                case "I":
+                    paxTypeLabel = "INF";
+                    break;
+                case "INS":
+                    paxTypeLabel = "INS";
+                    break;
+                default:
+                    throw new Error(`Unknown pax type: ${typeCode}`);
+            }
+
+            for (let i = 0; i < count; i++) {
+                paxMap.set(`PAX${paxIndex++}`, paxTypeLabel);
+            }
+        }
+
+        if (paxMap.size === 0) {
+            throw new Error("Invalid paxType format.");
+        }
+
+        return paxMap;
+    }
+
+
+
+    private getPaxListXMLObject(paxTypeMap: Map<string, string>, paxItemTemplatePath: string): string {
+        const paxItemTemplate = readFileSync(paxItemTemplatePath, 'utf-8');
+
+        const entries = [...paxTypeMap.entries()].sort(([a], [b]) => {
+            const ax = this.extractIndex(a);
+            const bx = this.extractIndex(b);
+            return ax - bx || a.localeCompare(b);
+        });
+
+        let paxBlocks = '';
+
+        for (const [paxId, ptc] of entries) {
+            if (!ptc) throw new Error(`Missing PTC for ${paxId}`);
+
+            const block = paxItemTemplate
+                .replace(/\$PAXID/g, paxId)
+                .replace(/\$PAXTYPE/g, ptc);
+
+            paxBlocks += block + '\n';
+        }
+
+        return `${paxBlocks}`;
+    }
+
+    private extractIndex(id: string): number {
+        const m = /(\d+)$/.exec(id);
+        return m ? parseInt(m[1], 10) : Number.MAX_SAFE_INTEGER;
+    }
+
+    /**
+     * 
+     * @param paxMap 
+     * @param responseBody 
+     * @returns 
+     */
+    public getPaxOfferItemIdsMap(
+        paxMap: Map<string, string>,
+        responseBody: string
+    ): Map<string, string> {
+        const result = new Map<string, string>();
+
+        // Unescape if XML is HTML-encoded
+        const xml = responseBody.replace(/&lt;/g, '<').replace(/&gt;/g, '>');
+
+        // Extract OfferId
+        const offerIdMatch = xml.match(/<cns:OfferID>([^<]+)<\/cns:OfferID>/);
+        if (!offerIdMatch) throw new Error('OfferID not found');
+        const offerId = offerIdMatch[1].trim();
+        result.set('OfferId', offerId);
+
+        // Extract all OfferItem blocks
+        const offerItemBlocks = xml.match(/<cns:OfferItem\b[\s\S]*?<\/cns:OfferItem>/g) || [];
+
+        // Build PaxRefID -> OfferItemID map
+        const paxToItem: Record<string, string> = {};
+        for (const block of offerItemBlocks) {
+            const itemIdMatch = block.match(/<cns:OfferItemID>([^<]+)<\/cns:OfferItemID>/);
+            const paxMatch = block.match(/<cns:PaxRefID>([^<]+)<\/cns:PaxRefID>/);
+            if (itemIdMatch && paxMatch) {
+                paxToItem[paxMatch[1].trim()] = itemIdMatch[1].trim();
+            }
+        }
+
+        // Add only requested PAX from paxMap
+        for (const paxId of paxMap.keys()) {
+            if (!paxToItem[paxId]) {
+                throw new Error(`No OfferItemID found for ${paxId}`);
+            }
+            result.set(paxId, paxToItem[paxId]);
+        }
+
+        return result;
     }
 }

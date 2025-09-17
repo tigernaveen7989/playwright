@@ -107,7 +107,7 @@ test.only(
     headers = await activatejwttoken.getJwtToken(testInfo);
     ({ rmxApiJson, omsApiJson } = await activatejwttoken.loadConfig());
 
-    shop = new shopApi('SYD', 'BNE', 10, 9, 2025, 'EUR');
+    shop = new shopApi('SYD', 'BNE', 10, 10, 2025, 'EUR');
     price = new priceApi();
     createOrder = new createOrderApi();
 
@@ -203,7 +203,7 @@ test(
     headers = await activatejwttoken.getJwtToken(testInfo);
     ({ rmxApiJson, omsApiJson } = await activatejwttoken.loadConfig());
 
-    shop = new shopApi('SYD', 'BNE', 10, 9, 2025, 'EUR');
+    shop = new shopApi('SYD', 'BNE', 10, 10, 2025, 'EUR');
     price = new priceApi();
     createOrder = new createOrderApi();
 
