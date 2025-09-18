@@ -38,4 +38,32 @@ export class XmlTemplateProcessor {
     const parser = new DOMParser();
     return parser.parseFromString(xmlContent, 'application/xml');
   }
+
+  // Static utility method to format XML with indentation
+  public formatXml(xml: string): string {
+    const PADDING = '  '; // 2 spaces
+    const reg = /(>)(<)(\/*)/g;
+    let formatted = '';
+    let pad = 0;
+
+    xml = xml.replace(reg, '$1\r\n$2$3');
+    xml.split('\r\n').forEach((node) => {
+      let indent = 0;
+      if (node.match(/.+<\/\w[^>]*>$/)) {
+        indent = 0;
+      } else if (node.match(/^<\/\w/)) {
+        if (pad !== 0) pad -= 1;
+      } else if (node.match(/^<\w([^>]*[^/])?>.*$/)) {
+        indent = 1;
+      } else {
+        indent = 0;
+      }
+
+      const padding = PADDING.repeat(pad);
+      formatted += padding + node + '\r\n';
+      pad += indent;
+    });
+
+    return formatted.trim();
+  }
 }

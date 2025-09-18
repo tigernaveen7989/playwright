@@ -35,7 +35,7 @@ export class ShopApi {
                 const xmlPayload = this.xmlProcessor.replacePlaceholders(replacements, this.shopXmlTemplatePath);
                 const xmlDocument: Document = this.xmlProcessor.getXmlDocument(xmlPayload);
 
-                await attachment('Shop XML Request Payload', xmlPayload, {
+                await attachment('Shop XML Request Payload', this.xmlProcessor.formatXml(xmlPayload), {
                     contentType: 'text/plain'
                 });
 
@@ -50,7 +50,7 @@ export class ShopApi {
 
                 const responseBody = await response.text();
 
-                await attachment('Shop XML Response Body', responseBody, {
+                await attachment('Shop XML Response Body', this.xmlProcessor.formatXml(responseBody), {
                     contentType: 'text/plain'
                 });
 
@@ -144,19 +144,24 @@ export class ShopApi {
     }
 
     /**
-     * 
-     * @param paxMap 
-     * @param responseBody 
-     * @returns 
-     */
+  * Extracts OfferId and all matching PaxRefID → OfferItemID pairs from XML response
+  * @param paxMap Map of requested Pax IDs
+  * @param responseBody XML response string
+  * @returns Map with OfferId and PaxRefID → OfferItemID pairs
+  */
     public getPaxOfferItemIdsMap(
         paxMap: Map<string, string>,
         responseBody: string
     ): Map<string, string> {
         const result = new Map<string, string>();
 
-        // Unescape if XML is HTML-encoded
-        const xml = responseBody.replace(/&lt;/g, '<').replace(/&gt;/g, '>');
+        // Decode HTML entities if needed
+        const xml = responseBody
+            .replace(/&amp;/g, '&')
+            .replace(/&lt;/g, '<')
+            .replace(/&gt;/g, '>')
+            .replace(/&quot;/g, '"')
+            .replace(/&#39;/g, "'");
 
         // Extract OfferId
         const offerIdMatch = xml.match(/<cns:OfferID>([^<]+)<\/cns:OfferID>/);
@@ -167,22 +172,35 @@ export class ShopApi {
         // Extract all OfferItem blocks
         const offerItemBlocks = xml.match(/<cns:OfferItem\b[\s\S]*?<\/cns:OfferItem>/g) || [];
 
-        // Build PaxRefID -> OfferItemID map
-        const paxToItem: Record<string, string> = {};
+        // Track which PAX IDs have been matched
+        const matchedPaxIds = new Set<string>();
+
+        // Loop through all OfferItem blocks and collect matches
         for (const block of offerItemBlocks) {
             const itemIdMatch = block.match(/<cns:OfferItemID>([^<]+)<\/cns:OfferItemID>/);
             const paxMatch = block.match(/<cns:PaxRefID>([^<]+)<\/cns:PaxRefID>/);
+
             if (itemIdMatch && paxMatch) {
-                paxToItem[paxMatch[1].trim()] = itemIdMatch[1].trim();
+                const paxId = paxMatch[1].trim();
+                const offerItemId = itemIdMatch[1].trim();
+
+                if (paxMap.has(paxId) && !matchedPaxIds.has(paxId)) {
+                    result.set(paxId, offerItemId);
+                    matchedPaxIds.add(paxId);
+                }
+            }
+
+            // Optional: break early if all PAX IDs are matched
+            if (matchedPaxIds.size === paxMap.size) {
+                break;
             }
         }
 
-        // Add only requested PAX from paxMap
+        // Validate all PAX IDs were matched
         for (const paxId of paxMap.keys()) {
-            if (!paxToItem[paxId]) {
+            if (!result.has(paxId)) {
                 throw new Error(`No OfferItemID found for ${paxId}`);
             }
-            result.set(paxId, paxToItem[paxId]);
         }
 
         return result;

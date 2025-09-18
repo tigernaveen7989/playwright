@@ -1,0 +1,8 @@
+<ns2:SelectedPricedOffer>
+                    <ns2:OfferRefID>$OFFER_REF_ID</ns2:OfferRefID>
+                    <ns2:OwnerCode>$OWNER_CODE</ns2:OwnerCode>
+                    <ns2:SelectedOfferItem>
+                        <ns2:OfferItemRefID>$OFFER_ITEM_REF_ID</ns2:OfferItemRefID>
+                        <ns2:PaxRefID>$PAXID</ns2:PaxRefID>
+                    </ns2:SelectedOfferItem>
+                </ns2:SelectedPricedOffer>

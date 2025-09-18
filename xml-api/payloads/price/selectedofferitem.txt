@@ -1,0 +1,4 @@
+ <cns:SelectedOfferItem>
+   <cns:OfferItemRefID>$OFFER_ITEM_REF_ID</cns:OfferItemRefID>
+   <cns:PaxRefID>$PAXID</cns:PaxRefID>
+</cns:SelectedOfferItem>

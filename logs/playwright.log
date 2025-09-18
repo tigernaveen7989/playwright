@@ -63320,3 +63320,267 @@
   "PAX3": "mfmpffx9h4_133_2"
 }[0m
 ------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-18 04:24:30][0m [36mcreateordertest.spec.ts:33[0m : [30mpax map is[0m [38;5;141m{
+  "PAX1": "ADT"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-18 04:24:33][0m [36mcreateordertest.spec.ts:43[0m : [30mpaxid offers items ids map [0m [38;5;141m{
+  "OfferId": "mfobp807ax_0",
+  "PAX1": "mfobp807ax_133_0"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-18 04:24:34][0m [36mcreateordertest.spec.ts:72[0m : [30mpax map is[0m [38;5;141m{
+  "PAX1": "ADT",
+  "PAX2": "ADT",
+  "PAX3": "CNN"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-18 04:24:36][0m [36mcreateordertest.spec.ts:83[0m : [30mpaxid offers items ids map [0m [38;5;141m{
+  "OfferId": "mfobp807ay_0",
+  "PAX1": "mfobp807ay_132_0",
+  "PAX2": "mfobp807ay_132_1",
+  "PAX3": "mfobp807ay_132_2"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-18 04:55:33][0m [36mcreateordertest.spec.ts:74[0m : [30mpax map is[0m [38;5;141m{
+  "PAX1": "ADT",
+  "PAX2": "ADT",
+  "PAX3": "CNN"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-18 04:55:37][0m [36mcreateordertest.spec.ts:85[0m : [30mpaxid offers items ids map [0m [38;5;141m{
+  "OfferId": "mfobp807bp_0",
+  "PAX1": "mfobp807bp_132_0",
+  "PAX2": "mfobp807bp_132_1",
+  "PAX3": "mfobp807bp_132_2"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-18 04:58:10][0m [36mcreateordertest.spec.ts:76[0m : [30mpax map is[0m [38;5;141m{
+  "PAX1": "ADT",
+  "PAX2": "ADT",
+  "PAX3": "CNN"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-18 04:58:14][0m [36mcreateordertest.spec.ts:87[0m : [30mpaxid offers items ids map [0m [38;5;141m{
+  "OfferId": "mfobp7jfcb_0",
+  "PAX1": "mfobp7jfcb_132_0",
+  "PAX2": "mfobp7jfcb_132_1",
+  "PAX3": "mfobp7jfcb_132_2"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-18 05:00:32][0m [36mcreateordertest.spec.ts:76[0m : [30mpax map is[0m [38;5;141m{
+  "PAX1": "ADT",
+  "PAX2": "ADT",
+  "PAX3": "CNN"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-18 05:00:35][0m [36mcreateordertest.spec.ts:87[0m : [30mpaxid offers items ids map [0m [38;5;141m{
+  "OfferId": "mfobp807bt_0",
+  "PAX1": "mfobp807bt_132_0",
+  "PAX2": "mfobp807bt_132_1",
+  "PAX3": "mfobp807bt_132_2"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-18 05:18:11][0m [36mcreateordertest.spec.ts:76[0m : [30mpax map is[0m [38;5;141m{
+  "PAX1": "ADT",
+  "PAX2": "ADT",
+  "PAX3": "CNN"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-18 05:18:15][0m [36mcreateordertest.spec.ts:87[0m : [30mpaxid offers items ids map [0m [38;5;141m{
+  "OfferId": "mfobp807c2_0",
+  "PAX1": "mfobp807c2_132_0",
+  "PAX2": "mfobp807c2_132_1",
+  "PAX3": "mfobp807c2_132_2"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-18 05:22:15][0m [36mcreateordertest.spec.ts:76[0m : [30mpax map is[0m [38;5;141m{
+  "PAX1": "ADT",
+  "PAX2": "ADT",
+  "PAX3": "CNN"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-18 05:22:18][0m [36mcreateordertest.spec.ts:87[0m : [30mpaxid offers items ids map [0m [38;5;141m{
+  "OfferId": "mfobp807c4_0",
+  "PAX1": "mfobp807c4_132_0",
+  "PAX2": "mfobp807c4_132_1",
+  "PAX3": "mfobp807c4_132_2"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-18 05:28:45][0m [36mcreateordertest.spec.ts:76[0m : [30mpax map is[0m [38;5;141m{
+  "PAX1": "ADT",
+  "PAX2": "ADT",
+  "PAX3": "CNN"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-18 05:34:01][0m [36mcreateordertest.spec.ts:76[0m : [30mpax map is[0m [38;5;141m{
+  "PAX1": "ADT",
+  "PAX2": "ADT",
+  "PAX3": "CNN"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-18 05:34:05][0m [36mcreateordertest.spec.ts:87[0m : [30mpaxid offers items ids map [0m [38;5;141m{
+  "OfferId": "mfobp7jfd2_0",
+  "PAX1": "mfobp7jfd2_0_0"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-18 06:04:38][0m [36mcreateordertest.spec.ts:76[0m : [30mpax map is[0m [38;5;141m{
+  "PAX1": "ADT",
+  "PAX2": "ADT",
+  "PAX3": "CNN"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-18 06:04:42][0m [36mcreateordertest.spec.ts:87[0m : [30mpaxid offers items ids map [0m [38;5;141m{
+  "OfferId": "mfobp807dh_0",
+  "PAX1": "mfobp807dh_0_0",
+  "PAX2": "mfobp807dh_0_1",
+  "PAX3": "mfobp807dh_0_2"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-18 06:51:43][0m [36mcreateordertest.spec.ts:47[0m : [30mPax Type Map: {
+  "PAX1": "ADT"
+}[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-18 06:51:47][0m [36mcreateordertest.spec.ts:58[0m : [30mShop request successful[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-18 06:51:47][0m [36mcreateordertest.spec.ts:66[0m : [30mPax ID → Offer Item ID Map: {
+  "OfferId": "mfobp807eo_0",
+  "PAX1": "mfobp807eo_0_0"
+}[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-18 06:51:48][0m [36mcreateordertest.spec.ts:79[0m : [30mPrice request successful[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-18 06:51:48][0m [36mcreateordertest.spec.ts:119[0m : [30mPax Type Map: {
+  "PAX1": "ADT",
+  "PAX2": "ADT",
+  "PAX3": "CNN"
+}[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-18 06:51:51][0m [36mcreateordertest.spec.ts:130[0m : [30mShop request successful[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-18 06:51:51][0m [36mcreateordertest.spec.ts:138[0m : [30mPax ID → Offer Item ID Map: {
+  "OfferId": "mfobp807eq_0",
+  "PAX1": "mfobp807eq_0_0",
+  "PAX2": "mfobp807eq_0_1",
+  "PAX3": "mfobp807eq_0_2"
+}[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-18 06:51:52][0m [36mcreateordertest.spec.ts:151[0m : [30mPrice request successful[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-18 07:14:28][0m [36mcreateordertest.spec.ts:47[0m : [30mPax Type Map: {
+  "PAX1": "ADT"
+}[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-18 07:14:32][0m [36mcreateordertest.spec.ts:58[0m : [30mShop request successful[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-18 07:14:32][0m [36mcreateordertest.spec.ts:66[0m : [30mPax ID → Offer Item ID Map: {
+  "OfferId": "mfobp7jffv_0",
+  "PAX1": "mfobp7jffv_0_0"
+}[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-18 07:14:34][0m [36mcreateordertest.spec.ts:79[0m : [30mPrice request successful[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-18 07:14:34][0m [36mcreateordertest.spec.ts:119[0m : [30mPax Type Map: {
+  "PAX1": "ADT",
+  "PAX2": "ADT",
+  "PAX3": "CNN"
+}[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-18 07:14:37][0m [36mcreateordertest.spec.ts:130[0m : [30mShop request successful[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-18 07:14:37][0m [36mcreateordertest.spec.ts:138[0m : [30mPax ID → Offer Item ID Map: {
+  "OfferId": "mfobp7jffx_0",
+  "PAX1": "mfobp7jffx_0_0",
+  "PAX2": "mfobp7jffx_0_1",
+  "PAX3": "mfobp7jffx_0_2"
+}[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-18 07:14:38][0m [36mcreateordertest.spec.ts:151[0m : [30mPrice request successful[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-18 13:57:43][0m [36mshop-json-object.ts:86[0m : [30mpassenger object is : [object Object],[object Object],[object Object][0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-18 13:57:43][0m [36mshop-json-object.ts:61[0m : [30mshop payload request is : [0m [38;5;141m{"request":{"origin_destinations_criteria":[{"origin_departure_criteria":{"date":{"month":10,"year":2025,"day":10},"airportCode":"SYD"},"destination_arrival_criteria":{"airportCode":"BNE"}}],"passengers":[{"passenger_type_code":"ADT","id":"PAX1"},{"passenger_type_code":"ADT","id":"PAX2"},{"passenger_type_code":"CNN","id":"PAX3"}],"requestType":"ADVCAL30","offer_criteria":{"program":{"programAccountIds":[]}},"currency":"EUR"},"sender":{"enabled_system":{"name":"POS"},"marketing_carrier":{"airline_designator_code":"VA"}},"point_of_sale":{"country":{"code":"CA"},"city":{"code":"ORD"},"channel":"STANDARD"}}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-18 13:57:49][0m [36mcreateordertest.spec.ts:125[0m : [30mPax type map:[0m [38;5;141m{
+  "PAX1": "ADT",
+  "PAX2": "ADT",
+  "PAX3": "CNN"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-18 13:57:49][0m [36mcreateordertest.spec.ts:128[0m : [30mPax-Offer mapping:[0m [38;5;141m{
+  "PAX1": "mfox0pmd3r_89_0",
+  "PAX2": "mfox0pmd3r_89_1",
+  "PAX3": "mfox0pmd3r_89_2",
+  "OfferId": "mfox0pmd3r_89"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-18 13:57:49][0m [36mprice-json-object.ts:17[0m : [30mpax id offer items map[0m [38;5;141m{
+  "PAX1": "mfox0pmd3r_89_0",
+  "PAX2": "mfox0pmd3r_89_1",
+  "PAX3": "mfox0pmd3r_89_2",
+  "OfferId": "mfox0pmd3r_89"
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-18 13:57:49][0m [36mprice-json-object.ts:39[0m : [30mprice payload request is : [0m [38;5;141m{"point_of_sale":{"channel":"STANDARD","country":{"code":"AU"},"city":{"code":"SYD"}},"sender":{"enabled_system":{},"marketing_carrier":{"airline_designator_code":"VA"}},"request":{"selected_offers":[{"id":"mfox0pmd3r_89","selected_offer_items":[{"id":"mfox0pmd3r_89_0","passenger_ids":["PAX1"],"selected_fares":[]},{"id":"mfox0pmd3r_89_1","passenger_ids":["PAX2"],"selected_fares":[]},{"id":"mfox0pmd3r_89_2","passenger_ids":["PAX3"],"selected_fares":[]}]}],"override_currency":"AUD","response_parameters":{"disable_availability_check":false,"disable_tax_calculation":false,"booking_category":"ALL"}},"diagnostics":{}}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-18 13:57:50][0m [36mprice-api-request.ts:116[0m : [30mPassenger details map: [0m [38;5;141m{
+  "PAX1": {
+    "offerItemId": "mfow67wi4p-0",
+    "price": "534.00",
+    "passengerJourneyIds": "JOURNEY_1_1758203871628",
+    "paxTypeCode": "ADT"
+  },
+  "PAX3": {
+    "offerItemId": "mfow67wi4p-2",
+    "price": "534.00",
+    "passengerJourneyIds": "JOURNEY_1_1758203871628",
+    "paxTypeCode": "CNN"
+  },
+  "PAX2": {
+    "offerItemId": "mfow67wi4p-1",
+    "price": "534.00",
+    "passengerJourneyIds": "JOURNEY_1_1758203871628",
+    "paxTypeCode": "ADT"
+  }
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-18 13:57:51][0m [36mcreate-order-json-object.ts:139[0m : [30mCreate order payload:[0m [38;5;141m{"point_of_sale":{"channel":"STANDARD","country":{"code":"AU"},"city":{"code":"SYD"}},"acceptOffers":[{"offerId":"mfow67wi4p","offerItems":[{"offerItemId":"mfow67wi4p-0"},{"offerItemId":"mfow67wi4p-2"},{"offerItemId":"mfow67wi4p-1"}]}],"paymentFunctions":[{"offerAssociations":[{"offerId":"mfow67wi4p","offerItemIds":[["mfow67wi4p-0","mfow67wi4p-2","mfow67wi4p-1"]]}],"paymentProcessingSummary":{"paymentMethod":"PAYMENT_METHOD_PAYMENT_CARD","typeCodeIata":"CC","amount":{"currency":"AUD","amount":"1602.00"},"payerInfo":{"title":"Mr.","givenName":"John","surname":"Doe","dateOfBirth":{"year":1989,"month":1,"day":11},"gender":"GENDER_MALE","emailAddresses":[{"label":"EmailAddress","purposeCodes":["EMAIL_PURPOSE_GENERAL"],"email":"john.smith@example.com"}],"phoneNumbers":[{"label":"HomePhone","purposeCodes":["PHONE_PURPOSE_HOME"],"structured":{"countryCallingCode":"1","areaCode":"001","localNumber":"1234567","extension":"1234"}}],"addresses":[{"label":"homePostalAddress","purposeCodes":["ADDRESS_PURPOSE_HOME_ADDRESS"],"addressLine1":"Baker Street 23/14","city":"Warsaw","postalCode":"32-100","countryCode":"PL"},{"label":"destinationPostalAddress","purposeCodes":["ADDRESS_PURPOSE_DESTINATION_ADDRESS"],"addressLine1":"12, Main road","addressLine2":"apt 123","city":"New York","stateProvinceCode":"NJ","postalCode":"111-1234","countryCode":"US"}]},"paymentMethodDetails":{"paymentCard":{"cardHolderName":{"fullName":"John Doe"},"billingAddress":{"label":"homePostalAddress","purposeCodes":["ADDRESS_PURPOSE_HOME_ADDRESS"],"addressLine1":"Baker Street 23","addressLine2":"Apartment 14","city":"Warsaw","stateProvinceCode":"TX","postalCode":"32-100","countryCode":"PL","postOfficeBoxCode":"PO Box"},"tokenizedCardId":"5123P10JZCC02346","securityCode":"123","cardVendorCode":"CA","expirationDate":"1229"}}}}],"passengers":[{"id":"PAX1","passengerTypeCode":"ADT","person":{"title":"Mrs","givenName":"Erika","middleName":"Charlie","surname":"Welch","dateOfBirth":{"year":1999,"month":4,"day":3},"gender":"GENDER_FEMALE","emailAddresses":[{"label":"EmailAddress","purposeCodes":["EMAIL_PURPOSE_GENERAL"],"email":"Erika.Welch@sabre.com"}],"phoneNumbers":[{"label":"HomePhone","purposeCodes":["PHONE_PURPOSE_HOME"],"structured":{"countryCallingCode":"1","areaCode":"907","localNumber":"123456789","extension":"012"}}],"addresses":[{"label":"homePostalAddress","purposeCodes":["ADDRESS_PURPOSE_HOME_ADDRESS"],"addressLine1":"Baker Street 23/14","city":"Warsaw","postalCode":"32-100","countryCode":"PL"},{"label":"destinationPostalAddress","purposeCodes":["ADDRESS_PURPOSE_DESTINATION_ADDRESS"],"addressLine1":"12, Main road","addressLine2":"apt 123","city":"New York","stateProvinceCode":"NJ","postalCode":"111-1234","countryCode":"US"}]},"identityDocuments":[],"isPrimaryPassenger":true,"preferredCommunicationMethod":"PREFERRED_COMMUNICATION_METHOD_SMS"},{"id":"PAX3","passengerTypeCode":"CNN","person":{"title":"Mrs","givenName":"Madalyn","middleName":"Ryan","surname":"Feest","dateOfBirth":{"year":2018,"month":4,"day":3},"gender":"GENDER_FEMALE","emailAddresses":[{"label":"EmailAddress","purposeCodes":["EMAIL_PURPOSE_GENERAL"],"email":"Madalyn.Feest@sabre.com"}],"phoneNumbers":[{"label":"HomePhone","purposeCodes":["PHONE_PURPOSE_HOME"],"structured":{"countryCallingCode":"1","areaCode":"907","localNumber":"123456789","extension":"012"}}],"addresses":[{"label":"homePostalAddress","purposeCodes":["ADDRESS_PURPOSE_HOME_ADDRESS"],"addressLine1":"Baker Street 23/14","city":"Warsaw","postalCode":"32-100","countryCode":"PL"},{"label":"destinationPostalAddress","purposeCodes":["ADDRESS_PURPOSE_DESTINATION_ADDRESS"],"addressLine1":"12, Main road","addressLine2":"apt 123","city":"New York","stateProvinceCode":"NJ","postalCode":"111-1234","countryCode":"US"}]},"identityDocuments":[],"isPrimaryPassenger":false,"preferredCommunicationMethod":"PREFERRED_COMMUNICATION_METHOD_SMS"},{"id":"PAX2","passengerTypeCode":"ADT","person":{"title":"Mrs","givenName":"Jackeline","middleName":"Ellis","surname":"Heaney","dateOfBirth":{"year":1999,"month":4,"day":3},"gender":"GENDER_FEMALE","emailAddresses":[{"label":"EmailAddress","purposeCodes":["EMAIL_PURPOSE_GENERAL"],"email":"Jackeline.Heaney@sabre.com"}],"phoneNumbers":[{"label":"HomePhone","purposeCodes":["PHONE_PURPOSE_HOME"],"structured":{"countryCallingCode":"1","areaCode":"907","localNumber":"123456789","extension":"012"}}],"addresses":[{"label":"homePostalAddress","purposeCodes":["ADDRESS_PURPOSE_HOME_ADDRESS"],"addressLine1":"Baker Street 23/14","city":"Warsaw","postalCode":"32-100","countryCode":"PL"},{"label":"destinationPostalAddress","purposeCodes":["ADDRESS_PURPOSE_DESTINATION_ADDRESS"],"addressLine1":"12, Main road","addressLine2":"apt 123","city":"New York","stateProvinceCode":"NJ","postalCode":"111-1234","countryCode":"US"}]},"identityDocuments":[],"isPrimaryPassenger":false,"preferredCommunicationMethod":"PREFERRED_COMMUNICATION_METHOD_SMS"}]}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-18 14:14:25][0m [36mcreateordertest.spec.ts:119[0m : [30mPax Type Map: {
+  "PAX1": "ADT",
+  "PAX2": "ADT",
+  "PAX3": "CNN"
+}[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-18 14:14:30][0m [36mcreateordertest.spec.ts:130[0m : [30mShop request successful[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-18 14:14:30][0m [36mcreateordertest.spec.ts:138[0m : [30mPax ID → Offer Item ID Map: {
+  "OfferId": "mfox0pmd46_0",
+  "PAX1": "mfox0pmd46_0_0",
+  "PAX2": "mfox0pmd46_0_1",
+  "PAX3": "mfox0pmd46_0_2"
+}[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-18 14:14:31][0m [36mcreateordertest.spec.ts:151[0m : [30mPrice request successful[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-18 14:14:31][0m [36mprice-xml-request.ts:144[0m : [30mPassenger details map: [0m [38;5;141m{}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-18 14:16:11][0m [36mcreateordertest.spec.ts:119[0m : [30mPax Type Map: {
+  "PAX1": "ADT",
+  "PAX2": "ADT",
+  "PAX3": "CNN"
+}[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-18 14:16:15][0m [36mcreateordertest.spec.ts:130[0m : [30mShop request successful[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-18 14:16:15][0m [36mcreateordertest.spec.ts:138[0m : [30mPax ID → Offer Item ID Map: {
+  "OfferId": "mfox0pmd49_0",
+  "PAX1": "mfox0pmd49_0_0",
+  "PAX2": "mfox0pmd49_0_1",
+  "PAX3": "mfox0pmd49_0_2"
+}[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-18 14:16:17][0m [36mcreateordertest.spec.ts:151[0m : [30mPrice request successful[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[2025-09-18 14:16:17][0m [36mprice-xml-request.ts:145[0m : [30mPassenger details map: [0m [38;5;141m{}[0m
+------------------------------------------------------------------------------------------------------------------------------------------

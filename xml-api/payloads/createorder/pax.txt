@@ -1,0 +1,13 @@
+<ns2:Pax>
+                    <ns2:ContactInfoRefID>$PAXID</ns2:ContactInfoRefID>
+                    <ns2:Individual>
+                        <ns2:Birthdate>$DATE_OF_BIRTH</ns2:Birthdate>
+                        <ns2:GenderCode>$GENDER_CODE</ns2:GenderCode>
+                        <ns2:GivenName>$FIRST_NAME</ns2:GivenName>
+                        <ns2:MiddleName>$MIDDLE_NAME</ns2:MiddleName>
+                        <ns2:Surname>$LAST_NAME</ns2:Surname>
+                        <ns2:TitleName>$TITLE</ns2:TitleName>
+                    </ns2:Individual>
+                    <ns2:PaxID>$PAXID</ns2:PaxID>
+                    <ns2:PTC>$PAXTYPE</ns2:PTC>
+                </ns2:Pax>
