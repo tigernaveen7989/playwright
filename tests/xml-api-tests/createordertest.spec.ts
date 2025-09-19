@@ -14,7 +14,7 @@ const logger = LoggerFactory.getLogger(__filename);
  */
 test(
   'TC1_Verify_Add_One_Way_Single_Pax_One_Way_Create_Paid_Order' +
-    ' @allure.label.feature:XML-SinglePax-PaidOrder',
+  ' @allure.label.feature:XML-SinglePax-PaidOrder',
   async ({ testData }, testInfo) => {
     // --------------------- Variable Declarations ---------------------
     const paxType: string = testData.get('paxType')?.toString()!;
@@ -23,7 +23,7 @@ test(
     const activateToken = new activateJwtToken();
     const shop = new ShopApi();
     const price = new PriceApi();
-    
+
     // --------------------- Step 1: Get JWT Token ---------------------
     const headers = await activateToken.getJwtToken(testInfo);
     const { rmxNdcXml } = await activateToken.loadConfig();
@@ -86,7 +86,7 @@ test(
  */
 test.only(
   'TC2_Verify_Add_One_Way_Multi_Pax_Create_Paid_Order' +
-    ' @allure.label.feature:XML-Multipax-PaidOrder',
+  ' @allure.label.feature:XML-Multipax-PaidOrder',
   async ({ testData }, testInfo) => {
     // --------------------- Variable Declarations ---------------------
     const paxType: string = testData.get('paxType')?.toString()!;
@@ -150,6 +150,9 @@ test.only(
     expect(priceResponse.ok()).toBe(true);
     logger.info('Price request successful');
 
-    //const passengerDetailsMap: Map<string, Map<string, string>> = await price.getPassengerDetailsMap(priceResponse, paxTypeMap);
+    const passengerDetailsMap: Map<string, Map<string, string>> = await price.getPassengerDetailsMap(await priceResponse.text(), paxTypeMap);
+
+    const offerId: string = await price.getOfferID(await priceResponse.text());
+    logger.info('offer id ',offerId);
   }
 );
