@@ -4,9 +4,10 @@ import { ShopApi } from '../../xml-api/request-and-get-response/shop-xml-request
 import { LoggerFactory } from '../../utilities/logger';
 import { PriceApi } from '../../xml-api/request-and-get-response/price-xml-request';
 import { CreateOrderApi } from '../../xml-api/request-and-get-response/create-order-xml-request';
+import { Assertions} from '../../utilities/assertions';
 
 test.describe.configure({ mode: 'parallel' });
-
+const assert = new Assertions();
 const logger = LoggerFactory.getLogger(__filename);
 
 /**
@@ -24,15 +25,16 @@ test(
     const activateToken = new activateJwtToken();
     const shop = new ShopApi();
     const price = new PriceApi();
+    const createOrder = new CreateOrderApi();
 
     // --------------------- Step 1: Get JWT Token ---------------------
     const headers = await activateToken.getJwtToken(testInfo);
-    const { rmxNdcXml } = await activateToken.loadConfig();
+    const { rmxNdcXml, omsNdcXml } = await activateToken.loadConfig();
 
     const replacements: Record<string, string> = {
       '$DESTINATION': 'MEL',
-      '$ARRIVAL': 'SYD',
-      '$DATE': '2025-10-16',
+      '$ARRIVAL': 'BNE',
+      '$DATE': '2025-10-20',
       '$SELLER_ORGID': '',
       '$CARRIER_ORGID': '',
       '$AGENT_DUTY': 'NDC',
@@ -55,7 +57,8 @@ test(
       paxTypeMap
     );
 
-    expect(shopResponse.ok()).toBe(true);
+    await assert.toBe(shopResponse.ok(), true, 'Validate Shop Response Is OK');
+    await assert.toBe('Hello', 'Hai', 'Validate Hello Text');
     logger.info('Shop request successful');
 
     // --------------------- Step 3: Parse Shop Response ---------------------
@@ -78,6 +81,23 @@ test(
 
     expect(priceResponse.ok()).toBe(true);
     logger.info('Price request successful');
+
+    const passengerDetailsMap: Map<string, Map<string, string>> = await price.getPassengerDetailsMap(await priceResponse.text(), paxTypeMap);
+
+    const offerId: string = await price.getOfferID(await priceResponse.text());
+    logger.info('offer id ', offerId);
+
+    const createOrderResponse = await createOrder.sendRequestAndGetResponse(
+      omsNdcXml + "/v21_3/orders/create",
+      headers,
+      testInfo,
+      replacements,
+      passengerDetailsMap,
+      offerId
+    );
+
+    expect(createOrderResponse.ok()).toBe(true);
+    logger.info('Create Order request successful');
   }
 );
 
@@ -85,7 +105,7 @@ test(
  * TC2: Verify creating a paid order for one-way trip with multiple passengers.
  * Steps: Shop request → Get offers → Price request → Verify price
  */
-test.only(
+test(
   'TC2_Verify_Add_One_Way_Multi_Pax_Create_Paid_Order' +
   ' @allure.label.feature:XML-Multipax-PaidOrder',
   async ({ testData }, testInfo) => {
