@@ -30,13 +30,13 @@
     <POS>
         <ns2:AgentDutyText>STANDARD</ns2:AgentDutyText>
         <ns2:Country>
-            <ns2:CountryCode>CA</ns2:CountryCode>
+            <ns2:CountryCode>$COUNTRY_CODE</ns2:CountryCode>
         </ns2:Country>
     </POS>
     <Request>
         <ns2:CreateOrder>
             <ns2:AcceptSelectedQuotedOfferList>
-                
+                #{@SELECTED_PRICED_OFFER}
             </ns2:AcceptSelectedQuotedOfferList>
         </ns2:CreateOrder>
         <ns2:DataLists>
@@ -78,7 +78,7 @@
                 <ns2:PaymentTypeCode>CC</ns2:PaymentTypeCode>
             </ns2:PaymentMethodCriteria>
             <ns2:PaymentProcessingDetails>
-                <ns2:Amount CurCode="AUD">356.01</ns2:Amount>
+                <ns2:Amount CurCode="AUD">$TOTAL_AMOUNT</ns2:Amount>
                 <ns2:Payer>
                     <ns2:PayerEmailAddress>
                         <ns2:ContactTypeText>10</ns2:ContactTypeText>

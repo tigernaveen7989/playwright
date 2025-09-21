@@ -22,7 +22,17 @@ export class LoggerFactory {
       return (logEvent) => {
         const levelStr = logEvent.level.levelStr;
         const levelColor = LoggerFactory.levelColors[levelStr] || '';
-        const timestamp = logEvent.startTime.toISOString().split('.')[0].replace('T', ' ');
+        const dateObj = new Date(logEvent.startTime);
+
+        const day = String(dateObj.getDate()).padStart(2, '0');
+        const month = String(dateObj.getMonth() + 1).padStart(2, '0'); // Months are zero-based
+        const year = dateObj.getFullYear();
+
+        const hours = String(dateObj.getHours()).padStart(2, '0');
+        const minutes = String(dateObj.getMinutes()).padStart(2, '0');
+        const seconds = String(dateObj.getSeconds()).padStart(2, '0');
+
+        const timestamp = `${day}-${month}-${year} ${hours}:${minutes}:${seconds}`;
 
         const coloredLevel = `${levelColor}[${levelStr}]${LoggerFactory.resetColor}`;
         const coloredTimestamp = `${LoggerFactory.timestampColor}[${timestamp}]${LoggerFactory.resetColor}`;

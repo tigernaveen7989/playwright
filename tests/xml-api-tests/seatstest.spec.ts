@@ -9,7 +9,8 @@ test.describe.configure({ mode: 'parallel' });
 
 const logger = LoggerFactory.getLogger(__filename);
 
-test.describe('Paid Order Tests', () => {
+test.describe('Paid Order Tests'+
+  '@allure.label.feature:XML-Multipax-PaidOrder+Seats', () => {
   let activateToken: activateJwtToken;
   let shop: ShopApi;
   let price: PriceApi;

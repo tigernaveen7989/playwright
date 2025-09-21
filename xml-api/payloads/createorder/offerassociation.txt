@@ -1,5 +1,0 @@
-<ns2:OfferAssociation>
-                <ns2:OfferItemRefID>mfp1ym58cc-0</ns2:OfferItemRefID>
-                <ns2:OfferRefID>mfp1ym58cc</ns2:OfferRefID>
-                <ns2:OwnerCode>VA</ns2:OwnerCode>
-            </ns2:OfferAssociation>

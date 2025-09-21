@@ -3,6 +3,7 @@ import { activateJwtToken } from "../../api-base/activatejwttoken";
 import { ShopApi } from '../../xml-api/request-and-get-response/shop-xml-request';
 import { LoggerFactory } from '../../utilities/logger';
 import { PriceApi } from '../../xml-api/request-and-get-response/price-xml-request';
+import { CreateOrderApi } from '../../xml-api/request-and-get-response/create-order-xml-request';
 
 test.describe.configure({ mode: 'parallel' });
 
@@ -95,10 +96,11 @@ test.only(
     const activateToken = new activateJwtToken();
     const shop = new ShopApi();
     const price = new PriceApi();
+    const createOrder = new CreateOrderApi();
 
     // --------------------- Step 1: Get JWT Token ---------------------
     const headers = await activateToken.getJwtToken(testInfo);
-    const { rmxNdcXml } = await activateToken.loadConfig();
+    const { rmxNdcXml, omsNdcXml } = await activateToken.loadConfig();
 
     const replacements: Record<string, string> = {
       '$DESTINATION': 'MEL',
@@ -153,6 +155,18 @@ test.only(
     const passengerDetailsMap: Map<string, Map<string, string>> = await price.getPassengerDetailsMap(await priceResponse.text(), paxTypeMap);
 
     const offerId: string = await price.getOfferID(await priceResponse.text());
-    logger.info('offer id ',offerId);
+    logger.info('offer id ', offerId);
+
+    const createOrderResponse = await createOrder.sendRequestAndGetResponse(
+      omsNdcXml + "/v21_3/orders/create",
+      headers,
+      testInfo,
+      replacements,
+      passengerDetailsMap,
+      offerId
+    );
+
+    expect(createOrderResponse.ok()).toBe(true);
+    logger.info('Create Order request successful');
   }
 );
