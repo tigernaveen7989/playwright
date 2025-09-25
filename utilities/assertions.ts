@@ -15,16 +15,31 @@ export class Assertions {
         const expectedValue = JSON.stringify(expected, null, 2);
         const actualValue = JSON.stringify(actual, null, 2);
 
+        await this.assertionFn(actualValue, expectedValue, `${message}`);
+
+        // await step(`${message}`, async () => {
+        //     await step(`Actual   : ${actualValue}`, async () => {
+        //         // Do nothing — this step just shows the values
+        //     });
+
+        //     await step(`Expected : ${expectedValue}`, async () => {
+        //         // Do nothing — this step just shows the values
+        //     });
+        // });
+    }
+
+    private async assertionFn(actualValue: any, expectedValue: any, message: string): Promise<void> {
         await step(`${message}`, async () => {
             await step(`Actual   : ${actualValue}`, async () => {
-                // Do nothing — this step just shows the values
+                // No-op, just for logging
             });
 
             await step(`Expected : ${expectedValue}`, async () => {
-                // Do nothing — this step just shows the values
+                // No-op, just for logging
             });
 
-            await assertionFn();
+            // Your actual assertion
+            expect(actualValue).toBe(expectedValue);
         });
     }
 
@@ -42,9 +57,10 @@ export class Assertions {
     }
 
     async toEqual(actual: any, expected: any, message?: string) {
-        await this.logStep('toEqual', expected, actual, message, async () => {
-            expect(actual, message).toEqual(expected);
-        });
+        await expect(actual, message).toEqual(expected);
+        // await this.logStep('toEqual', expected, actual, message, async () => {
+        //     expect(actual, message).toEqual(expected);
+        // });
     }
 
     async notToEqual(actual: any, expected: any, message?: string) {

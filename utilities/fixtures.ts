@@ -1,26 +1,37 @@
-import { test as base, expect, TestInfo, request } from '@playwright/test';
+import { test as base, expect, request, Page, TestInfo } from '@playwright/test';
 import jsonhandler from './jsonhandler';
 import * as path from 'path';
+import { Assertions } from './assertions';
+import { LoggerFactory } from './logger';
+import { BaseTest } from '../tests/basetest';
 
 type TestData = Record<string, any>;
 
+const logger = LoggerFactory.getLogger(__filename);
+const assert = new Assertions();
+
+// Extend base test with custom fixtures
 const test = base.extend<{
   testData: TestData;
+  logger: typeof logger;
+  assert: Assertions;
+  testInfo: TestInfo;
+
 }>({
-  testData: async ({}, use, testInfo: TestInfo) => {
+  testInfo: async ({ }, use, testInfo) => {
+    await use(testInfo);
+  },
+  testData: async ({ }, use, testInfo: TestInfo) => {
     const testCaseName = testInfo.title.split('@')[0].trim();
 
-    // Read environment variables
     const ENVIRONMENT = process.env.ENVIRONMENT?.toLowerCase();
     const SUBENVIRONMENT = process.env.SUBENVIRONMENT?.toLowerCase();
     const TENANT = process.env.TENANT?.toLowerCase();
     const PROJECT = testInfo.project.name.toLowerCase();
 
-    // Determine the correct JSON file name
     const fileName =
       PROJECT === 'call-center' ? 'call-center-ui.json' : `${PROJECT}.json`;
 
-    // Construct full path to the test data file
     const testDataPath = path.join(
       __dirname,
       '..',
@@ -36,6 +47,18 @@ const test = base.extend<{
 
     await use(testData);
   },
+
+  logger: async ({ }, use) => {
+    await use(logger);
+  },
+
+  assert: async ({ }, use) => {
+    await use(assert);
+  },
+
 });
 
-export { test, expect, request };
+// Register hooks once globally
+BaseTest.registerHooks(test);
+
+export { test, expect, request, Page };

@@ -1,14 +1,12 @@
 {
     "global": [
         {
-            "userName": "ut1agency2.admin1.ju.functional.e2e@sabre.com",
-            "password": "Pa$$word@2k26"
+            "userName": "tc1hopper1.admin1.va.functional.e2e@sabre.com",
+            "password": "Pa$$word@2k25"
         }
     ],
     "TC1_Verify_Login_Into_Call_Center_And_Create_Paid_Order": [
         {
-            "userName": "ut1agency2.admin1.ju.functional.e2e@sabre.com",
-            "password": "Pa$$word@2k26",
             "paymentType": "CASH",
             "cardType": "MasterCard",
             "cardNumber": "7563828462827483",
@@ -27,20 +25,8 @@
             }
         }
     ],
-    "TC3_Verify_Login_Into_Call_Center_And_Create_Multipax_Paid_Order": [
-        {
-            "paymentType": "CASH",
-            "cardType": "MasterCard",
-            "cardNumber": "7563828462827483",
-            "seatType":{
-                "PAX1": "FREE"
-            }
-        }
-    ],
     "TC1_Verify_Login_Into_Call_Center_And_Create_Paid_Order_And_Add_Paid_Seats": [
         {
-            "userName": "ut1agency2.admin1.ju.functional.e2e@sabre.com",
-            "password": "Pa$$word@2k25",
             "paymentType": "CASH",
             "cardType": "MasterCard",
             "cardNumber": "7563828462827483",
@@ -60,6 +46,16 @@
         }
     ],
     "TC3_Verify_Login_Into_Call_Center_And_Create_Paid_Order_And_Add_Free_Seat": [
+        {
+            "paymentType": "CASH",
+            "cardType": "MasterCard",
+            "cardNumber": "7563828462827483",
+            "seatType":{
+                "PAX1": "FREE"
+            }
+        }
+    ],
+    "TC3_Verify_Login_Into_Call_Center_And_Create_Multipax_Paid_Order": [
         {
             "paymentType": "CASH",
             "cardType": "MasterCard",

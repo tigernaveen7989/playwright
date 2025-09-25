@@ -1,23 +1,27 @@
-import { Browser, BrowserContext, Page, chromium, firefox, webkit } from '@playwright/test';
+// basetest.ts
+import { test as baseTest, Browser, BrowserContext, Page, chromium, firefox, webkit, TestInfo } from '@playwright/test';
+import POManager from '../pageobjects/pageobjectmanager';
 import LoginPage from '../pageobjects/loginpage';
 import HomePage from '../pageobjects/homepage';
-import * as fs from 'fs';
-import * as path from 'path';
+import { BlackPanther } from '../utilities/blackpanther';
+import { label } from 'allure-js-commons';
 import { LoggerFactory } from '../utilities/logger';
 const logger = LoggerFactory.getLogger(__filename);
 
-
-
-export default class BaseTest {
+export class BaseTest {
   private browser!: Browser;
   protected context!: BrowserContext;
   protected page!: Page;
-  public loginPage!: LoginPage;
-  public homePage!: HomePage;
+  public poManager!: POManager;
+  public blackPanther : BlackPanther;
 
+  // Static exposed variables
+  static loginPage: LoginPage;
+  static homePage: HomePage;
 
-  async setup(browserName: string): Promise<Page> {
-    // Launch the selected browser
+  static baseTestInstance: BaseTest;
+
+  async setup(browserName: string, testInfo: TestInfo): Promise<void> {
     switch (browserName) {
       case 'firefox':
         this.browser = await firefox.launch();
@@ -33,43 +37,54 @@ export default class BaseTest {
 
     this.context = await this.browser.newContext();
     this.page = await this.context.newPage();
+    this.poManager = new POManager(this.page, testInfo);
+    this.blackPanther = new BlackPanther();
+    const {ccUrl} = this.blackPanther.loadConfig();
+    testInfo.annotations.push({ type: 'ccUrl', description: ccUrl });
 
-    // Navigate to login page
-    await this.page.goto('https://callcenter-ju-ut1.sabre.com/Login');
-    logger.info('Navigating to call center');
+    await this.page.goto(ccUrl);
 
-    // Initialize Page Objects
-    this.loginPage = new LoginPage(this.page);
-    this.homePage = new HomePage(this.page);
-
-    return this.page;
+    // Assign static properties here:
+    BaseTest.loginPage = this.poManager.loginPage;
+    BaseTest.homePage = this.poManager.homePage;
   }
 
   async teardown(): Promise<void> {
     await this.browser.close();
-    //BaseTest.copyEnvToAllureProperties();
   }
 
+  static registerHooks(test: typeof baseTest) {
+    test.beforeEach(async ({}, testInfo) => {
+      const browserName = testInfo.project.use.browserName ?? 'chromium';
+      label('suite', 'call-center');
 
+      BaseTest.baseTestInstance = new BaseTest();
+      await BaseTest.baseTestInstance.setup(browserName, testInfo);
+    });
 
-  static copyEnvToAllureProperties(envPath = 'environment.env', allureDir = 'allure-results') {
-    const envFilePath = path.resolve(envPath);
-    const allureResultsPath = path.resolve(allureDir, 'environment.properties');
-
-    // Ensure the source file exists
-    if (!fs.existsSync(envFilePath)) {
-      throw new Error(`Environment file not found at: ${envFilePath}`);
-    }
-
-    // Ensure the allure-results directory exists
-    if (!fs.existsSync(allureDir)) {
-      fs.mkdirSync(allureDir, { recursive: true });
-    }
-
-    // Read and copy the content
-    const content = fs.readFileSync(envFilePath, 'utf-8');
-    fs.writeFileSync(allureResultsPath, content);
-
-    console.log(`Copied ${envPath} to ${allureResultsPath}`);
+    test.afterEach(async () => {
+      if (BaseTest.baseTestInstance) {
+        await BaseTest.baseTestInstance.teardown();
+      }
+    });
   }
 }
+
+// Type-safe runtime getter exports
+export const loginPage: LoginPage = new Proxy({} as LoginPage, {
+  get(_, prop) {
+    if (!BaseTest.loginPage) {
+      throw new Error('loginPage is not initialized. Did you forget to call BaseTest.registerHooks(test)?');
+    }
+    return (BaseTest.loginPage as any)[prop];
+  }
+});
+
+export const homePage: HomePage = new Proxy({} as HomePage, {
+  get(_, prop) {
+    if (!BaseTest.homePage) {
+      throw new Error('homePage is not initialized.');
+    }
+    return (BaseTest.homePage as any)[prop];
+  }
+});

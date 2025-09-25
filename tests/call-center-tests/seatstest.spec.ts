@@ -1,23 +1,9 @@
 import { test, expect } from '../../utilities/fixtures';
-import BaseTest from '../basetest';
-import { Page } from '@playwright/test';
-import { label, description, epic, feature, story, tag } from 'allure-js-commons';
-test.describe.configure({ mode: 'serial' });
+import {loginPage, BaseTest} from '../basetest';
+test.describe.configure({ mode: 'parallel' });
 
-let base: BaseTest;
-let page: Page;
-
-
-test.beforeEach(async ({ }, testInfo) => {
-  const browserName = testInfo.project.use.browserName ?? 'chromium';
-  label('suite', 'call-center');
-  base = new BaseTest();
-  page = await base.setup(browserName);
-});
-
-test.afterEach(async () => {
-  await base.teardown();
-});
+// Register setup/teardown hooks once here
+BaseTest.registerHooks(test);
 
 test(
   'TC1_Verify_Login_Into_Call_Center_And_Create_Paid_Order_And_Add_Paid_Seats' +
@@ -47,19 +33,13 @@ test(
     const hasFreeSeat = Object.values(seatType).some(value => value.includes("FREE"));
 
 
-    await base.loginPage.login(userName, password);
+    await loginPage.login(userName, password);
   }
 );
 
 test(
   'TC3_Verify_Login_Into_Call_Center_And_Create_Paid_Order_And_Add_Free_Seat',
   async ({ testData }, testInfo) => {
-
-    await epic("***** Epic *****");
-    await feature("$$$$$ Feature $$$$$");
-    await story("^^^^^ Story ^^^^^");
-    await description("The test checks if an active user with a valid password can sign in to the app.");
-    await tag("regression");
 
     const userName: string = testData.get('userName')?.toString();
     const password: string = testData.get('password')?.toString();
@@ -70,7 +50,7 @@ test(
 
     const hasFreeSeat = Object.values(seatType).some(value => value.includes("FREE"));
 
-    await base.loginPage.login(userName, password);
+    await loginPage.login(userName, password);
   }
 );
 

@@ -69708,3 +69708,503 @@ Playwright Test Execution Summary:
 ------------------------------------------------------------------------------------------------------------------------------------------
 [32m[INFO][0m [35m[21-09-2025 15:46:20][0m [36mcreateordertest.spec.ts:190[0m : [30mCreate Order request successful[0m 
 ------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[22-09-2025 14:24:45][0m [36mcreateordertest.spec.ts:141[0m : [30mPax Type Map: {
+  "PAX1": "ADT",
+  "PAX2": "ADT",
+  "PAX3": "CNN"
+}[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[22-09-2025 14:24:46][0m [36mcreateordertest.spec.ts:50[0m : [30mPax Type Map: {
+  "PAX1": "ADT"
+}[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[22-09-2025 14:26:22][0m [36mcreateordertest.spec.ts:50[0m : [30mPax Type Map: {
+  "PAX1": "ADT"
+}[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[22-09-2025 14:26:22][0m [36mcreateordertest.spec.ts:141[0m : [30mPax Type Map: {
+  "PAX1": "ADT",
+  "PAX2": "ADT",
+  "PAX3": "CNN"
+}[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[22-09-2025 14:26:26][0m [36mcreateordertest.spec.ts:153[0m : [30mShop request successful[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[22-09-2025 14:26:26][0m [36mcreateordertest.spec.ts:161[0m : [30mPax ID → Offer Item ID Map: {
+  "OfferId": "mfuvtig92w_0",
+  "PAX1": "mfuvtig92w_0_0",
+  "PAX2": "mfuvtig92w_0_1",
+  "PAX3": "mfuvtig92w_0_2"
+}[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[22-09-2025 14:26:27][0m [36mcreateordertest.spec.ts:174[0m : [30mPrice request successful[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[22-09-2025 14:26:27][0m [36mprice-xml-request.ts:172[0m : [30mPassenger details map: [0m [38;5;141m{
+  "PAX1": {
+    "offerItemId": "mfupiamygw-0",
+    "price": "236.02",
+    "passengerJourneyIds": "JOURNEY_1_1758531387945",
+    "paxTypeCode": "ADT"
+  },
+  "PAX3": {
+    "offerItemId": "mfupiamygw-2",
+    "price": "236.02",
+    "passengerJourneyIds": "JOURNEY_1_1758531387945",
+    "paxTypeCode": "CNN"
+  },
+  "PAX2": {
+    "offerItemId": "mfupiamygw-1",
+    "price": "236.02",
+    "passengerJourneyIds": "JOURNEY_1_1758531387945",
+    "paxTypeCode": "ADT"
+  }
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[22-09-2025 14:26:27][0m [36mcreateordertest.spec.ts:179[0m : [30moffer id [0m [38;5;141mmfupiamygw[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[22-09-2025 14:26:27][0m [36mcreate-order-xml-request.ts:159[0m : [30mpax object[0m [38;5;141m<ns2:Pax>
+                    <ns2:ContactInfoRefID>PAX1</ns2:ContactInfoRefID>
+                    <ns2:Individual>
+                        <ns2:Birthdate>1980-10-29</ns2:Birthdate>
+                        <ns2:GenderCode>M</ns2:GenderCode>
+                        <ns2:GivenName>Eldridge</ns2:GivenName>
+                        <ns2:MiddleName>Logan</ns2:MiddleName>
+                        <ns2:Surname>Langworth</ns2:Surname>
+                        <ns2:TitleName>Miss</ns2:TitleName>
+                    </ns2:Individual>
+                    <ns2:PaxID>PAX1</ns2:PaxID>
+                    <ns2:PTC>ADT</ns2:PTC>
+                </ns2:Pax>
+<ns2:Pax>
+                    <ns2:ContactInfoRefID>PAX3</ns2:ContactInfoRefID>
+                    <ns2:Individual>
+                        <ns2:Birthdate>2018-07-09</ns2:Birthdate>
+                        <ns2:GenderCode>F</ns2:GenderCode>
+                        <ns2:GivenName>Carli</ns2:GivenName>
+                        <ns2:MiddleName>Blake</ns2:MiddleName>
+                        <ns2:Surname>Gleason</ns2:Surname>
+                        <ns2:TitleName>Mrs</ns2:TitleName>
+                    </ns2:Individual>
+                    <ns2:PaxID>PAX3</ns2:PaxID>
+                    <ns2:PTC>CNN</ns2:PTC>
+                </ns2:Pax>
+<ns2:Pax>
+                    <ns2:ContactInfoRefID>PAX2</ns2:ContactInfoRefID>
+                    <ns2:Individual>
+                        <ns2:Birthdate>1988-06-21</ns2:Birthdate>
+                        <ns2:GenderCode>F</ns2:GenderCode>
+                        <ns2:GivenName>Kim</ns2:GivenName>
+                        <ns2:MiddleName>Drew</ns2:MiddleName>
+                        <ns2:Surname>Renner</ns2:Surname>
+                        <ns2:TitleName>Mr</ns2:TitleName>
+                    </ns2:Individual>
+                    <ns2:PaxID>PAX2</ns2:PaxID>
+                    <ns2:PTC>ADT</ns2:PTC>
+                </ns2:Pax>[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[22-09-2025 14:26:27][0m [36mcreate-order-xml-request.ts:104[0m : [30moffer association object[0m [38;5;141m<ns2:OfferAssociation>
+                <ns2:OfferItemRefID>mfupiamygw-0</ns2:OfferItemRefID>
+                <ns2:OfferRefID>mfupiamygw</ns2:OfferRefID>
+                <ns2:OwnerCode>VA</ns2:OwnerCode>
+            </ns2:OfferAssociation>
+<ns2:OfferAssociation>
+                <ns2:OfferItemRefID>mfupiamygw-2</ns2:OfferItemRefID>
+                <ns2:OfferRefID>mfupiamygw</ns2:OfferRefID>
+                <ns2:OwnerCode>VA</ns2:OwnerCode>
+            </ns2:OfferAssociation>
+<ns2:OfferAssociation>
+                <ns2:OfferItemRefID>mfupiamygw-1</ns2:OfferItemRefID>
+                <ns2:OfferRefID>mfupiamygw</ns2:OfferRefID>
+                <ns2:OwnerCode>VA</ns2:OwnerCode>
+            </ns2:OfferAssociation>[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[22-09-2025 14:26:27][0m [36mcreate-order-xml-request.ts:127[0m : [30mselected priced offers object[0m [38;5;141m<ns2:SelectedPricedOffer>
+                    <ns2:OfferRefID>mfupiamygw</ns2:OfferRefID>
+                    <ns2:OwnerCode>VA</ns2:OwnerCode>
+                    <ns2:SelectedOfferItem>
+                        <ns2:OfferItemRefID>mfupiamygw-0</ns2:OfferItemRefID>
+                        <ns2:PaxRefID>PAX1</ns2:PaxRefID>
+                    </ns2:SelectedOfferItem>
+                </ns2:SelectedPricedOffer>
+<ns2:SelectedPricedOffer>
+                    <ns2:OfferRefID>mfupiamygw</ns2:OfferRefID>
+                    <ns2:OwnerCode>VA</ns2:OwnerCode>
+                    <ns2:SelectedOfferItem>
+                        <ns2:OfferItemRefID>mfupiamygw-2</ns2:OfferItemRefID>
+                        <ns2:PaxRefID>PAX3</ns2:PaxRefID>
+                    </ns2:SelectedOfferItem>
+                </ns2:SelectedPricedOffer>
+<ns2:SelectedPricedOffer>
+                    <ns2:OfferRefID>mfupiamygw</ns2:OfferRefID>
+                    <ns2:OwnerCode>VA</ns2:OwnerCode>
+                    <ns2:SelectedOfferItem>
+                        <ns2:OfferItemRefID>mfupiamygw-1</ns2:OfferItemRefID>
+                        <ns2:PaxRefID>PAX2</ns2:PaxRefID>
+                    </ns2:SelectedOfferItem>
+                </ns2:SelectedPricedOffer>[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[22-09-2025 14:26:40][0m [36mcreateordertest.spec.ts:191[0m : [30mCreate Order request successful[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[22-09-2025 14:33:13][0m [36mcreateordertest.spec.ts:50[0m : [30mPax Type Map: {
+  "PAX1": "ADT"
+}[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[22-09-2025 14:33:13][0m [36mcreateordertest.spec.ts:141[0m : [30mPax Type Map: {
+  "PAX1": "ADT",
+  "PAX2": "ADT",
+  "PAX3": "CNN"
+}[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[22-09-2025 14:33:17][0m [36mcreateordertest.spec.ts:153[0m : [30mShop request successful[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[22-09-2025 14:33:17][0m [36mcreateordertest.spec.ts:161[0m : [30mPax ID → Offer Item ID Map: {
+  "OfferId": "mfuvby27c_0",
+  "PAX1": "mfuvby27c_0_0",
+  "PAX2": "mfuvby27c_0_1",
+  "PAX3": "mfuvby27c_0_2"
+}[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[22-09-2025 14:33:18][0m [36mcreateordertest.spec.ts:174[0m : [30mPrice request successful[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[22-09-2025 14:33:18][0m [36mprice-xml-request.ts:172[0m : [30mPassenger details map: [0m [38;5;141m{
+  "PAX1": {
+    "offerItemId": "mfuvby27e-0",
+    "price": "236.02",
+    "passengerJourneyIds": "JOURNEY_1_1758531798721",
+    "paxTypeCode": "ADT"
+  },
+  "PAX3": {
+    "offerItemId": "mfuvby27e-2",
+    "price": "236.02",
+    "passengerJourneyIds": "JOURNEY_1_1758531798721",
+    "paxTypeCode": "CNN"
+  },
+  "PAX2": {
+    "offerItemId": "mfuvby27e-1",
+    "price": "236.02",
+    "passengerJourneyIds": "JOURNEY_1_1758531798721",
+    "paxTypeCode": "ADT"
+  }
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[22-09-2025 14:33:18][0m [36mcreateordertest.spec.ts:179[0m : [30moffer id [0m [38;5;141mmfuvby27e[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[22-09-2025 14:33:18][0m [36mcreate-order-xml-request.ts:159[0m : [30mpax object[0m [38;5;141m<ns2:Pax>
+                    <ns2:ContactInfoRefID>PAX1</ns2:ContactInfoRefID>
+                    <ns2:Individual>
+                        <ns2:Birthdate>1965-06-14</ns2:Birthdate>
+                        <ns2:GenderCode>M</ns2:GenderCode>
+                        <ns2:GivenName>Malinda</ns2:GivenName>
+                        <ns2:MiddleName>James</ns2:MiddleName>
+                        <ns2:Surname>Gutmann</ns2:Surname>
+                        <ns2:TitleName>Miss</ns2:TitleName>
+                    </ns2:Individual>
+                    <ns2:PaxID>PAX1</ns2:PaxID>
+                    <ns2:PTC>ADT</ns2:PTC>
+                </ns2:Pax>
+<ns2:Pax>
+                    <ns2:ContactInfoRefID>PAX3</ns2:ContactInfoRefID>
+                    <ns2:Individual>
+                        <ns2:Birthdate>2018-07-09</ns2:Birthdate>
+                        <ns2:GenderCode>M</ns2:GenderCode>
+                        <ns2:GivenName>Coleman</ns2:GivenName>
+                        <ns2:MiddleName>Dakota</ns2:MiddleName>
+                        <ns2:Surname>Lesch</ns2:Surname>
+                        <ns2:TitleName>Dr</ns2:TitleName>
+                    </ns2:Individual>
+                    <ns2:PaxID>PAX3</ns2:PaxID>
+                    <ns2:PTC>CNN</ns2:PTC>
+                </ns2:Pax>
+<ns2:Pax>
+                    <ns2:ContactInfoRefID>PAX2</ns2:ContactInfoRefID>
+                    <ns2:Individual>
+                        <ns2:Birthdate>1978-01-16</ns2:Birthdate>
+                        <ns2:GenderCode>M</ns2:GenderCode>
+                        <ns2:GivenName>America</ns2:GivenName>
+                        <ns2:MiddleName>Harper</ns2:MiddleName>
+                        <ns2:Surname>Sawayn-Von</ns2:Surname>
+                        <ns2:TitleName>Mrs</ns2:TitleName>
+                    </ns2:Individual>
+                    <ns2:PaxID>PAX2</ns2:PaxID>
+                    <ns2:PTC>ADT</ns2:PTC>
+                </ns2:Pax>[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[22-09-2025 14:33:18][0m [36mcreate-order-xml-request.ts:104[0m : [30moffer association object[0m [38;5;141m<ns2:OfferAssociation>
+                <ns2:OfferItemRefID>mfuvby27e-0</ns2:OfferItemRefID>
+                <ns2:OfferRefID>mfuvby27e</ns2:OfferRefID>
+                <ns2:OwnerCode>VA</ns2:OwnerCode>
+            </ns2:OfferAssociation>
+<ns2:OfferAssociation>
+                <ns2:OfferItemRefID>mfuvby27e-2</ns2:OfferItemRefID>
+                <ns2:OfferRefID>mfuvby27e</ns2:OfferRefID>
+                <ns2:OwnerCode>VA</ns2:OwnerCode>
+            </ns2:OfferAssociation>
+<ns2:OfferAssociation>
+                <ns2:OfferItemRefID>mfuvby27e-1</ns2:OfferItemRefID>
+                <ns2:OfferRefID>mfuvby27e</ns2:OfferRefID>
+                <ns2:OwnerCode>VA</ns2:OwnerCode>
+            </ns2:OfferAssociation>[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[22-09-2025 14:33:18][0m [36mcreate-order-xml-request.ts:127[0m : [30mselected priced offers object[0m [38;5;141m<ns2:SelectedPricedOffer>
+                    <ns2:OfferRefID>mfuvby27e</ns2:OfferRefID>
+                    <ns2:OwnerCode>VA</ns2:OwnerCode>
+                    <ns2:SelectedOfferItem>
+                        <ns2:OfferItemRefID>mfuvby27e-0</ns2:OfferItemRefID>
+                        <ns2:PaxRefID>PAX1</ns2:PaxRefID>
+                    </ns2:SelectedOfferItem>
+                </ns2:SelectedPricedOffer>
+<ns2:SelectedPricedOffer>
+                    <ns2:OfferRefID>mfuvby27e</ns2:OfferRefID>
+                    <ns2:OwnerCode>VA</ns2:OwnerCode>
+                    <ns2:SelectedOfferItem>
+                        <ns2:OfferItemRefID>mfuvby27e-2</ns2:OfferItemRefID>
+                        <ns2:PaxRefID>PAX3</ns2:PaxRefID>
+                    </ns2:SelectedOfferItem>
+                </ns2:SelectedPricedOffer>
+<ns2:SelectedPricedOffer>
+                    <ns2:OfferRefID>mfuvby27e</ns2:OfferRefID>
+                    <ns2:OwnerCode>VA</ns2:OwnerCode>
+                    <ns2:SelectedOfferItem>
+                        <ns2:OfferItemRefID>mfuvby27e-1</ns2:OfferItemRefID>
+                        <ns2:PaxRefID>PAX2</ns2:PaxRefID>
+                    </ns2:SelectedOfferItem>
+                </ns2:SelectedPricedOffer>[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[22-09-2025 14:33:20][0m [36mcreateordertest.spec.ts:191[0m : [30mCreate Order request successful[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[23-09-2025 11:17:45][0m [36mcreateordertest.spec.ts:25[0m : [30mentered ut1agency2.admin1.ju.functional.e2e@sabre.com and password Pa$$word@2k25[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[23-09-2025 11:17:45][0m [36mcreateordertest.spec.ts:25[0m : [30mlogin successful[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[31m[ERROR][0m [35m[23-09-2025 11:17:45][0m [36mcreateordertest.spec.ts:25[0m : [30mLogin failed[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[23-09-2025 11:17:46][0m [36mcreateordertest.spec.ts:16[0m : [30mentered ut1agency2.admin1.ju.functional.e2e@sabre.com and password Pa$$word@2k25[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[23-09-2025 11:17:46][0m [36mcreateordertest.spec.ts:16[0m : [30mlogin successful[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[31m[ERROR][0m [35m[23-09-2025 11:17:46][0m [36mcreateordertest.spec.ts:16[0m : [30mLogin failed[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[23-09-2025 15:14:13][0m [36mcreateordertest.spec.ts:17[0m : [30mentered ut1agency2.admin1.ju.functional.e2e@sabre.com and password Pa$$word@2k25[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[23-09-2025 15:14:13][0m [36mcreateordertest.spec.ts:17[0m : [30mlogin successful[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[31m[ERROR][0m [35m[23-09-2025 15:14:13][0m [36mcreateordertest.spec.ts:17[0m : [30mLogin failed[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[23-09-2025 15:14:15][0m [36mcreateordertest.spec.ts:26[0m : [30mentered ut1agency2.admin1.ju.functional.e2e@sabre.com and password Pa$$word@2k25[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[23-09-2025 15:14:15][0m [36mcreateordertest.spec.ts:26[0m : [30mlogin successful[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[31m[ERROR][0m [35m[23-09-2025 15:14:15][0m [36mcreateordertest.spec.ts:26[0m : [30mLogin failed[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[23-09-2025 17:19:06][0m [36mcreateordertest.spec.ts:17[0m : [30mentered ut1agency2.admin1.ju.functional.e2e@sabre.com and password Pa$$word@2k25[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[23-09-2025 17:19:06][0m [36mcreateordertest.spec.ts:17[0m : [30mlogin successful[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[31m[ERROR][0m [35m[23-09-2025 17:19:06][0m [36mcreateordertest.spec.ts:17[0m : [30mLogin failed[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[25-09-2025 09:50:31][0m [36mcreateordertest.spec.ts:17[0m : [30mentered ut1agency2.admin1.ju.functional.e2e@sabre.com and password Pa$$word@2k26[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[25-09-2025 09:50:31][0m [36mcreateordertest.spec.ts:17[0m : [30mlogin successful[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[31m[ERROR][0m [35m[25-09-2025 09:50:31][0m [36mcreateordertest.spec.ts:17[0m : [30mLogin failed[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[25-09-2025 09:50:46][0m [36mcreateordertest.spec.ts:26[0m : [30mentered ut1agency2.admin1.ju.functional.e2e@sabre.com and password Pa$$word@2k26[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[25-09-2025 09:50:46][0m [36mcreateordertest.spec.ts:26[0m : [30mlogin successful[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[31m[ERROR][0m [35m[25-09-2025 09:50:46][0m [36mcreateordertest.spec.ts:26[0m : [30mLogin failed[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[25-09-2025 09:52:29][0m [36mcreateordertest.spec.ts:26[0m : [30mentered ut1agency2.admin1.ju.functional.e2e@sabre.com and password Pa$$word@2k26[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[25-09-2025 09:52:29][0m [36mcreateordertest.spec.ts:26[0m : [30mlogin successful[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[31m[ERROR][0m [35m[25-09-2025 09:52:29][0m [36mcreateordertest.spec.ts:26[0m : [30mLogin failed[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[25-09-2025 09:52:30][0m [36mcreateordertest.spec.ts:17[0m : [30mentered ut1agency2.admin1.ju.functional.e2e@sabre.com and password Pa$$word@2k26[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[25-09-2025 09:52:30][0m [36mcreateordertest.spec.ts:17[0m : [30mlogin successful[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[31m[ERROR][0m [35m[25-09-2025 09:52:30][0m [36mcreateordertest.spec.ts:17[0m : [30mLogin failed[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[25-09-2025 09:53:00][0m [36mcreateordertest.spec.ts:26[0m : [30mentered tc1hopper1.admin1.va.functional.e2e@sabre.com and password Pa$$word@2k25[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[25-09-2025 09:53:00][0m [36mcreateordertest.spec.ts:26[0m : [30mlogin successful[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[31m[ERROR][0m [35m[25-09-2025 09:53:00][0m [36mcreateordertest.spec.ts:26[0m : [30mLogin failed[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[25-09-2025 09:53:00][0m [36mcreateordertest.spec.ts:17[0m : [30mentered tc1hopper1.admin1.va.functional.e2e@sabre.com and password Pa$$word@2k25[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[25-09-2025 09:53:00][0m [36mcreateordertest.spec.ts:17[0m : [30mlogin successful[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[31m[ERROR][0m [35m[25-09-2025 09:53:00][0m [36mcreateordertest.spec.ts:17[0m : [30mLogin failed[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[25-09-2025 13:13:10][0m [36mcreateordertest.spec.ts:19[0m : [30mentered tc1hopper1.admin1.va.functional.e2e@sabre.com and password Pa$$word@2k25[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[25-09-2025 13:13:10][0m [36mcreateordertest.spec.ts:19[0m : [30mlogin successful[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[31m[ERROR][0m [35m[25-09-2025 13:13:10][0m [36mcreateordertest.spec.ts:19[0m : [30mLogin failed[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[25-09-2025 13:13:11][0m [36mcreateordertest.spec.ts:30[0m : [30mentered tc1hopper1.admin1.va.functional.e2e@sabre.com and password Pa$$word@2k25[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[25-09-2025 13:13:11][0m [36mcreateordertest.spec.ts:30[0m : [30mlogin successful[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[31m[ERROR][0m [35m[25-09-2025 13:13:11][0m [36mcreateordertest.spec.ts:30[0m : [30mLogin failed[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[25-09-2025 13:39:37][0m [36mcreateordertest.spec.ts:30[0m : [30mentered tc1hopper1.admin1.va.functional.e2e@sabre.com and password Pa$$word@2k25[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[25-09-2025 13:39:37][0m [36mcreateordertest.spec.ts:30[0m : [30mlogin successful[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[31m[ERROR][0m [35m[25-09-2025 13:39:37][0m [36mcreateordertest.spec.ts:30[0m : [30mLogin failed[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[25-09-2025 13:43:39][0m [36mcreateordertest.spec.ts:30[0m : [30mentered tc1hopper1.admin1.va.functional.e2e@sabre.com and password Pa$$word@2k25[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[25-09-2025 13:43:39][0m [36mcreateordertest.spec.ts:30[0m : [30mlogin successful[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[31m[ERROR][0m [35m[25-09-2025 13:43:39][0m [36mcreateordertest.spec.ts:30[0m : [30mLogin failed[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[25-09-2025 13:44:24][0m [36mcreateordertest.spec.ts:30[0m : [30mentered tc1hopper1.admin1.va.functional.e2e@sabre.com and password Pa$$word@2k25[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[25-09-2025 13:44:24][0m [36mcreateordertest.spec.ts:30[0m : [30mlogin successful[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[31m[ERROR][0m [35m[25-09-2025 13:44:24][0m [36mcreateordertest.spec.ts:30[0m : [30mLogin failed[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[25-09-2025 13:48:18][0m [36mcreateordertest.spec.ts:30[0m : [30mentered tc1hopper1.admin1.va.functional.e2e@sabre.com and password Pa$$word@2k25[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[25-09-2025 13:48:18][0m [36mcreateordertest.spec.ts:30[0m : [30mlogin successful[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[31m[ERROR][0m [35m[25-09-2025 13:48:18][0m [36mcreateordertest.spec.ts:30[0m : [30mLogin failed[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[25-09-2025 13:53:46][0m [36mcreateordertest.spec.ts:30[0m : [30mentered tc1hopper1.admin1.va.functional.e2e@sabre.com and password Pa$$word@2k25[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[25-09-2025 13:53:46][0m [36mcreateordertest.spec.ts:30[0m : [30mlogin successful[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[31m[ERROR][0m [35m[25-09-2025 13:53:46][0m [36mcreateordertest.spec.ts:30[0m : [30mLogin failed[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[25-09-2025 14:16:46][0m [36mcreateordertest.spec.ts:30[0m : [30mentered tc1hopper1.admin1.va.functional.e2e@sabre.com and password Pa$$word@2k25[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[25-09-2025 14:16:46][0m [36mcreateordertest.spec.ts:30[0m : [30mlogin successful[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[31m[ERROR][0m [35m[25-09-2025 14:16:46][0m [36mcreateordertest.spec.ts:30[0m : [30mLogin failed[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[25-09-2025 14:18:24][0m [36mcreateordertest.spec.ts:30[0m : [30mentered tc1hopper1.admin1.va.functional.e2e@sabre.com and password Pa$$word@2k25[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[25-09-2025 14:18:24][0m [36mcreateordertest.spec.ts:30[0m : [30mlogin successful[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[31m[ERROR][0m [35m[25-09-2025 14:18:24][0m [36mcreateordertest.spec.ts:30[0m : [30mLogin failed[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[25-09-2025 14:23:15][0m [36mcreateordertest.spec.ts:30[0m : [30mentered tc1hopper1.admin1.va.functional.e2e@sabre.com and password Pa$$word@2k25[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[25-09-2025 14:23:15][0m [36mcreateordertest.spec.ts:30[0m : [30mlogin successful[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[31m[ERROR][0m [35m[25-09-2025 14:23:15][0m [36mcreateordertest.spec.ts:30[0m : [30mLogin failed[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[25-09-2025 14:23:57][0m [36mcreateordertest.spec.ts:30[0m : [30mentered tc1hopper1.admin1.va.functional.e2e@sabre.com and password Pa$$word@2k25[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[25-09-2025 14:23:57][0m [36mcreateordertest.spec.ts:30[0m : [30mlogin successful[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[31m[ERROR][0m [35m[25-09-2025 14:23:57][0m [36mcreateordertest.spec.ts:30[0m : [30mLogin failed[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[25-09-2025 14:25:13][0m [36mcreateordertest.spec.ts:30[0m : [30mentered tc1hopper1.admin1.va.functional.e2e@sabre.com and password Pa$$word@2k25[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[25-09-2025 14:25:13][0m [36mcreateordertest.spec.ts:30[0m : [30mlogin successful[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[31m[ERROR][0m [35m[25-09-2025 14:25:13][0m [36mcreateordertest.spec.ts:30[0m : [30mLogin failed[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[25-09-2025 14:28:51][0m [36mcreateordertest.spec.ts:32[0m : [30mentered tc1hopper1.admin1.va.functional.e2e@sabre.com and password Pa$$word@2k25[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[25-09-2025 14:28:51][0m [36mcreateordertest.spec.ts:32[0m : [30mlogin successful[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[25-09-2025 14:29:06][0m [36mcreateordertest.spec.ts:34[0m : [30mWelcome text is [0m [38;5;141mWelcome, [0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[25-09-2025 16:10:27][0m [36mcreateordertest.spec.ts:32[0m : [30mentered tc1hopper1.admin1.va.functional.e2e@sabre.com and password Pa$$word@2k25[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[25-09-2025 16:10:27][0m [36mcreateordertest.spec.ts:32[0m : [30mlogin successful[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[25-09-2025 16:10:44][0m [36mcreateordertest.spec.ts:34[0m : [30mWelcome text is [0m [38;5;141mWelcome, [0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[25-09-2025 16:17:37][0m [36mcreateordertest.spec.ts:32[0m : [30mentered tc1hopper1.admin1.va.functional.e2e@sabre.com and password Pa$$word@2k25 and URL https://callcenter-va-tc1.sabre.com/Login[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[25-09-2025 16:17:37][0m [36mcreateordertest.spec.ts:32[0m : [30mlogin successful[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[25-09-2025 16:49:25][0m [36mcreateordertest.spec.ts:25[0m : [30mentered tc1hopper1.admin1.va.functional.e2e@sabre.com and password Pa$$word@2k25[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[25-09-2025 16:49:25][0m [36mcreateordertest.spec.ts:25[0m : [30mlogin successful[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[25-09-2025 16:49:41][0m [36mcreateordertest.spec.ts:27[0m : [30mWelcome text is[0m [38;5;141mWelcome, [0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[25-09-2025 16:53:08][0m [36mcreateordertest.spec.ts:25[0m : [30mentered tc1hopper1.admin1.va.functional.e2e@sabre.com and password Pa$$word@2k25[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[25-09-2025 16:53:08][0m [36mcreateordertest.spec.ts:25[0m : [30mlogin successful[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[25-09-2025 16:53:08][0m [36mcreateordertest.spec.ts:14[0m : [30mentered tc1hopper1.admin1.va.functional.e2e@sabre.com and password Pa$$word@2k25[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[25-09-2025 16:53:08][0m [36mcreateordertest.spec.ts:14[0m : [30mlogin successful[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[25-09-2025 16:53:10][0m [36mcreateordertest.spec.ts:40[0m : [30mentered tc1hopper1.admin1.va.functional.e2e@sabre.com and password Pa$$word@2k25[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[25-09-2025 16:53:10][0m [36mcreateordertest.spec.ts:40[0m : [30mlogin successful[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[25-09-2025 16:53:26][0m [36mcreateordertest.spec.ts:27[0m : [30mWelcome text is[0m [38;5;141mWelcome, [0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[25-09-2025 16:53:27][0m [36mcreateordertest.spec.ts:42[0m : [30mWelcome text is[0m [38;5;141mWelcome, [0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[25-09-2025 17:07:25][0m [36mcreateordertest.spec.ts:40[0m : [30mentered tc1hopper1.admin1.va.functional.e2e@sabre.com and password Pa$$word@2k25[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[25-09-2025 17:07:25][0m [36mcreateordertest.spec.ts:40[0m : [30mlogin successful[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[25-09-2025 17:07:25][0m [36mcreateordertest.spec.ts:14[0m : [30mentered tc1hopper1.admin1.va.functional.e2e@sabre.com and password Pa$$word@2k25[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[25-09-2025 17:07:25][0m [36mcreateordertest.spec.ts:14[0m : [30mlogin successful[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[25-09-2025 17:12:21][0m [36mcreateordertest.spec.ts:40[0m : [30mentered tc1hopper1.admin1.va.functional.e2e@sabre.com and password Pa$$word@2k25[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[25-09-2025 17:12:21][0m [36mcreateordertest.spec.ts:40[0m : [30mlogin successful[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[25-09-2025 17:12:21][0m [36mcreateordertest.spec.ts:14[0m : [30mentered tc1hopper1.admin1.va.functional.e2e@sabre.com and password Pa$$word@2k25[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[25-09-2025 17:12:21][0m [36mcreateordertest.spec.ts:14[0m : [30mlogin successful[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[25-09-2025 17:28:34][0m [36mcreateordertest.spec.ts:26[0m : [30mentered tc1hopper1.admin1.va.functional.e2e@sabre.com and password Pa$$word@2k25[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[25-09-2025 17:28:34][0m [36mcreateordertest.spec.ts:26[0m : [30mlogin successful[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[25-09-2025 17:28:34][0m [36mcreateordertest.spec.ts:41[0m : [30mentered tc1hopper1.admin1.va.functional.e2e@sabre.com and password Pa$$word@2k25[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[25-09-2025 17:28:34][0m [36mcreateordertest.spec.ts:41[0m : [30mlogin successful[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[25-09-2025 17:28:34][0m [36mcreateordertest.spec.ts:15[0m : [30mentered tc1hopper1.admin1.va.functional.e2e@sabre.com and password Pa$$word@2k25[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[25-09-2025 17:28:34][0m [36mcreateordertest.spec.ts:15[0m : [30mlogin successful[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[25-09-2025 17:38:21][0m [36mcreateordertest.spec.ts:47[0m : [30mentered tc1hopper1.admin1.va.functional.e2e@sabre.com and password Pa$$word@2k25[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[25-09-2025 17:38:21][0m [36mcreateordertest.spec.ts:47[0m : [30mlogin successful[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[25-09-2025 17:38:22][0m [36mcreateordertest.spec.ts:32[0m : [30mentered tc1hopper1.admin1.va.functional.e2e@sabre.com and password Pa$$word@2k25[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[25-09-2025 17:38:22][0m [36mcreateordertest.spec.ts:32[0m : [30mlogin successful[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[25-09-2025 17:38:22][0m [36mcreateordertest.spec.ts:21[0m : [30mentered tc1hopper1.admin1.va.functional.e2e@sabre.com and password Pa$$word@2k25[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[25-09-2025 17:38:22][0m [36mcreateordertest.spec.ts:21[0m : [30mlogin successful[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[25-09-2025 17:38:41][0m [36mcreateordertest.spec.ts:49[0m : [30mWelcome text is[0m [38;5;141mWelcome, [0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[25-09-2025 17:38:41][0m [36mcreateordertest.spec.ts:34[0m : [30mWelcome text is[0m [38;5;141mWelcome, [0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[25-09-2025 18:23:17][0m [36mcreateordertest.spec.ts:46[0m : [30mentered tc1hopper1.admin1.va.functional.e2e@sabre.com and password Pa$$word@2k25[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[25-09-2025 18:23:17][0m [36mcreateordertest.spec.ts:31[0m : [30mentered tc1hopper1.admin1.va.functional.e2e@sabre.com and password Pa$$word@2k25[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[25-09-2025 18:23:17][0m [36mcreateordertest.spec.ts:46[0m : [30mlogin successful[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[25-09-2025 18:23:17][0m [36mcreateordertest.spec.ts:31[0m : [30mlogin successful[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[25-09-2025 18:23:17][0m [36mcreateordertest.spec.ts:20[0m : [30mentered tc1hopper1.admin1.va.functional.e2e@sabre.com and password Pa$$word@2k25[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[25-09-2025 18:23:17][0m [36mcreateordertest.spec.ts:20[0m : [30mlogin successful[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[25-09-2025 18:23:38][0m [36mcreateordertest.spec.ts:48[0m : [30mWelcome text is[0m [38;5;141mWelcome, [0m
+------------------------------------------------------------------------------------------------------------------------------------------
+[32m[INFO][0m [35m[25-09-2025 18:23:38][0m [36mcreateordertest.spec.ts:33[0m : [30mWelcome text is[0m [38;5;141mWelcome, [0m
+------------------------------------------------------------------------------------------------------------------------------------------

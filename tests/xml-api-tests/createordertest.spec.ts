@@ -148,7 +148,8 @@ test(
       paxTypeMap
     );
 
-    expect(shopResponse.ok()).toBe(true);
+    await assert.toBe(shopResponse.ok(), true, 'Validate Shop Response Is OK');
+    await assert.toBe('Hello', 'Hello', 'Validate Hello Text');
     logger.info('Shop request successful');
 
     // --------------------- Step 3: Parse Shop Response ---------------------

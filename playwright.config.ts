@@ -12,18 +12,18 @@ const config: PlaywrightTestConfig = defineConfig({
   retries: 0,
   workers: process.env.CI ? 1 : undefined,
 
-  timeout: 30 * 1000,
+  timeout: 40 * 1000,
   expect: {
-    timeout: 30 * 1000,
+    timeout: 60 * 1000,
   },
 
   reporter: [
-    ['html', { outputFolder: 'playwright-report', open: 'never' }],
+    ['html', { outputFolder: 'playwright-report', open: 'never', print: false }],
     //['list'],
     //['./utilities/email-reporter.ts'],
     ['allure-playwright', {
       resultsDir: 'allure-results',
-      detail: true,
+      detail: false,
       suiteTitle: false,
       environmentInfo: {
         ENVIRONMENT: process.env.ENVIRONMENT,

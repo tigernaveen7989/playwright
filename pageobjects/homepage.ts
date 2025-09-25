@@ -6,10 +6,11 @@ export default class homepage {
 
   constructor(page: Page) {
     this.page = page;
-    this.welcomeMessage = page.locator('#welcome');
+    this.welcomeMessage = page.locator("header[class='spark-header'] h3");
   }
 
   async getWelcomeText(): Promise<string | null> {
-    return await this.welcomeMessage.textContent();
-  }
+  await this.welcomeMessage.waitFor({ state: 'visible' }); // Explicit wait
+  return await this.welcomeMessage.textContent();
+}
 }
