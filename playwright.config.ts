@@ -37,6 +37,10 @@ const config: PlaywrightTestConfig = defineConfig({
     trace: 'on-first-retry',
     screenshot: 'only-on-failure',
     headless: true,
+    viewport: null, // Uses full available screen size
+    launchOptions: {
+      args: ['--start-maximized'], // Chromium only
+    },
   },
 
   projects: [

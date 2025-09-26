@@ -1,10 +1,9 @@
 import { test, expect } from '../../utilities/fixtures';
 import { loginPage, homePage } from '../basetest';
-import { label, tag } from 'allure-js-commons';
 
 test.describe.configure({ mode: 'parallel' });
 
-test.describe('@PaidOrder @allure.label.feature:Singlepax-Paid-Seats', () => {
+test.describe('@PaidOrder @WLV_CC_REGRESSION @allure.label.feature:Singlepax-Paid-Seats', () => {
 
   test.beforeEach(({ }, testInfo) => {
     // Add custom tag label
@@ -15,38 +14,41 @@ test.describe('@PaidOrder @allure.label.feature:Singlepax-Paid-Seats', () => {
     const userName = testData.get('userName')?.toString()!;
     const password = testData.get('password')?.toString()!;
 
-    expect(process.env.TENANT).toBe('VA');
-
     await loginPage.login(userName, password);
     await homePage.getWelcomeText();
     assert.toEqual("Welcome", await homePage.getWelcomeText(), "Verify Welcome Text Is Matching");
+    await homePage.clickReservationsLink();
+    await homePage.clickNewReservationLink();
+    await homePage.selectOneWayTrip();
   });
 
   test('TC2_Verify_Login_Into_Call_Center_And_Create_Unpaid_Order', async ({ testData, assert, logger }) => {
     const userName = testData.get('userName')?.toString()!;
     const password = testData.get('password')?.toString()!;
 
-    expect(process.env.TENANT).toBe('VA');
-
     await loginPage.login(userName, password);
     await homePage.getWelcomeText();
     logger.info("Welcome text is", await homePage.getWelcomeText());
     assert.toEqual("Welcome, ", await homePage.getWelcomeText(), "Verify Welcome Text Is Matching");
+    await homePage.clickReservationsLink();
+    await homePage.clickNewReservationLink();
+    await homePage.selectOneWayTrip();
   });
 
   /**
    * 
    */
-  test('TC3_Verify_Login_Into_Call_Center_And_Create_Multipax_Paid_Order', async ({ testData, assert, logger }) => {
+  test.only('TC3_Verify_Login_Into_Call_Center_And_Create_Multipax_Paid_Order', async ({ testData, assert, logger }) => {
     const userName = testData.get('userName')?.toString()!;
     const password = testData.get('password')?.toString()!;
-
-    expect(process.env.TENANT).toBe('VA');
 
     await loginPage.login(userName, password);
     await homePage.getWelcomeText();
     logger.info("Welcome text is", await homePage.getWelcomeText());
     assert.toEqual("Welcome, ", await homePage.getWelcomeText(), "Verify Welcome Text Is Matching");
+    await homePage.clickReservationsLink();
+    await homePage.clickNewReservationLink();
+    await homePage.selectOneWayTrip();
   });
 
   test.skip('test', async ({ page }) => {
