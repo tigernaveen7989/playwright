@@ -31,9 +31,12 @@
                 "PAX1": "FREE"
             },
             "tripType": "OW",
-            "origin": "MEL",
-            "destination": "SYD",
-            "paxType": "2A1C"
+            "origin": "SYD",
+            "destination": "BNE",
+            "paxType": "1A",
+            "todayPlusDate": "10",
+            "cabinType": "",
+            "brandType": "BUSINESS"
         }
     ],
     "TC1_Verify_Login_Into_Call_Center_And_Create_Paid_Order_And_Add_Paid_Seats": [

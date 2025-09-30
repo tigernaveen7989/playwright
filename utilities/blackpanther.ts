@@ -13,7 +13,6 @@ export class BlackPanther {
   protected page: Page;
 
   constructor(page: Page) {
-    this.page = page;
     this.environment = process.env.ENVIRONMENT || '';
     this.subenvironment = process.env.SUBENVIRONMENT || '';
     this.tenant = process.env.TENANT || '';
@@ -58,8 +57,8 @@ export class BlackPanther {
     }
 
     try {
-      //await locator.waitFor({ state: 'visible', timeout: 20000 });
       await this.page.waitForTimeout(1000);
+      await expect(locator).toBeVisible({ timeout: 20000 });
       await locator.click();
       await step(`Clicked on: ${await locator.textContent()}`, async () => {
         logger.info(`Clicked on locator: ${locator.toString()}`);
@@ -113,8 +112,10 @@ export class BlackPanther {
     }
 
     try {
-      await locator.waitFor({ state: 'visible', timeout: 20000 });
-      await locator.selectOption({ label: value });
+      // fail fast in 10s
+      await locator.waitFor({ state: 'visible', timeout: 10000 });
+      await locator.selectOption({ label: value }, { timeout: 10000 });
+
       await step(`Selected '${value}' from dropdown: ${locator.toString()}`, async () => {
         logger.info(`Selected value '${value}' from dropdown: ${locator.toString()}`);
       });
@@ -122,7 +123,6 @@ export class BlackPanther {
       throw new Error(`Failed to select '${value}' from dropdown: ${error}`);
     }
   }
-
 
   protected formatDateMMDDYYYY(date: Date): string {
     const month = String(date.getMonth() + 1).padStart(2, '0');
@@ -152,7 +152,7 @@ export class BlackPanther {
     throw new Error("Invalid tripType. Use 'OW' or 'RT'.");
   }
 
-  private sleep(ms: number): Promise<void> {
+  protected sleep(ms: number): Promise<void> {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
 
@@ -165,5 +165,40 @@ export class BlackPanther {
     for (let i = 0; i < count; i++) {
       await this.page.keyboard.press('Tab');
     }
+  }
+
+  protected getPaxType(paxType: string): Map<string, string> {
+    const paxMap = new Map<string, string>();
+    const regex = /(\d+)(A|C|INF|INS)/g;
+    const matches = [...paxType.matchAll(regex)];
+
+    let paxCounter = 1;
+
+    for (const match of matches) {
+      const count = parseInt(match[1], 10);
+      const typeCode = match[2];
+
+      // Normalize type codes
+      let paxCategory = '';
+      switch (typeCode) {
+        case 'A':
+          paxCategory = 'ADT';
+          break;
+        case 'C':
+          paxCategory = 'CNN';
+          break;
+        case 'INF':
+        case 'INS':
+          paxCategory = 'INF';
+          break;
+      }
+
+      for (let i = 0; i < count; i++) {
+        paxMap.set(`PAX${paxCounter}`, paxCategory);
+        paxCounter++;
+      }
+    }
+
+    return paxMap;
   }
 }

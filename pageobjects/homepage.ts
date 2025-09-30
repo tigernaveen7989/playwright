@@ -20,6 +20,7 @@ export default class homepage extends BlackPanther {
   private readonly shopButton: Locator;
   private readonly bookButton: Locator;
   private readonly plusIcon: Locator;
+  private readonly agreeButton: Locator;
 
   constructor(page: Page) {
     super(page);
@@ -42,6 +43,7 @@ export default class homepage extends BlackPanther {
     this.shopButton = page.locator("[id=btnAvailabilitySearchMs]");
     this.bookButton = page.locator('[id=btnAvailabilityCheckValidate]');
     this.plusIcon = page.locator('[id=add-0]');
+    this.agreeButton = page.locator("[id=btnResGDPRModalClose]");
   }
 
   async getWelcomeText(): Promise<string | null> {
@@ -116,6 +118,10 @@ export default class homepage extends BlackPanther {
 
   async clickOnBookButton(): Promise<void> {
     await this.click(this.bookButton);
+  }
+
+  async clickOnAgreeButton(): Promise<void> {
+    await this.click(this.agreeButton);
   }
 
   async getOfferRadioButton(brandType: string): Promise<Locator> {

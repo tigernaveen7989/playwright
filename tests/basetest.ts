@@ -3,6 +3,7 @@ import { test as baseTest, Browser, BrowserContext, Page, chromium, firefox, web
 import POManager from '../pageobjects/pageobjectmanager';
 import LoginPage from '../pageobjects/loginpage';
 import HomePage from '../pageobjects/homepage';
+import PassengerDetailsPage from '../pageobjects/passengerdetailspage';
 import { BlackPanther } from '../utilities/blackpanther';
 import { label } from 'allure-js-commons';
 import { LoggerFactory } from '../utilities/logger';
@@ -18,6 +19,7 @@ export class BaseTest {
   // Static exposed variables
   static loginPage: LoginPage;
   static homePage: HomePage;
+  static passengerDetailsPage: PassengerDetailsPage;
 
   static baseTestInstance: BaseTest;
 
@@ -38,7 +40,7 @@ export class BaseTest {
     this.context = await this.browser.newContext();
     this.page = await this.context.newPage();
     this.poManager = new POManager(this.page, testInfo);
-    this.blackPanther = new BlackPanther();
+    this.blackPanther = new BlackPanther(this.page);
     const {ccUrl} = this.blackPanther.loadConfig();
     testInfo.annotations.push({ type: 'ccUrl', description: ccUrl });
 
@@ -47,6 +49,7 @@ export class BaseTest {
     // Assign static properties here:
     BaseTest.loginPage = this.poManager.loginPage;
     BaseTest.homePage = this.poManager.homePage;
+    BaseTest.passengerDetailsPage = this.poManager.passengerDetailsPage;
   }
 
   async teardown(): Promise<void> {
@@ -86,5 +89,14 @@ export const homePage: HomePage = new Proxy({} as HomePage, {
       throw new Error('homePage is not initialized.');
     }
     return (BaseTest.homePage as any)[prop];
+  }
+});
+
+export const passengerDetailsPage: PassengerDetailsPage = new Proxy({} as PassengerDetailsPage, {
+  get(_, prop) {
+    if (!BaseTest.passengerDetailsPage) {
+      throw new Error('passengerDetailsPage is not initialized.');
+    }
+    return (BaseTest.passengerDetailsPage as any)[prop];
   }
 });
