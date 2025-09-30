@@ -1,11 +1,11 @@
 import { Page, Locator, TestInfo } from '@playwright/test';
 import { LoggerFactory } from '../utilities/logger';
 import { attachment, step } from 'allure-js-commons';
+import { BlackPanther } from '../utilities/blackpanther';
 const logger = LoggerFactory.getLogger(__filename);
 
 
-export default class loginpage {
-  private page: Page;
+export default class loginpage extends BlackPanther{
   private usernameInput: Locator;
   private passwordInput: Locator;
   private loginButton: Locator;
@@ -14,6 +14,7 @@ export default class loginpage {
   private testInfo: TestInfo;
 
   constructor(page: Page, testInfo: TestInfo) {
+    super(page);
     this.page = page;
     this.testInfo = testInfo;
     this.usernameInput = page.locator('#input28');

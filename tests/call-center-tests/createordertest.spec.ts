@@ -1,3 +1,4 @@
+import { description } from 'allure-js-commons';
 import { test, expect } from '../../utilities/fixtures';
 import { loginPage, homePage } from '../basetest';
 
@@ -10,21 +11,36 @@ test.describe('@PaidOrder @WLV_CC_REGRESSION @allure.label.feature:Singlepax-Pai
     testInfo.annotations.push({ type: 'tag', description: 'PaidOrder' });
   });
 
-  test('TC1_Verify_Login_Into_Call_Center_And_Create_Paid_Order', async ({ testData, assert }) => {
+  test.only('TC1_Verify_Login_Into_Call_Center_And_Create_Paid_Order', async ({ testData, assert }) => {
     const userName = testData.get('userName')?.toString()!;
     const password = testData.get('password')?.toString()!;
+    const tripType = testData.get('tripType')?.toString()!;
+    const origin = testData.get('origin')?.toString()!;
+    const destination = testData.get('destination')?.toString()!;
+    const departure = testData.get('departure')?.toString()!;
+    const paxType = testData.get('paxType')?.toString()!;
+    const todayPlusDate = testData.get('todayPlusDate')?.toString()!;
+    const cabinType = testData.get('cabinType')?.toString()!;
+    const brandType = testData.get('brandType')?.toString()!;
 
     await loginPage.login(userName, password);
     await homePage.getWelcomeText();
-    assert.toEqual("Welcome", await homePage.getWelcomeText(), "Verify Welcome Text Is Matching");
+    assert.toEqual("Welcome, ", await homePage.getWelcomeText(), "Verify Welcome Text Is Matching");
     await homePage.clickReservationsLink();
     await homePage.clickNewReservationLink();
-    await homePage.selectOneWayTrip();
+    await homePage.selectTripType(tripType);
+    await homePage.selectCityPair(tripType, origin, destination);
+    await homePage.selectTravelDates(tripType, todayPlusDate);
+    await homePage.selectPassengers(paxType);
+    await homePage.clickOnShopButton();
+    await homePage.clickOnOfferRadioButton(brandType);
+    await homePage.clickOnBookButton();
   });
 
   test('TC2_Verify_Login_Into_Call_Center_And_Create_Unpaid_Order', async ({ testData, assert, logger }) => {
     const userName = testData.get('userName')?.toString()!;
     const password = testData.get('password')?.toString()!;
+    const tripType = testData.get('tripType')?.toString()!;
 
     await loginPage.login(userName, password);
     await homePage.getWelcomeText();
@@ -32,15 +48,16 @@ test.describe('@PaidOrder @WLV_CC_REGRESSION @allure.label.feature:Singlepax-Pai
     assert.toEqual("Welcome, ", await homePage.getWelcomeText(), "Verify Welcome Text Is Matching");
     await homePage.clickReservationsLink();
     await homePage.clickNewReservationLink();
-    await homePage.selectOneWayTrip();
+    await homePage.selectTripType(tripType);
   });
 
   /**
    * 
    */
-  test.only('TC3_Verify_Login_Into_Call_Center_And_Create_Multipax_Paid_Order', async ({ testData, assert, logger }) => {
+  test('TC3_Verify_Login_Into_Call_Center_And_Create_Multipax_Paid_Order', async ({ testData, assert, logger }) => {
     const userName = testData.get('userName')?.toString()!;
     const password = testData.get('password')?.toString()!;
+    const tripType = testData.get('tripType')?.toString()!;
 
     await loginPage.login(userName, password);
     await homePage.getWelcomeText();
@@ -48,7 +65,7 @@ test.describe('@PaidOrder @WLV_CC_REGRESSION @allure.label.feature:Singlepax-Pai
     assert.toEqual("Welcome, ", await homePage.getWelcomeText(), "Verify Welcome Text Is Matching");
     await homePage.clickReservationsLink();
     await homePage.clickNewReservationLink();
-    await homePage.selectOneWayTrip();
+    await homePage.selectTripType(tripType);
   });
 
   test.skip('test', async ({ page }) => {

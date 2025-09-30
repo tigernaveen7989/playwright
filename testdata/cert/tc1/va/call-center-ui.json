@@ -12,7 +12,14 @@
             "cardNumber": "7563828462827483",
             "seatType":{
                 "PAX1": "PAID"
-            }
+            },
+            "tripType": "RT",
+            "origin": "SYD",
+            "destination": "BNE",
+            "paxType": "2A1C",
+            "todayPlusDate": "10,15",
+            "cabinType": "",
+            "brandType": "CHOICE"
         }
     ],
     "TC2_Verify_Login_Into_Call_Center_And_Create_Unpaid_Order": [
@@ -22,7 +29,11 @@
             "cardNumber": "7563828462827483",
             "seatType":{
                 "PAX1": "FREE"
-            }
+            },
+            "tripType": "OW",
+            "origin": "MEL",
+            "destination": "SYD",
+            "paxType": "2A1C"
         }
     ],
     "TC1_Verify_Login_Into_Call_Center_And_Create_Paid_Order_And_Add_Paid_Seats": [
@@ -32,7 +43,11 @@
             "cardNumber": "7563828462827483",
             "seatType":{
                 "PAX1": "PAID"
-            }
+            },
+            "origin": "SYD",
+            "destination": "BNE",
+            "tripType": "OW",
+            "paxType": "1A"
         }
     ],
     "TC2_Verify_Login_Into_Call_Center_And_Create_Unpaid_Order_And_Add_Free_Seat": [
