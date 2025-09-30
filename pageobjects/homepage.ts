@@ -107,7 +107,6 @@ export default class homepage extends BlackPanther {
   }
 
   async clickOnOfferRadioButton(brandType: string): Promise<void> {
-    await this.page.pause();
     if (this.plusIcon) {
       await this.click(this.plusIcon);
     }

@@ -1,6 +1,6 @@
 import path from 'path';
 import fs from 'fs';
-import { Page, Locator } from '@playwright/test';
+import { Page, Locator, expect } from '@playwright/test';
 import { attachment, step } from 'allure-js-commons';
 import { LoggerFactory } from '../utilities/logger';
 const logger = LoggerFactory.getLogger(__filename);
@@ -12,17 +12,14 @@ export class BlackPanther {
   private tenant: string;
   protected page: Page;
 
-  constructor(page?: Page) {
+  constructor(page: Page) {
+    this.page = page;
     this.environment = process.env.ENVIRONMENT || '';
     this.subenvironment = process.env.SUBENVIRONMENT || '';
     this.tenant = process.env.TENANT || '';
 
     if (!this.environment || !this.subenvironment || !this.tenant) {
       throw new Error('Missing ENVIRONMENT, SUBENVIRONMENT, or TENANT environment variable.');
-    }
-
-    if (page) {
-      this.page = page;
     }
   }
 
@@ -55,45 +52,75 @@ export class BlackPanther {
     return subenvConfig;
   }
 
-  protected async click(locator: Locator): Promise<void> {
-    await this.sleep(1000);
-    await locator.waitFor({ state: 'visible' });
-    await locator.click();
-    await step(`Clicked on: ${await locator.textContent()}`, async () => {
-      logger.info(`Clicked on locator: ${await locator.toString()}`);
-    });
+  protected async click(locator: Locator): Promise<any> {
+    if (!this.page || this.page.isClosed()) {
+      throw new Error("Page is not available or already closed");
+    }
+
+    try {
+      //await locator.waitFor({ state: 'visible', timeout: 20000 });
+      await this.page.waitForTimeout(1000);
+      await locator.click();
+      await step(`Clicked on: ${await locator.textContent()}`, async () => {
+        logger.info(`Clicked on locator: ${locator.toString()}`);
+      });
+    } catch (error) {
+      throw new Error(`Failed to click on locator: ${error}`);
+    }
   }
 
-  protected async fill(locator: Locator, value: string): Promise<void> {
-    await this.sleep(1000);
-    await locator.waitFor({ state: 'visible' });
-    await locator.fill(value);
-    await step(`Filled '${value}' into: ${await locator.toString()}`, async () => {
-      logger.info(`Filled value '${value}' into locator: ${await locator.toString()}`);
-    });
+  protected async fill(locator: Locator, value: string): Promise<any> {
+    if (!this.page || this.page.isClosed()) {
+      throw new Error("Page is not available or already closed");
+    }
+
+    try {
+      await this.page.waitForTimeout(1000);
+      await expect(locator).toBeVisible({ timeout: 20000 });
+      await locator.fill(value);
+      await step(`Filled '${value}' into: ${locator.toString()}`, async () => {
+        logger.info(`Filled value '${value}' into locator: ${locator.toString()}`);
+      });
+    } catch (error) {
+      throw new Error(`Failed to fill value '${value}' into locator: ${error}`);
+    }
   }
 
   protected async clickOnCheckbox(locator: Locator): Promise<void> {
-    await this.sleep(1000);
-    await locator.waitFor({ state: 'visible' });
-    const isChecked = await locator.isChecked();
-    if (!isChecked) {
-      await locator.click();
-      await step(`Checked checkbox: ${await locator.toString()}`, async () => {
-        logger.info(`Checked checkbox: ${await locator.toString()}`);
-      });
-    } else {
-      logger.info(`Checkbox already checked: ${await locator.toString()}`);
+    if (!this.page || this.page.isClosed()) {
+      throw new Error("Page is not available or already closed");
+    }
+
+    try {
+      await locator.waitFor({ state: 'visible', timeout: 20000 });
+      const isChecked = await locator.isChecked();
+      if (!isChecked) {
+        await locator.click();
+        await step(`Checked checkbox: ${locator.toString()}`, async () => {
+          logger.info(`Checked checkbox: ${locator.toString()}`);
+        });
+      } else {
+        logger.info(`Checkbox already checked: ${locator.toString()}`);
+      }
+    } catch (error) {
+      throw new Error(`Failed to interact with checkbox: ${error}`);
     }
   }
 
   protected async selectValueFromDropdown(locator: Locator, value: string): Promise<void> {
-    await this.sleep(1000);
-    await locator.waitFor({ state: 'visible' });
-    await locator.selectOption({ label: value });
-    await step(`Selected '${value}' from dropdown: ${await locator.toString()}`, async () => {
-      logger.info(`Selected value '${value}' from dropdown: ${await locator.toString()}`);
-    });
+    if (!this.page || this.page.isClosed()) {
+      throw new Error("Page is not available or already closed");
+    }
+
+    try {
+      await locator.waitFor({ state: 'visible', timeout: 20000 });
+      await locator.selectOption({ label: value });
+      await step(`Selected '${value}' from dropdown: ${locator.toString()}`, async () => {
+        logger.info(`Selected value '${value}' from dropdown: ${locator.toString()}`);
+      });
+    } catch (error) {
+      throw new Error(`Failed to select '${value}' from dropdown: ${error}`);
+    }
   }
 
 

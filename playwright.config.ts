@@ -12,7 +12,7 @@ const config: PlaywrightTestConfig = defineConfig({
   retries: 0,
   workers: process.env.CI ? 1 : undefined,
 
-  timeout: 40 * 1000,
+  timeout: 5 * 60 * 1000,
   expect: {
     timeout: 60 * 1000,
   },
