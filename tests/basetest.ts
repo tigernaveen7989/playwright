@@ -4,6 +4,8 @@ import POManager from '../pageobjects/pageobjectmanager';
 import LoginPage from '../pageobjects/loginpage';
 import HomePage from '../pageobjects/homepage';
 import PassengerDetailsPage from '../pageobjects/passengerdetailspage';
+import AddPaymentToNewReservationPage from '../pageobjects/addpaymenttonewreservationpage';
+import PayByCreditCardPage from '../pageobjects/paybycreditcardpage';
 import { BlackPanther } from '../utilities/blackpanther';
 import { label } from 'allure-js-commons';
 import { LoggerFactory } from '../utilities/logger';
@@ -20,6 +22,8 @@ export class BaseTest {
   static loginPage: LoginPage;
   static homePage: HomePage;
   static passengerDetailsPage: PassengerDetailsPage;
+  static addPaymentToNewReservationPage: AddPaymentToNewReservationPage;
+  static payByCreditCardPage: PayByCreditCardPage;
 
   static baseTestInstance: BaseTest;
 
@@ -50,6 +54,8 @@ export class BaseTest {
     BaseTest.loginPage = this.poManager.loginPage;
     BaseTest.homePage = this.poManager.homePage;
     BaseTest.passengerDetailsPage = this.poManager.passengerDetailsPage;
+    BaseTest.addPaymentToNewReservationPage = this.poManager.addPaymentToNewReservationPage;
+    BaseTest.payByCreditCardPage = this.poManager.payByCreditCardPage;
   }
 
   async teardown(): Promise<void> {
@@ -74,29 +80,27 @@ export class BaseTest {
 }
 
 // Type-safe runtime getter exports
-export const loginPage: LoginPage = new Proxy({} as LoginPage, {
-  get(_, prop) {
-    if (!BaseTest.loginPage) {
-      throw new Error('loginPage is not initialized. Did you forget to call BaseTest.registerHooks(test)?');
-    }
-    return (BaseTest.loginPage as any)[prop];
-  }
-});
+function createPageProxy<T extends object>(
+  pageName: keyof typeof BaseTest,
+  errorMessage?: string
+): T {
+  return new Proxy({} as T, {
+    get(_, prop: string | symbol) {
+      const pageInstance = BaseTest[pageName];
+      if (!pageInstance) {
+        throw new Error(
+          errorMessage ||
+            `${String(pageName)} is not initialized. Did you forget to call BaseTest.registerHooks(test)?`
+        );
+      }
+      return (pageInstance as any)[prop];
+    },
+  });
+}
 
-export const homePage: HomePage = new Proxy({} as HomePage, {
-  get(_, prop) {
-    if (!BaseTest.homePage) {
-      throw new Error('homePage is not initialized.');
-    }
-    return (BaseTest.homePage as any)[prop];
-  }
-});
-
-export const passengerDetailsPage: PassengerDetailsPage = new Proxy({} as PassengerDetailsPage, {
-  get(_, prop) {
-    if (!BaseTest.passengerDetailsPage) {
-      throw new Error('passengerDetailsPage is not initialized.');
-    }
-    return (BaseTest.passengerDetailsPage as any)[prop];
-  }
-});
+// Usage:
+export const loginPage = createPageProxy<LoginPage>("loginPage");
+export const homePage = createPageProxy<HomePage>("homePage");
+export const passengerDetailsPage = createPageProxy<PassengerDetailsPage>("passengerDetailsPage");
+export const addPaymentToNewReservationPage = createPageProxy<AddPaymentToNewReservationPage>("addPaymentToNewReservationPage");
+export const payByCreditCardPage = createPageProxy<PayByCreditCardPage>("payByCreditCardPage");

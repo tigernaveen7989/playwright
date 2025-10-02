@@ -40,7 +40,7 @@ export default class homepage extends BlackPanther {
     this.childEditbox = page.locator("[id=numAvailabilityPtc_CNN]");
     this.infantEditbox = page.locator("[id=numAvailabilityPtc_INF]");
     this.infantWithSeatEditbox = page.locator("[id=numAvailabilityPtc_INS]");
-    this.shopButton = page.locator("[id=btnAvailabilitySearchMs]");
+    this.shopButton = page.locator("[id=btnAvailabilitySearchMs]").last();
     this.bookButton = page.locator('[id=btnAvailabilityCheckValidate]');
     this.plusIcon = page.locator('[id=add-0]');
     this.agreeButton = page.locator("[id=btnResGDPRModalClose]");

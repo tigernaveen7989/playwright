@@ -2,15 +2,18 @@
     "global": [
         {
             "userName": "tc1hopper1.admin1.va.functional.e2e@sabre.com",
-            "password": "Pa$$word@2k25"
+            "password": "Pa$$word@2k25",
+            "cardType": "MasterCard",
+            "cardNumber": "5123456789012346",
+            "cardName": "Naveen Kumar",
+            "cvv": "123",
+            "expirationDate": "1229"
         }
     ],
     "TC1_Verify_Login_Into_Call_Center_And_Create_Paid_Order": [
         {
             "paymentType": "CASH",
-            "cardType": "MasterCard",
-            "cardNumber": "7563828462827483",
-            "seatType":{
+            "seatType": {
                 "PAX1": "PAID"
             },
             "tripType": "RT",
@@ -27,7 +30,7 @@
             "paymentType": "CASH",
             "cardType": "MasterCard",
             "cardNumber": "7563828462827483",
-            "seatType":{
+            "seatType": {
                 "PAX1": "FREE"
             },
             "tripType": "OW",
@@ -44,7 +47,7 @@
             "paymentType": "CASH",
             "cardType": "MasterCard",
             "cardNumber": "7563828462827483",
-            "seatType":{
+            "seatType": {
                 "PAX1": "PAID"
             },
             "origin": "SYD",
@@ -58,7 +61,7 @@
             "paymentType": "CASH",
             "cardType": "MasterCard",
             "cardNumber": "7563828462827483",
-            "seatType":{
+            "seatType": {
                 "PAX1": "FREE"
             }
         }
@@ -68,7 +71,7 @@
             "paymentType": "CASH",
             "cardType": "MasterCard",
             "cardNumber": "7563828462827483",
-            "seatType":{
+            "seatType": {
                 "PAX1": "FREE"
             }
         }
@@ -78,7 +81,7 @@
             "paymentType": "CASH",
             "cardType": "MasterCard",
             "cardNumber": "7563828462827483",
-            "seatType":{
+            "seatType": {
                 "PAX1": "FREE"
             }
         }

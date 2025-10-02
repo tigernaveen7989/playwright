@@ -15,6 +15,7 @@ export default class passengerdetailspage extends BlackPanther {
   private readonly updateButton: Locator;
   private readonly nextPaxButton: Locator;
   private readonly saveButton: Locator;
+  private readonly yesButtonFromPaymentPopup: Locator;
 
   constructor(page: Page) {
     super(page);
@@ -30,6 +31,7 @@ export default class passengerdetailspage extends BlackPanther {
     this.updateButton = page.locator("xpath=//button[@id='btnResUpdatePaxInfo']");
     this.nextPaxButton = page.locator("xpath=//button[@id='btnResNextPax']");
     this.saveButton = page.locator("xpath=//button[@id='btnResSavePax_0']");
+    this.yesButtonFromPaymentPopup = page.locator("#button-1");
   }
 
   async enterPassengerDetails(paxType: string): Promise<void> {
@@ -70,5 +72,9 @@ export default class passengerdetailspage extends BlackPanther {
   async clickOnSaveButton(): Promise<void> {
     await this.click(this.saveButton);
     await this.sleep(5000);
+  }
+
+  async clickOnYesButton(): Promise<void> {
+    this.click(this.yesButtonFromPaymentPopup);
   }
 }
