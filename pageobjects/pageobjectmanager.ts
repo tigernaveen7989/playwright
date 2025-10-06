@@ -5,6 +5,7 @@ import HomePage from './homepage';
 import PassengerDetailsPage from './passengerdetailspage';
 import AddPaymentToNewReservationPage from './addpaymenttonewreservationpage';
 import PayByCreditCardPage from './paybycreditcardpage';
+import BookingConfirmationPage from './bookingconfirmationpage';
 
 export default class pageobjectmanager {
   public loginPage: LoginPage;
@@ -12,6 +13,7 @@ export default class pageobjectmanager {
   public passengerDetailsPage: PassengerDetailsPage;
   public addPaymentToNewReservationPage: AddPaymentToNewReservationPage;
   public payByCreditCardPage: PayByCreditCardPage;
+  public bookingConfirmationPage: BookingConfirmationPage;
 
   constructor(page: Page, testInfo: TestInfo) {
     this.loginPage = new LoginPage(page, testInfo);
@@ -19,5 +21,6 @@ export default class pageobjectmanager {
     this.passengerDetailsPage = new PassengerDetailsPage(page);
     this.addPaymentToNewReservationPage = new AddPaymentToNewReservationPage(page);
     this.payByCreditCardPage = new PayByCreditCardPage(page);
+    this.bookingConfirmationPage = new BookingConfirmationPage(page);
   }
 }

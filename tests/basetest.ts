@@ -6,6 +6,7 @@ import HomePage from '../pageobjects/homepage';
 import PassengerDetailsPage from '../pageobjects/passengerdetailspage';
 import AddPaymentToNewReservationPage from '../pageobjects/addpaymenttonewreservationpage';
 import PayByCreditCardPage from '../pageobjects/paybycreditcardpage';
+import BookingConfirmationPage from '../pageobjects/bookingconfirmationpage';
 import { BlackPanther } from '../utilities/blackpanther';
 import { label } from 'allure-js-commons';
 import { LoggerFactory } from '../utilities/logger';
@@ -24,6 +25,7 @@ export class BaseTest {
   static passengerDetailsPage: PassengerDetailsPage;
   static addPaymentToNewReservationPage: AddPaymentToNewReservationPage;
   static payByCreditCardPage: PayByCreditCardPage;
+  static bookingConfirmationPage: BookingConfirmationPage;
 
   static baseTestInstance: BaseTest;
 
@@ -56,6 +58,7 @@ export class BaseTest {
     BaseTest.passengerDetailsPage = this.poManager.passengerDetailsPage;
     BaseTest.addPaymentToNewReservationPage = this.poManager.addPaymentToNewReservationPage;
     BaseTest.payByCreditCardPage = this.poManager.payByCreditCardPage;
+    BaseTest.bookingConfirmationPage = this.poManager.bookingConfirmationPage;
   }
 
   async teardown(): Promise<void> {
@@ -104,3 +107,4 @@ export const homePage = createPageProxy<HomePage>("homePage");
 export const passengerDetailsPage = createPageProxy<PassengerDetailsPage>("passengerDetailsPage");
 export const addPaymentToNewReservationPage = createPageProxy<AddPaymentToNewReservationPage>("addPaymentToNewReservationPage");
 export const payByCreditCardPage = createPageProxy<PayByCreditCardPage>("payByCreditCardPage");
+export const bookingConfirmationPage = createPageProxy<BookingConfirmationPage>("bookingConfirmationPage");

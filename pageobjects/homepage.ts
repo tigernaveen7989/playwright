@@ -21,6 +21,7 @@ export default class homepage extends BlackPanther {
   private readonly bookButton: Locator;
   private readonly plusIcon: Locator;
   private readonly agreeButton: Locator;
+  private readonly flightSelectionList: Locator;
 
   constructor(page: Page) {
     super(page);
@@ -44,6 +45,7 @@ export default class homepage extends BlackPanther {
     this.bookButton = page.locator('[id=btnAvailabilityCheckValidate]');
     this.plusIcon = page.locator('[id=add-0]');
     this.agreeButton = page.locator("[id=btnResGDPRModalClose]");
+    this.flightSelectionList = page.locator("xpath=//div[contains(@data-bind,'kendoGridAvailSelection')]//table//tbody/tr");
   }
 
   async getWelcomeText(): Promise<string | null> {
@@ -127,5 +129,49 @@ export default class homepage extends BlackPanther {
   async getOfferRadioButton(brandType: string): Promise<Locator> {
     const xpath = `xpath=//div[@class='row full-width']//span[contains(text(),'${brandType}')]/ancestor::div[@class='row full-width']/following-sibling::div[@class='custom-radioButton']`;
     return this.page.locator(xpath).first();
+  }
+
+  async getDepartureDateAndTimes(): Promise<string[]> {
+    const departureDateAndTimes: string[] = [];
+
+    const rowCount = await this.flightSelectionList.count();
+
+    for (let i = 0; i < rowCount; i++) {
+      const row = this.flightSelectionList.nth(i);
+      const columnText = await row.locator('td').nth(3).innerText(); // 3rd column
+      const departureTimeAndDate = columnText.split(" ")[3]+" "+columnText.split(" ")[4];
+      departureDateAndTimes.push(departureTimeAndDate.trim());
+    }
+    return departureDateAndTimes;
+  }
+
+  async getArrivalDateAndTimes(): Promise<string[]> {
+    const arrivalDateAndTimes: string[] = [];
+
+    const rowCount = await this.flightSelectionList.count();
+
+    for (let i = 0; i < rowCount; i++) {
+      const row = this.flightSelectionList.nth(i);
+      const columnText = await row.locator('td').nth(3).innerText(); // 3rd column
+      const arrivalTimeAndDate = columnText.split(" ")[3]+" "+columnText.split(" ")[5];
+      arrivalDateAndTimes.push(arrivalTimeAndDate.trim());
+    }
+    return arrivalDateAndTimes;
+  }
+
+  async getOriginAndDestinations(): Promise<string[]> {
+    const originAndDestinations: string[] = [];
+    await this.page.pause();
+    await this.flightSelectionList.first().waitFor({state:'visible'});
+    const rowCount = await this.flightSelectionList.count();
+
+    for (let i = 0; i < rowCount; i++) {
+      const row = this.flightSelectionList.nth(i);
+      const columnText: any = await row.locator('td').nth(2).textContent(); // 3rd column
+      const originAndDestination = columnText.split(" ")[2];
+      console.log(originAndDestination);
+      originAndDestinations.push(originAndDestination.trim());
+    }
+    return originAndDestinations;
   }
 }
