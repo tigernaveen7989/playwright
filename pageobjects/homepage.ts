@@ -183,7 +183,6 @@ export default class homepage extends BlackPanther {
       const row = this.flightSelectionList.nth(i);
       const columnText: any = await row.locator('td').nth(2).textContent(); // 3rd column
       const originAndDestination = columnText.split(" ")[2];
-      console.log(originAndDestination);
       originAndDestinations.push(originAndDestination.trim());
     }
     return originAndDestinations;

@@ -1,5 +1,14 @@
-// basetest.ts
-import { test as baseTest, Browser, BrowserContext, Page, chromium, firefox, webkit, TestInfo } from '@playwright/test';
+import {
+  test as baseTest,
+  Browser,
+  BrowserContext,
+  Page,
+  chromium,
+  firefox,
+  webkit,
+  TestInfo
+} from '@playwright/test';
+
 import POManager from '../pageobjects/pageobjectmanager';
 import LoginPage from '../pageobjects/loginpage';
 import HomePage from '../pageobjects/homepage';
@@ -10,6 +19,9 @@ import BookingConfirmationPage from '../pageobjects/bookingconfirmationpage';
 import { BlackPanther } from '../utilities/blackpanther';
 import { label } from 'allure-js-commons';
 import { LoggerFactory } from '../utilities/logger';
+import * as fs from 'fs';
+import * as path from 'path';
+
 const logger = LoggerFactory.getLogger(__filename);
 
 export class BaseTest {
@@ -17,7 +29,7 @@ export class BaseTest {
   protected context!: BrowserContext;
   protected page!: Page;
   public poManager!: POManager;
-  public blackPanther : BlackPanther;
+  public blackPanther: BlackPanther;
 
   // Static exposed variables
   static loginPage: LoginPage;
@@ -47,12 +59,13 @@ export class BaseTest {
     this.page = await this.context.newPage();
     this.poManager = new POManager(this.page, testInfo);
     this.blackPanther = new BlackPanther(this.page);
-    const {ccUrl} = this.blackPanther.loadConfig();
+
+    const { ccUrl } = this.blackPanther.loadConfig();
     testInfo.annotations.push({ type: 'ccUrl', description: ccUrl });
 
     await this.page.goto(ccUrl);
 
-    // Assign static properties here:
+    // Assign static properties
     BaseTest.loginPage = this.poManager.loginPage;
     BaseTest.homePage = this.poManager.homePage;
     BaseTest.passengerDetailsPage = this.poManager.passengerDetailsPage;
@@ -74,8 +87,24 @@ export class BaseTest {
       await BaseTest.baseTestInstance.setup(browserName, testInfo);
     });
 
-    test.afterEach(async () => {
+    test.afterEach(async ({}, testInfo) => {
       if (BaseTest.baseTestInstance) {
+        const { page } = BaseTest.baseTestInstance;
+
+        if (testInfo.status !== testInfo.expectedStatus) {
+          try {
+            // const screenshotBuffer = await page.screenshot({ fullPage: true });
+
+            // // Attach to Playwright HTML report
+            // await testInfo.attach('Failure Screenshot', {
+            //   body: screenshotBuffer,
+            //   contentType: 'image/png',
+            // });
+          } catch (error) {
+            logger.error(`Failed to capture screenshot: ${error}`);
+          }
+        }
+
         await BaseTest.baseTestInstance.teardown();
       }
     });
@@ -102,9 +131,9 @@ function createPageProxy<T extends object>(
 }
 
 // Usage:
-export const loginPage = createPageProxy<LoginPage>("loginPage");
-export const homePage = createPageProxy<HomePage>("homePage");
-export const passengerDetailsPage = createPageProxy<PassengerDetailsPage>("passengerDetailsPage");
-export const addPaymentToNewReservationPage = createPageProxy<AddPaymentToNewReservationPage>("addPaymentToNewReservationPage");
-export const payByCreditCardPage = createPageProxy<PayByCreditCardPage>("payByCreditCardPage");
-export const bookingConfirmationPage = createPageProxy<BookingConfirmationPage>("bookingConfirmationPage");
+export const loginPage = createPageProxy<LoginPage>('loginPage');
+export const homePage = createPageProxy<HomePage>('homePage');
+export const passengerDetailsPage = createPageProxy<PassengerDetailsPage>('passengerDetailsPage');
+export const addPaymentToNewReservationPage = createPageProxy<AddPaymentToNewReservationPage>('addPaymentToNewReservationPage');
+export const payByCreditCardPage = createPageProxy<PayByCreditCardPage>('payByCreditCardPage');
+export const bookingConfirmationPage = createPageProxy<BookingConfirmationPage>('bookingConfirmationPage');

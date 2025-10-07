@@ -118,7 +118,7 @@ test.describe('@PaidOrder @WLV_CC_REGRESSION @allure.label.feature:Singlepax-Pai
   /**
    * 
    */
-  test.only('TC3_Verify_Multipax_OW_And_Create_Unpaid_Order', async ({ testData, assert, logger }) => {
+  test('TC3_Verify_Multipax_OW_And_Create_Unpaid_Order', async ({ testData, assert, logger }) => {
     const userName = testData.get('userName')?.toString()!;
     const password = testData.get('password')?.toString()!;
     const tripType = testData.get('tripType')?.toString()!;
