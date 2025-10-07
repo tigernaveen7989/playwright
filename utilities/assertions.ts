@@ -1,6 +1,7 @@
 import { expect, Locator, Page } from '@playwright/test';
 import { attachment, step } from 'allure-js-commons';
 import { LoggerFactory } from '../utilities/logger';
+const logger = LoggerFactory.getLogger(__filename);
 
 export class Assertions {
 
