@@ -7,11 +7,12 @@ export default class homepage extends BlackPanther {
   private readonly oneWayRadioButton: Locator;
   private readonly reservationsLink: Locator;
   private readonly roundTripRadioButton: Locator;
-  private readonly fromDropDown: Locator;
+  private readonly rtFromDropDown: Locator;
   private readonly firstValueFromDropdown: Locator;
   private readonly firstValueToDropdown: Locator;
-  private readonly toDropDown: Locator;
-  private readonly departureDateEditbox: Locator;
+  private readonly rtToDropDown: Locator;
+  private readonly rtDepartureDateEditbox: Locator;
+  private readonly owDepartureDateEditbox: Locator;
   private readonly arrivalDateEditbox: Locator;
   private readonly adultEditbox: Locator;
   private readonly childEditbox: Locator;
@@ -22,6 +23,8 @@ export default class homepage extends BlackPanther {
   private readonly plusIcon: Locator;
   private readonly agreeButton: Locator;
   private readonly flightSelectionList: Locator;
+  private readonly owFromDropDown: Locator;
+  private readonly owToDropDown: Locator;
 
   constructor(page: Page) {
     super(page);
@@ -31,9 +34,12 @@ export default class homepage extends BlackPanther {
     this.newReservationLink = page.locator('[id=anchorLeftMenuReservationsNewReservation]').last();
     this.oneWayRadioButton = page.locator("label[id='lblRbxAvailabilityTripTypeOw'] span[class='spark-radio__box']").first();
     this.roundTripRadioButton = page.locator("label[id='lblRbxAvailabilityTripTypeRt'] span[class='spark-radio__box']");
-    this.fromDropDown = page.locator("xpath=//input[starts-with(@id, 'tbxAvailabilityAirportFrom')]").first();
-    this.toDropDown = page.locator("xpath=//input[starts-with(@id, 'tbxAvailabilityAirportTo')]").first();
-    this.departureDateEditbox = page.locator("xpath=//input[starts-with(@id, 'tbxAvailabilityDepDate')]").first();
+    this.rtFromDropDown = page.locator("xpath=//input[starts-with(@id, 'tbxAvailabilityAirportFrom')]").first();
+    this.rtToDropDown = page.locator("xpath=//input[starts-with(@id, 'tbxAvailabilityAirportTo')]").first();
+    this.owFromDropDown = page.locator("xpath=//input[starts-with(@id, 'tbxAvailabilityAirportFrom')]").last();
+    this.owToDropDown = page.locator("xpath=//input[starts-with(@id, 'tbxAvailabilityAirportTo')]").last();
+    this.rtDepartureDateEditbox = page.locator("xpath=//input[starts-with(@id, 'tbxAvailabilityDepDate')]").first();
+    this.owDepartureDateEditbox = page.locator("xpath=//input[starts-with(@id, 'tbxAvailabilityDepDate')]").last();
     this.arrivalDateEditbox = page.locator("xpath=//input[starts-with(@id, 'tbxAvailabilityReturnDate')]");
     this.firstValueFromDropdown = page.locator("xpath=//button[contains(@id,'btnAvailabilityAirportFrom')]/following-sibling::ul//li[@class='ui-menu-item']").first();
     this.firstValueToDropdown = page.locator("xpath=//button[contains(@id,'btnAvailabilityAirportTo')]/following-sibling::ul//li[@class='ui-menu-item']").first();
@@ -70,21 +76,30 @@ export default class homepage extends BlackPanther {
   }
 
   async selectCityPair(tripType: string, origin: string, destination: string) {
-    // await this.selectValueFromDropdown(this.fromDropDown, origin);
-    // await this.selectValueFromDropdown(this.toDropDown, destination);
-    await this.fill(this.fromDropDown, origin);
-    await this.pressTab();
-    await this.fill(this.toDropDown, destination);
-    await this.pressTab();
+    if (tripType.match('RT')) {
+      await this.fill(this.rtFromDropDown, origin);
+      await this.pressTab();
+      await this.fill(this.rtToDropDown, destination);
+      await this.pressTab();
+    } else if (tripType.match('OW')) {
+      await this.fill(this.owFromDropDown, origin);
+      await this.pressTab();
+      await this.fill(this.owToDropDown, destination);
+      await this.pressTab();
+    }
   }
 
   async selectTravelDates(tripType: string, todayPlusDate: string): Promise<void> {
-    await this.click(this.departureDateEditbox);
-    await this.fill(this.departureDateEditbox, this.getTravelDates(tripType, todayPlusDate)[0]);
-    await this.pressTab();
     if (tripType.match('RT')) {
+      await this.click(this.rtDepartureDateEditbox);
+      await this.fill(this.rtDepartureDateEditbox, this.getTravelDates(tripType, todayPlusDate)[0]);
+      await this.pressTab();
       await this.click(this.arrivalDateEditbox);
       await this.fill(this.arrivalDateEditbox, this.getTravelDates(tripType, todayPlusDate)[1]);
+      await this.pressTab();
+    } else if(tripType.match('OW')){
+      await this.click(this.owDepartureDateEditbox);
+      await this.fill(this.owDepartureDateEditbox, this.getTravelDates(tripType, todayPlusDate)[0]);
       await this.pressTab();
     }
   }
@@ -139,7 +154,7 @@ export default class homepage extends BlackPanther {
     for (let i = 0; i < rowCount; i++) {
       const row = this.flightSelectionList.nth(i);
       const columnText = await row.locator('td').nth(3).innerText(); // 3rd column
-      const departureTimeAndDate = columnText.split(" ")[3]+" "+columnText.split(" ")[4];
+      const departureTimeAndDate = columnText.split(" ")[3] + " " + columnText.split(" ")[4];
       departureDateAndTimes.push(departureTimeAndDate.trim());
     }
     return departureDateAndTimes;
@@ -153,7 +168,7 @@ export default class homepage extends BlackPanther {
     for (let i = 0; i < rowCount; i++) {
       const row = this.flightSelectionList.nth(i);
       const columnText = await row.locator('td').nth(3).innerText(); // 3rd column
-      const arrivalTimeAndDate = columnText.split(" ")[3]+" "+columnText.split(" ")[5];
+      const arrivalTimeAndDate = columnText.split(" ")[3] + " " + columnText.split(" ")[5];
       arrivalDateAndTimes.push(arrivalTimeAndDate.trim());
     }
     return arrivalDateAndTimes;
@@ -161,8 +176,7 @@ export default class homepage extends BlackPanther {
 
   async getOriginAndDestinations(): Promise<string[]> {
     const originAndDestinations: string[] = [];
-    await this.page.pause();
-    await this.flightSelectionList.first().waitFor({state:'visible'});
+    await this.flightSelectionList.first().waitFor({ state: 'visible' });
     const rowCount = await this.flightSelectionList.count();
 
     for (let i = 0; i < rowCount; i++) {

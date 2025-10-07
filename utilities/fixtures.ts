@@ -16,12 +16,12 @@ const test = base.extend<{
   logger: typeof logger;
   assert: Assertions;
   testInfo: TestInfo;
-
 }>({
-  testInfo: async ({ }, use, testInfo) => {
+  testInfo: async ({}, use, testInfo) => {
     await use(testInfo);
   },
-  testData: async ({ }, use, testInfo: TestInfo) => {
+
+  testData: async ({}, use, testInfo: TestInfo) => {
     const testCaseName = testInfo.title.split('@')[0].trim();
 
     const ENVIRONMENT = process.env.ENVIRONMENT?.toLowerCase();
@@ -43,19 +43,27 @@ const test = base.extend<{
     );
 
     const jsonHandler = new jsonhandler(testDataPath);
-    const testData = jsonHandler.loadTestData(testCaseName);
+
+    let testData: Map<string, any>;
+
+    try {
+      testData = jsonHandler.loadTestData(testCaseName);
+    } catch (error) {
+      logger.error(`${error.message}`);
+      testInfo.status = 'failed';
+      throw error;
+    }
 
     await use(testData);
   },
 
-  logger: async ({ }, use) => {
+  logger: async ({}, use) => {
     await use(logger);
   },
 
-  assert: async ({ }, use) => {
+  assert: async ({}, use) => {
     await use(assert);
   },
-
 });
 
 // Register hooks once globally

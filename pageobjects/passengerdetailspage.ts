@@ -16,6 +16,7 @@ export default class passengerdetailspage extends BlackPanther {
   private readonly nextPaxButton: Locator;
   private readonly saveButton: Locator;
   private readonly yesButtonFromPaymentPopup: Locator;
+  private readonly noButtonFromPaymentPopup: Locator;
 
   constructor(page: Page) {
     super(page);
@@ -32,6 +33,7 @@ export default class passengerdetailspage extends BlackPanther {
     this.nextPaxButton = page.locator("xpath=//button[@id='btnResNextPax']");
     this.saveButton = page.locator("xpath=//button[@id='btnResSavePax_0']");
     this.yesButtonFromPaymentPopup = page.locator("#button-1");
+    this.noButtonFromPaymentPopup = page.locator("#button-0");
   }
 
   async enterPassengerDetails(paxType: string): Promise<void> {
@@ -59,14 +61,16 @@ export default class passengerdetailspage extends BlackPanther {
         title = ["MSTR", "MISS"][Math.floor(Math.random() * 2)];
       }
       await this.selectValueFromDropdown(this.titleDropdown, title);
+      await this.fill(this.mobilePhoneEditbox, mobileNumber);
       await this.click(this.dateOfBirthEditbox);
       await this.fill(this.dateOfBirthEditbox, dob);
-      await this.fill(this.mobilePhoneEditbox, mobileNumber);
-      if(await this.nextPaxButton.isEnabled()){
+      await this.pressTab();
+      if(await this.nextPaxButton.isEnabled({timeout:3000})){
         await this.click(this.nextPaxButton);
         await this.sleep(5000);
       }
     }
+    await this.click(this.updateButton);
   }
 
   async clickOnSaveButton(): Promise<void> {
@@ -76,5 +80,9 @@ export default class passengerdetailspage extends BlackPanther {
 
   async clickOnYesButton(): Promise<void> {
     this.click(this.yesButtonFromPaymentPopup);
+  }
+
+  async clickOnNoButton(): Promise<void> {
+    this.click(this.noButtonFromPaymentPopup);
   }
 }

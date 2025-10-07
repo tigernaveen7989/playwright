@@ -12,7 +12,7 @@
     ],
     "TC1_Verify_Login_Into_Call_Center_And_Create_Paid_Order": [
         {
-            "paymentType": "CASH",
+            "paymentType": "CARD",
             "seatType": {
                 "PAX1": "PAID"
             },
@@ -25,11 +25,9 @@
             "brandType": "CHOICE"
         }
     ],
-    "TC2_Verify_Login_Into_Call_Center_And_Create_Unpaid_Order": [
+    "TC2_Verify_Login_Into_Call_Center_And_Create_Paid_Order_Using_Cash": [
         {
             "paymentType": "CASH",
-            "cardType": "MasterCard",
-            "cardNumber": "7563828462827483",
             "seatType": {
                 "PAX1": "FREE"
             },
@@ -39,51 +37,22 @@
             "paxType": "1A",
             "todayPlusDate": "10",
             "cabinType": "",
-            "brandType": "BUSINESS"
+            "brandType": "FLEX"
         }
     ],
-    "TC1_Verify_Login_Into_Call_Center_And_Create_Paid_Order_And_Add_Paid_Seats": [
+    "TC3_Verify_Multipax_OW_And_Create_Unpaid_Order": [
         {
-            "paymentType": "CASH",
-            "cardType": "MasterCard",
-            "cardNumber": "7563828462827483",
+            "paymentType": "Unpaid",
             "seatType": {
                 "PAX1": "PAID"
             },
             "origin": "SYD",
             "destination": "BNE",
-            "tripType": "OW",
-            "paxType": "1A"
-        }
-    ],
-    "TC2_Verify_Login_Into_Call_Center_And_Create_Unpaid_Order_And_Add_Free_Seat": [
-        {
-            "paymentType": "CASH",
-            "cardType": "MasterCard",
-            "cardNumber": "7563828462827483",
-            "seatType": {
-                "PAX1": "FREE"
-            }
-        }
-    ],
-    "TC3_Verify_Login_Into_Call_Center_And_Create_Paid_Order_And_Add_Free_Seat": [
-        {
-            "paymentType": "CASH",
-            "cardType": "MasterCard",
-            "cardNumber": "7563828462827483",
-            "seatType": {
-                "PAX1": "FREE"
-            }
-        }
-    ],
-    "TC3_Verify_Login_Into_Call_Center_And_Create_Multipax_Paid_Order": [
-        {
-            "paymentType": "CASH",
-            "cardType": "MasterCard",
-            "cardNumber": "7563828462827483",
-            "seatType": {
-                "PAX1": "FREE"
-            }
+            "tripType": "RT",
+            "paxType": "1A",
+            "todayPlusDate": "10,18",
+            "cabinType": "",
+            "brandType": "BUSINESS"
         }
     ]
 }

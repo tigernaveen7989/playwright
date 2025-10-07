@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 
 type JsonData = {
-  [key: string]: any[]; // you can refine the structure based on your JSON shape
+  [key: string]: any[];
 };
 
 export default class jsonhandler {
@@ -21,9 +21,12 @@ export default class jsonhandler {
 
   loadTestData(testCaseName: string): Map<string, any> {
     const globalData = this.jsonData.global?.[0] || {};
-    const testCaseData = this.jsonData[testCaseName]?.[0] || {};
+    const testCaseData = this.jsonData[testCaseName]?.[0];
 
-    // Merge global and test case data (test case overrides global)
+    if (!testCaseData) {
+      throw new Error(`❌ Test data not available for test case: "${testCaseName}" in JSON file.`);
+    }
+
     return new Map<string, any>(Object.entries({ ...globalData, ...testCaseData }));
   }
 }

@@ -1,7 +1,6 @@
 import { expect, Locator, Page } from '@playwright/test';
 import { attachment, step } from 'allure-js-commons';
 import { LoggerFactory } from '../utilities/logger';
-const logger = LoggerFactory.getLogger(__filename);
 
 export class Assertions {
 
@@ -29,22 +28,6 @@ export class Assertions {
         });
     }
 
-    private async assertionFn(actualValue: any, expectedValue: any, message: string): Promise<void> {
-        await step(`${message}`, async () => {
-            await step(`Actual   : ${actualValue}`, async () => {
-                // No-op, just for logging
-            });
-
-            await step(`Expected : ${expectedValue}`, async () => {
-                // No-op, just for logging
-            });
-
-            // Your actual assertion
-            expect(actualValue).toBe(expectedValue);
-        });
-    }
-
-
     async toBe(actual: any, expected: any, message?: string) {
         await this.logStep('toBe', expected, actual, message, async () => {
             expect(actual, message).toBe(expected);
@@ -58,10 +41,9 @@ export class Assertions {
     }
 
     async toEqual(actual: any, expected: any, message?: string) {
-        await expect(actual, message).toEqual(expected);
-        // await this.logStep('toEqual', expected, actual, message, async () => {
-        //     expect(actual, message).toEqual(expected);
-        // });
+        await this.logStep('toEqual', expected, actual, message, async () => {
+            expect(actual, message).toEqual(expected);
+        });
     }
 
     async notToEqual(actual: any, expected: any, message?: string) {
