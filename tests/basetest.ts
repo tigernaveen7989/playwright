@@ -19,8 +19,6 @@ import BookingConfirmationPage from '../pageobjects/bookingconfirmationpage';
 import { BlackPanther } from '../utilities/blackpanther';
 import { label } from 'allure-js-commons';
 import { LoggerFactory } from '../utilities/logger';
-import * as fs from 'fs';
-import * as path from 'path';
 
 const logger = LoggerFactory.getLogger(__filename);
 

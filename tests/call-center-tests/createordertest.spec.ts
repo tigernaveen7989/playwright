@@ -1,5 +1,4 @@
-import { description } from 'allure-js-commons';
-import { test, expect } from '../../utilities/fixtures';
+import { test } from '../../utilities/fixtures';
 import { loginPage, homePage, passengerDetailsPage, addPaymentToNewReservationPage, payByCreditCardPage, bookingConfirmationPage } from '../basetest';
 
 test.describe.configure({ mode: 'parallel' });
