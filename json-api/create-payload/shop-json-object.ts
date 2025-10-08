@@ -15,7 +15,7 @@ export class ShopJsonObject {
     day: number,
     month: number,
     year: number,
-    currency: string = 'EUR'
+    currency: string
   ) {
     this.origin = origin;
     this.destination = destination;

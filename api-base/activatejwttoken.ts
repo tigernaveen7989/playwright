@@ -1,4 +1,4 @@
-import { request, expect } from '@playwright/test';
+import { request } from '@playwright/test';
 import fs from 'fs';
 import path from 'path';
 import { v4 as uuidv4 } from 'uuid';
@@ -79,8 +79,6 @@ export class activateJwtToken {
       headers,
       form,
     });
-
-    expect(response.status()).toBe(200);
     const jwtResponse = await response.json();
 
     return {

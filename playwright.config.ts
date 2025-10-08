@@ -23,7 +23,7 @@ const config: PlaywrightTestConfig = defineConfig({
     //['./utilities/email-reporter.ts'],
     ['allure-playwright', {
       resultsDir: 'allure-results',
-      detail: false,
+      detail: true,
       suiteTitle: false,
       environmentInfo: {
         ENVIRONMENT: process.env.ENVIRONMENT,
