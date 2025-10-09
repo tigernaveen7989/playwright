@@ -4,6 +4,8 @@ import { readFileSync } from 'fs';
 import { faker } from '@faker-js/faker';
 import { LoggerFactory } from '../../utilities/logger'
 import { XmlTemplateProcessor } from '../../api-base/xml-template-processor'; // Adjust path as needed
+import { DOMParser } from 'xmldom';
+import * as xpath from 'xpath';
 
 const logger = LoggerFactory.getLogger(__filename);
 
@@ -300,5 +302,28 @@ export class CreateOrderApi {
         }
 
         return result;
+    }
+
+    public getOrderId(createOrderResponse: string): string | null {
+        const doc = new DOMParser().parseFromString(createOrderResponse, 'text/xml');
+        const nodes: any = xpath.select(
+            '//*[local-name()="OrderID"]/text()',
+            doc
+        ) as xpath.SelectedValue[] | null;
+
+        return nodes && nodes.length > 0 ? nodes[0]?.nodeValue ?? null : null;
+    }
+
+    public getWarningMessage(createOrderResponse: string): string {
+        const doc = new DOMParser().parseFromString(createOrderResponse, 'text/xml');
+
+        // Select DescText nodes
+        const nodes = xpath.select(
+            '//*[local-name()="Warning"]/*[local-name()="DescText"]/text()',
+            doc
+        ) as Node[]; // <-- Type assertion to Node[]
+
+        // Return the first nodeValue or empty string
+        return nodes && nodes.length > 0 ? (nodes[0].nodeValue ?? '').trim() : '';
     }
 }

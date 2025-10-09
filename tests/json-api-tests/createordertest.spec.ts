@@ -38,6 +38,8 @@ test.describe('@allure.label.feature:JSON-PaidOrder', () => {
     const createOrder = new createOrderApi();
     const createOrderResponse = await createOrder.sendRequestAndGetResponse(`${omsApiJson}/create`, headers, testInfo, passengerDetailsMap, offerId);
     await assert.toBe(createOrderResponse.ok(), true, "Verify Create Order Response is OK");
+    await assert.toBeEmpty(createOrder.getOrderIdAndWarningMessage(await createOrderResponse.text()).warningMessage, "Verify Warning Message is Empty");
+    await assert.notToBeNull(createOrder.getOrderIdAndWarningMessage(await createOrderResponse.text()).orderId, "Verify Order Id is Not Null");
   });
 
   test('TC3_Verify_Single_Pax_One_Way_Create_Paid_Order', async ({ testData, assert }, testInfo) => {
@@ -61,5 +63,7 @@ test.describe('@allure.label.feature:JSON-PaidOrder', () => {
     const createOrder = new createOrderApi();
     const createOrderResponse = await createOrder.sendRequestAndGetResponse(`${omsApiJson}/create`, headers, testInfo, passengerDetailsMap, offerId);
     await assert.toBe(createOrderResponse.ok(), true, "Verify Create Order Response is OK");
+    //await assert.toBeEmpty(createOrder.getOrderIdAndWarningMessage(await createOrderResponse.text()).warningMessage, "Verify Warning Message is Empty");
+    await assert.notToBeNull(createOrder.getOrderIdAndWarningMessage(await createOrderResponse.text()).orderId, "Verify Order Id is Not Null");
   });
 });

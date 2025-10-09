@@ -3,14 +3,10 @@ import { activateJwtToken } from "../../api-base/activatejwttoken";
 import { ShopApi } from '../../xml-api/request-and-get-response/shop-xml-request';
 import { PriceApi } from '../../xml-api/request-and-get-response/price-xml-request';
 import { CreateOrderApi } from '../../xml-api/request-and-get-response/create-order-xml-request';
-import { LoggerFactory } from '../../utilities/logger';
-import { Assertions } from '../../utilities/assertions';
 
 test.describe.configure({ mode: 'parallel' });
 
-test.describe('XML Paid Order Flow Tests', () => {
-  const assert = new Assertions();
-  const logger = LoggerFactory.getLogger(__filename);
+test.describe('@allure.label.feature:XML-PaidOrder', () => {
 
   let headers: Record<string, string>;
   let rmxNdcXml: string;
@@ -36,7 +32,7 @@ test.describe('XML Paid Order Flow Tests', () => {
     '$OWNER_CODE': 'VA'
   });
 
-  test('TC1_Verify_Add_One_Way_Single_Pax_One_Way_Create_Paid_Order @allure.label.feature:XML-SinglePax-PaidOrder', async ({ testData }, testInfo) => {
+  test('TC1_Verify_Add_One_Way_Single_Pax_One_Way_Create_Paid_Order', async ({ testData, assert }, testInfo) => {
     const paxType = testData.get('paxType')?.toString()!;
     const replacements = getReplacements('MEL', 'BNE', '2025-10-20');
     const shop = new ShopApi(), price = new PriceApi(), createOrder = new CreateOrderApi();
@@ -47,17 +43,19 @@ test.describe('XML Paid Order Flow Tests', () => {
 
     const paxIdOffersItemIdsMap = await shop.getPaxOfferItemIdsMap(paxTypeMap, await shopResponse.text());
     const priceResponse = await price.sendRequestAndGetResponse(`${rmxNdcXml}/price`, headers, testInfo, replacements, paxIdOffersItemIdsMap);
-    expect(priceResponse.ok()).toBe(true);
+    await assert.toBe(priceResponse.ok(), true, 'Validate Price Response Is OK');
 
     const priceText = await priceResponse.text();
     const passengerDetailsMap = await price.getPassengerDetailsMap(priceText, paxTypeMap);
     const offerId = await price.getOfferID(priceText);
 
     const createOrderResponse = await createOrder.sendRequestAndGetResponse(`${omsNdcXml}/v21_3/orders/create`, headers, testInfo, replacements, passengerDetailsMap, offerId);
-    expect(createOrderResponse.ok()).toBe(true);
+    await assert.toBe(createOrderResponse.ok(), true, 'Validate Create Order Response Is OK');
+    //await assert.toBeEmpty(createOrder.getWarningMessage(await createOrderResponse), "Verify Warning Message is Empty");
+    await assert.notToBeNull(createOrder.getOrderId(await createOrderResponse.text()), "Verify Order Id is Not Null");
   });
 
-  test('TC2_Verify_Add_One_Way_Multi_Pax_Create_Paid_Order @allure.label.feature:XML-Multipax-PaidOrder', async ({ testData }, testInfo) => {
+  test('TC2_Verify_Add_One_Way_Multi_Pax_Create_Paid_Order', async ({ testData, assert }, testInfo) => {
     const paxType = testData.get('paxType')?.toString()!;
     const replacements = getReplacements('MEL', 'SYD', '2025-10-16');
     const shop = new ShopApi(), price = new PriceApi(), createOrder = new CreateOrderApi();
@@ -68,13 +66,14 @@ test.describe('XML Paid Order Flow Tests', () => {
 
     const paxIdOffersItemIdsMap = await shop.getPaxOfferItemIdsMap(paxTypeMap, await shopResponse.text());
     const priceResponse = await price.sendRequestAndGetResponse(`${rmxNdcXml}/price`, headers, testInfo, replacements, paxIdOffersItemIdsMap);
-    expect(priceResponse.ok()).toBe(true);
-
+    await assert.toBe(priceResponse.ok(), true, 'Validate Price Response Is OK');
     const priceText = await priceResponse.text();
     const passengerDetailsMap = await price.getPassengerDetailsMap(priceText, paxTypeMap);
     const offerId = await price.getOfferID(priceText);
 
     const createOrderResponse = await createOrder.sendRequestAndGetResponse(`${omsNdcXml}/v21_3/orders/create`, headers, testInfo, replacements, passengerDetailsMap, offerId);
-    expect(createOrderResponse.ok()).toBe(true);
+    await assert.toBe(createOrderResponse.ok(), true, 'Validate Create Order Response Is OK');
+    await assert.toBeEmpty(createOrder.getWarningMessage(await createOrderResponse.text()), "Verify Warning Message is Empty");
+    await assert.notToBeNull(createOrder.getOrderId(await createOrderResponse.text()), "Verify Order Id is Not Null");
   });
 });

@@ -18,7 +18,7 @@ export class Assertions {
         await step(`${message}`, async () => {
             //perform assertion
             await assertionFn();
-            
+
             await step(`Actual   : ${actualValue}`, async () => {
                 // Do nothing — this step just shows the values
             });
@@ -179,10 +179,10 @@ export class Assertions {
         });
     }
 
-    async toBeEmpty(locator: Locator, message?: string) {
-        const actual = await locator.textContent();
-        await this.logStep('toBeEmpty', '', actual, message, async () => {
-            await expect(locator, message).toBeEmpty();
+    async toBeEmpty(actual: string, message?: string) {
+        const value = actual?.trim() ?? '';
+        await this.logStep('toBeEmptyString', '', value, message, async () => {
+            expect(value, message).toBe('');
         });
     }
 
@@ -263,9 +263,9 @@ export class Assertions {
     }
 
     async toStrictEqual(actual: any, expected: any, message?: string) {
-    await this.logStep('toStrictEqual', expected, actual, message, async () => {
-        expect(actual, message).toStrictEqual(expected);
-    });
-}
+        await this.logStep('toStrictEqual', expected, actual, message, async () => {
+            expect(actual, message).toStrictEqual(expected);
+        });
+    }
 }
 

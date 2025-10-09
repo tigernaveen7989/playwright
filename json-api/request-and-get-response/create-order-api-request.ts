@@ -60,4 +60,19 @@ export class createOrderApi {
       }
     });
   }
+
+  public getOrderIdAndWarningMessage(jsonString: string) {
+  try {
+    const json = JSON.parse(jsonString);
+    return {
+      orderId: json?.order?.id ?? "Order ID not found",
+      warningMessage: json?.warnings?.[0]?.description ?? "Warning message not found"
+    };
+  } catch (error) {
+    return {
+      orderId: "Invalid JSON",
+      warningMessage: "Invalid JSON"
+    };
+  }
+}
 }
