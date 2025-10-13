@@ -19,7 +19,7 @@ test.describe('@allure.label.feature:JSON-PaidOrder', () => {
 
   test('TC2_Verify_Multi_Pax_One_Way_Create_Paid_Order', async ({ testData, assert }, testInfo) => {
     const paxType = testData.get('paxType')?.toString()!;
-    const shop = new shopApi('SYD', 'BNE', 10, 10, 2025, 'AUD');
+    const shop = new shopApi('SYD', 'BNE', 10, 12, 2025, 'AUD');
     const shopResponse = await shop.sendRequestAndGetResponse(`${rmxApiJson}/shop`, headers, testInfo, paxType);
     await assert.toBe(shopResponse.ok(), true, "Verify Shop Response is OK");
 
@@ -44,7 +44,7 @@ test.describe('@allure.label.feature:JSON-PaidOrder', () => {
 
   test('TC3_Verify_Single_Pax_One_Way_Create_Paid_Order', async ({ testData, assert }, testInfo) => {
     const paxType = testData.get('paxType')?.toString()!;
-    const shop = new shopApi('SYD', 'BNE', 10, 10, 2025, 'AUD');
+    const shop = new shopApi('SYD', 'BNE', 10, 12, 2025, 'AUD');
     const shopResponse = await shop.sendRequestAndGetResponse(`${rmxApiJson}/shop`, headers, testInfo, paxType);
     await assert.toBe(shopResponse.ok(), true, "Verify Shop Response is OK");
 
