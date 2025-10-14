@@ -9,7 +9,7 @@ import {
 
 
 export class createOrderApi {
-  private createOrderRequest: CreateOrderJsonObject;
+  private readonly createOrderRequest: CreateOrderJsonObject;
 
   constructor() {
     this.createOrderRequest = new CreateOrderJsonObject();
