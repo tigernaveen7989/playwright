@@ -3,7 +3,7 @@ import { loginPage, homePage, passengerDetailsPage, addPaymentToNewReservationPa
 
 test.describe.configure({ mode: 'parallel' });
 
-test.describe('@PaidOrder @WLV_CC_REGRESSION @allure.label.feature:Singlepax-Paid-Seats', () => {
+test.describe('@PaidOrder @WLV_CC_REGRESSION @allure.label.feature:Call-Center-PaidOrder', () => {
 
   test.beforeEach(({ }, testInfo) => {
     // Add custom tag label
