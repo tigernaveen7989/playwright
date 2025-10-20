@@ -1,0 +1,152 @@
+pipeline {
+    agent any
+
+    tools {
+        nodejs 'nodejs' // Must match Jenkins NodeJS tool name
+    }
+
+    environment {
+        ALLURE_RESULTS = 'allure-results'
+        ALLURE_REPORT  = 'allure-report'
+        SONAR_LOGIN = credentials('sonar-token') // Jenkins credential ID for SonarQube token
+    }
+
+    stages {
+
+        stage('Setup NodeJS') {
+            steps {
+                script {
+                    echo "Verifying NodeJS installation..."
+                    bat 'node -v || echo "NodeJS not installed properly"'
+                    bat 'npm -v || echo "NPM not installed properly"'
+                }
+            }
+        }
+
+        stage('Checkout') {
+            steps {
+                checkout([
+                    $class: 'GitSCM',
+                    branches: [[name: '*/main']],
+                    userRemoteConfigs: [[
+                        url: 'https://github.com/tigernaveen7989/playwright.git',
+                        credentialsId: 'github-token'
+                    ]]
+                ])
+            }
+        }
+
+        stage('Install Dependencies') {
+            steps {
+                bat 'npm ci || npm install'
+            }
+        }
+
+        stage('Install Playwright Browsers') {
+            steps {
+                script {
+                    def browsersPath = "${env.WORKSPACE}\\node_modules\\playwright\\.local-browsers"
+                    if (!fileExists(browsersPath)) {
+                        echo "Playwright browsers not found. Installing..."
+                        bat 'set PLAYWRIGHT_BROWSERS_PATH=0 && npx playwright install --with-deps'
+                    } else {
+                        echo "Playwright browsers already installed. Skipping installation."
+                    }
+                }
+            }
+        }
+
+        stage('Run Playwright Tests') {
+            steps {
+                catchError(buildResult: 'UNSTABLE', stageResult: 'FAILURE') {
+                    bat 'set PLAYWRIGHT_BROWSERS_PATH=0 && npx playwright test tests/xml-api-tests/createordertest.spec.ts'
+                }
+            }
+        }
+
+        stage('SonarQube Analysis') {
+            steps {
+                script {
+                    echo "Running SonarQube analysis using sonar.properties..."
+                    catchError(buildResult: 'UNSTABLE', stageResult: 'FAILURE') {
+                        bat """
+                        cd /d "%WORKSPACE%"
+                        npx sonar-scanner -Dsonar.login=%SONAR_LOGIN%
+                        """
+                    }
+                }
+            }
+        }
+
+        stage('Send Email Report') {
+            options {
+                timeout(time: 1, unit: 'MINUTES')
+            }
+            steps {
+                script {
+                    echo "Sending Playwright test summary email..."
+
+                    try {
+                        def reportPath = "${env.WORKSPACE}\\playwright-report\\index.html"
+                        if (fileExists(reportPath)) {
+                            emailext (
+                                subject: '📧 Playwright Test Summary',
+                                body: '<h2>Playwright Test Summary</h2><p>Please find the attached HTML report.</p>',
+                                mimeType: 'text/html',
+                                to: 'naveenx.kumar.ctr@sabre.com',
+                                from: 'wlv_e2e_qa_team@sabre.com',
+                                attachmentsPattern: 'playwright-report/index.html'
+                            )
+                        } else {
+                            echo "❌ Report file not found — skipping email."
+                        }
+                    } catch (err) {
+                        echo "Email sending failed or timed out: ${err}"
+                    }
+                }
+            }
+        }
+    }
+
+    post {
+        always {
+            script {
+                echo "Generating Allure report safely on Windows..."
+
+                def resultsPath = "${env.WORKSPACE}\\${env.ALLURE_RESULTS}"
+                if (!fileExists(resultsPath)) {
+                    echo "No '${env.ALLURE_RESULTS}' folder found — skipping report generation."
+                } else {
+                    def allureScript = "${env.WORKSPACE}\\generate_allure.bat"
+
+                    if (fileExists(allureScript)) {
+                        bat "del /f /q \"${allureScript}\" || echo \"No previous script found.\""
+                    }
+
+                    writeFile file: allureScript, text: '''@echo off
+cd /d "%~dp0"
+npx.cmd allure generate "allure-results" --clean -o "allure-report"
+exit /b %ERRORLEVEL%
+'''
+
+                    bat "\"${allureScript}\""
+
+                    allure([
+                        includeProperties: false,
+                        jdk: '',
+                        reportBuildPolicy: 'ALWAYS',
+                        results: [[path: 'allure-results']],
+                        tool: 'Allure'
+                    ])
+                }
+
+                echo "Archiving test artifacts..."
+                archiveArtifacts artifacts: '**/test-results/**/*.*', allowEmptyArchive: true
+            }
+        }
+
+        failure {
+            echo "Build failed. Please check NodeJS, Playwright, SonarQube, and test output."
+        }
+    }
+}
