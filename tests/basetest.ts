@@ -27,7 +27,7 @@ export class BaseTest {
   protected context!: BrowserContext;
   protected page!: Page;
   public poManager!: POManager;
-  public blackPanther: BlackPanther;
+  public blackPanther!: BlackPanther;
 
   // Static exposed variables
   static loginPage: LoginPage;
