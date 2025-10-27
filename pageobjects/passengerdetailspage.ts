@@ -70,7 +70,10 @@ export default class passengerdetailspage extends BlackPanther {
         await this.sleep(5000);
       }
     }
-    await this.click(this.updateButton);
+    if(await this.updateButton.isEnabled({timeout:3000})){
+        await this.click(this.updateButton);
+        await this.sleep(2000);
+      }
   }
 
   async clickOnSaveButton(): Promise<void> {

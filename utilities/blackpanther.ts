@@ -16,6 +16,7 @@ export class BlackPanther {
     this.environment = process.env.ENVIRONMENT || '';
     this.subenvironment = process.env.SUBENVIRONMENT || '';
     this.tenant = process.env.TENANT || '';
+    this.page = page;
 
     if (!this.environment || !this.subenvironment || !this.tenant) {
       throw new Error('Missing ENVIRONMENT, SUBENVIRONMENT, or TENANT environment variable.');

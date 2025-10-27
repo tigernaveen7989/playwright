@@ -23,7 +23,7 @@ export default class bookingconfirmationpage extends BlackPanther {
     const pnrAndOrderNumberMap: Map<string, string> = new Map<string, string>();
     await this.sleep(20000);
 
-    await this.pnrAndOrderIdText.waitFor({ state: 'visible' });
+    await this.pnrAndOrderIdText.waitFor({ state: 'visible', timeout: 3000 });
     const rawText: string | null = await this.pnrAndOrderIdText.textContent();
 
     const pnrNumber: any = rawText?.split(" ")[0];
