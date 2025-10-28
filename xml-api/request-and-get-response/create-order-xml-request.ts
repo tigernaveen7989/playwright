@@ -11,14 +11,15 @@ const logger = LoggerFactory.getLogger(__filename);
 
 export class CreateOrderApi {
     private xmlProcessor: XmlTemplateProcessor;
-    private replacements: Record<string, string>
+    private replacements: Record<string, string>;
     private readonly paxXmlTemplatePath: string = process.cwd() + '/xml-api/payloads/create-order/pax.txt';
     private readonly selectedPricedOfferXmlTemplatePath: string = process.cwd() + '/xml-api/payloads/create-order/selectedpricedoffer.txt';
     private readonly createOrderXmlTemplatePath: string = process.cwd() + '/xml-api/payloads/create-order/createorder.txt';
     private readonly offerAssociationXmlTemplatePath: string = process.cwd() + '/xml-api/payloads/create-order/offerassociation.txt';
 
-    constructor() {
-
+    constructor(replacements: Record<string, string>) {
+        this.xmlProcessor = new XmlTemplateProcessor();
+        this.replacements = replacements;
     }
 
     /**
@@ -39,7 +40,6 @@ export class CreateOrderApi {
         return await step('Send CreateOrder API Request and Log Request/Response', async () => {
             try {
                 this.replacements = replacements;
-                this.xmlProcessor = new XmlTemplateProcessor();
                 const paxXMLObject = this.getPaxXMLObject(passengerDetailsMap);
                 replacements['#{@PAX}'] = paxXMLObject;
                 const offerAssociationXMLObject = this.getOfferAssociationXMLObject(passengerDetailsMap, offerId);

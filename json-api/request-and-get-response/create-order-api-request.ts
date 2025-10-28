@@ -53,26 +53,34 @@ export class createOrderApi {
 
         return response;
       } catch (error) {
-        await attachment('Create Order API Error', JSON.stringify({ message: error.message }), {
+        let message = 'Unknown error';
+
+        if (error instanceof Error) {
+          message = error.message;
+        }
+
+        await attachment('Create Order API Error', JSON.stringify({ message }), {
           contentType: 'application/json'
         });
+
         throw error;
       }
+
     });
   }
 
   public getOrderIdAndWarningMessage(jsonString: string) {
-  try {
-    const json = JSON.parse(jsonString);
-    return {
-      orderId: json?.order?.id ?? "Order ID not found",
-      warningMessage: json?.warnings?.[0]?.description ?? "Warning message not found"
-    };
-  } catch (error) {
-    return {
-      orderId: "Invalid JSON",
-      warningMessage: "Invalid JSON"
-    };
+    try {
+      const json = JSON.parse(jsonString);
+      return {
+        orderId: json?.order?.id ?? "Order ID not found",
+        warningMessage: json?.warnings?.[0]?.description ?? "Warning message not found"
+      };
+    } catch (error) {
+      return {
+        orderId: "Invalid JSON",
+        warningMessage: "Invalid JSON"
+      };
+    }
   }
-}
 }

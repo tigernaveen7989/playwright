@@ -15,7 +15,7 @@ export class PriceApi {
     private readonly priceXmlTemplatePath: string = process.cwd() + '/xml-api/payloads/price/price.txt';
 
     constructor() {
-
+        this.xmlProcessor = new XmlTemplateProcessor();
     }
 
     /**
@@ -34,7 +34,6 @@ export class PriceApi {
     ): Promise<any> {
         return await step('Send Price API Request and Log Request/Response', async () => {
             try {
-                this.xmlProcessor = new XmlTemplateProcessor();
                 const selectedOfferItemList = this.getSelectedOfferItemXMLObject(paxIdOffersItemIdsMap);
 
                 replacements['$OFFERID'] = paxIdOffersItemIdsMap.get('OfferId')!;

@@ -59,11 +59,19 @@ export class shopApi {
 
         return response;
       } catch (error) {
-        await attachment('Shop API Error', JSON.stringify({ message: error.message }), {
+        let message = 'Unknown error';
+
+        if (error instanceof Error) {
+          message = error.message;
+        }
+
+        await attachment('Shop API Error', JSON.stringify({ message }), {
           contentType: 'application/json'
         });
+
         throw error;
       }
+
     });
   }
 

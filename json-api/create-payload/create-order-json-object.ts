@@ -3,12 +3,12 @@ const logger = LoggerFactory.getLogger(__filename);
 import { faker } from '@faker-js/faker';
 
 export class CreateOrderJsonObject {
-  origin: string;
-  destination: string;
-  day: number;
-  month: number;
-  year: number;
-  currency: string;
+  origin?: string;
+  destination?: string;
+  day?: number;
+  month?: number;
+  year?: number;
+  currency?: string;
 
   constructor() {
 

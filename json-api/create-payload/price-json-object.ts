@@ -2,18 +2,18 @@ import { LoggerFactory } from '../../utilities/logger';
 const logger = LoggerFactory.getLogger(__filename);
 
 export class PriceJsonObject {
-  origin: string;
-  destination: string;
-  day: number;
-  month: number;
-  year: number;
-  currency: string;
+  origin?: string;
+  destination?: string;
+  day?: number;
+  month?: number;
+  year?: number;
+  currency?: string;
 
   constructor() {
 
   }
 
-  public getPricePayload(paxIdOffersItemIdsMap): string {
+  public getPricePayload(paxIdOffersItemIdsMap: Map<string, string>): string {
     logger.info('pax id offer items map', JSON.stringify(Object.fromEntries(paxIdOffersItemIdsMap), null, 2));
     const payload: any = {
       point_of_sale: {

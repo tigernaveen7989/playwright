@@ -52,11 +52,18 @@ export class priceApi {
 
         return response;
       } catch (error) {
-        await attachment('Price API Error', JSON.stringify({ message: error.message }), {
-          contentType: 'application/json'
-        });
+        if (error instanceof Error) {
+          await attachment('Price API Error', JSON.stringify({ message: error.message }), {
+            contentType: 'application/json'
+          });
+        } else {
+          await attachment('Price API Error', JSON.stringify({ message: 'Unknown error' }), {
+            contentType: 'application/json'
+          });
+        }
         throw error;
       }
+      ``
     });
   }
 

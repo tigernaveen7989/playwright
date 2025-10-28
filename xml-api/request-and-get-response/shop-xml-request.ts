@@ -10,7 +10,7 @@ export class ShopApi {
     private readonly shopXmlTemplatePath: string = process.cwd() + '/xml-api/payloads/shop/shop.txt';
 
     constructor() {
-
+        this.xmlProcessor = new XmlTemplateProcessor();
     }
 
     /**
@@ -29,7 +29,6 @@ export class ShopApi {
     ): Promise<any> {
         return await step('Send Shop API Request and Log Request/Response', async () => {
             try {
-                this.xmlProcessor = new XmlTemplateProcessor();
                 const paxListXMLObject = this.getPaxListXMLObject(paxTypeMap, this.paxListXmlTemplatePath);
                 replacements['#{@PAXLIST}'] = paxListXMLObject;
                 const xmlPayload = this.xmlProcessor.replacePlaceholders(replacements, this.shopXmlTemplatePath);

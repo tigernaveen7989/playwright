@@ -34,8 +34,8 @@ test.describe('@allure.label.feature:XML-PaidOrder', () => {
 
   test('TC1_Verify_Add_One_Way_Single_Pax_One_Way_Create_Paid_Order', async ({ testData, assert }, testInfo) => {
     const paxType = testData.get('paxType')?.toString()!;
-    const replacements = getReplacements('MEL', 'BNE', '2025-10-20');
-    const shop = new ShopApi(), price = new PriceApi(), createOrder = new CreateOrderApi();
+    const replacements = getReplacements('MEL', 'BNE', '2025-12-20');
+    const shop = new ShopApi(), price = new PriceApi(), createOrder = new CreateOrderApi(replacements);
 
     const paxTypeMap = await shop.getPaxType(paxType);
     const shopResponse = await shop.sendRequestAndGetResponse(`${rmxNdcXml}/shop`, headers, testInfo, replacements, paxTypeMap);
@@ -57,8 +57,8 @@ test.describe('@allure.label.feature:XML-PaidOrder', () => {
 
   test('TC2_Verify_Add_One_Way_Multi_Pax_Create_Paid_Order', async ({ testData, assert }, testInfo) => {
     const paxType = testData.get('paxType')?.toString()!;
-    const replacements = getReplacements('MEL', 'SYD', '2025-10-16');
-    const shop = new ShopApi(), price = new PriceApi(), createOrder = new CreateOrderApi();
+    const replacements = getReplacements('MEL', 'SYD', '2025-12-16');
+    const shop = new ShopApi(), price = new PriceApi(), createOrder = new CreateOrderApi(replacements);
 
     const paxTypeMap = await shop.getPaxType(paxType);
     const shopResponse = await shop.sendRequestAndGetResponse(`${rmxNdcXml}/shop`, headers, testInfo, replacements, paxTypeMap);
