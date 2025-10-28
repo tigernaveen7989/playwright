@@ -88,7 +88,6 @@ class EmailReporter implements Reporter {
     const start = this.startTime?.toLocaleString() || 'N/A';
     const end = this.endTime?.toLocaleString() || 'N/A';
 
-    // Aggregate totals
     let totalPassed = 0, totalFailed = 0, totalSkipped = 0;
     Object.values(this.projectStats).forEach(s => {
       totalPassed += s.passed;
@@ -97,7 +96,6 @@ class EmailReporter implements Reporter {
     });
     const totalTests = totalPassed + totalFailed + totalSkipped;
 
-    // Compute pass percentage for pie chart
     const passPercent = totalTests ? (totalPassed / totalTests) * 100 : 0;
     const failPercent = totalTests ? (totalFailed / totalTests) * 100 : 0;
     const skipPercent = 100 - passPercent - failPercent;
@@ -171,12 +169,11 @@ class EmailReporter implements Reporter {
           body { font-family: Arial, sans-serif; background:#fafafa; margin:0; padding:15px; font-size:13px; }
           .container { max-width:750px; margin:auto; background:#fff; border-radius:10px; box-shadow:0 0 10px rgba(0,0,0,0.08); padding:20px; }
           h2, h3 { color:#333; text-align:center; margin:10px 0; }
-          table { width:100%; border-collapse:collapse; margin-bottom:15px; font-size:12px; border:1px solid #ccc; }
-          th, td { padding:6px 8px; text-align:left; border:1px solid #ccc; }
-          th { color:#fff; font-weight:600; }
+          table { width:70%; border-collapse:collapse; margin:10px auto; font-size:13px; border:1px solid #ccc; text-align:center; }
+          th, td { padding:6px 10px; border:1px solid #ccc; vertical-align:middle; }
+          th { color:#fff; font-weight:600; text-align:center; }
           tr:nth-child(even) { background:#f9f9f9; }
 
-          /* Table color themes */
           .summary-table th { background:#2e7d32; }
           .failed-table th { background:#c62828; }
           .feature-table th { background:#1565c0; }
