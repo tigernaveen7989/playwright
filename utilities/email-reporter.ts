@@ -169,7 +169,7 @@ class EmailReporter implements Reporter {
           body { font-family: Arial, sans-serif; background:#fafafa; margin:0; padding:15px; font-size:13px; }
           .container { max-width:750px; margin:auto; background:#fff; border-radius:10px; box-shadow:0 0 10px rgba(0,0,0,0.08); padding:20px; }
           h2, h3 { color:#333; text-align:center; margin:10px 0; }
-          table { width:70%; border-collapse:collapse; margin:10px auto; font-size:13px; border:1px solid #ccc; text-align:center; }
+          table { width:70%; border-collapse:collapse; margin:10px auto; font-size:13px; border:1px solid #ccc; text-align:center; } /* ✅ Centered tables */
           th, td { padding:6px 10px; border:1px solid #ccc; vertical-align:middle; }
           th { color:#fff; font-weight:600; text-align:center; }
           tr:nth-child(even) { background:#f9f9f9; }
