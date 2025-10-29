@@ -128,7 +128,7 @@ class EmailReporter implements Reporter {
         <tr><td>${reason}</td><td><b>${count}</b></td></tr>
       `).join('');
       return `
-        <h3>❌ ${project} Failures</h3>
+        <h3 class="section-header">❌ ${project} Failures</h3>
         <table class="failed-table">
           <thead><tr><th>Failure Type</th><th>Count</th></tr></thead>
           <tbody>${rows}</tbody>
@@ -151,7 +151,7 @@ class EmailReporter implements Reporter {
         `;
       }).join('');
       return `
-        <h3>🧩 ${project} Features</h3>
+        <h3 class="section-header">🧩 ${project} Features</h3>
         <table class="feature-table">
           <thead><tr><th>Feature</th><th>Passed</th><th>Failed</th><th>Skipped</th><th>Broken</th><th>Total</th></tr></thead>
           <tbody>${rows}</tbody>
@@ -166,31 +166,20 @@ class EmailReporter implements Reporter {
         <meta charset="UTF-8" />
         <title>Playwright Report</title>
         <style>
-          body { font-family: Arial, sans-serif; background:#fafafa; margin:0; padding:15px; font-size:13px; }
-          .container { max-width:750px; margin:auto; background:#fff; border-radius:10px; box-shadow:0 0 10px rgba(0,0,0,0.08); padding:20px; }
-          h2, h3 { color:#333; text-align:center; margin:10px 0; }
-          table { width:70%; border-collapse:collapse; margin:10px auto; font-size:13px; border:1px solid #ccc; text-align:center; } /* ✅ Centered tables */
+          body { font-family: Arial, sans-serif; background:#fafafa; margin:0; padding:15px; font-size:13px; display:flex; justify-content:center; }
+          .container { width: 80%; background:#fff; border-radius:10px; box-shadow:0 0 10px rgba(0,0,0,0.08); padding:20px; }
+          h2 { color:#333; text-align:left; margin-left:25%; }
+          .section-header, h3 { color:#333; text-align:left; margin-left:25%; margin-top:20px; }
+          table { width:70%; border-collapse:collapse; margin:15px auto; font-size:13px; border:1px solid #ccc; text-align:center; }
           th, td { padding:6px 10px; border:1px solid #ccc; vertical-align:middle; }
           th { color:#fff; font-weight:600; text-align:center; }
           tr:nth-child(even) { background:#f9f9f9; }
-
           .summary-table th { background:#2e7d32; }
           .failed-table th { background:#c62828; }
           .feature-table th { background:#1565c0; }
           .time-table th { background:#6a1b9a; }
-
-          .pie-chart {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            margin: 10px auto;
-            ${pieChartStyle}
-          }
-          .chart-labels {
-            text-align: center;
-            font-size: 12px;
-            margin-top: 5px;
-          }
+          .pie-chart { width:120px; height:120px; border-radius:50%; margin:10px auto; ${pieChartStyle} }
+          .chart-labels { text-align:center; font-size:12px; margin-top:5px; }
           .footer { text-align:center; font-size:11px; color:#888; margin-top:10px; }
         </style>
       </head>
@@ -208,7 +197,7 @@ class EmailReporter implements Reporter {
             <tbody>${summaryRows}</tbody>
           </table>
 
-          <h3>🕒 Execution Time</h3>
+          <h3 class="section-header">🕒 Execution Time</h3>
           <table class="time-table">
             <tr><th>Start Time</th><td>${start}</td></tr>
             <tr><th>End Time</th><td>${end}</td></tr>
