@@ -249,7 +249,7 @@ export class Assertions {
     }
 
     async toHaveJSProperty(locator: Locator, name: string, value: any, message?: string) {
-        const actual = await locator.evaluate(el => el[name]);
+        const actual = await locator.evaluate((el: any) => el[name]);
         await this.logStep('toHaveJSProperty', value, actual, message, async () => {
             await expect(locator, message).toHaveJSProperty(name, value);
         });

@@ -105,7 +105,7 @@ export class LoggerFactory {
             const message = args[0] ?? '';
             const value = args[1] ?? '';
 
-            target[prop](message, value, lineInfo);
+            (target as any)[prop](message, value, lineInfo);
           };
         }
 

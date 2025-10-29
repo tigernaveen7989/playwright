@@ -17,11 +17,11 @@ const test = base.extend<{
   assert: Assertions;
   testInfo: TestInfo;
 }>({
-  testInfo: async ({}, use, testInfo) => {
+  testInfo: async ({ }, use, testInfo) => {
     await use(testInfo);
   },
 
-  testData: async ({}, use, testInfo: TestInfo) => {
+  testData: async ({ }, use, testInfo: TestInfo) => {
     const testCaseName = testInfo.title.split('@')[0].trim();
 
     const ENVIRONMENT = process.env.ENVIRONMENT?.toLowerCase();
@@ -49,19 +49,24 @@ const test = base.extend<{
     try {
       testData = jsonHandler.loadTestData(testCaseName);
     } catch (error) {
-      logger.error(`${error.message}`);
+      if (error instanceof Error) {
+        logger.error(error.message);
+      } else {
+        logger.error(String(error));
+      }
       testInfo.status = 'failed';
       throw error;
     }
 
+
     await use(testData);
   },
 
-  logger: async ({}, use) => {
+  logger: async ({ }, use) => {
     await use(logger);
   },
 
-  assert: async ({}, use) => {
+  assert: async ({ }, use) => {
     await use(assert);
   },
 });

@@ -2,10 +2,10 @@ import { readFileSync } from 'fs';
 import { DOMParser } from 'xmldom';
 
 export class XmlTemplateProcessor {
-  private xmlContent: string;
+  private xmlContent?: string;
 
   constructor() {
-
+  
   }
 
   /**
@@ -27,7 +27,7 @@ export class XmlTemplateProcessor {
   /**
    * Returns the updated XML as a string.
    */
-  getXmlString(): string {
+  getXmlString(): string | undefined{
     return this.xmlContent;
   }
 
