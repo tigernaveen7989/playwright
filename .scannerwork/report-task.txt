@@ -2,5 +2,5 @@ projectKey=playwright-typescript
 serverUrl=http://localhost:9000
 serverVersion=25.10.0.114319
 dashboardUrl=http://localhost:9000/dashboard?id=playwright-typescript
-ceTaskId=fc6e46d7-ba4b-4dc1-a574-09c635798817
-ceTaskUrl=http://localhost:9000/api/ce/task?id=fc6e46d7-ba4b-4dc1-a574-09c635798817
+ceTaskId=099c7eb8-1741-4082-b7a5-999dc91fa0a9
+ceTaskUrl=http://localhost:9000/api/ce/task?id=099c7eb8-1741-4082-b7a5-999dc91fa0a9

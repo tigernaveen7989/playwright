@@ -63,7 +63,6 @@ export class priceApi {
         }
         throw error;
       }
-      ``
     });
   }
 
