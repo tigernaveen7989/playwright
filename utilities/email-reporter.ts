@@ -215,15 +215,15 @@ class EmailReporter implements Reporter {
 
   async sendEmail(htmlContent: string) {
     const transporter = nodemailer.createTransport({
-      host: 'securemailgcp-cert.sabre.com',
-      port: 25,
+      host: process.env.EMAIL_HOST,
+      port: Number(process.env.EMAIL_PORT),
       secure: false,
       tls: { rejectUnauthorized: false },
     });
 
     await transporter.sendMail({
-      from: 'wlv_e2e_qa_team@sabre.com',
-      to: 'naveenx.kumar.ctr@sabre.com',
+      from: process.env.EMAIL_FROM,
+      to: process.env.EMAIL_TO,
       subject: '📧 Playwright Test Summary',
       html: htmlContent,
       attachments: [
