@@ -1,27 +1,100 @@
 name: Playwright Tests
+
 on:
   push:
-    branches: [ main, master ]
+    branches: [ main, master, develop ]
   pull_request:
     branches: [ main, master ]
+  schedule:
+    # Run tests daily at 2 AM UTC
+    - cron: '0 2 * * *'
+  workflow_dispatch:
+    inputs:
+      project:
+        description: 'Project to test'
+        required: false
+        default: 'all'
+        type: choice
+        options:
+          - all
+          - call-center
+          - xml-api
+          - json-api
+
 jobs:
   test:
     timeout-minutes: 60
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        project: [call-center, xml-api, json-api]
+    
     steps:
     - uses: actions/checkout@v4
+    
     - uses: actions/setup-node@v4
       with:
         node-version: lts/*
+        
     - name: Install dependencies
       run: npm ci
-    - name: Install Playwright Browsers
+      
+    - name: Install Playwright Browsers (for call-center only)
+      if: matrix.project == 'call-center'
       run: npx playwright install --with-deps
+      
     - name: Run Playwright tests
-      run: npx playwright test
-    - uses: actions/upload-artifact@v4
-      if: ${{ !cancelled() }}
+      run: |
+        if [ "${{ github.event.inputs.project }}" = "all" ] || [ "${{ github.event.inputs.project }}" = "" ] || [ "${{ github.event.inputs.project }}" = "${{ matrix.project }}" ]; then
+          npm run test -- --project=${{ matrix.project }}
+        else
+          echo "Skipping ${{ matrix.project }} as it's not selected"
+        fi
+      env:
+        ENVIRONMENT: ${{ secrets.ENVIRONMENT || 'test' }}
+        SUBENVIRONMENT: ${{ secrets.SUBENVIRONMENT || 'default' }}
+        TENANT: ${{ secrets.TENANT || 'default' }}
+        
+    - name: Upload Playwright Report
+      uses: actions/upload-artifact@v4
+      if: always()
       with:
-        name: playwright-report
+        name: playwright-report-${{ matrix.project }}
         path: playwright-report/
+        retention-days: 30
+        
+    - name: Upload Allure Results
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: allure-results-${{ matrix.project }}
+        path: allure-results/
+        retention-days: 30
+
+  generate-allure-report:
+    needs: test
+    runs-on: ubuntu-latest
+    if: always()
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Download Allure Results
+      uses: actions/download-artifact@v4
+      with:
+        pattern: allure-results-*
+        merge-multiple: true
+        path: allure-results/
+        
+    - name: Generate Allure Report
+      run: |
+        npm install -g allure-commandline
+        allure generate allure-results --clean -o allure-report
+        
+    - name: Upload Allure Report
+      uses: actions/upload-artifact@v4
+      with:
+        name: allure-report
+        path: allure-report/
         retention-days: 30

@@ -6,7 +6,17 @@
   "scripts": {
     "pretest": "ts-node utilities/generate-allure-env.ts",
     "test": "dotenvx run --quiet -- npx playwright test",
-    "allure:report": "allure generate allure-results --clean -o allure-report && allure open allure-report"
+    "allure:report": "allure generate allure-results --clean -o allure-report && allure open allure-report",
+    "agent:setup": "powershell ./agent-manager.ps1 -Command setup",
+    "agent:start": "powershell ./agent-manager.ps1 -Command start",
+    "agent:stop": "powershell ./agent-manager.ps1 -Command stop",
+    "agent:status": "powershell ./agent-manager.ps1 -Command status",
+    "agent:logs": "powershell ./agent-manager.ps1 -Command logs",
+    "agent:clean": "powershell ./agent-manager.ps1 -Command clean",
+    "test:distributed": "ts-node utilities/distributed-test-agent.ts",
+    "test:call-center": "dotenvx run --quiet -- npx playwright test --project=call-center",
+    "test:xml-api": "dotenvx run --quiet -- npx playwright test --project=xml-api",
+    "test:json-api": "dotenvx run --quiet -- npx playwright test --project=json-api"
   },
   "keywords": [],
   "author": "",

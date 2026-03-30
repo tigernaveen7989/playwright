@@ -16,7 +16,16 @@ sabremosaic-e2e-qa/
 ├── environment.env
 ├── playwright.config.ts
 ├── utilities/
-│   └── email-reporter.ts
+│   ├── email-reporter.ts
+│   └── distributed-test-agent.ts
+├── agent-config.json
+├── agent-manager.ps1
+├── agent-manager.sh
+├── Dockerfile
+├── docker-compose.yml
+└── .github/
+    └── workflows/
+        └── playwright.yml
 ```
 
 ---
@@ -91,3 +100,119 @@ npx playwright test --project=json-api
 
 - [Playwright Documentation](https://playwright.dev/docs/intro)
 - [Allure Playwright Integration](https://github.com/allure-framework/allure-playwright)
+
+---
+
+## 🤖 Agent Setup Guide
+
+This project supports multiple types of test agents for different execution scenarios:
+
+### 1. **Local Agent (Default)**
+Run tests on your local machine:
+```bash
+npm test                    # Run all tests
+npm run test:call-center    # Browser tests only
+npm run test:xml-api        # XML API tests only  
+npm run test:json-api       # JSON API tests only
+```
+
+### 2. **Docker Agents**
+Containerized test execution with dedicated agents per test type:
+
+**Setup:**
+```powershell
+npm run agent:setup
+```
+
+**Start agents:**
+```powershell
+npm run agent:start
+```
+
+**Check status:**
+```powershell
+npm run agent:status
+```
+
+**View logs:**
+```powershell
+npm run agent:logs
+```
+
+**Stop agents:**
+```powershell
+npm run agent:stop
+```
+
+### 3. **Distributed Test Agent**
+Coordinate tests across multiple workers with automatic retry logic:
+
+```bash
+npm run test:distributed
+```
+
+Features:
+- ✅ Automatic load balancing
+- ✅ Retry mechanism with configurable attempts
+- ✅ Parallel execution for API tests
+- ✅ Sequential execution for UI tests
+- ✅ Comprehensive logging and reporting
+
+### 4. **CI/CD Agents**
+
+**GitHub Actions:**
+- Automatically triggers on push/PR to main branches
+- Matrix strategy for parallel project execution
+- Artifact collection for reports
+- Manual workflow dispatch with project selection
+
+**Azure DevOps:**
+- Multi-stage pipeline with test matrix
+- Artifact publishing for reports
+- Scheduled execution support
+- Variable group integration
+
+### 5. **Agent Configuration**
+
+Customize agent behavior via [`agent-config.json`](agent-config.json):
+
+```json
+{
+  "agents": {
+    "browser-agent": {
+      "projects": ["call-center"],
+      "maxWorkers": 2,
+      "retries": 2,
+      "timeout": 30000
+    },
+    "api-agent": {
+      "projects": ["xml-api", "json-api"], 
+      "maxWorkers": 4,
+      "retries": 1,
+      "parallel": true
+    }
+  }
+}
+```
+
+## 🚀 Quick Start with Agents
+
+1. **For local development:**
+   ```bash
+   npm test
+   ```
+
+2. **For containerized execution:**
+   ```powershell
+   npm run agent:setup
+   npm run agent:start
+   ```
+
+3. **For distributed testing:**
+   ```bash
+   npm run test:distributed
+   ```
+
+4. **For CI/CD:**
+   - Push to main branch (auto-triggers)
+   - Or manually dispatch via GitHub Actions UI

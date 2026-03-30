@@ -1,0 +1,51 @@
+version: '3.8'
+
+services:
+  # API Test Agent - runs XML and JSON API tests
+  api-agent:
+    build:
+      context: .
+      target: api-agent
+    environment:
+      - ENVIRONMENT=${ENVIRONMENT:-test}
+      - SUBENVIRONMENT=${SUBENVIRONMENT:-default}
+      - TENANT=${TENANT:-default}
+    volumes:
+      - ./allure-results:/app/allure-results
+      - ./playwright-report:/app/playwright-report
+    networks:
+      - test-network
+
+  # Browser Test Agent - runs UI tests
+  browser-agent:
+    build:
+      context: .
+      target: browser-agent
+    environment:
+      - ENVIRONMENT=${ENVIRONMENT:-test}
+      - SUBENVIRONMENT=${SUBENVIRONMENT:-default}
+      - TENANT=${TENANT:-default}
+    volumes:
+      - ./allure-results:/app/allure-results
+      - ./playwright-report:/app/playwright-report
+    networks:
+      - test-network
+    shm_size: 2gb
+
+  # Allure Reporting Service
+  allure-report:
+    image: frankescobar/allure-docker-service
+    ports:
+      - "5050:5050"
+    environment:
+      CHECK_RESULTS_EVERY_SECONDS: 3
+      KEEP_HISTORY: 20
+    volumes:
+      - ./allure-results:/app/allure-results
+      - ./allure-reports:/app/default-reports
+    networks:
+      - test-network
+
+networks:
+  test-network:
+    driver: bridge

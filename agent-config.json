@@ -1,0 +1,75 @@
+{
+  "agents": {
+    "browser-agent": {
+      "id": "browser-agent",
+      "type": "browser",
+      "projects": ["call-center"],
+      "maxWorkers": 2,
+      "retries": 2,
+      "timeout": 30000,
+      "browsers": ["chromium"],
+      "headless": true,
+      "resources": {
+        "memory": "2g",
+        "cpu": "1.0"
+      }
+    },
+    "api-agent": {
+      "id": "api-agent", 
+      "type": "api",
+      "projects": ["xml-api", "json-api"],
+      "maxWorkers": 4,
+      "retries": 1,
+      "timeout": 15000,
+      "parallel": true,
+      "resources": {
+        "memory": "1g",
+        "cpu": "0.5"
+      }
+    }
+  },
+  "execution": {
+    "strategy": "parallel",
+    "failFast": false,
+    "maxConcurrent": 2,
+    "healthCheck": {
+      "enabled": true,
+      "interval": 30000,
+      "timeout": 5000
+    }
+  },
+  "reporting": {
+    "allure": {
+      "enabled": true,
+      "resultsDir": "allure-results",
+      "reportDir": "allure-report",
+      "server": {
+        "enabled": false,
+        "port": 5050
+      }
+    },
+    "playwright": {
+      "enabled": true,
+      "outputDir": "playwright-report"
+    },
+    "email": {
+      "enabled": true,
+      "onFailure": true,
+      "onSuccess": false
+    }
+  },
+  "environment": {
+    "variables": {
+      "PLAYWRIGHT_WORKERS": "${maxWorkers}",
+      "PLAYWRIGHT_RETRIES": "${retries}",
+      "PLAYWRIGHT_TIMEOUT": "${timeout}",
+      "PLAYWRIGHT_HEADLESS": "${headless}"
+    }
+  },
+  "logging": {
+    "level": "info",
+    "logDir": "logs/agents",
+    "rotateDaily": true,
+    "maxFiles": 7
+  }
+}
