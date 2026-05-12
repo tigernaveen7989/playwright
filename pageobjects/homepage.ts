@@ -55,8 +55,13 @@ export default class homepage extends BlackPanther {
   }
 
   async getWelcomeText(): Promise<string | null> {
-    await this.welcomeMessage.waitFor({ state: 'visible' }); // Explicit wait
-    return await this.welcomeMessage.textContent();
+    try {
+      await this.welcomeMessage.waitFor({ state: 'visible', timeout: 60_000 });
+    } catch {
+      throw new Error('Welcome message was not visible within 60 seconds.');
+    }
+
+    return this.welcomeMessage.textContent();
   }
 
   async clickReservationsLink(): Promise<void> {
@@ -138,7 +143,12 @@ export default class homepage extends BlackPanther {
   }
 
   async clickOnAgreeButton(): Promise<void> {
-    await this.click(this.agreeButton);
+    try {
+      await this.agreeButton.waitFor({ state: 'visible', timeout: 10_000 });
+      await this.click(this.agreeButton);
+    } catch {
+      // If the agree button does not appear, continue without action.
+    }
   }
 
   async getOfferRadioButton(brandType: string): Promise<Locator> {
