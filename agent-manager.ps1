@@ -11,7 +11,7 @@ param(
 
 # Configuration
 $DockerComposeFile = "docker-compose.yml"
-$AgentLogDir = "logs\agents"
+$AgentLogDir = "logs/agents"
 
 function Write-Banner {
     Write-Host "==================================" -ForegroundColor Green
@@ -44,7 +44,7 @@ function Setup-Agents {
     Write-Host "Setting up test agents..." -ForegroundColor Yellow
     
     # Create necessary directories
-    New-Item -ItemType Directory -Force -Path "logs\agents" | Out-Null
+    New-Item -ItemType Directory -Force -Path "logs/agents" | Out-Null
     New-Item -ItemType Directory -Force -Path "allure-results" | Out-Null
     New-Item -ItemType Directory -Force -Path "allure-reports" | Out-Null
     New-Item -ItemType Directory -Force -Path "playwright-report" | Out-Null
@@ -55,50 +55,74 @@ function Setup-Agents {
     
     # Build Docker images
     Write-Host "Building Docker images..."
-    docker-compose build
+    if (Get-Command docker-compose -ErrorAction SilentlyContinue) {
+        docker-compose build
+    } else {
+        Write-Host "Warning: docker-compose not found. Skipping Docker setup." -ForegroundColor Yellow
+    }
     
-    Write-Host "✅ Agent setup completed!" -ForegroundColor Green
+    Write-Host "[SUCCESS] Agent setup completed!" -ForegroundColor Green
 }
 
 function Start-Agents {
     Write-Host "Starting test agents..." -ForegroundColor Yellow
-    docker-compose up -d
-    
-    # Wait for services to be ready
-    Start-Sleep -Seconds 10
-    
-    Write-Host "✅ Agents started successfully!" -ForegroundColor Green
-    Show-Status
+    if (Get-Command docker-compose -ErrorAction SilentlyContinue) {
+        docker-compose up -d
+        
+        # Wait for services to be ready
+        Start-Sleep -Seconds 10
+        
+        Write-Host "[SUCCESS] Agents started successfully!" -ForegroundColor Green
+        Show-Status
+    } else {
+        Write-Host "[ERROR] Docker Compose not found. Please install Docker Desktop." -ForegroundColor Red
+    }
 }
 
 function Stop-Agents {
     Write-Host "Stopping test agents..." -ForegroundColor Yellow
-    docker-compose down
-    Write-Host "✅ Agents stopped successfully!" -ForegroundColor Green
+    if (Get-Command docker-compose -ErrorAction SilentlyContinue) {
+        docker-compose down
+        Write-Host "[SUCCESS] Agents stopped successfully!" -ForegroundColor Green
+    } else {
+        Write-Host "[ERROR] Docker Compose not found." -ForegroundColor Red
+    }
 }
 
 function Restart-Agents {
     Write-Host "Restarting test agents..." -ForegroundColor Yellow
-    Stop-Agents
+    & { Stop-Agents }
     Start-Sleep -Seconds 5
-    Start-Agents
+    & { Start-Agents }
 }
 
 function Show-Status {
     Write-Host "Agent Status:" -ForegroundColor Yellow
-    docker-compose ps
+    if (Get-Command docker-compose -ErrorAction SilentlyContinue) {
+        docker-compose ps
+    } else {
+        Write-Host "Docker Compose not available" -ForegroundColor Yellow
+    }
     
     Write-Host "`nDocker Resources:" -ForegroundColor Yellow
-    docker stats --no-stream --format "table {{.Container}}`t{{.CPUPerc}}`t{{.MemUsage}}`t{{.NetIO}}"
+    if (Get-Command docker -ErrorAction SilentlyContinue) {
+        docker stats --no-stream --format "table {{.Container}}\t{{.CPUPerc}}\t{{.MemUsage}}\t{{.NetIO}}"
+    } else {
+        Write-Host "Docker not available" -ForegroundColor Yellow
+    }
 }
 
 function Show-Logs {
-    if ($Agent) {
-        Write-Host "Showing logs for $Agent:" -ForegroundColor Yellow
-        docker-compose logs -f $Agent
+    if (Get-Command docker-compose -ErrorAction SilentlyContinue) {
+        if ($Agent) {
+            Write-Host "Showing logs for ${Agent}:" -ForegroundColor Yellow
+            docker-compose logs -f $Agent
+        } else {
+            Write-Host "Showing logs for all agents:" -ForegroundColor Yellow
+            docker-compose logs -f
+        }
     } else {
-        Write-Host "Showing logs for all agents:" -ForegroundColor Yellow
-        docker-compose logs -f
+        Write-Host "[ERROR] Docker Compose not found. Cannot show logs." -ForegroundColor Red
     }
 }
 
@@ -106,38 +130,51 @@ function Clean-Agents {
     Write-Host "Cleaning up agent data..." -ForegroundColor Yellow
     
     # Stop agents
-    docker-compose down
-    
-    # Remove containers and images
-    docker-compose down --rmi all --volumes --remove-orphans
+    if (Get-Command docker-compose -ErrorAction SilentlyContinue) {
+        docker-compose down
+        
+        # Remove containers and images
+        docker-compose down --rmi all --volumes --remove-orphans
+    } else {
+        Write-Host "Docker Compose not available, skipping container cleanup..." -ForegroundColor Yellow
+    }
     
     # Clean up log files
-    if (Test-Path "logs\agents") {
-        Remove-Item -Recurse -Force "logs\agents\*"
+    if (Test-Path "logs/agents") {
+        Remove-Item -Recurse -Force "logs/agents/*"
     }
     if (Test-Path "allure-results") {
-        Remove-Item -Recurse -Force "allure-results\*"
+        Remove-Item -Recurse -Force "allure-results/*"
     }
     if (Test-Path "playwright-report") {
-        Remove-Item -Recurse -Force "playwright-report\*"
+        Remove-Item -Recurse -Force "playwright-report/*"
     }
     
-    Write-Host "✅ Cleanup completed!" -ForegroundColor Green
+    Write-Host "[SUCCESS] Cleanup completed!" -ForegroundColor Green
 }
 
 function Start-DistributedTests {
     Write-Host "Running distributed tests..." -ForegroundColor Yellow
     
     # Ensure agents are running
-    $status = docker-compose ps --format json | ConvertFrom-Json
-    if (-not ($status | Where-Object { $_.State -eq "running" })) {
-        Start-Agents
+    if (Get-Command docker-compose -ErrorAction SilentlyContinue) {
+        try {
+            $status = docker-compose ps --format json | ConvertFrom-Json
+            if (-not ($status | Where-Object { $_.State -eq "running" })) {
+                Start-Agents
+            }
+        } catch {
+            Write-Host "Warning: Could not check agent status. Starting agents..." -ForegroundColor Yellow
+            Start-Agents
+        }
+    } else {
+        Write-Host "Docker Compose not available. Running tests locally..." -ForegroundColor Yellow
     }
     
     # Run distributed test manager
     npx ts-node utilities/distributed-test-agent.ts
     
-    Write-Host "✅ Distributed tests completed!" -ForegroundColor Green
+    Write-Host "[SUCCESS] Distributed tests completed!" -ForegroundColor Green
 }
 
 # Main script logic

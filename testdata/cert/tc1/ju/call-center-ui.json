@@ -1,0 +1,58 @@
+{
+    "global": [
+        {
+            "userName": "jutcadmin.functional.testing@sabre.com",
+            "password": "Pa$$word@2k32",
+            "cardType": "MasterCard",
+            "cardNumber": "5123456789012346",
+            "cardName": "Naveen Kumar",
+            "cvv": "123",
+            "expirationDate": "1229"
+        }
+    ],
+    "TC1_Verify_Login_Into_Call_Center_And_Create_Paid_Order": [
+        {
+            "paymentType": "CARD",
+            "seatType": {
+                "PAX1": "PAID"
+            },
+            "tripType": "RT",
+            "origin": "BEG",
+            "destination": "IST",
+            "paxType": "2A1C",
+            "todayPlusDate": "10,15",
+            "cabinType": "STANDARD",
+            "brandType": "ECONOMY"
+        }
+    ],
+    "TC2_Verify_Login_Into_Call_Center_And_Create_Paid_Order_Using_Cash": [
+        {
+            "paymentType": "CASH",
+            "seatType": {
+                "PAX1": "FREE"
+            },
+            "tripType": "OW",
+            "origin": "SYD",
+            "destination": "BNE",
+            "paxType": "1A",
+            "todayPlusDate": "10",
+            "cabinType": "",
+            "brandType": "FLEX"
+        }
+    ],
+    "TC3_Verify_Multipax_OW_And_Create_Unpaid_Order": [
+        {
+            "paymentType": "Unpaid",
+            "seatType": {
+                "PAX1": "PAID"
+            },
+            "origin": "SYD",
+            "destination": "BNE",
+            "tripType": "RT",
+            "paxType": "1A",
+            "todayPlusDate": "10,18",
+            "cabinType": "",
+            "brandType": "BUSINESS"
+        }
+    ]
+}

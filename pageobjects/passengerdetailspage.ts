@@ -26,7 +26,7 @@ export default class passengerdetailspage extends BlackPanther {
     this.genderDropdown = page.locator("xpath=//select[@id='ddlResGenderPax']");
     this.middleNameEditbox = page.locator("xpath=//input[@id='tbxResMiddleNamePax']");
     this.titleDropdown = page.locator("xpath=//select[@id='ddlResInfoTitlePax']");
-    this.mobilePhoneEditbox = page.locator("xpath=//input[@id='tbxResCellPhonePax']");
+    this.mobilePhoneEditbox = page.locator("xpath=//input[contains(@id,'CellPhonePax')]");
     this.emailEdibox = page.locator("xpath=//input[@id='tbxResEmailPax']");
     this.dateOfBirthEditbox = page.locator("xpath=//input[@id='tbxPaxDob']");
     this.updateButton = page.locator("xpath=//button[@id='btnResUpdatePaxInfo']");
