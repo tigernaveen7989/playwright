@@ -5,6 +5,50 @@ import { attachment, step } from 'allure-js-commons';
 import { LoggerFactory } from '../utilities/logger';
 const logger = LoggerFactory.getLogger(__filename);
 
+/**
+ * Parses the current call stack and returns a formatted hierarchy string showing
+ * the spec file → page object → blackpanther chain, e.g.:
+ *   createordertest.spec.ts:125
+ *   addpaymenttonewreservationpage.ts:60
+ *   blackpanther.ts:77
+ */
+function buildCallHierarchy(): string {
+  const stack = new Error().stack ?? '';
+  const lines = stack.split('\n').slice(1); // drop "Error" header line
+
+  const projectRoot = path.resolve(__dirname, '..');
+  const relevant: string[] = [];
+
+  for (const line of lines) {
+    // Match lines like:  at Foo.bar (C:\...\file.ts:12:34)  or  at file.ts:12:34
+    const match = line.match(/\((.+?):(\d+):\d+\)/) ?? line.match(/at (.+?):(\d+):\d+/);
+    if (!match) continue;
+
+    const filePath = match[1];
+    const lineNo = match[2];
+
+    // Only include files inside the project (skip node_modules, playwright internals)
+    if (!filePath.startsWith(projectRoot) && !filePath.includes('PlaywrightTypescript')) continue;
+    if (filePath.includes('node_modules')) continue;
+    if (filePath.includes('blackpanther.ts') && relevant.length > 0) continue; // skip repeated blackpanther frames
+
+    const fileName = path.basename(filePath);
+    // Include spec files, page objects, and blackpanther itself (first occurrence)
+    if (
+      fileName.endsWith('.spec.ts') ||
+      fileName.endsWith('page.ts') ||
+      fileName === 'blackpanther.ts'
+    ) {
+      const entry = `  ${fileName}:${lineNo}`;
+      if (!relevant.includes(entry)) relevant.push(entry);
+    }
+  }
+
+  return relevant.length > 0
+    ? '\nCall hierarchy:\n' + relevant.join('\n')
+    : '';
+}
+
 export class BlackPanther {
 
   private environment: string;
@@ -65,7 +109,7 @@ export class BlackPanther {
     if (!this.page || this.page.isClosed()) {
       throw new Error("Page is not available or already closed");
     }
-
+    const hierarchy = buildCallHierarchy();
     try {
       await this.page.waitForTimeout(1000);
       await expect(locator).toBeVisible({ timeout: 20000 });
@@ -74,7 +118,8 @@ export class BlackPanther {
         logger.info(`Clicked on locator: ${locator.toString()}`);
       });
     } catch (error) {
-      throw new Error(`Failed to click on locator: ${error}`);
+      logger.info(`Failed to click on locator: ${locator.toString()}`);
+      throw new Error(`Failed to click on locator: ${locator.toString()}\n${error}${hierarchy}`);
     }
   }
 
@@ -82,7 +127,7 @@ export class BlackPanther {
     if (!this.page || this.page.isClosed()) {
       throw new Error("Page is not available or already closed");
     }
-
+    const hierarchy = buildCallHierarchy();
     try {
       await this.page.waitForTimeout(1000);
       await expect(locator).toBeVisible({ timeout: 20000 });
@@ -91,7 +136,7 @@ export class BlackPanther {
         logger.info(`Filled value '${value}' into locator: ${locator.toString()}`);
       });
     } catch (error) {
-      throw new Error(`Failed to fill value '${value}' into locator: ${error}`);
+      throw new Error(`Failed to fill value '${value}' into locator: ${locator.toString()}\n${error}${hierarchy}`);
     }
   }
 
@@ -99,7 +144,7 @@ export class BlackPanther {
     if (!this.page || this.page.isClosed()) {
       throw new Error("Page is not available or already closed");
     }
-
+    const hierarchy = buildCallHierarchy();
     try {
       await locator.waitFor({ state: 'visible', timeout: 20000 });
       const isChecked = await locator.isChecked();
@@ -112,7 +157,7 @@ export class BlackPanther {
         logger.info(`Checkbox already checked: ${locator.toString()}`);
       }
     } catch (error) {
-      throw new Error(`Failed to interact with checkbox: ${error}`);
+      throw new Error(`Failed to interact with checkbox: ${locator.toString()}\n${error}${hierarchy}`);
     }
   }
 
@@ -120,7 +165,7 @@ export class BlackPanther {
     if (!this.page || this.page.isClosed()) {
       throw new Error("Page is not available or already closed");
     }
-
+    const hierarchy = buildCallHierarchy();
     try {
       // fail fast in 10s
       await locator.waitFor({ state: 'visible', timeout: 10000 });
@@ -130,7 +175,7 @@ export class BlackPanther {
         logger.info(`Selected value '${value}' from dropdown: ${locator.toString()}`);
       });
     } catch (error) {
-      throw new Error(`Failed to select '${value}' from dropdown: ${error}`);
+      throw new Error(`Failed to select '${value}' from dropdown '${locator.toString()}': ${error}${hierarchy}`);
     }
   }
 
