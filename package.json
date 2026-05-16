@@ -23,6 +23,7 @@
   "license": "ISC",
   "type": "commonjs",
   "devDependencies": {
+    "@dotenvx/dotenvx": "^1.66.0",
     "@playwright/test": "^1.60.0",
     "@types/node": "^24.0.14",
     "@types/nodemailer": "^7.0.2",

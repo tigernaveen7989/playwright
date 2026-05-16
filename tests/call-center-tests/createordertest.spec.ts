@@ -12,7 +12,7 @@ test.describe('@PaidOrder @WLV_CC_REGRESSION @allure.label.feature:Call-Center-P
     testInfo.annotations.push({ type: 'tag', description: 'PaidOrder' });
   });
 
-  test.only('TC1_Verify_Login_Into_Call_Center_And_Create_Paid_Order', async ({ testData, assert, logger }) => {
+  test('TC1_Verify_Login_Into_Call_Center_And_Create_Paid_Order', async ({ testData, assert, logger }) => {
     const userName = testData.get('userName')?.toString()!;
     const password = testData.get('password')?.toString()!;
     const tripType = testData.get('tripType')?.toString()!;
@@ -46,7 +46,7 @@ test.describe('@PaidOrder @WLV_CC_REGRESSION @allure.label.feature:Call-Center-P
     await homePage.selectTravelDates(tripType, todayPlusDate);
     await homePage.selectPassengers(paxType);
     await homePage.clickOnShopButton();
-    await homePage.clickOnOfferRadioButton(brandType);
+    await homePage.clickOnOfferRadioButton(cabinType);
     logger.info('Capturing selected itinerary details before booking');
     originAndDestinations = await homePage.getOriginAndDestinations();
     departureDateAndTimes = await homePage.getDepartureDateAndTimes();
@@ -79,7 +79,7 @@ test.describe('@PaidOrder @WLV_CC_REGRESSION @allure.label.feature:Call-Center-P
     //await assert.toBe(pnrAndOrderNumberMap.get("orderNumber"), "ABCD1234", "Verify Order Number is ABCD1234");
   });
 
-  test('TC2_Verify_Login_Into_Call_Center_And_Create_Paid_Order_Using_Cash', async ({ testData, assert }) => {
+  test.only('TC2_Verify_Login_Into_Call_Center_And_Create_Paid_Order_Using_Cash', async ({ testData, assert }) => {
     const userName = testData.get('userName')?.toString()!;
     const password = testData.get('password')?.toString()!;
     const tripType = testData.get('tripType')?.toString()!;
@@ -108,7 +108,7 @@ test.describe('@PaidOrder @WLV_CC_REGRESSION @allure.label.feature:Call-Center-P
     await homePage.selectTravelDates(tripType, todayPlusDate);
     await homePage.selectPassengers(paxType);
     await homePage.clickOnShopButton();
-    await homePage.clickOnOfferRadioButton(brandType);
+    await homePage.clickOnOfferRadioButton(cabinType);
     logger.info('Capturing selected itinerary details before booking');
     originAndDestinations = await homePage.getOriginAndDestinations();
     departureDateAndTimes = await homePage.getDepartureDateAndTimes();
@@ -167,7 +167,7 @@ test.describe('@PaidOrder @WLV_CC_REGRESSION @allure.label.feature:Call-Center-P
     await homePage.selectTravelDates(tripType, todayPlusDate);
     await homePage.selectPassengers(paxType);
     await homePage.clickOnShopButton();
-    await homePage.clickOnOfferRadioButton(brandType);
+    await homePage.clickOnOfferRadioButton(cabinType);
     logger.info('Capturing selected itinerary details before booking');
     originAndDestinations = await homePage.getOriginAndDestinations();
     departureDateAndTimes = await homePage.getDepartureDateAndTimes();

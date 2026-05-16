@@ -1,5 +1,7 @@
 import { Page, Locator } from '@playwright/test';
 import { BlackPanther } from '../utilities/blackpanther';
+import { LoggerFactory } from '../utilities/logger';
+const logger = LoggerFactory.getLogger(__filename);
 
 export default class homepage extends BlackPanther {
   private readonly welcomeMessage: Locator;
@@ -82,30 +84,35 @@ export default class homepage extends BlackPanther {
 
   async selectCityPair(tripType: string, origin: string, destination: string) {
     if (tripType.match('RT')) {
-      await this.fill(this.rtFromDropDown, origin);
+      await this.fill(this.rtFromDropDown, origin + " ");
       await this.pressTab();
-      await this.fill(this.rtToDropDown, destination);
+      await this.fill(this.rtToDropDown, destination + " ");
       await this.pressTab();
     } else if (tripType.match('OW')) {
-      await this.fill(this.owFromDropDown, origin);
+      await this.fill(this.owFromDropDown, origin + " ");
       await this.pressTab();
-      await this.fill(this.owToDropDown, destination);
+      await this.fill(this.owToDropDown, destination + " ");
       await this.pressTab();
     }
   }
 
   async selectTravelDates(tripType: string, todayPlusDate: string): Promise<void> {
-    if (tripType.match('RT')) {
+    const travelDates = this.getTravelDates(tripType, todayPlusDate);
+
+    if (tripType === 'RT') {
       await this.click(this.rtDepartureDateEditbox);
-      await this.fill(this.rtDepartureDateEditbox, this.getTravelDates(tripType, todayPlusDate)[0]);
+      await this.fill(this.rtDepartureDateEditbox, travelDates[0]);
       await this.pressTab();
+
       await this.click(this.arrivalDateEditbox);
-      await this.fill(this.arrivalDateEditbox, this.getTravelDates(tripType, todayPlusDate)[1]);
+      await this.fill(this.arrivalDateEditbox, travelDates[1]);
       await this.pressTab();
-    } else if(tripType.match('OW')){
+    } else if (tripType === 'OW') {
       await this.click(this.owDepartureDateEditbox);
-      await this.fill(this.owDepartureDateEditbox, this.getTravelDates(tripType, todayPlusDate)[0]);
+      await this.fill(this.owDepartureDateEditbox, travelDates[0]);
       await this.pressTab();
+    } else {
+      throw new Error(`Invalid tripType: ${tripType}`);
     }
   }
 
@@ -131,8 +138,13 @@ export default class homepage extends BlackPanther {
   }
 
   async clickOnOfferRadioButton(brandType: string): Promise<void> {
-    if (this.plusIcon) {
-      await this.click(this.plusIcon);
+    try {
+      if (this.plusIcon) {
+        await this.click(this.plusIcon);
+      }
+    } catch (e) {
+      logger.info('Plus icon not visible, proceeding without clicking it.');
+
     }
     const offerRadioButton = await this.getOfferRadioButton(brandType);
     await this.click(offerRadioButton);

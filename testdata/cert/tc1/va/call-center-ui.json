@@ -7,7 +7,8 @@
             "cardNumber": "5123456789012346",
             "cardName": "Naveen Kumar",
             "cvv": "123",
-            "expirationDate": "1229"
+            "expirationDate": "1229",
+            "dateFormat": "MM/DD/YYYY"
         }
     ],
     "TC1_Verify_Login_Into_Call_Center_And_Create_Paid_Order": [

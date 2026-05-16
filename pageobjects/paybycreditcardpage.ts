@@ -20,7 +20,7 @@ export default class paybycreditcardpage extends BlackPanther {
 
 
   async enterCardDetails(cardNumber: string, cardName: string, cvv: string, expirationDate:string): Promise<void> {
-    await this.sleep(10000);
+    await this.nameOnCardEditbox.waitFor({ state: 'visible', timeout: 40000 });
     await this.fill(this.nameOnCardEditbox, cardName);
     await this.fill(this.creditCardNumberEditbox, cardNumber);
     await this.fill(this.expirationDateEditbox, expirationDate);

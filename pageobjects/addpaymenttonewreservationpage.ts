@@ -15,6 +15,14 @@ export default class addpaymenttonewreservationpage extends BlackPanther {
   private readonly payerPostal: Locator;
   private readonly payerCountryDropdown: Locator;
 
+  // Phone number locators
+  private readonly payerHomePhoneCountryDropdown: Locator;
+  private readonly payerHomePhone: Locator;
+  private readonly payerCellPhoneCountryDropdown: Locator;
+  private readonly payerCellPhone: Locator;
+  private readonly payerWorkPhoneCountryDropdown: Locator;
+  private readonly payerWorkPhone: Locator;
+
   constructor(page: Page) {
     super(page);
     this.page = page;
@@ -29,6 +37,14 @@ export default class addpaymenttonewreservationpage extends BlackPanther {
     this.payerStateProv = page.locator('#tbxResAddPymtStateProv');
     this.payerPostal = page.locator('#tbxResAddPymtPostal');
     this.payerCountryDropdown = page.locator('#ddlResAddPymtCountry');
+
+    // Phone locators
+    this.payerHomePhoneCountryDropdown = page.locator('#ddlResAddPymtHomePhoneCountryCodePAX');
+    this.payerHomePhone = page.locator('#tbxResAddPymtHomePhone');
+    this.payerCellPhoneCountryDropdown = page.locator('#ddlResAddPymtCellPhoneCountryCodePAX');
+    this.payerCellPhone = page.locator('#tbxResAddPymtCellPhone');
+    this.payerWorkPhoneCountryDropdown = page.locator('#ddlResAddPymtWorkPhoneCountryCodePAX');
+    this.payerWorkPhone = page.locator('#tbxResAddPymtWorkPhone');
   }
 
   async selectCardType(cardType: string): Promise<void> {
@@ -52,34 +68,18 @@ export default class addpaymenttonewreservationpage extends BlackPanther {
     const city = faker.location.city();
     const stateProv = faker.location.state({ abbreviated: true });
     const postalCode = faker.location.zipCode('#####');
+    const phoneNumber = faker.string.numeric(9);
 
-    const address1Value = await this.payerAddress1.inputValue().catch(() => '');
-    if (!address1Value) {
-      await this.fill(this.payerAddress1, address1);
-    }
-
-    const cityValue = await this.payerCity.inputValue().catch(() => '');
-    if (!cityValue) {
-      await this.fill(this.payerCity, city);
-    }
-
-    const stateValue = await this.payerStateProv.inputValue().catch(() => '');
-    if (!stateValue) {
-      await this.fill(this.payerStateProv, stateProv);
-    }
-
-    const postalValue = await this.payerPostal.inputValue().catch(() => '');
-    if (!postalValue) {
-      await this.fill(this.payerPostal, postalCode);
-    }
-
-    try {
-      const countryValue = await this.payerCountryDropdown.inputValue();
-      if (!countryValue) {
-        await this.selectValueFromDropdown(this.payerCountryDropdown, 'US - UNITED STATES');
-      }
-    } catch {
-      // Country may already be set or not required
-    }
+    await this.fill(this.payerAddress1, address1);
+    await this.fill(this.payerCity, city);
+    await this.fill(this.payerStateProv, stateProv);
+    await this.fill(this.payerPostal, postalCode);
+    await this.selectValueFromDropdown(this.payerCountryDropdown, 'PL - POLAND');
+    await this.selectValueFromDropdown(this.payerHomePhoneCountryDropdown, 'PL (+48)');
+    await this.fill(this.payerHomePhone, phoneNumber);
+    await this.selectValueFromDropdown(this.payerCellPhoneCountryDropdown, 'PL (+48)');
+    await this.fill(this.payerCellPhone, phoneNumber);
+    await this.selectValueFromDropdown(this.payerWorkPhoneCountryDropdown, 'PL (+48)');
+    await this.fill(this.payerWorkPhone, phoneNumber);    
   }
 }

@@ -23,7 +23,7 @@ export class BlackPanther {
     }
   }
 
-  private getTestDataPath(): string {
+  private getTestDataPath(fileName: string = 'url-and-accounts.json'): string {
     return path.join(
       __dirname,
       '..',
@@ -31,8 +31,17 @@ export class BlackPanther {
       this.environment.toLowerCase(),
       this.subenvironment.toLowerCase(),
       this.tenant.toLowerCase(),
-      'url-and-accounts.json'
+      fileName
     );
+  }
+
+  private getDateFormat(): string {
+    const configPath = this.getTestDataPath('call-center-ui.json');
+    if (!fs.existsSync(configPath)) {
+      return 'MM/DD/YYYY';
+    }
+    const config = JSON.parse(fs.readFileSync(configPath, 'utf-8'));
+    return config?.global?.[0]?.dateFormat || 'MM/DD/YYYY';
   }
 
   public loadConfig(): any {
@@ -125,32 +134,57 @@ export class BlackPanther {
     }
   }
 
-  protected formatDateMMDDYYYY(date: Date): string {
+  protected formatDateMMDDYYYY(date: Date, format: string = 'MM/DD/YYYY'): string {
     const month = String(date.getMonth() + 1).padStart(2, '0');
     const day = String(date.getDate()).padStart(2, '0');
     const year = date.getFullYear();
+
+    if (format === 'DD/MM/YYYY') {
+      return `${day}/${month}/${year}`;
+    }
     return `${month}/${day}/${year}`;
   }
 
   protected getTravelDates(tripType: string, todayPlusDate: string): string[] {
     const today = new Date();
-    const offsets = todayPlusDate.split(',').map(Number);
+    const dateFormat = this.getDateFormat();
+
+    // Remove spaces and convert safely
+    const offsets = todayPlusDate
+      .split(',')
+      .map(value => parseInt(value.trim(), 10));
+
+    if (offsets.some(isNaN)) {
+      throw new Error(`Invalid todayPlusDate value: ${todayPlusDate}`);
+    }
+
+    const addDays = (baseDate: Date, days: number): Date => {
+      const newDate = new Date(baseDate);
+      newDate.setDate(newDate.getDate() + days);
+      return newDate;
+    };
 
     if (tripType === 'OW') {
-      const departureDate = new Date(today);
-      departureDate.setDate(today.getDate() + offsets[0]);
-      return [this.formatDateMMDDYYYY(departureDate)];
+      const departureDate = addDays(today, offsets[0]);
+
+      return [this.formatDateMMDDYYYY(departureDate, dateFormat)];
     }
 
     if (tripType === 'RT') {
-      const departureDate = new Date(today);
-      const returnDate = new Date(today);
-      departureDate.setDate(today.getDate() + offsets[0]);
-      returnDate.setDate(today.getDate() + offsets[1]);
-      return [this.formatDateMMDDYYYY(departureDate), this.formatDateMMDDYYYY(returnDate)];
+      if (offsets.length < 2) {
+        throw new Error(`RT trip requires 2 offsets. Received: ${todayPlusDate}`);
+      }
+
+      const departureDate = addDays(today, offsets[0]);
+      const returnDate = addDays(today, offsets[1]);
+
+      return [
+        this.formatDateMMDDYYYY(departureDate, dateFormat),
+        this.formatDateMMDDYYYY(returnDate, dateFormat)
+      ];
     }
 
-    throw new Error("Invalid tripType. Use 'OW' or 'RT'.");
+    throw new Error(`Invalid tripType: ${tripType}`);
   }
 
   protected sleep(ms: number): Promise<void> {
