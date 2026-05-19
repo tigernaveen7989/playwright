@@ -8,3 +8,5 @@ node_modules/
 /allure-results/
 /.playwright-mcp/
 /logs/
+/allure-reports/
+/allure-report/

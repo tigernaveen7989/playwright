@@ -1,5 +1,5 @@
 # Multi-stage Docker build for Playwright tests
-FROM mcr.microsoft.com/playwright:v1.54.1-focal as base
+FROM mcr.microsoft.com/playwright:latest as base
 
 WORKDIR /app
 
