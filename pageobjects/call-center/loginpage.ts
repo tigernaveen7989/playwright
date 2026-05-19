@@ -1,7 +1,7 @@
 import { Page, Locator, TestInfo } from '@playwright/test';
-import { LoggerFactory } from '../utilities/logger';
+import { LoggerFactory } from '../../utilities/logger';
 import { attachment, step } from 'allure-js-commons';
-import { BlackPanther } from '../utilities/blackpanther';
+import { BlackPanther } from '../../utilities/blackpanther';
 const logger = LoggerFactory.getLogger(__filename);
 
 

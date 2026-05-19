@@ -9,13 +9,13 @@ import {
   TestInfo
 } from '@playwright/test';
 
-import POManager from '../pageobjects/pageobjectmanager';
-import LoginPage from '../pageobjects/loginpage';
-import HomePage from '../pageobjects/homepage';
-import PassengerDetailsPage from '../pageobjects/passengerdetailspage';
-import AddPaymentToNewReservationPage from '../pageobjects/addpaymenttonewreservationpage';
-import PayByCreditCardPage from '../pageobjects/paybycreditcardpage';
-import BookingConfirmationPage from '../pageobjects/bookingconfirmationpage';
+import POManager from '../pageobjects/call-center/pageobjectmanager';
+import LoginPage from '../pageobjects/call-center/loginpage';
+import HomePage from '../pageobjects/call-center/homepage';
+import PassengerDetailsPage from '../pageobjects/call-center/passengerdetailspage';
+import AddPaymentToNewReservationPage from '../pageobjects/call-center/addpaymenttonewreservationpage';
+import PayByCreditCardPage from '../pageobjects/call-center/paybycreditcardpage';
+import BookingConfirmationPage from '../pageobjects/call-center/bookingconfirmationpage';
 import { BlackPanther } from '../utilities/blackpanther';
 import { label } from 'allure-js-commons';
 import { LoggerFactory } from '../utilities/logger';

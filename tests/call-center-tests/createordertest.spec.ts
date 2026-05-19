@@ -79,7 +79,7 @@ test.describe('@PaidOrder @WLV_CC_REGRESSION @allure.label.feature:Call-Center-P
     //await assert.toBe(pnrAndOrderNumberMap.get("orderNumber"), "ABCD1234", "Verify Order Number is ABCD1234");
   });
 
-  test.only('TC2_Verify_Login_Into_Call_Center_And_Create_Paid_Order_Using_Cash', async ({ testData, assert }) => {
+  test('TC2_Verify_Login_Into_Call_Center_And_Create_Paid_Order_Using_Cash', async ({ testData, assert }) => {
     const userName = testData.get('userName')?.toString()!;
     const password = testData.get('password')?.toString()!;
     const tripType = testData.get('tripType')?.toString()!;

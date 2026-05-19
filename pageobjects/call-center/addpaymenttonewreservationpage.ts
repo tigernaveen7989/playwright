@@ -1,5 +1,5 @@
 ﻿import { Page, Locator } from '@playwright/test';
-import { BlackPanther } from '../utilities/blackpanther';
+import { BlackPanther } from '../../utilities/blackpanther';
 import { faker } from '@faker-js/faker';
 
 export default class addpaymenttonewreservationpage extends BlackPanther {

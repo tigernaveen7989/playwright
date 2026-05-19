@@ -1,6 +1,6 @@
 import { Page, Locator } from '@playwright/test';
-import { BlackPanther } from '../utilities/blackpanther';
-import { LoggerFactory } from '../utilities/logger';
+import { BlackPanther } from '../../utilities/blackpanther';
+import { LoggerFactory } from '../../utilities/logger';
 const logger = LoggerFactory.getLogger(__filename);
 
 export default class homepage extends BlackPanther {

@@ -1,5 +1,5 @@
 import { Page, Locator } from '@playwright/test';
-import { BlackPanther } from '../utilities/blackpanther';
+import { BlackPanther } from '../../utilities/blackpanther';
 
 export default class bookingconfirmationpage extends BlackPanther {
   private readonly pnrAndOrderIdText: Locator;
