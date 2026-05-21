@@ -1,4 +1,4 @@
-# <span style="color:#6366F1">🖥️ Call Center UI — Automated Test Cases</span>
+# <span style="color:#6366F1">🖥️ UI Test Case Development Guide</span>
 
 ## <span style="color:#3B82F6">🏗️ Architecture Overview</span>
 
