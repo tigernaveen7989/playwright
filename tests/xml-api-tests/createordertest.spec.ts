@@ -1,8 +1,18 @@
-import { test, expect } from '../../utilities/fixtures';
-import { activateJwtToken } from "../../api-base/activatejwttoken";
-import { ShopApi } from '../../xml-api/request-and-get-response/shop-xml-request';
-import { PriceApi } from '../../xml-api/request-and-get-response/price-xml-request';
-import { CreateOrderApi } from '../../xml-api/request-and-get-response/create-order-xml-request';
+import { test } from '../../utilities/fixtures';
+import { LoggerFactory } from '../../utilities/logger';
+import { activateJwtToken } from '../../api-base/activatejwttoken';
+import { ShopXmlPayloadBuilder } from '../../xml-api/builders/shop-xml-payload-builder';
+import { PriceXmlPayloadBuilder } from '../../xml-api/builders/price-xml-payload-builder';
+import { CreateOrderXmlPayloadBuilder } from '../../xml-api/builders/create-order-xml-payload-builder';
+import { ShopXmlApiClient } from '../../xml-api/clients/shop-xml-api-client';
+import { PriceXmlApiClient } from '../../xml-api/clients/price-xml-api-client';
+import { CreateOrderXmlApiClient } from '../../xml-api/clients/create-order-xml-api-client';
+import { ShopXmlResponseParser } from '../../xml-api/response-parsers/shop-xml-response-parser';
+import { PriceXmlResponseParser } from '../../xml-api/response-parsers/price-xml-response-parser';
+import { CreateOrderXmlResponseParser } from '../../xml-api/response-parsers/create-order-xml-response-parser';
+import { APIResponse } from '@playwright/test';
+
+const logger = LoggerFactory.getLogger(__filename);
 
 test.describe.configure({ mode: 'parallel' });
 
@@ -18,62 +28,152 @@ test.describe('@allure.label.feature:XML-PaidOrder', () => {
     ({ rmxNdcXml, omsNdcXml } = await token.loadConfig());
   });
 
-  const getReplacements = (destination: string, arrival: string, date: string): Record<string, string> => ({
-    '$DESTINATION': destination,
-    '$ARRIVAL': arrival,
-    '$DATE': date,
-    '$SELLER_ORGID': '',
-    '$CARRIER_ORGID': '',
-    '$AGENT_DUTY': 'NDC',
-    '$CITY_CODE': 'DNN',
-    '$COUNTRY_CODE': 'AU',
-    '$CURRENCY': 'AUD',
-    '$LOCATION_CODE': 'SYD',
-    '$OWNER_CODE': 'VA'
+  test('TC1_Verify_Add_One_Way_Single_Pax_One_Way_Create_Paid_Order', async ({ testData, assert }) => {
+    // ── Declare all variables at the top ─────────────────────────────────
+    const paxType = testData.get('paxType')?.toString()!;
+    const shopParser = new ShopXmlResponseParser();
+    const priceParser = new PriceXmlResponseParser();
+    const createOrderParser = new CreateOrderXmlResponseParser();
+    let paxTypeMap: Map<string, string>;
+    let paxIdOffersItemIdsMap: Map<string, string>;
+    let passengerDetailsMap: Map<string, Map<string, string>>;
+    let offerId: string;
+    let shopResponse: APIResponse;
+    let priceResponse: APIResponse;
+    let createOrderResponse: APIResponse;
+    let shopResponseText: string;
+    let priceResponseText: string;
+    let orderId: string | null;
+
+    logger.info('TC1_Verify_Add_One_Way_Single_Pax_One_Way_Create_Paid_Order — started');
+
+    // Shop
+    paxTypeMap = shopParser.getPaxType(paxType);
+    const shopPayload = new ShopXmlPayloadBuilder()
+      .withOrigin('BNE')
+      .withDestination('MEL')
+      .withDepartureDate('2026-06-20')
+      .withPassengers(paxTypeMap)
+      .withCurrency('AUD')
+      .withAgentDuty('NDC')
+      .withCityCode('DNN')
+      .withCountryCode('AU')
+      .withSellerOrgId('')
+      .withCarrierOrgId('')
+      .build();
+
+    shopResponse = await new ShopXmlApiClient().shop(`${rmxNdcXml}/shop`, headers, shopPayload);
+    await assert.toBe(shopResponse.status(), 200, 'Verify shop response status is 200');
+    shopResponseText = await shopResponse.text();
+    paxIdOffersItemIdsMap = shopParser.getPaxOfferItemIdsMap(paxTypeMap, shopResponseText);
+
+    // Price
+    const pricePayload = new PriceXmlPayloadBuilder()
+      .withPaxIdOffersItemIdsMap(paxIdOffersItemIdsMap)
+      .withOwnerCode('VA')
+      .withCurrency('AUD')
+      .withLocationCode('SYD')
+      .withCountryCode('AU')
+      .withSellerOrgId('')
+      .withCarrierOrgId('')
+      .build();
+
+    priceResponse = await new PriceXmlApiClient().price(`${rmxNdcXml}/price`, headers, pricePayload);
+    await assert.toBe(priceResponse.status(), 200, 'Verify price response status is 200');
+    priceResponseText = await priceResponse.text();
+    passengerDetailsMap = priceParser.getPassengerDetailsMap(priceResponseText, paxTypeMap);
+    offerId = priceParser.getOfferId(passengerDetailsMap);
+
+    // Create Order
+    const createOrderPayload = new CreateOrderXmlPayloadBuilder()
+      .withPassengerDetailsMap(passengerDetailsMap)
+      .withOfferId(offerId)
+      .withOwnerCode('VA')
+      .withCountryCode('AU')
+      .build();
+
+    createOrderResponse = await new CreateOrderXmlApiClient().createOrder(`${omsNdcXml}/v21_3/orders/create`, headers, createOrderPayload);
+    await assert.toBe(createOrderResponse.status(), 200, 'Verify create order response status is 200');
+    orderId = createOrderParser.getOrderId(await createOrderResponse.text());
+    await assert.notToBeNull(orderId, 'Verify Order Id is Not Null');
+
+    logger.info('TC1_Verify_Add_One_Way_Single_Pax_One_Way_Create_Paid_Order — completed');
   });
 
-  test('TC1_Verify_Add_One_Way_Single_Pax_One_Way_Create_Paid_Order', async ({ testData, assert }, testInfo) => {
+  test('TC2_Verify_Add_One_Way_Multi_Pax_Create_Paid_Order', async ({ testData, assert }) => {
+    // ── Declare all variables at the top ─────────────────────────────────
     const paxType = testData.get('paxType')?.toString()!;
-    const replacements = getReplacements('MEL', 'BNE', '2025-12-20');
-    const shop = new ShopApi(), price = new PriceApi(), createOrder = new CreateOrderApi(replacements);
+    const shopParser = new ShopXmlResponseParser();
+    const priceParser = new PriceXmlResponseParser();
+    const createOrderParser = new CreateOrderXmlResponseParser();
+    let paxTypeMap: Map<string, string>;
+    let paxIdOffersItemIdsMap: Map<string, string>;
+    let passengerDetailsMap: Map<string, Map<string, string>>;
+    let offerId: string;
+    let shopResponse: APIResponse;
+    let priceResponse: APIResponse;
+    let createOrderResponse: APIResponse;
+    let shopResponseText: string;
+    let priceResponseText: string;
+    let createOrderResponseText: string;
+    let warningMessage: string;
+    let orderId: string | null;
 
-    const paxTypeMap = await shop.getPaxType(paxType);
-    const shopResponse = await shop.sendRequestAndGetResponse(`${rmxNdcXml}/shop`, headers, testInfo, replacements, paxTypeMap);
-    await assert.toBe(shopResponse.ok(), true, 'Validate Shop Response Is OK');
+    logger.info('TC2_Verify_Add_One_Way_Multi_Pax_Create_Paid_Order — started');
 
-    const paxIdOffersItemIdsMap = await shop.getPaxOfferItemIdsMap(paxTypeMap, await shopResponse.text());
-    const priceResponse = await price.sendRequestAndGetResponse(`${rmxNdcXml}/price`, headers, testInfo, replacements, paxIdOffersItemIdsMap);
-    await assert.toBe(priceResponse.ok(), true, 'Validate Price Response Is OK');
+    // Shop
+    paxTypeMap = shopParser.getPaxType(paxType);
+    const shopPayload = new ShopXmlPayloadBuilder()
+      .withOrigin('SYD')
+      .withDestination('MEL')
+      .withDepartureDate('2026-06-16')
+      .withPassengers(paxTypeMap)
+      .withCurrency('AUD')
+      .withAgentDuty('NDC')
+      .withCityCode('DNN')
+      .withCountryCode('AU')
+      .withSellerOrgId('')
+      .withCarrierOrgId('')
+      .build();
 
-    const priceText = await priceResponse.text();
-    const passengerDetailsMap = await price.getPassengerDetailsMap(priceText, paxTypeMap);
-    const offerId = await price.getOfferID(priceText);
+    shopResponse = await new ShopXmlApiClient().shop(`${rmxNdcXml}/shop`, headers, shopPayload);
+    await assert.toBe(shopResponse.status(), 200, 'Verify shop response status is 200');
+    shopResponseText = await shopResponse.text();
+    paxIdOffersItemIdsMap = shopParser.getPaxOfferItemIdsMap(paxTypeMap, shopResponseText);
 
-    const createOrderResponse = await createOrder.sendRequestAndGetResponse(`${omsNdcXml}/v21_3/orders/create`, headers, testInfo, replacements, passengerDetailsMap, offerId);
-    await assert.toBe(createOrderResponse.ok(), true, 'Validate Create Order Response Is OK');
-    //await assert.toBeEmpty(createOrder.getWarningMessage(await createOrderResponse), "Verify Warning Message is Empty");
-    await assert.notToBeNull(createOrder.getOrderId(await createOrderResponse.text()), "Verify Order Id is Not Null");
-  });
+    // Price
+    const pricePayload = new PriceXmlPayloadBuilder()
+      .withPaxIdOffersItemIdsMap(paxIdOffersItemIdsMap)
+      .withOwnerCode('VA')
+      .withCurrency('AUD')
+      .withLocationCode('SYD')
+      .withCountryCode('AU')
+      .withSellerOrgId('')
+      .withCarrierOrgId('')
+      .build();
 
-  test('TC2_Verify_Add_One_Way_Multi_Pax_Create_Paid_Order', async ({ testData, assert }, testInfo) => {
-    const paxType = testData.get('paxType')?.toString()!;
-    const replacements = getReplacements('MEL', 'SYD', '2025-12-16');
-    const shop = new ShopApi(), price = new PriceApi(), createOrder = new CreateOrderApi(replacements);
+    priceResponse = await new PriceXmlApiClient().price(`${rmxNdcXml}/price`, headers, pricePayload);
+    await assert.toBe(priceResponse.status(), 200, 'Verify price response status is 200');
+    priceResponseText = await priceResponse.text();
+    passengerDetailsMap = priceParser.getPassengerDetailsMap(priceResponseText, paxTypeMap);
+    offerId = priceParser.getOfferId(passengerDetailsMap);
 
-    const paxTypeMap = await shop.getPaxType(paxType);
-    const shopResponse = await shop.sendRequestAndGetResponse(`${rmxNdcXml}/shop`, headers, testInfo, replacements, paxTypeMap);
-    await assert.toBe(shopResponse.ok(), true, 'Validate Shop Response Is OK');
+    // Create Order
+    const createOrderPayload = new CreateOrderXmlPayloadBuilder()
+      .withPassengerDetailsMap(passengerDetailsMap)
+      .withOfferId(offerId)
+      .withOwnerCode('VA')
+      .withCountryCode('AU')
+      .build();
 
-    const paxIdOffersItemIdsMap = await shop.getPaxOfferItemIdsMap(paxTypeMap, await shopResponse.text());
-    const priceResponse = await price.sendRequestAndGetResponse(`${rmxNdcXml}/price`, headers, testInfo, replacements, paxIdOffersItemIdsMap);
-    await assert.toBe(priceResponse.ok(), true, 'Validate Price Response Is OK');
-    const priceText = await priceResponse.text();
-    const passengerDetailsMap = await price.getPassengerDetailsMap(priceText, paxTypeMap);
-    const offerId = await price.getOfferID(priceText);
+    createOrderResponse = await new CreateOrderXmlApiClient().createOrder(`${omsNdcXml}/v21_3/orders/create`, headers, createOrderPayload);
+    await assert.toBe(createOrderResponse.status(), 200, 'Verify create order response status is 200');
+    createOrderResponseText = await createOrderResponse.text();
+    warningMessage = createOrderParser.getWarningMessage(createOrderResponseText);
+    orderId = createOrderParser.getOrderId(createOrderResponseText);
+    await assert.toBeEmpty(warningMessage, 'Verify Warning Message is Empty');
+    await assert.notToBeNull(orderId, 'Verify Order Id is Not Null');
 
-    const createOrderResponse = await createOrder.sendRequestAndGetResponse(`${omsNdcXml}/v21_3/orders/create`, headers, testInfo, replacements, passengerDetailsMap, offerId);
-    await assert.toBe(createOrderResponse.ok(), true, 'Validate Create Order Response Is OK');
-    await assert.toBeEmpty(createOrder.getWarningMessage(await createOrderResponse.text()), "Verify Warning Message is Empty");
-    await assert.notToBeNull(createOrder.getOrderId(await createOrderResponse.text()), "Verify Order Id is Not Null");
+    logger.info('TC2_Verify_Add_One_Way_Multi_Pax_Create_Paid_Order — completed');
   });
 });

@@ -1,4 +1,5 @@
-import { test, expect } from '../../utilities/fixtures';
+import { test } from '../../utilities/fixtures';
+import { LoggerFactory } from '../../utilities/logger';
 import { activateJwtToken } from '../../api-base/activatejwttoken';
 import { ShopPayloadBuilder } from '../../json-api/builders/shop-payload-builder';
 import { PricePayloadBuilder } from '../../json-api/builders/price-payload-builder';
@@ -9,6 +10,9 @@ import { CreateOrderApiClient } from '../../json-api/clients/create-order-api-cl
 import { ShopResponseParser } from '../../json-api/response-parsers/shop-response-parser';
 import { PriceResponseParser } from '../../json-api/response-parsers/price-response-parser';
 import { CreateOrderResponseParser } from '../../json-api/response-parsers/create-order-response-parser';
+import { APIResponse } from '@playwright/test';
+
+const logger = LoggerFactory.getLogger(__filename);
 
 test.describe.configure({ mode: 'parallel' });
 
@@ -24,10 +28,22 @@ test.describe('@allure.label.feature:JSON-PaidOrder', () => {
   });
 
   test('TC2_Verify_Multi_Pax_One_Way_Create_Paid_Order', async ({ testData, assert }) => {
+    // ── Declare all variables at the top ─────────────────────────────────
     const paxType = testData.get('paxType')?.toString()!;
     const shopParser = new ShopResponseParser();
     const priceParser = new PriceResponseParser();
     const orderParser = new CreateOrderResponseParser();
+    let paxTypeMap: Map<string, string>;
+    let paxIdOffersItemIdsMap: Map<string, string>;
+    let passengerDetailsMap: Map<string, Map<string, string>>;
+    let offerId: string;
+    let shopResponse: APIResponse;
+    let priceResponse: APIResponse;
+    let createOrderResponse: APIResponse;
+    let priceJson: any;
+    let orderResult: { orderId: string | null; warningMessage: string };
+
+    logger.info('TC2_Verify_Multi_Pax_One_Way_Create_Paid_Order — started');
 
     // Shop
     const shopPayload = new ShopPayloadBuilder()
@@ -37,23 +53,23 @@ test.describe('@allure.label.feature:JSON-PaidOrder', () => {
       .withPassengers(paxType)
       .build();
 
-    const shopResponse = await new ShopApiClient().shop(`${rmxApiJson}/shop`, headers, shopPayload);
-    await assert.toBe(shopResponse.ok(), true, 'Verify Shop Response is OK');
+    shopResponse = await new ShopApiClient().shop(`${rmxApiJson}/shop`, headers, shopPayload);
+    await assert.toBe(shopResponse.status(), 200, 'Verify shop response status is 200');
 
-    const paxTypeMap = shopParser.getPaxType(paxType);
-    const paxIdOffersItemIdsMap = shopParser.getPaxOfferItemIdsMap(paxTypeMap, JSON.stringify(await shopResponse.json()));
+    paxTypeMap = shopParser.getPaxType(paxType);
+    paxIdOffersItemIdsMap = shopParser.getPaxOfferItemIdsMap(paxTypeMap, JSON.stringify(await shopResponse.json()));
 
     // Price
     const pricePayload = new PricePayloadBuilder()
       .withOfferItems(paxIdOffersItemIdsMap)
       .build();
 
-    const priceResponse = await new PriceApiClient().price(`${rmxApiJson}/price`, headers, pricePayload);
-    await assert.toBe(priceResponse.ok(), true, 'Verify Price Response is OK');
+    priceResponse = await new PriceApiClient().price(`${rmxApiJson}/price`, headers, pricePayload);
+    await assert.toBe(priceResponse.status(), 200, 'Verify price response status is 200');
 
-    const priceJson = await priceResponse.json();
-    const passengerDetailsMap = priceParser.getPassengerDetailsMap(priceJson, paxTypeMap);
-    const offerId = priceParser.getOfferId(priceJson);
+    priceJson = await priceResponse.json();
+    passengerDetailsMap = priceParser.getPassengerDetailsMap(priceJson, paxTypeMap);
+    offerId = priceParser.getOfferId(priceJson);
 
     // Create Order
     const createOrderPayload = new CreateOrderPayloadBuilder()
@@ -61,19 +77,33 @@ test.describe('@allure.label.feature:JSON-PaidOrder', () => {
       .withPassengerDetails(passengerDetailsMap)
       .build();
 
-    const createOrderResponse = await new CreateOrderApiClient().createOrder(`${omsApiJson}/create`, headers, createOrderPayload);
-    await assert.toBe(createOrderResponse.ok(), true, 'Verify Create Order Response is OK');
+    createOrderResponse = await new CreateOrderApiClient().createOrder(`${omsApiJson}/create`, headers, createOrderPayload);
+    await assert.toBe(createOrderResponse.status(), 200, 'Verify create order response status is 200');
 
-    const orderResult = orderParser.getOrderIdAndWarningMessage(await createOrderResponse.text());
+    orderResult = orderParser.getOrderIdAndWarningMessage(await createOrderResponse.text());
     await assert.toBeEmpty(orderResult.warningMessage, 'Verify Warning Message is Empty');
     await assert.notToBeNull(orderResult.orderId, 'Verify Order Id is Not Null');
+
+    logger.info('TC2_Verify_Multi_Pax_One_Way_Create_Paid_Order — completed');
   });
 
   test('TC3_Verify_Single_Pax_One_Way_Create_Paid_Order', async ({ testData, assert }) => {
+    // ── Declare all variables at the top ─────────────────────────────────
     const paxType = testData.get('paxType')?.toString()!;
     const shopParser = new ShopResponseParser();
     const priceParser = new PriceResponseParser();
     const orderParser = new CreateOrderResponseParser();
+    let paxTypeMap: Map<string, string>;
+    let paxIdOffersItemIdsMap: Map<string, string>;
+    let passengerDetailsMap: Map<string, Map<string, string>>;
+    let offerId: string;
+    let shopResponse: APIResponse;
+    let priceResponse: APIResponse;
+    let createOrderResponse: APIResponse;
+    let priceJson: any;
+    let orderResult: { orderId: string | null; warningMessage: string };
+
+    logger.info('TC3_Verify_Single_Pax_One_Way_Create_Paid_Order — started');
 
     // Shop
     const shopPayload = new ShopPayloadBuilder()
@@ -83,23 +113,23 @@ test.describe('@allure.label.feature:JSON-PaidOrder', () => {
       .withPassengers(paxType)
       .build();
 
-    const shopResponse = await new ShopApiClient().shop(`${rmxApiJson}/shop`, headers, shopPayload);
-    await assert.toBe(shopResponse.ok(), true, 'Verify Shop Response is OK');
+    shopResponse = await new ShopApiClient().shop(`${rmxApiJson}/shop`, headers, shopPayload);
+    await assert.toBe(shopResponse.status(), 200, 'Verify shop response status is 200');
 
-    const paxTypeMap = shopParser.getPaxType(paxType);
-    const paxIdOffersItemIdsMap = shopParser.getPaxOfferItemIdsMap(paxTypeMap, JSON.stringify(await shopResponse.json()));
+    paxTypeMap = shopParser.getPaxType(paxType);
+    paxIdOffersItemIdsMap = shopParser.getPaxOfferItemIdsMap(paxTypeMap, JSON.stringify(await shopResponse.json()));
 
     // Price
     const pricePayload = new PricePayloadBuilder()
       .withOfferItems(paxIdOffersItemIdsMap)
       .build();
 
-    const priceResponse = await new PriceApiClient().price(`${rmxApiJson}/price`, headers, pricePayload);
-    await assert.toBe(priceResponse.ok(), true, 'Verify Price Response is OK');
+    priceResponse = await new PriceApiClient().price(`${rmxApiJson}/price`, headers, pricePayload);
+    await assert.toBe(priceResponse.status(), 200, 'Verify price response status is 200');
 
-    const priceJson = await priceResponse.json();
-    const passengerDetailsMap = priceParser.getPassengerDetailsMap(priceJson, paxTypeMap);
-    const offerId = priceParser.getOfferId(priceJson);
+    priceJson = await priceResponse.json();
+    passengerDetailsMap = priceParser.getPassengerDetailsMap(priceJson, paxTypeMap);
+    offerId = priceParser.getOfferId(priceJson);
 
     // Create Order
     const createOrderPayload = new CreateOrderPayloadBuilder()
@@ -107,10 +137,12 @@ test.describe('@allure.label.feature:JSON-PaidOrder', () => {
       .withPassengerDetails(passengerDetailsMap)
       .build();
 
-    const createOrderResponse = await new CreateOrderApiClient().createOrder(`${omsApiJson}/create`, headers, createOrderPayload);
-    await assert.toBe(createOrderResponse.ok(), true, 'Verify Create Order Response is OK');
+    createOrderResponse = await new CreateOrderApiClient().createOrder(`${omsApiJson}/create`, headers, createOrderPayload);
+    await assert.toBe(createOrderResponse.status(), 200, 'Verify create order response status is 200');
 
-    const orderResult = orderParser.getOrderIdAndWarningMessage(await createOrderResponse.text());
+    orderResult = orderParser.getOrderIdAndWarningMessage(await createOrderResponse.text());
     await assert.notToBeNull(orderResult.orderId, 'Verify Order Id is Not Null');
+
+    logger.info('TC3_Verify_Single_Pax_One_Way_Create_Paid_Order — completed');
   });
 });

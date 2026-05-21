@@ -19,7 +19,7 @@ const config: PlaywrightTestConfig = defineConfig({
 
   reporter: [
     ['html', { outputFolder: 'playwright-report', open: 'never', print: false }],
-    ['list'],
+    ['line'],
     ['./utilities/email-reporter.ts'],
     ['allure-playwright', {
       resultsDir: 'allure-results',
