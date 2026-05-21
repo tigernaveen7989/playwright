@@ -1,4 +1,4 @@
-# Call Center UI — Automated Test Cases
+# <span style="color:#6366F1">🖥️ Call Center UI — Automated Test Cases</span>
 
 > **Framework:** Playwright + TypeScript  
 > **Reporting:** Allure  
@@ -7,7 +7,7 @@
 
 ---
 
-## Table of Contents
+## <span style="color:#6366F1">📑 Table of Contents</span>
 
 1. [Framework Overview](#framework-overview)
 2. [Page Object Summary](#page-object-summary)
@@ -20,7 +20,7 @@
 
 ---
 
-## Framework Overview
+## <span style="color:#3B82F6">🏗️ Framework Overview</span>
 
 ```
 PlaywrightTypescript/
@@ -54,7 +54,7 @@ PlaywrightTypescript/
 
 ---
 
-## Page Object Summary
+## <span style="color:#06B6D4">📄 Page Object Summary</span>
 
 | Page Object | File | Responsibilities |
 |---|---|---|
@@ -67,7 +67,7 @@ PlaywrightTypescript/
 
 ---
 
-## Test Data Structure
+## <span style="color:#06B6D4">🗃️ Test Data Structure</span>
 
 Test data is resolved at runtime via environment variables:
 
@@ -81,7 +81,7 @@ TENANT        = ju | va
 
 Each test case key maps to an array of parameter objects. A `global` key provides shared credentials when individual TCs don't override them.
 
-### Key Parameters
+### 🔑 Key Parameters
 
 | Parameter | Description | Example |
 |---|---|---|
@@ -104,13 +104,13 @@ Each test case key maps to an array of parameter objects. A `global` key provide
 
 ---
 
-## Test Suite: Create Order
+## <span style="color:#F59E0B">🛋️ Test Suite: Create Order</span>
 
 **File:** `tests/call-center-tests/createordertest.spec.ts`  
 **Allure Feature Tag:** `@allure.label.feature:Call-Center-PaidOrder`  
 **Suite Tag:** `@PaidOrder @WLV_CC_REGRESSION`
 
-### TC1 — Create Paid Order (Credit Card)
+### 💳 TC1 — Create Paid Order (Credit Card)
 
 | Field | Value |
 |---|---|
@@ -167,7 +167,7 @@ Each test case key maps to an array of parameter objects. A `global` key provide
 
 ---
 
-### TC2 — Create Paid Order (Cash Payment)
+### 💵 TC2 — Create Paid Order (Cash Payment)
 
 | Field | Value |
 |---|---|
@@ -196,7 +196,7 @@ Steps 1–14 are identical to TC1. Diverges at payment:
 
 ---
 
-### TC3 — Multi-Pax One-Way Unpaid Order
+### 👥 TC3 — Multi-Pax One-Way Unpaid Order
 
 | Field | Value |
 |---|---|
@@ -230,7 +230,7 @@ Steps 1–14 identical to TC1. Diverges after passenger details:
 
 ---
 
-## Test Suite: Seats
+## <span style="color:#8B5CF6">💺 Test Suite: Seats</span>
 
 **File:** `tests/call-center-tests/seatstest.spec.ts`  
 **Allure Feature Tags:** `@allure.label.feature:Call-Center-Paid-Seats` / `@allure.label.feature:Call-Center-Free-Seats`
@@ -239,7 +239,7 @@ Steps 1–14 identical to TC1. Diverges after passenger details:
 
 ---
 
-### TC1 — Create Paid Order + Add Paid Seat
+### 💺 TC1 — Create Paid Order + Add Paid Seat
 
 | Field | Value |
 |---|---|
@@ -271,7 +271,7 @@ Steps 1–14 identical to TC1. Diverges after passenger details:
 
 ---
 
-### TC2 — Create Unpaid Order + Add Free Seat
+### 🄓 TC2 — Create Unpaid Order + Add Free Seat
 
 | Field | Value |
 |---|---|
@@ -302,7 +302,7 @@ Steps 1–14 identical to TC1. Diverges after passenger details:
 
 ---
 
-### TC3 — Create Paid Order + Add Free Seat
+### 🎫 TC3 — Create Paid Order + Add Free Seat
 
 | Field | Value |
 |---|---|
@@ -326,9 +326,9 @@ Steps 1–14 identical to TC1. Diverges after passenger details:
 
 ---
 
-## Test Case Details
+## <span style="color:#D97706">📋 Test Case Details</span>
 
-### Passenger Type Parser (`paxType` string)
+### 👤 Passenger Type Parser (`paxType` string)
 
 The `paxType` string is parsed in `BlackPanther.getPaxType()`:
 
@@ -345,7 +345,7 @@ The `paxType` string is parsed in `BlackPanther.getPaxType()`:
 - `1A1INF` → 1 adult, 1 lap infant
 - `2A1C1INS` → 2 adults, 1 child, 1 infant with seat
 
-### Date Offset Logic
+### 📅 Date Offset Logic
 
 `todayPlusDate` is a comma-separated offset from today's date (midnight-normalized):
 
@@ -354,7 +354,7 @@ The `paxType` string is parsed in `BlackPanther.getPaxType()`:
 
 Formatted as `MM/DD/YYYY` for the UI date inputs.
 
-### Trip Type Routing (Homepage)
+### 🗺️ Trip Type Routing (Homepage)
 
 | `tripType` | Radio Button | From/To Locators | Date Inputs |
 |---|---|---|---|
@@ -363,7 +363,7 @@ Formatted as `MM/DD/YYYY` for the UI date inputs.
 
 ---
 
-## Assertions Reference
+## <span style="color:#22C55E">✅ Assertions Reference</span>
 
 Custom `assert` fixture wraps Playwright's `expect`:
 
@@ -377,7 +377,7 @@ Custom `assert` fixture wraps Playwright's `expect`:
 
 ---
 
-## Future Test Cases to Develop
+## <span style="color:#EC4899">🔮 Future Test Cases to Develop</span>
 
 The following test cases are identified as gaps based on the current page objects and test data structure:
 
@@ -400,7 +400,7 @@ The following test cases are identified as gaps based on the current page object
 
 ---
 
-## Environment Matrix
+## <span style="color:#64748B">🌐 Environment Matrix</span>
 
 | Environment | Sub-Env | Tenant | Notes |
 |---|---|---|---|

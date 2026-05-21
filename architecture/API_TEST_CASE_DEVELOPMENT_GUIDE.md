@@ -1,6 +1,6 @@
-# API Test Case Development Guide
+# <span style="color:#6366F1">📘 API Test Case Development Guide</span>
 
-## Architecture Overview
+## <span style="color:#3B82F6">🏗️ Architecture Overview</span>
 
 This project follows a three-layer architecture for all JSON API tests. Each layer has a single responsibility, making tests easy to read, maintain, and extend.
 
@@ -26,9 +26,9 @@ json-api/
 
 ---
 
-## Layer Responsibilities
+## <span style="color:#06B6D4">📦 Layer Responsibilities</span>
 
-### 1. Builders (`json-api/builders/`)
+### 🏗️ 1. Builders (`json-api/builders/`)
 **Purpose:** Construct request payloads using the fluent Builder pattern.
 
 - Each builder file starts with a JSDoc comment block showing usage examples.
@@ -70,7 +70,7 @@ export class ShopPayloadBuilder {
 }
 ```
 
-### 2. Clients (`json-api/clients/`)
+### 📡 2. Clients (`json-api/clients/`)
 **Purpose:** Send HTTP POST requests and attach request/response evidence to the Allure report.
 
 - `BaseApiClient` provides the shared `post()` method used by all clients.
@@ -83,7 +83,7 @@ export class ShopPayloadBuilder {
 const response = await new ShopApiClient().shop(`${rmxApiJson}/shop`, headers, shopPayload);
 ```
 
-### 3. Response Parsers (`json-api/response-parsers/`)
+### 🔍 3. Response Parsers (`json-api/response-parsers/`)
 **Purpose:** Extract structured data from API response JSON.
 
 - No HTTP logic, no payload building — pure response parsing.
@@ -99,11 +99,11 @@ const offerItemsMap = shopParser.getPaxOfferItemIdsMap(paxTypeMap, JSON.stringif
 
 ---
 
-## Writing a New API Test
+## <span style="color:#F59E0B">✏️ Writing a New API Test</span>
 
 Follow this step-by-step workflow:
 
-### Step 1 — Create the payload builder
+### 🔧 Step 1 — Create the payload builder
 Create `json-api/builders/my-api-payload-builder.ts`:
 
 ```typescript
@@ -150,7 +150,7 @@ export class MyApiPayloadBuilder {
 }
 ```
 
-### Step 2 — Create the API client
+### 📡 Step 2 — Create the API client
 Create `json-api/clients/my-api-client.ts`:
 
 ```typescript
@@ -175,7 +175,7 @@ export class MyApiClient extends BaseApiClient {
 }
 ```
 
-### Step 3 — Create the response parser
+### 🔍 Step 3 — Create the response parser
 Create `json-api/response-parsers/my-response-parser.ts`:
 
 ```typescript
@@ -188,7 +188,7 @@ export class MyResponseParser {
 }
 ```
 
-### Step 4 — Write the test
+### 📝 Step 4 — Write the test
 Create `tests/json-api-tests/mytest.spec.ts`:
 
 ```typescript
@@ -231,7 +231,7 @@ test.describe('@allure.label.feature:MY-FEATURE', () => {
 
 ---
 
-## Key Conventions
+## <span style="color:#D97706">📌 Key Conventions</span>
 
 | Convention | Rule |
 |---|---|
@@ -249,7 +249,7 @@ test.describe('@allure.label.feature:MY-FEATURE', () => {
 
 ---
 
-## `BaseApiClient` — What it handles automatically
+## <span style="color:#8B5CF6">⚙️ `BaseApiClient` — What it handles automatically</span>
 
 You do NOT need to manually do any of the following in tests or clients:
 
@@ -262,7 +262,7 @@ You do NOT need to manually do any of the following in tests or clients:
 
 ---
 
-## Folder Naming Conventions
+## <span style="color:#10B981">📁 Folder Naming Conventions</span>
 
 | Layer | Folder | Naming Pattern | Example |
 |---|---|---|---|

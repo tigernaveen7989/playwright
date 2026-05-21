@@ -1,11 +1,11 @@
-# Agent Instructions — Playwright TypeScript Framework
+# <span style="color:#6366F1">🤖 Agent Instructions — Playwright TypeScript Framework</span>
 
 > This file defines the mandatory coding standards, patterns, and constraints for all automated test development in this framework.
 > Every agent or developer working on this codebase **must** follow these instructions without exception.
 
 ---
 
-## 1. Framework Architecture
+## <span style="color:#3B82F6">🏗️ 1. Framework Architecture</span>
 
 ```
 PlaywrightTypescript/
@@ -56,12 +56,12 @@ PlaywrightTypescript/
 
 ---
 
-## 2. The BlackPanther Base Class — Use It, Don't Bypass It
+## <span style="color:#8B5CF6">🐾 2. The BlackPanther Base Class — Use It, Don't Bypass It</span>
 
 `utilities/blackpanther.ts` is the **single source of truth** for all Playwright interactions.
 Every page object **must extend** `BlackPanther`. Every interaction **must go through** its protected methods.
 
-### Available methods — always check here first before writing any Playwright code
+### 🔍 Available methods — always check here first before writing any Playwright code
 
 | Method | Signature | Purpose |
 |---|---|---|
@@ -76,7 +76,7 @@ Every page object **must extend** `BlackPanther`. Every interaction **must go th
 | `getPaxType` | `getPaxType(paxType: string)` | Parses `2A1C` → Map of PAX1→ADT, PAX2→ADT, PAX3→CNN |
 | `loadConfig` | `loadConfig()` | Loads `url-and-accounts.json` for the active env/subenv/tenant |
 
-### Rules
+### ⚠️ Rules
 
 - **DO NOT** call `locator.click()`, `locator.fill()`, `page.locator(...).click()`, or any raw Playwright API inside a page object method.
 - **DO NOT** call `expect(locator).toBeVisible()` inside a page object — `click` and `fill` already do this.
@@ -85,11 +85,11 @@ Every page object **must extend** `BlackPanther`. Every interaction **must go th
 
 ---
 
-## 3. Strict Page Object Model — One Page = One File
+## <span style="color:#10B981">📄 3. Strict Page Object Model — One Page = One File</span>
 
 Every page object maps **1:1 to a distinct UI screen** visible in the browser. The name of the page object must match the name of the screen in the application.
 
-### Correct pattern
+### ✅ Correct pattern
 
 ```
 Login screen           → loginpage.ts            → LoginPage
@@ -102,7 +102,7 @@ Seat Selection screen  → seatselectionpage.ts    → SeatSelectionPage   ← n
 Ancillary Services     → ancillarypage.ts        → AncillaryPage       ← new page = new file
 ```
 
-### Do NOT club pages
+### ❌ Do NOT club pages
 
 ```typescript
 // ❌ WRONG — mixing seat selection and booking confirmation in one file
@@ -115,7 +115,7 @@ export default class SeatSelectionPage extends BlackPanther { ... }
 export default class BookingConfirmationPage extends BlackPanther { ... }
 ```
 
-### After creating a new page object, always register it in `pageobjectmanager.ts` and `basetest.ts`
+### 🔗 After creating a new page object, always register it in `pageobjectmanager.ts` and `basetest.ts`
 
 ```typescript
 // pageobjectmanager.ts — add import + field + instantiation
@@ -131,7 +131,7 @@ export const seatSelectionPage = createPageProxy<SeatSelectionPage>('seatSelecti
 
 ---
 
-## 4. Page Object File Structure
+## <span style="color:#10B981">📋 4. Page Object File Structure</span>
 
 Every page object must follow this exact structure:
 
@@ -184,7 +184,7 @@ export default class SeatSelectionPage extends BlackPanther {
 
 ---
 
-## 5. Mandatory Commenting Rules
+## <span style="color:#F59E0B">💬 5. Mandatory Commenting Rules</span>
 
 Every public/async method **must** have a JSDoc block comment immediately above it. The comment must include:
 
@@ -214,7 +214,7 @@ Private helper methods should have at minimum a single-line comment explaining w
 
 ---
 
-## 6. Logger Rules
+## <span style="color:#F59E0B">🪵 6. Logger Rules</span>
 
 Every page object and utility file **must** declare a logger at the top:
 
@@ -241,7 +241,7 @@ Do **not** log passwords, full card numbers, or PII at INFO level.
 
 ---
 
-## 7. Test Spec File Rules (UI Tests)
+## <span style="color:#06B6D4">🖥️ 7. Test Spec File Rules (UI Tests)</span>
 
 - One spec file per feature/flow: `createordertest.spec.ts`, `seatstest.spec.ts`
 - Import page objects only via the proxy exports from `basetest.ts` — never instantiate them directly
@@ -279,14 +279,14 @@ test('TC1_Verify_Login', async ({ testData, assert }) => {
 
 ---
 
-## 8. Test Data Rules
+## <span style="color:#06B6D4">🗃️ 8. Test Data Rules</span>
 
 - All test data lives under `testdata/{env}/{subenv}/{tenant}/call-center-ui.json`
 - The key at the top level must exactly match the test case title from the spec (before any `@` tag)
 - Shared values (credentials, card details, date format) go under the `global` array
 - Never put test data directly in spec files or page objects
 
-### Format
+### 📝 Format
 
 ```json
 {
@@ -318,11 +318,11 @@ test('TC1_Verify_Login', async ({ testData, assert }) => {
 
 ---
 
-## 9. API Test Development — Three-Layer Architecture
+## <span style="color:#2563EB">🔌 9. API Test Development — Three-Layer Architecture</span>
 
 All JSON API tests follow a strict three-layer architecture. Each layer has a single responsibility.
 
-### Layer 1 — Builders (`json-api/builders/`)
+### 🏗️ Layer 1 — Builders (`json-api/builders/`)
 
 Construct request payloads using the fluent Builder pattern.
 
@@ -369,7 +369,7 @@ export class ShopPayloadBuilder {
 }
 ```
 
-### Layer 2 — Clients (`json-api/clients/`)
+### 📡 Layer 2 — Clients (`json-api/clients/`)
 
 Send HTTP POST requests and attach request/response evidence to the Allure report.
 
@@ -402,7 +402,7 @@ export class ShopApiClient extends BaseApiClient {
 }
 ```
 
-### Layer 3 — Response Parsers (`json-api/response-parsers/`)
+### 🔍 Layer 3 — Response Parsers (`json-api/response-parsers/`)
 
 Extract structured data from API response JSON.
 
@@ -421,7 +421,7 @@ export class ShopResponseParser {
 }
 ```
 
-### API Test Spec Rules (`tests/json-api-tests/`)
+### 📋 API Test Spec Rules (`tests/json-api-tests/`)
 
 - File naming: `<feature>test.spec.ts` (e.g. `createordertest.spec.ts`)
 - Always add `test.describe.configure({ mode: 'parallel' })` at the top
@@ -483,7 +483,7 @@ test.describe('@allure.label.feature:SHOP', () => {
 });
 ```
 
-### What `BaseApiClient` handles automatically — DO NOT duplicate
+### ⚙️ What `BaseApiClient` handles automatically — DO NOT duplicate
 
 | Concern | Handled by BaseApiClient |
 |---|---|
@@ -496,11 +496,11 @@ test.describe('@allure.label.feature:SHOP', () => {
 
 ---
 
-## 10. XML API Test Development — Three-Layer Architecture
+## <span style="color:#7C3AED">📨 10. XML API Test Development — Three-Layer Architecture</span>
 
 All XML API tests follow the same three-layer architecture as JSON API tests. The key difference is that builders produce **XML strings** from template files (`.txt`) via `XmlTemplateProcessor`, and clients send `Content-Type: application/xml`.
 
-### Layer 1 — Builders (`xml-api/builders/`)
+### 🏗️ Layer 1 — Builders (`xml-api/builders/`)
 
 Construct XML request payloads by combining template files with runtime values.
 
@@ -528,7 +528,7 @@ Construct XML request payloads by combining template files with runtime values.
  */
 ```
 
-### Layer 2 — Clients (`xml-api/clients/`)
+### 📡 Layer 2 — Clients (`xml-api/clients/`)
 
 Send HTTP POST requests with XML payloads and attach formatted XML to the Allure report.
 
@@ -552,7 +552,7 @@ export class ShopXmlApiClient extends BaseXmlApiClient {
 }
 ```
 
-### Layer 3 — Response Parsers (`xml-api/response-parsers/`)
+### 🔍 Layer 3 — Response Parsers (`xml-api/response-parsers/`)
 
 Extract structured data from XML API responses using XPath.
 
@@ -562,7 +562,7 @@ Extract structured data from XML API responses using XPath.
 - **Must throw a descriptive `Error`** if a required field is missing
 - `ShopXmlResponseParser.getPaxType()` is the canonical source for building the paxTypeMap — call it once per test and pass the result to builders and parsers that need it
 
-### XML API Test Spec Rules (`tests/xml-api-tests/`)
+### 📋 XML API Test Spec Rules (`tests/xml-api-tests/`)
 
 - File naming: `<feature>test.spec.ts` (e.g. `createordertest.spec.ts`)
 - Same rules as JSON API specs apply: `parallel` mode, declare all variables at top, assert HTTP 200 after every call, logger at entry/exit, `assert` fixture only
@@ -605,7 +605,7 @@ test('TC1_Verify_Create_Paid_Order', async ({ testData, assert }) => {
 });
 ```
 
-### XML Template Placeholders — Convention
+### 📌 XML Template Placeholders — Convention
 
 | Template | Key placeholders |
 |---|---|
@@ -617,7 +617,7 @@ test('TC1_Verify_Create_Paid_Order', async ({ testData, assert }) => {
 
 ---
 
-## 11. Locator Strategy
+## <span style="color:#EF4444">🎯 11. Locator Strategy</span>
 
 Use this priority order when defining locators:
 
@@ -632,7 +632,7 @@ All locators are declared as `private readonly` class fields in the constructor 
 
 ---
 
-## 12. Allure Reporting
+## <span style="color:#D97706">📊 12. Allure Reporting</span>
 
 Wrap logical sub-steps inside methods using `step()` from `allure-js-commons` for detailed Allure reports:
 
@@ -650,9 +650,9 @@ async clickOnBookButton(): Promise<void> {
 
 ---
 
-## 13. Checklist Before Submitting Code
+## <span style="color:#22C55E">✅ 13. Checklist Before Submitting Code</span>
 
-### UI Tests
+### 🖥️ UI Tests
 - [ ] Page object file name matches the UI screen name exactly
 - [ ] Class extends `BlackPanther`
 - [ ] Logger declared at the top of every page object and spec file
@@ -664,7 +664,7 @@ async clickOnBookButton(): Promise<void> {
 - [ ] Test data added to the correct JSON file under `testdata/`
 - [ ] No hardcoded values in spec files
 
-### JSON API Tests
+### 🔌 JSON API Tests
 - [ ] Follows three-layer architecture: builder → client → parser
 - [ ] Builder file has JSDoc header with usage example
 - [ ] Builder section dividers use `// ─── SectionName ───` format
@@ -681,7 +681,7 @@ async clickOnBookButton(): Promise<void> {
 - [ ] Test data added to the correct JSON file under `testdata/`
 - [ ] No hardcoded values in spec files
 
-### XML API Tests
+### 📨 XML API Tests
 - [ ] Follows three-layer architecture: builder → client → parser
 - [ ] Builder file has JSDoc header with usage example and lists all template placeholder mappings
 - [ ] Builder section dividers use `// ─── SectionName ───` format
@@ -700,5 +700,5 @@ async clickOnBookButton(): Promise<void> {
 - [ ] **No inline data extraction logic in tests** — all extraction must be in named parser/builder methods
 - [ ] No hardcoded values in spec files
 
-### All Code
+### 🔒 All Code
 - [ ] TypeScript compiles with no errors (`npx tsc --noEmit`)
