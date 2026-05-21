@@ -12,11 +12,23 @@ PlaywrightTypescript/
 ├── tests/
 │   ├── basetest.ts                          # Browser lifecycle, page object wiring, proxy exports
 │   ├── fixtures.ts  →  utilities/fixtures.ts # Custom test fixtures: testData, assert, logger
-│   └── call-center-tests/
-│       └── *.spec.ts                        # Test specs — one file per feature/flow
+│   ├── call-center-tests/
+│   │   └── *.spec.ts                        # UI test specs — one file per feature/flow
+│   └── json-api-tests/
+│       └── *.spec.ts                        # API test specs — one file per feature/flow
 ├── pageobjects/
 │   ├── pageobjectmanager.ts                 # Central factory — instantiates all page objects
 │   └── *.ts                                 # One page object per UI screen
+├── json-api/
+│   ├── builders/                            # Build request payloads using the Builder pattern
+│   │   └── *-payload-builder.ts
+│   ├── clients/                             # Send HTTP requests and attach Allure evidence
+│   │   ├── base-api-client.ts               # Abstract base — handles HTTP + Allure + logging
+│   │   └── *-api-client.ts
+│   └── response-parsers/                   # Extract data from API responses
+│       └── *-response-parser.ts
+├── api-base/
+│   └── activatejwttoken.ts                  # JWT token generation and config loader
 ├── utilities/
 │   ├── blackpanther.ts                      # BASE CLASS — all reusable Playwright actions live here
 │   ├── assertions.ts                        # Custom assertion wrapper with Allure step logging
@@ -216,24 +228,40 @@ Do **not** log passwords, full card numbers, or PII at INFO level.
 
 ---
 
-## 7. Test Spec File Rules
+## 7. Test Spec File Rules (UI Tests)
 
 - One spec file per feature/flow: `createordertest.spec.ts`, `seatstest.spec.ts`
 - Import page objects only via the proxy exports from `basetest.ts` — never instantiate them directly
 - All test data comes from the `testData` fixture — never hardcode values in specs
 - Use `logger.info()` to mark major steps so log output is readable in CI
 - Assertions use the `assert` fixture from `utilities/assertions.ts` — never use raw `expect()` in specs
+- **Declare all variables at the top of the test** — never declare variables inline mid-test
+- Add a logger at the top of every spec file and log entry/exit of each test
 
 ```typescript
 // ✅ CORRECT
+import { LoggerFactory } from '../../utilities/logger';
 import { loginPage, homePage } from '../basetest';
-const userName = testData.get('userName')?.toString()!;
-await assert.toEqual('Welcome, ', await homePage.getWelcomeText(), 'Verify welcome text');
+const logger = LoggerFactory.getLogger(__filename);
 
-// ❌ WRONG
-import LoginPage from '../../pageobjects/loginpage';
-const login = new LoginPage(page);
-expect(await homePage.getWelcomeText()).toContain('Welcome');
+test('TC1_Verify_Login', async ({ testData, assert }) => {
+  // Declare all variables at the top
+  const userName = testData.get('userName')?.toString()!;
+  const password = testData.get('password')?.toString()!;
+  const welcomeText = 'Welcome, ';
+
+  logger.info('TC1_Verify_Login — started');
+  await loginPage.login(userName, password);
+  await assert.toEqual(welcomeText, await homePage.getWelcomeText(), 'Verify welcome text');
+  logger.info('TC1_Verify_Login — completed');
+});
+
+// ❌ WRONG — variable declared mid-test and no logger
+test('TC1_Verify_Login', async ({ testData, assert }) => {
+  await loginPage.login(testData.get('userName')?.toString()!, testData.get('password')?.toString()!);
+  const welcomeText = await homePage.getWelcomeText(); // ❌ declared mid-test
+  await assert.toEqual('Welcome, ', welcomeText, 'Verify welcome text');
+});
 ```
 
 ---
@@ -277,7 +305,184 @@ expect(await homePage.getWelcomeText()).toContain('Welcome');
 
 ---
 
-## 9. Locator Strategy
+## 9. API Test Development — Three-Layer Architecture
+
+All JSON API tests follow a strict three-layer architecture. Each layer has a single responsibility.
+
+### Layer 1 — Builders (`json-api/builders/`)
+
+Construct request payloads using the fluent Builder pattern.
+
+- File naming: `<name>-payload-builder.ts` (e.g. `shop-payload-builder.ts`)
+- Every builder file starts with a JSDoc block showing a usage example
+- All setter methods return `this` for fluent chaining
+- Sections separated with `// ─── SectionName ───` dividers
+- `.build()` returns a plain `object` and logs the payload via `logger.info`
+- No HTTP logic, no response parsing — pure payload construction
+
+```typescript
+/**
+ * Builds the shop request payload.
+ *
+ * Usage:
+ *   new ShopPayloadBuilder()
+ *     .withRoute('SYD', 'BNE')
+ *     .withDepartureDate(10, 6, 2026)
+ *     .withPassengers('2A1C')
+ *     .build();
+ */
+import { LoggerFactory } from '../../utilities/logger';
+const logger = LoggerFactory.getLogger(__filename);
+
+export class ShopPayloadBuilder {
+  private origin: string = '';
+  private destination: string = '';
+
+  // ─── Route ───────────────────────────────────────────────────────────────
+
+  withRoute(origin: string, destination: string): this {
+    this.origin = origin;
+    this.destination = destination;
+    return this;
+  }
+
+  // ─── Build ───────────────────────────────────────────────────────────────
+
+  build(): object {
+    const payload = { origin: this.origin, destination: this.destination };
+    logger.info('Shop payload:', JSON.stringify(payload));
+    return payload;
+  }
+}
+```
+
+### Layer 2 — Clients (`json-api/clients/`)
+
+Send HTTP POST requests and attach request/response evidence to the Allure report.
+
+- File naming: `<name>-api-client.ts` (e.g. `shop-api-client.ts`)
+- All clients extend `BaseApiClient` — never write HTTP logic directly in a client
+- Each client exposes a single named method (`.shop()`, `.price()`, `.createOrder()`)
+- Allure step name format: `'Send <Operation> API Request and Log Request/Response'`
+- Attachment names: `'<Operation> Request Payload'` and `'<Operation> Response Body'`
+- `BaseApiClient` automatically handles: Allure step wrapping, request/response attachment, `Content-Type` header, logging, and error catching
+
+```typescript
+import { APIResponse } from '@playwright/test';
+import { BaseApiClient } from './base-api-client';
+
+export class ShopApiClient extends BaseApiClient {
+  async shop(
+    endpoint: string,
+    headers: Record<string, string>,
+    payload: object
+  ): Promise<APIResponse> {
+    return this.post(
+      'Send Shop API Request and Log Request/Response',
+      endpoint,
+      headers,
+      payload,
+      'Shop Request Payload',
+      'Shop Response Body'
+    );
+  }
+}
+```
+
+### Layer 3 — Response Parsers (`json-api/response-parsers/`)
+
+Extract structured data from API response JSON.
+
+- File naming: `<name>-response-parser.ts` (e.g. `shop-response-parser.ts`)
+- No HTTP logic, no payload building — pure response parsing
+- Methods named after the data they return
+- **Must throw a descriptive `Error`** if a required field is missing from the response
+
+```typescript
+export class ShopResponseParser {
+  getFirstOfferId(responseJson: any): string {
+    const offerId = responseJson?.offers?.[0]?.offerId;
+    if (!offerId) throw new Error('offerId not found in shop response');
+    return offerId;
+  }
+}
+```
+
+### API Test Spec Rules (`tests/json-api-tests/`)
+
+- File naming: `<feature>test.spec.ts` (e.g. `createordertest.spec.ts`)
+- Always add `test.describe.configure({ mode: 'parallel' })` at the top
+- **Declare all variables at the top of the test** — never declare variables inline mid-test
+- **After every API call, assert the HTTP status is 200** using the `assert` fixture immediately after the call
+- Add a logger at the top of every spec file and log entry/exit of each test
+- Group API calls with inline section comments: `// Shop`, `// Price`, `// Create Order`
+- Assertions use the `assert` fixture — never use raw `expect()` for business assertions
+- JWT token and config are loaded in `beforeEach` — never inline them in the test body
+
+```typescript
+import { test } from '../../utilities/fixtures';
+import { LoggerFactory } from '../../utilities/logger';
+import { activateJwtToken } from '../../api-base/activatejwttoken';
+import { ShopPayloadBuilder } from '../../json-api/builders/shop-payload-builder';
+import { ShopApiClient } from '../../json-api/clients/shop-api-client';
+import { ShopResponseParser } from '../../json-api/response-parsers/shop-response-parser';
+
+const logger = LoggerFactory.getLogger(__filename);
+
+test.describe.configure({ mode: 'parallel' });
+
+test.describe('@allure.label.feature:SHOP', () => {
+  let headers: Record<string, string>;
+  let shopApiUrl: string;
+
+  test.beforeEach(async ({ testInfo }) => {
+    const token = new activateJwtToken();
+    headers = await token.getJwtToken(testInfo);
+    ({ shopApiUrl } = await token.loadConfig());
+  });
+
+  test('TC1_Verify_Shop_Returns_Offers', async ({ testData, assert }) => {
+    // ── Declare all variables at the top ──────────────────────────────────
+    const origin = testData.get('origin')?.toString()!;
+    const destination = testData.get('destination')?.toString()!;
+    const paxType = testData.get('paxType')?.toString()!;
+    const parser = new ShopResponseParser();
+    let shopResponse: any;
+    let offerId: string;
+
+    logger.info('TC1_Verify_Shop_Returns_Offers — started');
+
+    // Shop
+    const shopPayload = new ShopPayloadBuilder()
+      .withRoute(origin, destination)
+      .withPassengers(paxType)
+      .build();
+
+    shopResponse = await new ShopApiClient().shop(`${shopApiUrl}/shop`, headers, shopPayload);
+    await assert.toBe(shopResponse.status(), 200, 'Verify shop response status is 200');
+
+    offerId = parser.getFirstOfferId(await shopResponse.json());
+    await assert.notToBeNull(offerId, 'Verify offer ID is not null');
+
+    logger.info('TC1_Verify_Shop_Returns_Offers — completed');
+  });
+});
+```
+
+### What `BaseApiClient` handles automatically — DO NOT duplicate
+
+| Concern | Handled by BaseApiClient |
+|---|---|
+| Attaching request payload to Allure | ✅ automatic |
+| Attaching response body to Allure | ✅ automatic |
+| Wrapping the call in an Allure step | ✅ automatic |
+| Setting `Content-Type: application/json` | ✅ automatic |
+| Logging request endpoint and response status | ✅ automatic |
+| Catching and attaching network errors to Allure | ✅ automatic |
+
+---
+
+## 10. Locator Strategy
 
 Use this priority order when defining locators:
 
@@ -292,7 +497,7 @@ All locators are declared as `private readonly` class fields in the constructor 
 
 ---
 
-## 10. Allure Reporting
+## 11. Allure Reporting
 
 Wrap logical sub-steps inside methods using `step()` from `allure-js-commons` for detailed Allure reports:
 
@@ -310,14 +515,35 @@ async clickOnBookButton(): Promise<void> {
 
 ---
 
-## 11. Checklist Before Submitting Code
+## 12. Checklist Before Submitting Code
 
+### UI Tests
 - [ ] Page object file name matches the UI screen name exactly
 - [ ] Class extends `BlackPanther`
-- [ ] Logger declared and used in every public method
+- [ ] Logger declared at the top of every page object and spec file
+- [ ] Logger used in every public method (entry + completion + key values)
 - [ ] No raw Playwright API (`locator.click()`, `page.waitForTimeout()`, `expect()`) in page objects
 - [ ] Every public method has a JSDoc comment
 - [ ] New page object is registered in `pageobjectmanager.ts` and `basetest.ts`
+- [ ] All variables declared at the top of each test, not inline mid-test
 - [ ] Test data added to the correct JSON file under `testdata/`
 - [ ] No hardcoded values in spec files
+
+### API Tests
+- [ ] Follows three-layer architecture: builder → client → parser
+- [ ] Builder file has JSDoc header with usage example
+- [ ] Builder section dividers use `// ─── SectionName ───` format
+- [ ] Client extends `BaseApiClient` — no raw HTTP logic in tests or clients
+- [ ] Parser methods throw descriptive `Error` if required field is missing
+- [ ] `test.describe.configure({ mode: 'parallel' })` added at the top of every API spec
+- [ ] Logger declared at the top of every API spec file
+- [ ] Logger used at entry and exit of every test
+- [ ] All variables declared at the top of the test, not inline mid-test
+- [ ] **HTTP status 200 asserted immediately after every API call**
+- [ ] `assert` fixture used for all assertions — no raw `expect()`
+- [ ] JWT token and config loaded in `beforeEach`, not inline in tests
+- [ ] Test data added to the correct JSON file under `testdata/`
+- [ ] No hardcoded values in spec files
+
+### All Code
 - [ ] TypeScript compiles with no errors (`npx tsc --noEmit`)
