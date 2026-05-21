@@ -1,0 +1,300 @@
+﻿Γùç injected env (7) from environment.env // tip: Γùê secrets for agents [www.dotenvx.com]
+Γùç injected env (0) from .env // tip: Γîÿ custom filepath { path: '/custom/path/.env' }
+
+Running 2 tests using 2 workers
+
+[1A[2KΓùç injected env (0) from environment.env // tip: Γùê secrets for agents [www.dotenvx.com]
+
+[1A[2KΓùç injected env (0) from environment.env // tip: Γîü auth for agents [www.vestauth.com]
+
+[1A[2KΓùç injected env (0) from .env // tip: Γîÿ enable debugging { debug: true }
+
+[1A[2K[1/2] [xml-api] ΓÇ║ tests\xml-api-tests\createordertest.spec.ts:31:7 ΓÇ║ @allure.label.feature:XML-PaidOrder ΓÇ║ TC1_Verify_Add_One_Way_Single_Pax_One_Way_Create_Paid_Order
+[1A[2KΓùç injected env (0) from .env // tip: Γîÿ override existing { override: true }
+
+[1A[2K[2/2] [xml-api] ΓÇ║ tests\xml-api-tests\createordertest.spec.ts:103:7 ΓÇ║ @allure.label.feature:XML-PaidOrder ΓÇ║ TC2_Verify_Add_One_Way_Multi_Pax_Create_Paid_Order
+[1A[2K[xml-api] ΓÇ║ tests\xml-api-tests\createordertest.spec.ts:31:7 ΓÇ║ @allure.label.feature:XML-PaidOrder ΓÇ║ TC1_Verify_Add_One_Way_Single_Pax_One_Way_Create_Paid_Order
+[32m[INFO][0m [35m[21-05-2026 11:51:45][0m [36mcreateordertest.spec.ts:48[0m : [30mTC1_Verify_Add_One_Way_Single_Pax_One_Way_Create_Paid_Order ΓÇö started[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+
+[1A[2K[xml-api] ΓÇ║ tests\xml-api-tests\createordertest.spec.ts:103:7 ΓÇ║ @allure.label.feature:XML-PaidOrder ΓÇ║ TC2_Verify_Add_One_Way_Multi_Pax_Create_Paid_Order
+[32m[INFO][0m [35m[21-05-2026 11:51:45][0m [36mcreateordertest.spec.ts:122[0m : [30mTC2_Verify_Add_One_Way_Multi_Pax_Create_Paid_Order ΓÇö started[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+
+[1A[2K[xml-api] ΓÇ║ tests\xml-api-tests\createordertest.spec.ts:31:7 ΓÇ║ @allure.label.feature:XML-PaidOrder ΓÇ║ TC1_Verify_Add_One_Way_Single_Pax_One_Way_Create_Paid_Order
+[32m[INFO][0m [35m[21-05-2026 11:51:45][0m [36mshop-xml-response-parser.ts:39[0m : [30mParsed paxType '1A' ΓåÆ {"PAX1":"ADT"}[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+
+[1A[2K[xml-api] ΓÇ║ tests\xml-api-tests\createordertest.spec.ts:103:7 ΓÇ║ @allure.label.feature:XML-PaidOrder ΓÇ║ TC2_Verify_Add_One_Way_Multi_Pax_Create_Paid_Order
+[32m[INFO][0m [35m[21-05-2026 11:51:45][0m [36mshop-xml-response-parser.ts:39[0m : [30mParsed paxType '2A1C' ΓåÆ {"PAX1":"ADT","PAX2":"ADT","PAX3":"CNN"}[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+
+[1A[2K[32m[INFO][0m [35m[21-05-2026 11:51:45][0m [36mshop-xml-payload-builder.ts:173[0m : [30mShop XML payload built for route: SYD ΓåÆ MEL on 2026-06-16[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+
+[1A[2K[xml-api] ΓÇ║ tests\xml-api-tests\createordertest.spec.ts:31:7 ΓÇ║ @allure.label.feature:XML-PaidOrder ΓÇ║ TC1_Verify_Add_One_Way_Single_Pax_One_Way_Create_Paid_Order
+[32m[INFO][0m [35m[21-05-2026 11:51:45][0m [36mshop-xml-payload-builder.ts:173[0m : [30mShop XML payload built for route: BNE ΓåÆ MEL on 2026-06-20[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+
+[1A[2K[xml-api] ΓÇ║ tests\xml-api-tests\createordertest.spec.ts:103:7 ΓÇ║ @allure.label.feature:XML-PaidOrder ΓÇ║ TC2_Verify_Add_One_Way_Multi_Pax_Create_Paid_Order
+[32m[INFO][0m [35m[21-05-2026 11:51:45][0m [36mbase-xml-api-client.ts:27[0m : [30mSending XML request to: https://wolverine-offer-xml-adapter-wl-TC1-rmx-va.apps.cert-03.us-central2.cert.sabre-gcp.com/shop[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+
+[1A[2K[xml-api] ΓÇ║ tests\xml-api-tests\createordertest.spec.ts:31:7 ΓÇ║ @allure.label.feature:XML-PaidOrder ΓÇ║ TC1_Verify_Add_One_Way_Single_Pax_One_Way_Create_Paid_Order
+[32m[INFO][0m [35m[21-05-2026 11:51:45][0m [36mbase-xml-api-client.ts:27[0m : [30mSending XML request to: https://wolverine-offer-xml-adapter-wl-TC1-rmx-va.apps.cert-03.us-central2.cert.sabre-gcp.com/shop[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+
+[1A[2K[xml-api] ΓÇ║ tests\xml-api-tests\createordertest.spec.ts:103:7 ΓÇ║ @allure.label.feature:XML-PaidOrder ΓÇ║ TC2_Verify_Add_One_Way_Multi_Pax_Create_Paid_Order
+[32m[INFO][0m [35m[21-05-2026 11:51:49][0m [36mbase-xml-api-client.ts:38[0m : [30mResponse status: 200 for https://wolverine-offer-xml-adapter-wl-TC1-rmx-va.apps.cert-03.us-central2.cert.sabre-gcp.com/shop[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+
+[1A[2K[32m[INFO][0m [35m[21-05-2026 11:51:49][0m [36mshop-xml-response-parser.ts:90[0m : [30mShop response parsed ΓÇö OfferId: mpf3c7rkcn_0, pax matched: 3[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+
+[1A[2K[32m[INFO][0m [35m[21-05-2026 11:51:49][0m [36mprice-xml-payload-builder.ts:133[0m : [30mPrice XML payload built for offerId: mpf3c7rkcn_0[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+
+[1A[2K[32m[INFO][0m [35m[21-05-2026 11:51:49][0m [36mbase-xml-api-client.ts:27[0m : [30mSending XML request to: https://wolverine-offer-xml-adapter-wl-TC1-rmx-va.apps.cert-03.us-central2.cert.sabre-gcp.com/price[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+
+[1A[2K[xml-api] ΓÇ║ tests\xml-api-tests\createordertest.spec.ts:31:7 ΓÇ║ @allure.label.feature:XML-PaidOrder ΓÇ║ TC1_Verify_Add_One_Way_Single_Pax_One_Way_Create_Paid_Order
+[32m[INFO][0m [35m[21-05-2026 11:51:49][0m [36mbase-xml-api-client.ts:38[0m : [30mResponse status: 200 for https://wolverine-offer-xml-adapter-wl-TC1-rmx-va.apps.cert-03.us-central2.cert.sabre-gcp.com/shop[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+
+[1A[2K[32m[INFO][0m [35m[21-05-2026 11:51:49][0m [36mshop-xml-response-parser.ts:90[0m : [30mShop response parsed ΓÇö OfferId: mpf3c7rkcq_0, pax matched: 1[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+
+[1A[2K[32m[INFO][0m [35m[21-05-2026 11:51:49][0m [36mprice-xml-payload-builder.ts:133[0m : [30mPrice XML payload built for offerId: mpf3c7rkcq_0[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+
+[1A[2K[32m[INFO][0m [35m[21-05-2026 11:51:49][0m [36mbase-xml-api-client.ts:27[0m : [30mSending XML request to: https://wolverine-offer-xml-adapter-wl-TC1-rmx-va.apps.cert-03.us-central2.cert.sabre-gcp.com/price[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+
+[1A[2K[xml-api] ΓÇ║ tests\xml-api-tests\createordertest.spec.ts:103:7 ΓÇ║ @allure.label.feature:XML-PaidOrder ΓÇ║ TC2_Verify_Add_One_Way_Multi_Pax_Create_Paid_Order
+[32m[INFO][0m [35m[21-05-2026 11:51:50][0m [36mbase-xml-api-client.ts:38[0m : [30mResponse status: 200 for https://wolverine-offer-xml-adapter-wl-TC1-rmx-va.apps.cert-03.us-central2.cert.sabre-gcp.com/price[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+
+[1A[2K[32m[INFO][0m [35m[21-05-2026 11:51:50][0m [36mprice-xml-response-parser.ts:72[0m : [30mPrice response ΓÇö passenger details map: [0m [38;5;141m{
+  "PAX1": {
+    "offerItemId": "mpf3c7rkcz-0",
+    "price": "260.01",
+    "passengerJourneyIds": "JOURNEY_1_1779344510543",
+    "paxTypeCode": "ADT"
+  },
+  "PAX2": {
+    "offerItemId": "mpf3c7rkcz-1",
+    "price": "260.01",
+    "passengerJourneyIds": "JOURNEY_1_1779344510543",
+    "paxTypeCode": "ADT"
+  },
+  "PAX3": {
+    "offerItemId": "mpf3c7rkcz-2",
+    "price": "260.01",
+    "passengerJourneyIds": "JOURNEY_1_1779344510543",
+    "paxTypeCode": "CNN"
+  }
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+
+[1A[2K[32m[INFO][0m [35m[21-05-2026 11:51:51][0m [36mprice-xml-response-parser.ts:28[0m : [30mPrice response ΓÇö OfferID: mpf3c7rkd0[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+
+[1A[2K[32m[INFO][0m [35m[21-05-2026 11:51:51][0m [36mcreate-order-xml-payload-builder.ts:101[0m : [30mCreate Order XML payload built ΓÇö offerId: mpf3c7rkd0, totalAmount: 780.03[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+
+[1A[2K[32m[INFO][0m [35m[21-05-2026 11:51:51][0m [36mbase-xml-api-client.ts:27[0m : [30mSending XML request to: https://wolverine-order-xml-adapter-wl-TC1-oms-va.apps.cert-03.us-central2.cert.sabre-gcp.com/v21_3/orders/create[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+
+[1A[2K[xml-api] ΓÇ║ tests\xml-api-tests\createordertest.spec.ts:31:7 ΓÇ║ @allure.label.feature:XML-PaidOrder ΓÇ║ TC1_Verify_Add_One_Way_Single_Pax_One_Way_Create_Paid_Order
+[32m[INFO][0m [35m[21-05-2026 11:51:51][0m [36mbase-xml-api-client.ts:38[0m : [30mResponse status: 200 for https://wolverine-offer-xml-adapter-wl-TC1-rmx-va.apps.cert-03.us-central2.cert.sabre-gcp.com/price[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+
+[1A[2K[32m[INFO][0m [35m[21-05-2026 11:51:51][0m [36mprice-xml-response-parser.ts:72[0m : [30mPrice response ΓÇö passenger details map: [0m [38;5;141m{
+  "PAX1": {
+    "offerItemId": "mpf3c7rkd2-0",
+    "price": "1050.02",
+    "passengerJourneyIds": "JOURNEY_1_1779344510994",
+    "paxTypeCode": "ADT"
+  }
+}[0m
+------------------------------------------------------------------------------------------------------------------------------------------
+
+[1A[2K[32m[INFO][0m [35m[21-05-2026 11:51:51][0m [36mprice-xml-response-parser.ts:28[0m : [30mPrice response ΓÇö OfferID: mpf3c7rkd3[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+
+[1A[2K[32m[INFO][0m [35m[21-05-2026 11:51:51][0m [36mcreate-order-xml-payload-builder.ts:101[0m : [30mCreate Order XML payload built ΓÇö offerId: mpf3c7rkd3, totalAmount: 1050.02[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+
+[1A[2K[32m[INFO][0m [35m[21-05-2026 11:51:51][0m [36mbase-xml-api-client.ts:27[0m : [30mSending XML request to: https://wolverine-order-xml-adapter-wl-TC1-oms-va.apps.cert-03.us-central2.cert.sabre-gcp.com/v21_3/orders/create[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+
+[1A[2K[xml-api] ΓÇ║ tests\xml-api-tests\createordertest.spec.ts:103:7 ΓÇ║ @allure.label.feature:XML-PaidOrder ΓÇ║ TC2_Verify_Add_One_Way_Multi_Pax_Create_Paid_Order
+[32m[INFO][0m [35m[21-05-2026 11:51:52][0m [36mbase-xml-api-client.ts:38[0m : [30mResponse status: 200 for https://wolverine-order-xml-adapter-wl-TC1-oms-va.apps.cert-03.us-central2.cert.sabre-gcp.com/v21_3/orders/create[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+
+[1A[2K[32m[INFO][0m [35m[21-05-2026 11:51:52][0m [36mcreate-order-xml-response-parser.ts:21[0m : [30mCreate Order response ΓÇö OrderId: null[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+
+[1A[2K[xml-api] ΓÇ║ tests\xml-api-tests\createordertest.spec.ts:31:7 ΓÇ║ @allure.label.feature:XML-PaidOrder ΓÇ║ TC1_Verify_Add_One_Way_Single_Pax_One_Way_Create_Paid_Order
+[32m[INFO][0m [35m[21-05-2026 11:51:53][0m [36mbase-xml-api-client.ts:38[0m : [30mResponse status: 200 for https://wolverine-order-xml-adapter-wl-TC1-oms-va.apps.cert-03.us-central2.cert.sabre-gcp.com/v21_3/orders/create[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+
+[1A[2K[32m[INFO][0m [35m[21-05-2026 11:51:53][0m [36mcreate-order-xml-response-parser.ts:21[0m : [30mCreate Order response ΓÇö OrderId: null[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+
+[1A[2K  1) [xml-api] ΓÇ║ tests\xml-api-tests\createordertest.spec.ts:103:7 ΓÇ║ @allure.label.feature:XML-PaidOrder ΓÇ║ TC2_Verify_Add_One_Way_Multi_Pax_Create_Paid_Order ΓÇ║ Verify Order Id is Not Null 
+
+    Error: Verify Order Id is Not Null
+
+    [2mexpect([22m[31mreceived[39m[2m).[22mnot[2m.[22mtoBeNull[2m()[22m
+
+    Received: [31mnull[39m
+
+       at ..\utilities\assertions.ts:261
+
+      259 |     async notToBeNull(actual: any, message?: string) {
+      260 |         await this.logStep('notToBeNull', null, actual, message, async () => {
+    > 261 |             expect(actual, message).not.toBeNull();
+          |                                         ^
+      262 |         });
+      263 |     }
+      264 |
+        at assertionFn (C:\Users\SG0704235\Documents\PlaywrightTypescript\utilities\assertions.ts:261:41)
+        at body (C:\Users\SG0704235\Documents\PlaywrightTypescript\utilities\assertions.ts:20:19)
+        at body (C:\Users\SG0704235\Documents\PlaywrightTypescript\node_modules\allure-js-commons\src\facade.ts:113:48)
+        at call (C:\Users\SG0704235\Documents\PlaywrightTypescript\node_modules\allure-playwright\src\runtime.ts:13:56)
+        at Generator._invoke (C:\Users\SG0704235\Documents\PlaywrightTypescript\node_modules\allure-playwright\src\runtime.ts:2:1)
+        at Generator.next (C:\Users\SG0704235\Documents\PlaywrightTypescript\node_modules\allure-playwright\src\runtime.ts:2:1)
+        at asyncGeneratorStep (C:\Users\SG0704235\Documents\PlaywrightTypescript\node_modules\allure-playwright\src\runtime.ts:2:1)
+        at _next (C:\Users\SG0704235\Documents\PlaywrightTypescript\node_modules\allure-playwright\src\runtime.ts:2:1)
+        at C:\Users\SG0704235\Documents\PlaywrightTypescript\node_modules\allure-playwright\src\runtime.ts:2:1
+        at C:\Users\SG0704235\Documents\PlaywrightTypescript\node_modules\allure-playwright\src\runtime.ts:2:1
+
+    attachment #2: Shop XML Request Payload (text/plain) ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+    <?xml version="1.0" encoding="UTF-8"?>
+    <IATA_AirShoppingRQ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.iata.org/IATA/2015/EASD/00/IATA_OffersAndOrdersMessage" xmlns:cns="http://www.iata.org/IATA/2015/EASD/00/IATA_OffersAndOrdersCommonTypes">
+         
+         <DistributionCha...
+    ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+
+    attachment #3: Shop XML Response Body (text/plain) ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+    <IATA_AirShoppingRS xmlns:sabre="http://webservices.sabre.com/extensions" xmlns:cns="http://www.iata.org/IATA/2015/EASD/00/IATA_OffersAndOrdersCommonTypes" xmlns:rtm="http://webservices.sabre.com/rtm/offer" xmlns:forfeited="http://webservices.sabre.com/forfeited" xmlns:repriced="http://webservices.s...
+    ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+
+    attachment #4: Price XML Request Payload (text/plain) ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+    <?xml version="1.0" encoding="UTF-8"?>
+    <IATA_OfferPriceRQ
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.iata.org/IATA/2015/EASD/00/IATA_OffersAndOrdersMessage"
+        xmlns:cns="http://www.iata.org/IATA/2015/EASD/00/IATA_OffersAndOrdersCommonTypes">
+        <Augmentat...
+    ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+
+    attachment #5: Price XML Response Body (text/plain) ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+    <IATA_OfferPriceRS xmlns:sabre="http://webservices.sabre.com/extensions" xmlns:cns="http://www.iata.org/IATA/2015/EASD/00/IATA_OffersAndOrdersCommonTypes" xmlns:rtm="http://webservices.sabre.com/rtm/offer" xmlns:forfeited="http://webservices.sabre.com/forfeited" xmlns:repriced="http://webservices.sa...
+    ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+
+    attachment #6: CreateOrder XML Request Payload (text/plain) ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+    <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <IATA_OrderCreateRQ
+        xmlns="http://www.iata.org/IATA/2015/EASD/00/IATA_OffersAndOrdersMessage"
+        xmlns:ns2="http://www.iata.org/IATA/2015/EASD/00/IATA_OffersAndOrdersCommonTypes"
+        xmlns:ns3="http://www.w3.org/2000/09/xmldsig#">
+       ...
+    ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+
+    attachment #7: CreateOrder XML Response Body (text/plain) ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+    <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <iatamsg:IATA_OrderViewRS xmlns:iatact="http://www.iata.org/IATA/2015/EASD/00/IATA_OffersAndOrdersCommonTypes" xmlns:iatamsg="http://www.iata.org/IATA/2015/EASD/00/IATA_OffersAndOrdersMessage" xmlns:xmldsig="http://www.w3.org/2000/09/xmldsig#"...
+    ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+
+    attachment #8: screenshot (image/png) ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+    test-results\createordertest--allure-la-2960e-Multi-Pax-Create-Paid-Order-xml-api\test-failed-1.png
+    ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+
+    Error Context: test-results\createordertest--allure-la-2960e-Multi-Pax-Create-Paid-Order-xml-api\error-context.md
+
+
+[1A[2K  2) [xml-api] ΓÇ║ tests\xml-api-tests\createordertest.spec.ts:31:7 ΓÇ║ @allure.label.feature:XML-PaidOrder ΓÇ║ TC1_Verify_Add_One_Way_Single_Pax_One_Way_Create_Paid_Order ΓÇ║ Verify Order Id is Not Null 
+
+    Error: Verify Order Id is Not Null
+
+    [2mexpect([22m[31mreceived[39m[2m).[22mnot[2m.[22mtoBeNull[2m()[22m
+
+    Received: [31mnull[39m
+
+       at ..\utilities\assertions.ts:261
+
+      259 |     async notToBeNull(actual: any, message?: string) {
+      260 |         await this.logStep('notToBeNull', null, actual, message, async () => {
+    > 261 |             expect(actual, message).not.toBeNull();
+          |                                         ^
+      262 |         });
+      263 |     }
+      264 |
+        at assertionFn (C:\Users\SG0704235\Documents\PlaywrightTypescript\utilities\assertions.ts:261:41)
+        at body (C:\Users\SG0704235\Documents\PlaywrightTypescript\utilities\assertions.ts:20:19)
+        at body (C:\Users\SG0704235\Documents\PlaywrightTypescript\node_modules\allure-js-commons\src\facade.ts:113:48)
+        at call (C:\Users\SG0704235\Documents\PlaywrightTypescript\node_modules\allure-playwright\src\runtime.ts:13:56)
+        at Generator._invoke (C:\Users\SG0704235\Documents\PlaywrightTypescript\node_modules\allure-playwright\src\runtime.ts:2:1)
+        at Generator.next (C:\Users\SG0704235\Documents\PlaywrightTypescript\node_modules\allure-playwright\src\runtime.ts:2:1)
+        at asyncGeneratorStep (C:\Users\SG0704235\Documents\PlaywrightTypescript\node_modules\allure-playwright\src\runtime.ts:2:1)
+        at _next (C:\Users\SG0704235\Documents\PlaywrightTypescript\node_modules\allure-playwright\src\runtime.ts:2:1)
+        at C:\Users\SG0704235\Documents\PlaywrightTypescript\node_modules\allure-playwright\src\runtime.ts:2:1
+        at C:\Users\SG0704235\Documents\PlaywrightTypescript\node_modules\allure-playwright\src\runtime.ts:2:1
+
+    attachment #2: Shop XML Request Payload (text/plain) ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+    <?xml version="1.0" encoding="UTF-8"?>
+    <IATA_AirShoppingRQ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.iata.org/IATA/2015/EASD/00/IATA_OffersAndOrdersMessage" xmlns:cns="http://www.iata.org/IATA/2015/EASD/00/IATA_OffersAndOrdersCommonTypes">
+         
+         <DistributionCha...
+    ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+
+    attachment #3: Shop XML Response Body (text/plain) ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+    <IATA_AirShoppingRS xmlns:sabre="http://webservices.sabre.com/extensions" xmlns:cns="http://www.iata.org/IATA/2015/EASD/00/IATA_OffersAndOrdersCommonTypes" xmlns:rtm="http://webservices.sabre.com/rtm/offer" xmlns:forfeited="http://webservices.sabre.com/forfeited" xmlns:repriced="http://webservices.s...
+    ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+
+    attachment #4: Price XML Request Payload (text/plain) ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+    <?xml version="1.0" encoding="UTF-8"?>
+    <IATA_OfferPriceRQ
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.iata.org/IATA/2015/EASD/00/IATA_OffersAndOrdersMessage"
+        xmlns:cns="http://www.iata.org/IATA/2015/EASD/00/IATA_OffersAndOrdersCommonTypes">
+        <Augmentat...
+    ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+
+    attachment #5: Price XML Response Body (text/plain) ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+    <IATA_OfferPriceRS xmlns:sabre="http://webservices.sabre.com/extensions" xmlns:cns="http://www.iata.org/IATA/2015/EASD/00/IATA_OffersAndOrdersCommonTypes" xmlns:rtm="http://webservices.sabre.com/rtm/offer" xmlns:forfeited="http://webservices.sabre.com/forfeited" xmlns:repriced="http://webservices.sa...
+    ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+
+    attachment #6: CreateOrder XML Request Payload (text/plain) ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+    <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <IATA_OrderCreateRQ
+        xmlns="http://www.iata.org/IATA/2015/EASD/00/IATA_OffersAndOrdersMessage"
+        xmlns:ns2="http://www.iata.org/IATA/2015/EASD/00/IATA_OffersAndOrdersCommonTypes"
+        xmlns:ns3="http://www.w3.org/2000/09/xmldsig#">
+       ...
+    ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+
+    attachment #7: CreateOrder XML Response Body (text/plain) ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+    <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <iatamsg:IATA_OrderViewRS xmlns:iatact="http://www.iata.org/IATA/2015/EASD/00/IATA_OffersAndOrdersCommonTypes" xmlns:iatamsg="http://www.iata.org/IATA/2015/EASD/00/IATA_OffersAndOrdersMessage" xmlns:xmldsig="http://www.w3.org/2000/09/xmldsig#"...
+    ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+
+    attachment #8: screenshot (image/png) ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+    test-results\createordertest--allure-la-e1ad6-x-One-Way-Create-Paid-Order-xml-api\test-failed-1.png
+    ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+
+    Error Context: test-results\createordertest--allure-la-e1ad6-x-One-Way-Create-Paid-Order-xml-api\error-context.md
+
+
+[1A[2K  2 failed
+    [xml-api] ΓÇ║ tests\xml-api-tests\createordertest.spec.ts:31:7 ΓÇ║ @allure.label.feature:XML-PaidOrder ΓÇ║ TC1_Verify_Add_One_Way_Single_Pax_One_Way_Create_Paid_Order 
+    [xml-api] ΓÇ║ tests\xml-api-tests\createordertest.spec.ts:103:7 ΓÇ║ @allure.label.feature:XML-PaidOrder ΓÇ║ TC2_Verify_Add_One_Way_Multi_Pax_Create_Paid_Order 
+[32m[INFO][0m [35m[21-05-2026 11:52:06][0m [36memail-reporter.ts:238[0m : [30mΓ£à Test summary email sent successfully.[0m 
+------------------------------------------------------------------------------------------------------------------------------------------
+
+To open last HTML report run:
+[36m[39m
+[36m  npx playwright show-report[39m
+[36m[39m

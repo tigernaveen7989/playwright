@@ -20,15 +20,28 @@ PlaywrightTypescript/
 │   ├── pageobjectmanager.ts                 # Central factory — instantiates all page objects
 │   └── *.ts                                 # One page object per UI screen
 ├── json-api/
-│   ├── builders/                            # Build request payloads using the Builder pattern
+│   ├── builders/                            # Build JSON request payloads using the Builder pattern
 │   │   └── *-payload-builder.ts
-│   ├── clients/                             # Send HTTP requests and attach Allure evidence
+│   ├── clients/                             # Send HTTP JSON requests and attach Allure evidence
 │   │   ├── base-api-client.ts               # Abstract base — handles HTTP + Allure + logging
 │   │   └── *-api-client.ts
-│   └── response-parsers/                   # Extract data from API responses
+│   └── response-parsers/                   # Extract data from JSON API responses
 │       └── *-response-parser.ts
+├── xml-api/
+│   ├── builders/                            # Build XML request payloads using the Builder pattern
+│   │   └── *-xml-payload-builder.ts
+│   ├── clients/                             # Send HTTP XML requests and attach Allure evidence
+│   │   ├── base-xml-api-client.ts           # Abstract base — handles XML HTTP + Allure + logging
+│   │   └── *-xml-api-client.ts
+│   ├── response-parsers/                   # Extract data from XML API responses
+│   │   └── *-xml-response-parser.ts
+│   └── payloads/                            # XML template files (.txt) with $PLACEHOLDER tokens
+│       ├── shop/
+│       ├── price/
+│       └── create-order/
 ├── api-base/
-│   └── activatejwttoken.ts                  # JWT token generation and config loader
+│   ├── activatejwttoken.ts                  # JWT token generation and config loader
+│   └── xml-template-processor.ts           # Reads .txt templates and replaces $PLACEHOLDER tokens
 ├── utilities/
 │   ├── blackpanther.ts                      # BASE CLASS — all reusable Playwright actions live here
 │   ├── assertions.ts                        # Custom assertion wrapper with Allure step logging
@@ -418,6 +431,7 @@ export class ShopResponseParser {
 - Group API calls with inline section comments: `// Shop`, `// Price`, `// Create Order`
 - Assertions use the `assert` fixture — never use raw `expect()` for business assertions
 - JWT token and config are loaded in `beforeEach` — never inline them in the test body
+- **Tests must never contain inline data extraction logic.** All data extraction must go in a named parser or builder method. For example, never write `Array.from(map.values())[0].get('key')` in a test — instead add a descriptively named method to the relevant parser class and call that.
 
 ```typescript
 import { test } from '../../utilities/fixtures';
@@ -482,7 +496,128 @@ test.describe('@allure.label.feature:SHOP', () => {
 
 ---
 
-## 10. Locator Strategy
+## 10. XML API Test Development — Three-Layer Architecture
+
+All XML API tests follow the same three-layer architecture as JSON API tests. The key difference is that builders produce **XML strings** from template files (`.txt`) via `XmlTemplateProcessor`, and clients send `Content-Type: application/xml`.
+
+### Layer 1 — Builders (`xml-api/builders/`)
+
+Construct XML request payloads by combining template files with runtime values.
+
+- File naming: `<name>-xml-payload-builder.ts` (e.g. `shop-xml-payload-builder.ts`)
+- Every builder file starts with a JSDoc block showing a usage example
+- All setter methods return `this` for fluent chaining
+- Sections separated with `// ─── SectionName ───` dividers
+- `.build()` returns a plain `string` (the complete XML), logs key parameters via `logger.info`
+- Internally uses `XmlTemplateProcessor.replacePlaceholders()` and `readFileSync` for templates
+- No HTTP logic, no response parsing — pure payload construction
+- Throws descriptive `Error` if required inputs are missing before building
+
+```typescript
+/**
+ * Builds the Shop XML request payload from the IATA AirShoppingRQ template.
+ *
+ * Usage:
+ *   new ShopXmlPayloadBuilder()
+ *     .withOrigin('SYD')
+ *     .withDestination('MEL')
+ *     .withDepartureDate('2025-12-20')
+ *     .withPassengers(paxTypeMap)
+ *     .withCurrency('AUD')
+ *     .build();
+ */
+```
+
+### Layer 2 — Clients (`xml-api/clients/`)
+
+Send HTTP POST requests with XML payloads and attach formatted XML to the Allure report.
+
+- File naming: `<name>-xml-api-client.ts` (e.g. `shop-xml-api-client.ts`)
+- All clients extend `BaseXmlApiClient` — never write HTTP logic directly
+- Each client exposes a single named method (`.shop()`, `.price()`, `.createOrder()`)
+- `BaseXmlApiClient` automatically sets `Content-Type: application/xml`, attaches formatted request/response XML to Allure, logs endpoint and status, and catches network errors
+- Allure step name format: `'Send <Operation> XML API Request and Log Request/Response'`
+- Attachment names: `'<Operation> XML Request Payload'` and `'<Operation> XML Response Body'`
+
+```typescript
+// Example client
+export class ShopXmlApiClient extends BaseXmlApiClient {
+  async shop(endpoint: string, headers: Record<string, string>, xmlPayload: string): Promise<APIResponse> {
+    return this.post(
+      'Send Shop XML API Request and Log Request/Response',
+      endpoint, headers, xmlPayload,
+      'Shop XML Request Payload', 'Shop XML Response Body'
+    );
+  }
+}
+```
+
+### Layer 3 — Response Parsers (`xml-api/response-parsers/`)
+
+Extract structured data from XML API responses using XPath.
+
+- File naming: `<name>-xml-response-parser.ts` (e.g. `shop-xml-response-parser.ts`)
+- No HTTP logic, no payload building — pure XML parsing with `xpath` + `xmldom`
+- Methods named after the data they return
+- **Must throw a descriptive `Error`** if a required field is missing
+- `ShopXmlResponseParser.getPaxType()` is the canonical source for building the paxTypeMap — call it once per test and pass the result to builders and parsers that need it
+
+### XML API Test Spec Rules (`tests/xml-api-tests/`)
+
+- File naming: `<feature>test.spec.ts` (e.g. `createordertest.spec.ts`)
+- Same rules as JSON API specs apply: `parallel` mode, declare all variables at top, assert HTTP 200 after every call, logger at entry/exit, `assert` fixture only
+- Group API calls with inline comments: `// Shop`, `// Price`, `// Create Order`
+- `paxTypeMap` is obtained from `ShopXmlResponseParser.getPaxType()` before building the shop payload — **do not inline it in the builder**; pass it explicitly
+- **Tests must never contain inline data extraction logic.** All data extraction must go in a named parser or builder method. For example, never write `Array.from(map.values())[0].get('key')` in a test — instead add a descriptively named method to the relevant parser class and call that.
+
+```typescript
+import { APIResponse } from '@playwright/test';
+import { ShopXmlPayloadBuilder } from '../../xml-api/builders/shop-xml-payload-builder';
+import { ShopXmlApiClient } from '../../xml-api/clients/shop-xml-api-client';
+import { ShopXmlResponseParser } from '../../xml-api/response-parsers/shop-xml-response-parser';
+// ...
+
+test('TC1_Verify_Create_Paid_Order', async ({ testData, assert }) => {
+  // Declare all variables at the top
+  const paxType = testData.get('paxType')?.toString()!;
+  const shopParser = new ShopXmlResponseParser();
+  const priceParser = new PriceXmlResponseParser();
+  const createOrderParser = new CreateOrderXmlResponseParser();
+  let paxTypeMap: Map<string, string>;
+  let shopResponse: APIResponse;
+  // ... other variables
+
+  logger.info('TC1_Verify_Create_Paid_Order — started');
+
+  // Shop
+  paxTypeMap = shopParser.getPaxType(paxType);
+  const shopPayload = new ShopXmlPayloadBuilder()
+    .withOrigin('SYD').withDestination('MEL')
+    .withDepartureDate('2025-12-20').withPassengers(paxTypeMap)
+    .withCurrency('AUD').withCountryCode('AU').build();
+
+  shopResponse = await new ShopXmlApiClient().shop(`${rmxNdcXml}/shop`, headers, shopPayload);
+  await assert.toBe(shopResponse.status(), 200, 'Verify shop response status is 200');
+
+  // ... Price, Create Order following the same pattern
+
+  logger.info('TC1_Verify_Create_Paid_Order — completed');
+});
+```
+
+### XML Template Placeholders — Convention
+
+| Template | Key placeholders |
+|---|---|
+| `shop.txt` | `$ARRIVAL` (origin), `$DESTINATION`, `$DATE`, `$CURRENCY`, `$AGENT_DUTY`, `$CITY_CODE`, `$COUNTRY_CODE`, `$SELLER_ORGID`, `$CARRIER_ORGID`, `#{@PAXLIST}` |
+| `price.txt` | `$OFFERID`, `$OWNER_CODE`, `$CURRENCY`, `$LOCATION_CODE`, `$COUNTRY_CODE`, `$SELLER_ORGID`, `$CARRIER_ORGID`, `#{@SELECTEDOFFERITEM}` |
+| `createorder.txt` | `$COUNTRY_CODE`, `$TOTAL_AMOUNT`, `#{@PAX}`, `#{@OFFER_ASSOCIATION}`, `#{@SELECTED_PRICED_OFFER}` |
+
+> **Note:** In `shop.txt`, the origin departure airport maps to `$ARRIVAL` (a confusing legacy name). Builder method `withOrigin()` maps to `$ARRIVAL` internally. Do not rename the template variable.
+
+---
+
+## 11. Locator Strategy
 
 Use this priority order when defining locators:
 
@@ -497,7 +632,7 @@ All locators are declared as `private readonly` class fields in the constructor 
 
 ---
 
-## 11. Allure Reporting
+## 12. Allure Reporting
 
 Wrap logical sub-steps inside methods using `step()` from `allure-js-commons` for detailed Allure reports:
 
@@ -515,7 +650,7 @@ async clickOnBookButton(): Promise<void> {
 
 ---
 
-## 12. Checklist Before Submitting Code
+## 13. Checklist Before Submitting Code
 
 ### UI Tests
 - [ ] Page object file name matches the UI screen name exactly
@@ -529,7 +664,7 @@ async clickOnBookButton(): Promise<void> {
 - [ ] Test data added to the correct JSON file under `testdata/`
 - [ ] No hardcoded values in spec files
 
-### API Tests
+### JSON API Tests
 - [ ] Follows three-layer architecture: builder → client → parser
 - [ ] Builder file has JSDoc header with usage example
 - [ ] Builder section dividers use `// ─── SectionName ───` format
@@ -542,7 +677,27 @@ async clickOnBookButton(): Promise<void> {
 - [ ] **HTTP status 200 asserted immediately after every API call**
 - [ ] `assert` fixture used for all assertions — no raw `expect()`
 - [ ] JWT token and config loaded in `beforeEach`, not inline in tests
+- [ ] **No inline data extraction logic in tests** — all extraction must be in named parser/builder methods
 - [ ] Test data added to the correct JSON file under `testdata/`
+- [ ] No hardcoded values in spec files
+
+### XML API Tests
+- [ ] Follows three-layer architecture: builder → client → parser
+- [ ] Builder file has JSDoc header with usage example and lists all template placeholder mappings
+- [ ] Builder section dividers use `// ─── SectionName ───` format
+- [ ] Builder `.build()` returns a `string` (XML), not an object
+- [ ] Builder throws descriptive `Error` if required fields are missing before building
+- [ ] Client extends `BaseXmlApiClient` — no raw HTTP logic in tests or clients
+- [ ] Parser uses `xpath` + `xmldom`; methods throw descriptive `Error` if required field is missing
+- [ ] `paxTypeMap` obtained from `ShopXmlResponseParser.getPaxType()` and reused across builders/parsers
+- [ ] `test.describe.configure({ mode: 'parallel' })` added at the top of every XML spec
+- [ ] Logger declared at the top of every XML spec file
+- [ ] Logger used at entry and exit of every test
+- [ ] All variables declared at the top of the test, not inline mid-test
+- [ ] **HTTP status 200 asserted immediately after every XML API call**
+- [ ] `assert` fixture used for all assertions — no raw `expect()`
+- [ ] JWT token and config loaded in `beforeEach`, not inline in tests
+- [ ] **No inline data extraction logic in tests** — all extraction must be in named parser/builder methods
 - [ ] No hardcoded values in spec files
 
 ### All Code

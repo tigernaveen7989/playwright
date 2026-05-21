@@ -1,117 +1,142 @@
-import { test, expect } from '../../utilities/fixtures';
-import { activateJwtToken } from "../../api-base/activatejwttoken";
-import { ShopApi } from '../../xml-api/request-and-get-response/shop-xml-request';
+import { test } from '../../utilities/fixtures';
 import { LoggerFactory } from '../../utilities/logger';
-import { PriceApi } from '../../xml-api/request-and-get-response/price-xml-request';
-import { attachment, step } from 'allure-js-commons';
-
-test.describe.configure({ mode: 'parallel' });
+import { activateJwtToken } from '../../api-base/activatejwttoken';
+import { ShopXmlPayloadBuilder } from '../../xml-api/builders/shop-xml-payload-builder';
+import { PriceXmlPayloadBuilder } from '../../xml-api/builders/price-xml-payload-builder';
+import { ShopXmlApiClient } from '../../xml-api/clients/shop-xml-api-client';
+import { PriceXmlApiClient } from '../../xml-api/clients/price-xml-api-client';
+import { ShopXmlResponseParser } from '../../xml-api/response-parsers/shop-xml-response-parser';
+import { PriceXmlResponseParser } from '../../xml-api/response-parsers/price-xml-response-parser';
+import { APIResponse } from '@playwright/test';
 
 const logger = LoggerFactory.getLogger(__filename);
 
-test.describe('Paid Order Tests'+
-  '@allure.label.feature:XML-Multipax-PaidOrder+Seats', () => {
-  let activateToken: activateJwtToken;
-  let shop: ShopApi;
-  let price: PriceApi;
-  let headers: any;
+test.describe.configure({ mode: 'parallel' });
+
+test.describe('@allure.label.feature:XML-Multipax-PaidOrder+Seats', () => {
+
+  let headers: Record<string, string>;
   let rmxNdcXml: string;
-  let replacements: Record<string, string>;
-  let paxTypeMap: Map<string, string>;
-  let paxIdOffersItemIdsMap: Map<string, string>;
-  let shopResponse: Response;
 
-
-  test.beforeEach(async ({ testData }, testInfo) => {
-    testInfo.annotations.push({ type: 'feature', description: 'XML-Multipax-PaidOrder' });
-    await step('Initialize APIs and load config', async () => {
-      activateToken = new activateJwtToken();
-      shop = new ShopApi();
-      price = new PriceApi();
-      headers = await activateToken.getJwtToken(testInfo);
-      ({ rmxNdcXml } = await activateToken.loadConfig());
-    });
-
-    await step('Prepare replacements and get paxTypeMap', async () => {
-      replacements = {
-        '$DESTINATION': 'MEL',
-        '$ARRIVAL': 'SYD',
-        '$DATE': '2025-10-16',
-        '$SELLER_ORGID': '',
-        '$CARRIER_ORGID': '',
-        '$AGENT_DUTY': 'NDC',
-        '$CITY_CODE': 'DNN',
-        '$COUNTRY_CODE': 'AU',
-        '$CURRENCY': 'AUD',
-        '$LOCATION_CODE': 'SYD',
-        '$OWNER_CODE': 'VA'
-      };
-
-      const paxType = testData.get('paxType')?.toString()!;
-      paxTypeMap = await shop.getPaxType(paxType);
-      logger.info('Pax Type Map: ' + JSON.stringify(Object.fromEntries(paxTypeMap), null, 2));
-    });
-
-    await step('Send Shop Request and parse response', async () => {
-      const shopResponse = await shop.sendRequestAndGetResponse(
-        rmxNdcXml + "/shop",
-        headers,
-        testInfo,
-        replacements,
-        paxTypeMap
-      );
-
-      expect(shopResponse.ok()).toBe(true);
-      logger.info('Shop request successful');
-
-      paxIdOffersItemIdsMap = await shop.getPaxOfferItemIdsMap(
-        paxTypeMap,
-        await shopResponse.text()
-      );
-
-      logger.info('Pax ID → Offer Item ID Map: ' +
-        JSON.stringify(Object.fromEntries(paxIdOffersItemIdsMap), null, 2));
-    });
+  test.beforeEach(async ({ testInfo }) => {
+    const token = new activateJwtToken();
+    headers = await token.getJwtToken(testInfo);
+    ({ rmxNdcXml } = await token.loadConfig());
   });
 
+  test('TC1_Verify_Add_One_Way_Single_Pax_One_Way_Create_Paid_Order', async ({ testData, assert }) => {
+    // ── Declare all variables at the top ─────────────────────────────────
+    const paxType = testData.get('paxType')?.toString()!;
+    const shopParser = new ShopXmlResponseParser();
+    const priceParser = new PriceXmlResponseParser();
+    let paxTypeMap: Map<string, string>;
+    let paxIdOffersItemIdsMap: Map<string, string>;
+    let passengerDetailsMap: Map<string, Map<string, string>>;
+    let offerId: string;
+    let shopResponse: APIResponse;
+    let priceResponse: APIResponse;
+    let shopResponseText: string;
+    let priceResponseText: string;
 
-  test(
-    'TC1_Verify_Add_One_Way_Single_Pax_One_Way_Create_Paid_Order',
-    async ({ }, testInfo) => {
-      const priceResponse = await price.sendRequestAndGetResponse(
-        rmxNdcXml + "/price",
-        headers,
-        testInfo,
-        replacements,
-        paxIdOffersItemIdsMap
-      );
+    logger.info('TC1_Verify_Add_One_Way_Single_Pax_One_Way_Create_Paid_Order — started');
 
-      expect(priceResponse.ok()).toBe(true);
-      logger.info('Price request successful');
+    // Shop
+    paxTypeMap = shopParser.getPaxType(paxType);
+    const shopPayload = new ShopXmlPayloadBuilder()
+      .withOrigin('SYD')
+      .withDestination('MEL')
+      .withDepartureDate('2025-10-16')
+      .withPassengers(paxTypeMap)
+      .withCurrency('AUD')
+      .withAgentDuty('NDC')
+      .withCityCode('DNN')
+      .withCountryCode('AU')
+      .withSellerOrgId('')
+      .withCarrierOrgId('')
+      .build();
 
-      const passengerDetailsMap = await price.getPassengerDetailsMap(await priceResponse.text(), paxTypeMap);
-      const offerId = await price.getOfferID(await priceResponse.text());
-      logger.info('offer id ', offerId);
-    }
-  );
+    shopResponse = await new ShopXmlApiClient().shop(`${rmxNdcXml}/shop`, headers, shopPayload);
+    await assert.toBe(shopResponse.status(), 200, 'Verify shop response status is 200');
+    shopResponseText = await shopResponse.text();
+    paxIdOffersItemIdsMap = shopParser.getPaxOfferItemIdsMap(paxTypeMap, shopResponseText);
 
-  test(
-    'TC2_Verify_Add_One_Way_Multi_Pax_Create_Paid_Order',
-    async ({ }, testInfo) => {
-      const priceResponse = await price.sendRequestAndGetResponse(
-        rmxNdcXml + "/price",
-        headers,
-        testInfo,
-        replacements,
-        paxIdOffersItemIdsMap
-      );
+    // Price
+    const pricePayload = new PriceXmlPayloadBuilder()
+      .withPaxIdOffersItemIdsMap(paxIdOffersItemIdsMap)
+      .withOwnerCode('VA')
+      .withCurrency('AUD')
+      .withLocationCode('SYD')
+      .withCountryCode('AU')
+      .withSellerOrgId('')
+      .withCarrierOrgId('')
+      .build();
 
-      expect(priceResponse.ok()).toBe(true);
-      logger.info('Price request successful');
+    priceResponse = await new PriceXmlApiClient().price(`${rmxNdcXml}/price`, headers, pricePayload);
+    await assert.toBe(priceResponse.status(), 200, 'Verify price response status is 200');
+    priceResponseText = await priceResponse.text();
+    passengerDetailsMap = priceParser.getPassengerDetailsMap(priceResponseText, paxTypeMap);
+    offerId = priceParser.getOfferID(priceResponseText);
+    await assert.notToBeNull(offerId, 'Verify offer ID is not null');
 
-      const passengerDetailsMap = await price.getPassengerDetailsMap(await priceResponse.text(), paxTypeMap);
-      const offerId = await price.getOfferID(await priceResponse.text());
-      logger.info('offer id ', offerId);
-    }
-  );
+    logger.info(`TC1_Verify_Add_One_Way_Single_Pax_One_Way_Create_Paid_Order — offerId: ${offerId}`);
+    logger.info('TC1_Verify_Add_One_Way_Single_Pax_One_Way_Create_Paid_Order — completed');
+  });
+
+  test('TC2_Verify_Add_One_Way_Multi_Pax_Create_Paid_Order', async ({ testData, assert }) => {
+    // ── Declare all variables at the top ─────────────────────────────────
+    const paxType = testData.get('paxType')?.toString()!;
+    const shopParser = new ShopXmlResponseParser();
+    const priceParser = new PriceXmlResponseParser();
+    let paxTypeMap: Map<string, string>;
+    let paxIdOffersItemIdsMap: Map<string, string>;
+    let passengerDetailsMap: Map<string, Map<string, string>>;
+    let offerId: string;
+    let shopResponse: APIResponse;
+    let priceResponse: APIResponse;
+    let shopResponseText: string;
+    let priceResponseText: string;
+
+    logger.info('TC2_Verify_Add_One_Way_Multi_Pax_Create_Paid_Order — started');
+
+    // Shop
+    paxTypeMap = shopParser.getPaxType(paxType);
+    const shopPayload = new ShopXmlPayloadBuilder()
+      .withOrigin('SYD')
+      .withDestination('MEL')
+      .withDepartureDate('2025-10-16')
+      .withPassengers(paxTypeMap)
+      .withCurrency('AUD')
+      .withAgentDuty('NDC')
+      .withCityCode('DNN')
+      .withCountryCode('AU')
+      .withSellerOrgId('')
+      .withCarrierOrgId('')
+      .build();
+
+    shopResponse = await new ShopXmlApiClient().shop(`${rmxNdcXml}/shop`, headers, shopPayload);
+    await assert.toBe(shopResponse.status(), 200, 'Verify shop response status is 200');
+    shopResponseText = await shopResponse.text();
+    paxIdOffersItemIdsMap = shopParser.getPaxOfferItemIdsMap(paxTypeMap, shopResponseText);
+
+    // Price
+    const pricePayload = new PriceXmlPayloadBuilder()
+      .withPaxIdOffersItemIdsMap(paxIdOffersItemIdsMap)
+      .withOwnerCode('VA')
+      .withCurrency('AUD')
+      .withLocationCode('SYD')
+      .withCountryCode('AU')
+      .withSellerOrgId('')
+      .withCarrierOrgId('')
+      .build();
+
+    priceResponse = await new PriceXmlApiClient().price(`${rmxNdcXml}/price`, headers, pricePayload);
+    await assert.toBe(priceResponse.status(), 200, 'Verify price response status is 200');
+    priceResponseText = await priceResponse.text();
+    passengerDetailsMap = priceParser.getPassengerDetailsMap(priceResponseText, paxTypeMap);
+    offerId = priceParser.getOfferID(priceResponseText);
+    await assert.notToBeNull(offerId, 'Verify offer ID is not null');
+
+    logger.info(`TC2_Verify_Add_One_Way_Multi_Pax_Create_Paid_Order — offerId: ${offerId}`);
+    logger.info('TC2_Verify_Add_One_Way_Multi_Pax_Create_Paid_Order — completed');
+  });
 });

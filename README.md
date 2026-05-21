@@ -36,6 +36,7 @@ sabremosaic-e2e-qa/
 
 ```bash
 npm install
+npx playwright install
 ```
 
 ### 2. **Set Environment Variables**
@@ -60,6 +61,14 @@ npx playwright test
 npx playwright test --project=call-center
 npx playwright test --project=xml-api
 npx playwright test --project=json-api
+```
+
+### 5. **Run a Specific Spec File**
+
+```bash
+npx playwright test tests/xml-api-tests/createordertest.spec.ts
+npx playwright test tests/json-api-tests/createordertest.spec.ts
+npx playwright test tests/call-center-tests/createordertest.spec.ts
 ```
 
 ---
