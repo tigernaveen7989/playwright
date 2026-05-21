@@ -113,7 +113,7 @@ class EmailReporter implements Reporter {
       const passRate = total > 0 ? ((passed / total) * 100).toFixed(2) + '%' : '0%';
       return `
         <tr>
-          <td>${project}</td>
+          <td>${project.toUpperCase()}</td>
           <td style="color:#2e7d32;"><b>${passed}</b></td>
           <td style="color:#c62828;"><b>${failed}</b></td>
           <td style="color:#ef6c00;"><b>${skipped}</b></td>
@@ -141,7 +141,7 @@ class EmailReporter implements Reporter {
         const total = stats.passed + stats.failed + stats.skipped + stats.broken;
         return `
           <tr>
-            <td>${feature}</td>
+            <td>${feature.toUpperCase()}</td>
             <td style="color:#2e7d32;"><b>${stats.passed}</b></td>
             <td style="color:#c62828;"><b>${stats.failed}</b></td>
             <td style="color:#ef6c00;"><b>${stats.skipped}</b></td>
@@ -151,7 +151,7 @@ class EmailReporter implements Reporter {
         `;
       }).join('');
       return `
-        <h3 class="section-header">🧩 ${project} Features</h3>
+        <h3 class="section-header">🧩 ${project.toUpperCase()} Features</h3>
         <table class="feature-table">
           <thead><tr><th>Feature</th><th>Passed</th><th>Failed</th><th>Skipped</th><th>Broken</th><th>Total</th></tr></thead>
           <tbody>${rows}</tbody>
@@ -221,10 +221,16 @@ class EmailReporter implements Reporter {
       tls: { rejectUnauthorized: false },
     });
 
+    const env = (process.env.ENVIRONMENT || '').toUpperCase();
+    const subenv = (process.env.SUBENVIRONMENT || '').toUpperCase();
+    const tenant = (process.env.TENANT || '').toUpperCase();
+    const projects = Object.keys(this.projectStats).join(' ').toUpperCase();
+    const subject = `🔍 ${env} ${subenv} ${tenant} ${projects} TEST REPORT`.trim().replace(/\s+/g, ' ');
+
     await transporter.sendMail({
       from: process.env.EMAIL_FROM,
       to: process.env.EMAIL_TO,
-      subject: '📧 Playwright Test Summary',
+      subject,
       html: htmlContent,
       attachments: [
         {
