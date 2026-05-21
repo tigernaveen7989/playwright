@@ -58,11 +58,6 @@ export class BaseTest {
     this.poManager = new POManager(this.page, testInfo);
     this.blackPanther = new BlackPanther(this.page);
 
-    const { ccUrl } = this.blackPanther.loadConfig();
-    testInfo.annotations.push({ type: 'ccUrl', description: ccUrl });
-
-    await this.page.goto(ccUrl);
-
     // Assign static properties
     BaseTest.loginPage = this.poManager.loginPage;
     BaseTest.homePage = this.poManager.homePage;

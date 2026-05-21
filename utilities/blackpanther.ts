@@ -113,8 +113,9 @@ export class BlackPanther {
     try {
       await this.page.waitForTimeout(1000);
       await expect(locator).toBeVisible({ timeout: 20000 });
+      const text = await locator.textContent({ timeout: 2000 }).catch(() => locator.toString());
       await locator.click();
-      await step(`Clicked on: ${await locator.textContent()}`, async () => {
+      await step(`Clicked on: ${text}`, async () => {
         logger.info(`Clicked on locator: ${locator.toString()}`);
       });
     } catch (error) {
