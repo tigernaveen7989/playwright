@@ -85,20 +85,19 @@ jobs:
             echo "$value"
           }
 
-          # Force Gmail SMTP due to company SMTP delivery issues.
-          SMTP_SERVER="smtp.gmail.com"
+          # Force SMTP2GO due to company SMTP and Gmail delivery issues.
+          SMTP_SERVER="mail.smtp2go.com"
           ENV_SMTP_PORT="$(read_env EMAIL_PORT)"
           EMAIL_FROM="$(read_env EMAIL_FROM)"
           DEFAULT_TO="$(read_env EMAIL_TO)"
 
-          # Use 465 for SSL; default to 587 for TLS/STARTTLS.
-          if [ "$ENV_SMTP_PORT" = "465" ]; then
-            SMTP_PORT="465"
-            SMTP_SECURE="true"
+          # SMTP2GO supports submission on 2525 or 587 using STARTTLS.
+          if [ "$ENV_SMTP_PORT" = "2525" ]; then
+            SMTP_PORT="2525"
           else
             SMTP_PORT="587"
-            SMTP_SECURE="false"
           fi
+          SMTP_SECURE="false"
 
           echo "smtp_server=$SMTP_SERVER" >> "$GITHUB_OUTPUT"
           echo "smtp_port=$SMTP_PORT" >> "$GITHUB_OUTPUT"
