@@ -22,6 +22,14 @@ jobs:
     name: AI Code Review
     runs-on: ubuntu-latest
     timeout-minutes: 30
+    env:
+      SMTP_SERVER: ${{ secrets.SMTP_SERVER }}
+      SMTP_PORT: ${{ secrets.SMTP_PORT }}
+      SMTP_SECURE: ${{ secrets.SMTP_SECURE }}
+      SMTP_USERNAME: ${{ secrets.SMTP_USERNAME }}
+      SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
+      REVIEW_EMAIL_FROM: ${{ secrets.REVIEW_EMAIL_FROM }}
+      PR_AUTHOR_EMAIL_MAP: ${{ vars.PR_AUTHOR_EMAIL_MAP }}
 
     if: github.event_name == 'pull_request'
 
@@ -67,6 +75,103 @@ jobs:
       - name: Run Code Review Agent
         run: |
           node .github/workflows/code-reviewer-agent.js
+
+      - name: Resolve PR Author Email
+        id: pr-author-email
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const user = context.payload.pull_request?.user || {};
+            const login = user.login || '';
+            const userId = user.id || '';
+            const directEmail = user.email || '';
+            const emailMapRaw = process.env.PR_AUTHOR_EMAIL_MAP || '{}';
+            let commitAuthorEmail = '';
+
+            let emailMap = {};
+            try {
+              emailMap = JSON.parse(emailMapRaw);
+            } catch (error) {
+              console.log(`PR_AUTHOR_EMAIL_MAP is not valid JSON: ${error.message}`);
+            }
+
+            try {
+              const commits = await github.paginate(
+                github.rest.pulls.listCommits,
+                {
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  pull_number: context.payload.pull_request.number,
+                  per_page: 100
+                }
+              );
+
+              const prAuthorCommit = commits.find((commit) => commit.author?.login === login);
+              const candidateEmail = prAuthorCommit?.commit?.author?.email || '';
+              if (candidateEmail && !candidateEmail.endsWith('@users.noreply.github.com')) {
+                commitAuthorEmail = candidateEmail;
+              }
+            } catch (error) {
+              console.log(`Unable to read PR commits for email resolution: ${error.message}`);
+            }
+
+            const mappedEmail = login ? (emailMap[login] || emailMap[login.toLowerCase()] || '') : '';
+            const fallbackNoReply = login && userId ? `${userId}+${login}@users.noreply.github.com` : '';
+            const recipient = directEmail || commitAuthorEmail || mappedEmail || fallbackNoReply;
+
+            core.setOutput('recipient', recipient);
+            core.setOutput('login', login);
+
+            console.log(`PR author login: ${login}`);
+            console.log(`Recipient resolved: ${recipient || 'none'}`);
+
+      - name: Prepare Review Report Email Body
+        id: review-email-body
+        if: always()
+        run: |
+          if [ -f review-report.md ]; then
+            cp review-report.md review-report-email.md
+          else
+            echo "## AI Code Review Report" > review-report-email.md
+            echo "" >> review-report-email.md
+            echo "review-report.md not found. Please check workflow logs." >> review-report-email.md
+          fi
+
+      - name: Send Review Report Email
+        if: always() && steps.pr-author-email.outputs.recipient != '' && env.SMTP_SERVER != '' && env.SMTP_USERNAME != '' && env.SMTP_PASSWORD != '' && env.REVIEW_EMAIL_FROM != ''
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: ${{ env.SMTP_SERVER }}
+          server_port: ${{ env.SMTP_PORT != '' && env.SMTP_PORT || '587' }}
+          secure: ${{ env.SMTP_SECURE != '' && env.SMTP_SECURE || 'false' }}
+          username: ${{ env.SMTP_USERNAME }}
+          password: ${{ env.SMTP_PASSWORD }}
+          subject: "AI Code Review Report - PR #${{ github.event.pull_request.number }}"
+          to: ${{ steps.pr-author-email.outputs.recipient }}
+          from: ${{ env.REVIEW_EMAIL_FROM }}
+          body: file://review-report-email.md
+          convert_markdown: true
+          attachments: review-report.md
+
+      - name: Email Delivery Status
+        if: always()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const recipient = '${{ steps.pr-author-email.outputs.recipient }}';
+            const hasSmtp = Boolean('${{ env.SMTP_SERVER }}' && '${{ env.SMTP_USERNAME }}' && '${{ env.SMTP_PASSWORD }}' && '${{ env.REVIEW_EMAIL_FROM }}');
+
+            if (!recipient) {
+              console.log('Email skipped: PR author email could not be resolved.');
+              return;
+            }
+
+            if (!hasSmtp) {
+              console.log('Email skipped: SMTP secrets are not configured.');
+              return;
+            }
+
+            console.log(`Email step executed for recipient: ${recipient}`);
 
       - name: Comment Review Findings
         if: always()

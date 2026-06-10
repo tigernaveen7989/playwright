@@ -191,6 +191,61 @@ function analyzeChangedFiles(changedFiles) {
   });
 }
 
+function escapeTableCell(value) {
+  return String(value ?? '')
+    .replace(/\|/g, '\\|')
+    .replace(/\r?\n/g, ' ')
+    .trim();
+}
+
+function toSeverityBadge(severity) {
+  if (severity === 'high') {
+    return '🔴 HIGH';
+  }
+  if (severity === 'medium') {
+    return '🟠 MEDIUM';
+  }
+  return '🟡 LOW';
+}
+
+function getSuggestedFix(finding) {
+  const message = finding.message || '';
+
+  if (message.includes('Focused tests found')) {
+    return 'Remove .only so the full test suite executes in CI.';
+  }
+
+  if (message.includes('Hard waits found')) {
+    return 'Replace waitForTimeout with explicit waits/assertions based on UI or API state.';
+  }
+
+  if (message.includes('console.log found')) {
+    return 'Use LoggerFactory with logger.info/logger.warn instead of console.log.';
+  }
+
+  if (message.includes('Possible secret pattern detected')) {
+    return 'Remove or rotate exposed secret and load credentials from secure config/secrets manager.';
+  }
+
+  if (message.includes('Raw Playwright page usage in page object')) {
+    return 'In page objects, use BlackPanther interaction methods (click/fill/select...) for actions and avoid direct page.* actions unless explicitly approved by framework rule.';
+  }
+
+  if (message.includes('Skipped test detected')) {
+    return 'Avoid inline test.skip for tenant flow; use test data skipTest/skipReason policy.';
+  }
+
+  if (message.includes('Missing Allure feature label')) {
+    return 'Add @allure.label.feature with the required project prefix for this spec folder.';
+  }
+
+  if (message.includes('Allure feature label must start with')) {
+    return 'Rename feature label value to start with the expected prefix for this test type.';
+  }
+
+  return 'Align implementation with AGENT_INSTRUCTIONS.md rule for this finding.';
+}
+
 function renderReport(changedFiles) {
   const totalFiles = changedFiles.length;
   const tsFiles = changedFiles.filter((file) => file.endsWith('.ts'));
@@ -207,40 +262,48 @@ function renderReport(changedFiles) {
   lines.push('Automated PR checks completed with rule-based findings from changed files.');
   lines.push('');
   lines.push('### Review Context');
-  lines.push(`- Changed files detected: ${totalFiles}`);
-  lines.push(`- TypeScript files: ${tsFiles.length}`);
-  lines.push(`- Spec files: ${specFiles.length}`);
-  lines.push(`- Page object files: ${pageObjectFiles.length}`);
-  lines.push(`- Findings: ${findings.length} (high: ${highCount}, medium: ${mediumCount}, low: ${lowCount})`);
-  lines.push(`- Agent definition loaded: ${hasFile('.github/agents/code-reviewer.agent.md') ? 'yes' : 'no'}`);
-  lines.push(`- Framework instructions loaded: ${hasFile('architecture/AGENT_INSTRUCTIONS.md') ? 'yes' : 'no'}`);
+  lines.push('| Metric | Value |');
+  lines.push('|---|---|');
+  lines.push(`| Changed files detected | ${totalFiles} |`);
+  lines.push(`| TypeScript files | ${tsFiles.length} |`);
+  lines.push(`| Spec files | ${specFiles.length} |`);
+  lines.push(`| Page object files | ${pageObjectFiles.length} |`);
+  lines.push(`| Findings | ${findings.length} (🔴 ${highCount} / 🟠 ${mediumCount} / 🟡 ${lowCount}) |`);
+  lines.push(`| Agent definition loaded | ${hasFile('.github/agents/code-reviewer.agent.md') ? 'yes' : 'no'} |`);
+  lines.push(`| Framework instructions loaded | ${hasFile('architecture/AGENT_INSTRUCTIONS.md') ? 'yes' : 'no'} |`);
   lines.push('');
 
+  lines.push('### Findings Table');
+  lines.push('| Sr No | Filename | Severity | Rule Violation | Suggested Fix |');
+  lines.push('|---:|---|---|---|---|');
   if (totalFiles === 0) {
-    lines.push('### Findings');
-    lines.push('- No changed files found for this PR diff.');
+    lines.push('| 1 | N/A | ℹ️ INFO | No changed files found for this PR diff. | Update changed-files.txt generation in workflow. |');
   } else if (findings.length === 0) {
-    lines.push('### Findings');
-    lines.push('- No rule violations detected in reviewable changed files.');
+    lines.push('| 1 | N/A | 🟢 PASS | No rule violations detected in reviewable changed files. | No action required. |');
   } else {
-    lines.push('### Findings');
-    findings.slice(0, 200).forEach((finding) => {
-      const icon = finding.severity === 'high' ? 'HIGH' : finding.severity === 'medium' ? 'MEDIUM' : 'LOW';
-      lines.push(`- [${icon}] ${finding.file}:${finding.line} - ${finding.message}`);
-      if (finding.snippet) {
-        lines.push(`  - Snippet: ${finding.snippet}`);
-      }
+    findings.slice(0, 200).forEach((finding, index) => {
+      const filenameWithLine = `${finding.file}:${finding.line}`;
+      const violation = finding.message;
+      const suggestedFix = getSuggestedFix(finding);
+      lines.push(`| ${index + 1} | ${escapeTableCell(filenameWithLine)} | ${toSeverityBadge(finding.severity)} | ${escapeTableCell(violation)} | ${escapeTableCell(suggestedFix)} |`);
     });
     if (findings.length > 200) {
-      lines.push(`- ...and ${findings.length - 200} more findings`);
+      lines.push(`| 201+ | Multiple files | ℹ️ INFO | Additional findings not shown. | See full logs for remaining ${findings.length - 200} findings. |`);
     }
-    lines.push('');
-    lines.push('### Changed Files');
-    changedFiles.slice(0, 200).forEach((file) => {
-      lines.push(`- ${file}`);
+  }
+
+  lines.push('');
+  lines.push('### Changed Files Table');
+  lines.push('| Sr No | Filename |');
+  lines.push('|---:|---|');
+  if (changedFiles.length === 0) {
+    lines.push('| 1 | No changed files found |');
+  } else {
+    changedFiles.slice(0, 200).forEach((file, index) => {
+      lines.push(`| ${index + 1} | ${escapeTableCell(file)} |`);
     });
     if (changedFiles.length > 200) {
-      lines.push(`- ...and ${changedFiles.length - 200} more files`);
+      lines.push(`| 201+ | ...and ${changedFiles.length - 200} more files |`);
     }
   }
 
