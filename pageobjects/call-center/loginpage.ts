@@ -33,7 +33,7 @@ export default class loginpage extends BlackPanther {
       await step(`Password: ${password}`, async () => { });
     });
 
-    await this.page.goto(ccUrl, { timeout: 60000 });
+    await this.navigateTo(ccUrl);
     await this.click(this.loginButton);
     await this.fill(this.usernameInput, username);
     await this.click(this.nextButton);
