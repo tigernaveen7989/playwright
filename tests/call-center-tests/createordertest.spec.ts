@@ -1,4 +1,4 @@
-import { test } from '../../utilities/fixtures';
+import { test, Page, expect } from '../../utilities/fixtures';
 import { LoggerFactory } from '../../utilities/logger';
 import { loginPage, homePage, passengerDetailsPage, addPaymentToNewReservationPage, payByCreditCardPage, bookingConfirmationPage } from '../basetest';
 
@@ -18,7 +18,6 @@ test.describe('@PaidOrder @WLV_CC_REGRESSION @allure.label.feature:Call-Center-P
     const tripType = testData.get('tripType')?.toString()!;
     const origin = testData.get('origin')?.toString()!;
     const destination = testData.get('destination')?.toString()!;
-    const departure = testData.get('departure')?.toString()!;
     const paxType = testData.get('paxType')?.toString()!;
     const todayPlusDate = testData.get('todayPlusDate')?.toString()!;
     const cabinType = testData.get('cabinType')?.toString()!;
@@ -176,7 +175,7 @@ test.describe('@PaidOrder @WLV_CC_REGRESSION @allure.label.feature:Call-Center-P
     await homePage.clickOnAgreeButton();
 
     logger.info('Entering passenger details and selecting unpaid flow');
-    const passengerDetails = await passengerDetailsPage.enterAndGetPassengerDetails(paxType);
+    await passengerDetailsPage.enterAndGetPassengerDetails(paxType);
     await passengerDetailsPage.clickOnSaveButton();
     await passengerDetailsPage.clickOnNoButton();
 

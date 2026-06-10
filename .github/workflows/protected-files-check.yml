@@ -6,7 +6,7 @@ on:
 
 jobs:
   check-protected-files:
-    runs-on: copilot-review-s
+    runs-on: ubuntu-latest
     steps:
       - name: Check protected file modifications
         uses: actions/github-script@v7

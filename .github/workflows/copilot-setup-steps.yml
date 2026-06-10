@@ -8,7 +8,7 @@ on:
 jobs:
   # The job MUST be called `copilot-setup-steps` or it will not be picked up by Copilot.
   copilot-setup-steps:
-    runs-on: copilot-review-s
+    runs-on: ubuntu-latest
     permissions:
       contents: read
     steps:
