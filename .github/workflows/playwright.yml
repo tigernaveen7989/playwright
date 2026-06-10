@@ -85,14 +85,18 @@ jobs:
             echo "$value"
           }
 
-          SMTP_SERVER="$(read_env EMAIL_HOST)"
-          SMTP_PORT="$(read_env EMAIL_PORT)"
+          # Force Gmail SMTP due to company SMTP delivery issues.
+          SMTP_SERVER="smtp.gmail.com"
+          ENV_SMTP_PORT="$(read_env EMAIL_PORT)"
           EMAIL_FROM="$(read_env EMAIL_FROM)"
           DEFAULT_TO="$(read_env EMAIL_TO)"
 
-          if [ "$SMTP_PORT" = "465" ]; then
+          # Use 465 for SSL; default to 587 for TLS/STARTTLS.
+          if [ "$ENV_SMTP_PORT" = "465" ]; then
+            SMTP_PORT="465"
             SMTP_SECURE="true"
           else
+            SMTP_PORT="587"
             SMTP_SECURE="false"
           fi
 
