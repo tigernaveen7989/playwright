@@ -127,7 +127,7 @@ test.describe('@PaidSeats @WLV_CC_REGRESSION @allure.label.feature:CALLCENTER-Pa
     * TC1: Assign free seats after paid order creation and verify seats are assigned for all passengers.
     * Expected: Seat assignment saves successfully without additional seat payment.
    */
-  test('TC1_Verify_Free_Seats_After_Creating_Paid_Order', async ({ testData, assert }) => {
+  test('TC1_Verify_Free_Seats_After_Creating_Paid_Order @accountcode', async ({ testData, assert }) => {
 
     const seatType = testData.get('seatType') as Record<string, string>;
 
