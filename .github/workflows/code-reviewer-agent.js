@@ -319,7 +319,7 @@ function main() {
   const changedFiles = readChangedFiles();
   const report = renderReport(changedFiles);
   fs.writeFileSync(REVIEW_REPORT_PATH, report, 'utf8');
-  console.log(`Review report generated at ${REVIEW_REPORT_PATH}`);
+  process.stdout.write(`Review report generated at ${REVIEW_REPORT_PATH}\n`);
 }
 
 main();
