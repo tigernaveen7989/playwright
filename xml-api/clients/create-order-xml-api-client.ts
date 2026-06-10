@@ -8,6 +8,7 @@ export class CreateOrderXmlApiClient extends BaseXmlApiClient {
     xmlPayload: string
   ): Promise<APIResponse> {
     return this.post(
+      'CreateOrder',
       'Send CreateOrder XML API Request and Log Request/Response',
       endpoint,
       headers,

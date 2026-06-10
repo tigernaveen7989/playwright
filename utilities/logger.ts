@@ -83,10 +83,10 @@ export class LoggerFactory {
             const callerLine = stack.find(line =>
               line.includes('at ') &&
               !line.includes('LoggerFactory') &&
+              !line.includes('logger.ts') &&
               !line.includes('log4js') &&
               !line.includes('node:') &&
               !line.includes('internal/') &&
-              !line.includes('Proxy.') &&
               !line.includes('Object.<anonymous>') &&
               line.match(/(.*):(\d+):(\d+)\)?$/)
             );

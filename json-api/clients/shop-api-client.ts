@@ -8,6 +8,7 @@ export class ShopApiClient extends BaseApiClient {
     payload: object
   ): Promise<APIResponse> {
     return this.post(
+      'Shop',
       'Send Shop API Request and Log Request/Response',
       endpoint,
       headers,

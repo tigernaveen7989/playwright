@@ -1,0 +1,9 @@
+<cns:OriginDestCriteria>
+   <cns:DestArrivalCriteria>
+      <cns:IATA_LocationCode>$DESTINATION</cns:IATA_LocationCode>
+   </cns:DestArrivalCriteria>
+   <cns:OriginDepCriteria>
+      <cns:Date>$DATE</cns:Date>
+      <cns:IATA_LocationCode>$ORIGIN</cns:IATA_LocationCode>
+   </cns:OriginDepCriteria>
+</cns:OriginDestCriteria>

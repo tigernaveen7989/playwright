@@ -1,6 +1,6 @@
-# XML API Test Case Development Guide
+# <span style="color:#6366F1">📄 XML API Test Case Development Guide</span>
 
-## Architecture Overview
+## <span style="color:#3B82F6">🏗️ Architecture Overview</span>
 
 All XML API tests follow a strict three-layer architecture. Each layer has a single responsibility, making tests easy to read, maintain, and extend.
 
@@ -42,7 +42,26 @@ Tests live in `tests/xml-api-tests/`. The support infrastructure is in `api-base
 
 ---
 
-## The Data Flow
+## <span style="color:#10B981">✏️ Critical Rule: One API = One Class Per Layer</span>
+
+**Every API method (Shop, Price, CreateOrder, etc.) must have exactly ONE builder class, ONE client class, and ONE response parser class. Never create multiple builder/client/parser classes for the same API.**
+
+```
+✅ Shop API (example):
+   xml-api/builders/shop-xml-payload-builder.ts           → ONE: ShopXmlPayloadBuilder
+   xml-api/clients/shop-xml-api-client.ts                 → ONE: ShopXmlApiClient
+   xml-api/response-parsers/shop-xml-response-parser.ts   → ONE: ShopXmlResponseParser
+
+❌ Do NOT do this:
+   xml-api/builders/shop-xml-payload-builder.ts          ← OK
+   xml-api/builders/shop-xml-payload-builder-v2.ts       ← WRONG (multiple classes for same API)
+```
+
+**If variations in behavior are needed** (e.g., different optional fields, alternate flows), implement them **within the single class** using parameters and conditional logic — never split into separate classes.
+
+---
+
+## <span style="color:#06B6D4">🔄 The Data Flow</span>
 
 Every XML API test follows the same sequential chain — each step's output feeds the next:
 
@@ -85,9 +104,9 @@ CreateOrderXmlResponseParser.getOrderId()     → orderId
 
 ---
 
-## Layer Responsibilities
+## <span style="color:#06B6D4">📦 Layer Responsibilities</span>
 
-### Layer 1 — Builders (`xml-api/builders/`)
+### 🏗️ Layer 1 — Builders (`xml-api/builders/`)
 
 **Purpose:** Construct XML request payloads by filling `$PLACEHOLDER` tokens in `.txt` template files using `XmlTemplateProcessor`.
 
@@ -163,7 +182,7 @@ export class ShopXmlPayloadBuilder {
 
 ---
 
-### Layer 2 — Clients (`xml-api/clients/`)
+### 📡 Layer 2 — Clients (`xml-api/clients/`)
 
 **Purpose:** Send HTTP POST requests with XML payloads and attach formatted XML to the Allure report.
 
@@ -214,7 +233,7 @@ shopResponse = await new ShopXmlApiClient().shop(`${rmxNdcXml}/shop`, headers, s
 
 ---
 
-### Layer 3 — Response Parsers (`xml-api/response-parsers/`)
+### 🔍 Layer 3 — Response Parsers (`xml-api/response-parsers/`)
 
 **Purpose:** Extract structured data from XML API responses using XPath + `xmldom`.
 
@@ -224,7 +243,7 @@ shopResponse = await new ShopXmlApiClient().shop(`${rmxNdcXml}/shop`, headers, s
 - **Must throw a descriptive `Error`** if a required field is missing
 - **No inline data extraction in tests** — every extraction must be a named parser method
 
-#### `ShopXmlResponseParser`
+#### 🛍️ `ShopXmlResponseParser`
 
 ```typescript
 // getPaxType — MUST be called first; result is reused by builders and parsers downstream
@@ -237,7 +256,7 @@ paxIdOffersItemIdsMap = shopParser.getPaxOfferItemIdsMap(paxTypeMap, shopRespons
 // Returns: Map { 'OfferId' → 'abc123', 'PAX1' → 'abc123-0', 'PAX2' → 'abc123-1' }
 ```
 
-#### `PriceXmlResponseParser`
+#### 💰 `PriceXmlResponseParser`
 
 ```typescript
 const priceParser = new PriceXmlResponseParser();
@@ -255,7 +274,7 @@ offerId = priceParser.getOfferId(passengerDetailsMap);
 
 > **⚠️ Critical:** Always call `getOfferId(passengerDetailsMap)` — NOT `getOfferID(xmlString)`. The former is always consistent with the OfferItemIDs stored in the map. The XML response may contain multiple priced offers; using `getOfferID(xmlString)` can return a different offer's ID, causing a mismatch.
 
-#### `CreateOrderXmlResponseParser`
+#### 📦 `CreateOrderXmlResponseParser`
 
 ```typescript
 const createOrderParser = new CreateOrderXmlResponseParser();
@@ -269,9 +288,9 @@ warningMessage = createOrderParser.getWarningMessage(createOrderResponseText);
 
 ---
 
-## Writing a New XML API Test — Step by Step
+## <span style="color:#F59E0B">✏️ Writing a New XML API Test — Step by Step</span>
 
-### Step 1 — Create the payload builder
+### 🔧 Step 1 — Create the payload builder
 
 Create `xml-api/builders/my-xml-payload-builder.ts`:
 
@@ -339,7 +358,7 @@ export class MyXmlPayloadBuilder {
 }
 ```
 
-### Step 2 — Create the API client
+### 📡 Step 2 — Create the API client
 
 Create `xml-api/clients/my-xml-api-client.ts`:
 
@@ -365,7 +384,7 @@ export class MyXmlApiClient extends BaseXmlApiClient {
 }
 ```
 
-### Step 3 — Create the response parser
+### 🔍 Step 3 — Create the response parser
 
 Create `xml-api/response-parsers/my-xml-response-parser.ts`:
 
@@ -392,7 +411,7 @@ export class MyXmlResponseParser {
 }
 ```
 
-### Step 4 — Write the test
+### 📝 Step 4 — Write the test
 
 Create `tests/xml-api-tests/mytest.spec.ts`:
 
@@ -424,7 +443,7 @@ test.describe('@allure.label.feature:XML-MY-FEATURE', () => {
   });
 
   test('TC1_Verify_My_Operation', async ({ testData, assert }) => {
-    // ── Declare all variables at the top ─────────────────────────────────
+    // ── Declare all variables at the top (see AGENT_INSTRUCTIONS.md section 5.5) ──
     const paxType = testData.get('paxType')?.toString()!;
     const shopParser = new ShopXmlResponseParser();
     const myParser = new MyXmlResponseParser();
@@ -478,7 +497,7 @@ test.describe('@allure.label.feature:XML-MY-FEATURE', () => {
 
 ---
 
-## Full Working Example — Shop → Price → Create Order
+## <span style="color:#8B5CF6">💡 Full Working Example — Shop → Price → Create Order</span>
 
 This is the exact pattern used in `tests/xml-api-tests/createordertest.spec.ts`:
 
@@ -514,7 +533,7 @@ test.describe('@allure.label.feature:XML-PaidOrder', () => {
   });
 
   test('TC1_Verify_Create_Paid_Order', async ({ testData, assert }) => {
-    // ── Declare all variables at the top ─────────────────────────────────
+    // ── Declare all variables at the top (see AGENT_INSTRUCTIONS.md section 5.5) ──
     const paxType = testData.get('paxType')?.toString()!;
     const shopParser = new ShopXmlResponseParser();
     const priceParser = new PriceXmlResponseParser();
@@ -594,9 +613,9 @@ test.describe('@allure.label.feature:XML-PaidOrder', () => {
 
 ---
 
-## Template Placeholder Reference
+## <span style="color:#D97706">📌 Template Placeholder Reference</span>
 
-### `shop.txt`
+### 🛍️ `shop.txt`
 
 | Placeholder | Builder method | Notes |
 |---|---|---|
@@ -611,7 +630,7 @@ test.describe('@allure.label.feature:XML-PaidOrder', () => {
 | `$CARRIER_ORGID` | `withCarrierOrgId(id)` | Can be empty string |
 | `#{@PAXLIST}` | auto-generated by `.build()` | Expands from `paxlist.txt` per PAX |
 
-### `price.txt`
+### 💰 `price.txt`
 
 | Placeholder | Builder method | Notes |
 |---|---|---|
@@ -624,7 +643,7 @@ test.describe('@allure.label.feature:XML-PaidOrder', () => {
 | `$CARRIER_ORGID` | `withCarrierOrgId(id)` | Can be empty string |
 | `#{@SELECTEDOFFERITEM}` | auto-generated by `.build()` | Expands from `selectedofferitem.txt` per PAX |
 
-### `createorder.txt`
+### 📋 `createorder.txt`
 
 | Placeholder | Builder method | Notes |
 |---|---|---|
@@ -636,7 +655,7 @@ test.describe('@allure.label.feature:XML-PaidOrder', () => {
 
 ---
 
-## Key Conventions
+## <span style="color:#2563EB">📌 Key Conventions</span>
 
 | Convention | Rule |
 |---|---|
@@ -650,26 +669,41 @@ test.describe('@allure.label.feature:XML-PaidOrder', () => {
 | Parser naming | `<name>-xml-response-parser.ts`; methods named after the data returned |
 | Parser XPath | Always use `local-name()` to handle namespace prefixes: `//*[local-name()='ElementName']` |
 | Parser error handling | Throw descriptive `Error` if required field is missing — never return null for required data |
+| Locator declarations (when generating page objects/helpers) | All stable locators must be declared as `private readonly` in constructor; method-local locators are allowed only for dynamic parameterized selectors or web-table/grid row-cell targeting |
 | `paxTypeMap` | Obtained **once** from `ShopXmlResponseParser.getPaxType()` and passed to all builders/parsers |
 | `offerId` | Always use `priceParser.getOfferId(passengerDetailsMap)` — never `getOfferID(xmlString)` |
-| Variable declaration | All `let`/`const` variables declared at the **top** of the test body before any logic |
+| Variable declaration | All `let`/`const` variables declared at the **top** of the test body before any logic (section 5.5 of AGENT_INSTRUCTIONS.md) |
 | Status assertion | Assert `response.status() === 200` **immediately** after every API call |
 | No inline logic in tests | Tests call parser/builder methods only — never write data extraction logic inline in a test |
 | Logger | Declare `const logger = LoggerFactory.getLogger(__filename)` at the top of every file |
 | Test entry/exit logging | `logger.info('TC1_... — started')` and `logger.info('TC1_... — completed')` |
 | Assertions | Use `assert` fixture only — never raw `expect()` for business assertions |
+| Allure feature label | Must start with project prefix and hyphen, for example: `@allure.label.feature:XMLAPI-...` |
 | Parallelism | Add `test.describe.configure({ mode: 'parallel' })` at the top of every spec file |
+| Test case naming | Test names must be relevant to the feature flow and describe key actions in sequence, for example: `TC1_Create_Paid_Order_Add_Paid_Seats_Payment`; do not include data-variant tokens such as `RT`/`OW`, `2A`/`2A1C`, or route codes |
+| Test case numbering | In each spec file, test numbers must be continuous with no gaps or duplicates (`TC1`, `TC2`, `TC3`, ...). Missing numbers must be highlighted and corrected |
+| Test case comments | Every `test()` must have a concise `/** ... */` block comment immediately above it (1–2 lines covering testcase intent and expected result) |
 | JWT + config | Load in `beforeEach` via `activateJwtToken` — never inline in test bodies |
+| Shared API setup | Place repeated API calls (JWT, config, common Shop) in `test.beforeEach` — never in local helper functions |
+| Flat steps only | Every step must be a single API call — never fold steps into helper functions, type aliases, or wrapper abstractions within spec files |
+| No spec orchestration loops | Business iteration/orchestration (for example nested loops over parsed maps) must live in builders/parsers/utilities; spec should call one descriptive method |
+| Single-line invocation format | Keep `test(...)` signatures and API/assert/logger calls in single-line format; avoid folded multiline argument formatting in specs |
+| API client transition spacing | Insert one blank line between the last call to one API client and the first call to the next; calls to the same API client are grouped with no blank lines between them |
+| Code simplicity (KISS) | Methods must be short, flat, and obvious — no deeply nested `if/else` chains; prefer early returns, guard clauses, or iterating a candidate list |
+| Shallow call depth (≤ 3 levels) | A public method may call a helper, which may call one more helper — but chains deeper than 3 levels (A → B → C → D → …) make debugging extremely difficult; flatten intermediate delegation methods that only forward calls |
+| No duplication (DRY) | If a pattern repeats more than twice, extract it into a private helper or base class method |
+| Single responsibility (SOLID) | Each method does one thing; split methods that build, send, and parse into focused helpers. SOLID is a guideline — apply where it improves readability |
+| Dead code removal | Remove all unused variables, imports, functions, and commented lines — reviewers will reject PRs containing dead code; use git history if you need old code |
 
 ---
 
-## Common Mistakes to Avoid
+## <span style="color:#EF4444">⚠️ Common Mistakes to Avoid</span>
 
 | ❌ Wrong | ✅ Correct |
 |---|---|
 | `offerId = priceParser.getOfferID(priceResponseText)` | `offerId = priceParser.getOfferId(passengerDetailsMap)` |
 | `Array.from(map.values())[0].get('key')` in test | Add a named method to the parser and call that |
-| Declaring variables mid-test: `const x = parser.get(...)` after an API call | Declare `let x: string` at the top, then assign after the API call |
+| Declaring variables mid-test or mid-method: `const x = parser.get(...)` after an API call | Declare `let x: string` at the top (section 5.5), then assign after the API call |
 | `assert.toBe(response.ok(), true, ...)` | `assert.toBe(response.status(), 200, ...)` |
 | Writing XML string manipulation directly in a test | Add a private method to the relevant builder |
 | Skipping the `paxTypeMap` and passing `paxType` string directly to a builder | Always call `getPaxType()` first and pass the resulting `Map` |
@@ -677,7 +711,7 @@ test.describe('@allure.label.feature:XML-PaidOrder', () => {
 
 ---
 
-## Adding a New Template
+## <span style="color:#10B981">➕ Adding a New Template</span>
 
 1. Create the `.txt` file in `xml-api/payloads/<operation>/` using `$PLACEHOLDER` tokens
 2. Add a path constant to the builder: `private readonly myTemplatePath = \`${process.cwd()}/xml-api/payloads/<operation>/mytemplate.txt\``
@@ -686,7 +720,7 @@ test.describe('@allure.label.feature:XML-PaidOrder', () => {
 
 ---
 
-## TypeScript Compatibility Note
+## <span style="color:#64748B">🔧 TypeScript Compatibility Note</span>
 
 The project targets pre-ES2015. **Never use spread or `for...of` on `Map` iterators directly** — it causes `TS2802` errors.
 
@@ -699,3 +733,35 @@ const arr = [...myMap.entries()];
 for (const [key, value] of Array.from(myMap.entries())) { ... }
 const arr = Array.from(myMap.entries());
 ```
+
+---
+
+## <span style="color:#EF4444">⏭️ Data-Driven Test Skipping (`skipTest`)</span>
+
+When an XML API test case is **not applicable** for a specific tenant or environment, use the `skipTest` flag in the test data JSON.
+
+### JSON Format
+
+```json
+"TC1_Verify_Shop_XML_API": [
+    {
+        "skipTest": true,
+        "skipReason": "XML Shop API not supported for VA tenant",
+        "origin": "SYD",
+        "destination": "BNE"
+    }
+]
+```
+
+| Field | Required | Description |
+|---|---|---|
+| `skipTest` | Yes | Set to `true` to skip the test for this tenant |
+| `skipReason` | No | Human-readable reason shown in reports (defaults to `"Test skipped for tenant: {tenant}"`) |
+
+### Rules
+
+1. **Always keep the test case key** in every tenant's JSON — never remove it. Use `skipTest: true` instead.
+2. **Always provide `skipReason`** so reports and CI logs clearly explain why a test was skipped.
+3. **Keep the remaining data fields** intact — they serve as documentation of what the test would use if enabled.
+4. **Never add skip logic inside spec files** — the `testData` fixture in `utilities/fixtures.ts` handles it centrally.
+5. If a test case key is **missing entirely** from a tenant's JSON, the fixture auto-skips with a default reason.

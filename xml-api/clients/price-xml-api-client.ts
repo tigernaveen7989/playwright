@@ -8,6 +8,7 @@ export class PriceXmlApiClient extends BaseXmlApiClient {
     xmlPayload: string
   ): Promise<APIResponse> {
     return this.post(
+      'Price',
       'Send Price XML API Request and Log Request/Response',
       endpoint,
       headers,

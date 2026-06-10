@@ -1,5 +1,5 @@
 {
-  "name": "playwrighttypescript",
+  "name": "sabremosaic-e2e-qa",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -16,7 +16,8 @@
     "test:distributed": "ts-node utilities/distributed-test-agent.ts",
     "test:call-center": "dotenvx run --quiet -- npx playwright test --project=call-center",
     "test:xml-api": "dotenvx run --quiet -- npx playwright test --project=xml-api",
-    "test:json-api": "dotenvx run --quiet -- npx playwright test --project=json-api"
+    "test:json-api": "dotenvx run --quiet -- npx playwright test --project=json-api",
+    "typecheck": "tsc --noEmit"
   },
   "keywords": [],
   "author": "",

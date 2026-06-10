@@ -1,0 +1,40 @@
+{
+    "global": [
+        {
+
+        }
+    ],
+    "TC1_Verify_Add_One_Way_Single_Pax_One_Way_Create_Paid_Order": [
+        {
+            "paymentType": "CASH",
+            "cardType": "MasterCard",
+            "cardNumber": "7563828462827483",
+            "seatType":{
+                "PAX1": "PAID"
+            },
+            "paxType": "1A"
+        }
+    ],
+    "TC2_Verify_Add_One_Way_Multi_Pax_Create_Paid_Order": [
+        {
+            "paymentType": "CASH",
+            "cardType": "MasterCard",
+            "cardNumber": "7563828462827483",
+            "seatType":{
+                "PAX1": "PAID"
+            },
+            "paxType": "2A1C"
+        }
+    ],
+    "TC280_Verify_Mpax_RT_Shop_EnforcedAccountCode_Create_Paid_Order": [
+        {
+            "paymentType": "CASH",
+            "paxType": "2A1C",
+            "origin": "SYD",
+            "destination": "BNE",
+            "departureDate": "2026-06-03",
+            "returnDate": "2026-06-18",
+            "accountCode": "EAL74"
+        }
+    ]
+}

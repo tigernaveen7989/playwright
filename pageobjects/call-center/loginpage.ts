@@ -25,28 +25,20 @@ export default class loginpage extends BlackPanther{
   }
 
   public async login(username: string, password: string): Promise<void> {
-    let ccUrl: string = '';
+    const { ccUrl } = this.loadConfig();
+    this.testInfo.annotations.push({ type: 'ccUrl', description: ccUrl });
     await step('Login into call center', async () => {
-      ccUrl = this.testInfo.annotations.find(a => a.type === 'ccUrl')?.description ?? '';
-
-      await step(`Url: ${ccUrl}`, async () => {
-        // You can also nest steps if needed
-      });
-
-      await step(`Username: ${username}`, async () => {
-        // You can also nest steps if needed
-      });
-
-      await step(`password: ${password}`, async () => {
-        // You can also nest steps if needed
-      });
-
+      await step(`Url: ${ccUrl}`, async () => {});
+      await step(`Username: ${username}`, async () => {});
+      await step(`Password: ${password}`, async () => {});
     });
-    await this.loginButton.click();
-    await this.usernameInput.fill(username);
-    await this.nextButton.click();
-    await this.passwordInput.fill(password);
-    await this.verifyButton.click();
+
+    await this.page.goto(ccUrl, { timeout: 60000 });
+    await this.click(this.loginButton);
+    await this.fill(this.usernameInput, username);
+    await this.click(this.nextButton);
+    await this.fill(this.passwordInput, password);
+    await this.click(this.verifyButton);
     logger.info("entered " + username + " and password " + password);
     logger.info("login successful");
   }

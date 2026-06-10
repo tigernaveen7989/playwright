@@ -8,6 +8,7 @@ export class ShopXmlApiClient extends BaseXmlApiClient {
     xmlPayload: string
   ): Promise<APIResponse> {
     return this.post(
+      'Shop',
       'Send Shop XML API Request and Log Request/Response',
       endpoint,
       headers,

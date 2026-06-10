@@ -1,0 +1,15 @@
+# This is a copilot setup instructions file, not a real workflow.
+# Nevertheless it must be a valid workflow.
+name: "Copilot Setup Steps"
+
+on:
+  workflow_dispatch:
+
+jobs:
+  # The job MUST be called `copilot-setup-steps` or it will not be picked up by Copilot.
+  copilot-setup-steps:
+    runs-on: copilot-review-s
+    permissions:
+      contents: read
+    steps:
+      - run: echo "Prepared"

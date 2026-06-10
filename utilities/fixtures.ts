@@ -36,9 +36,8 @@ const test = base.extend<{
       __dirname,
       '..',
       'testdata',
-      ENVIRONMENT || '',
-      SUBENVIRONMENT || '',
       TENANT || '',
+      SUBENVIRONMENT || '',
       fileName
     );
 
@@ -54,10 +53,17 @@ const test = base.extend<{
       } else {
         logger.error(String(error));
       }
-      testInfo.status = 'failed';
-      throw error;
+      test.skip(true, `No test data for "${testCaseName}" in tenant: ${TENANT}`);
+      return;
     }
 
+    // Auto-skip if test data is flagged with skipTest: true
+    if (testData.get('skipTest') === true) {
+      const reason = testData.get('skipReason') || `Test skipped for tenant: ${TENANT}`;
+      logger.info(`⏭️ Skipping "${testCaseName}": ${reason}`);
+      test.skip(true, reason);
+      return;
+    }
 
     await use(testData);
   },

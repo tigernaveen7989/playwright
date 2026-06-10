@@ -1,0 +1,122 @@
+{
+    "INT1": {
+        "standardAncillaryCode": "Stand",
+        "nonStandardAncillaryCode": "NonStand",
+        "nonBaggageAncillaryCode": "P",
+        "baggageAncillaryCode": "Baggage",
+        "bundleAncillaryCode": "Standalone",
+        "baggageGroupDescription": "Baggage",
+        "nonStandardServiceInvGroup": "SPEQ",
+        "excludedNonBaggageGroups": [
+            "Baggage",
+            "BUNDLED SERVICES",
+            "MEDICAL",
+            "Pre-reserved Seat Assignment",
+            "Unaccompanied Travel (Escort)",
+            "Pets",
+            "PET IN CABIN",
+            "UNACCOMPANIED MINOR",
+            "BLND - BLN-Blind Passenger"
+        ]
+    },
+    "QA1": {
+        "standardAncillaryCode": "Stand",
+        "nonStandardAncillaryCode": "NonStand",
+        "nonBaggageAncillaryCode": "P",
+        "baggageAncillaryCode": "Baggage",
+        "bundleAncillaryCode": "Standalone",
+        "baggageGroupDescription": "Baggage",
+        "nonStandardServiceInvGroup": "SPEQ",
+        "excludedNonBaggageGroups": [
+            "Baggage",
+            "BUNDLED SERVICES",
+            "MEDICAL",
+            "Pre-reserved Seat Assignment",
+            "Unaccompanied Travel (Escort)",
+            "Pets",
+            "PET IN CABIN",
+            "UNACCOMPANIED MINOR",
+            "BLND - BLN-Blind Passenger"
+        ]
+    },
+    "TC1": {
+        "standardAncillaryCode": "Stand",
+        "nonStandardAncillaryCode": "NonStand",
+        "nonBaggageAncillaryCode": "P",
+        "baggageAncillaryCode": "Baggage",
+        "bundleAncillaryCode": "Standalone",
+        "baggageGroupDescription": "Baggage",
+        "nonStandardServiceInvGroup": "SPEQ",
+        "excludedNonBaggageGroups": [
+            "Baggage",
+            "BUNDLED SERVICES",
+            "MEDICAL",
+            "Pre-reserved Seat Assignment",
+            "Unaccompanied Travel (Escort)",
+            "Pets",
+            "PET IN CABIN",
+            "UNACCOMPANIED MINOR",
+            "BLND - BLN-Blind Passenger"
+        ]
+    },
+    "UT1": {
+        "standardAncillaryCode": "Stand",
+        "nonStandardAncillaryCode": "NonStand",
+        "nonBaggageAncillaryCode": "P",
+        "baggageAncillaryCode": "Baggage",
+        "bundleAncillaryCode": "Standalone",
+        "baggageGroupDescription": "Baggage",
+        "nonStandardServiceInvGroup": "SPEQ",
+        "excludedNonBaggageGroups": [
+            "Baggage",
+            "BUNDLED SERVICES",
+            "MEDICAL",
+            "Pre-reserved Seat Assignment",
+            "Unaccompanied Travel (Escort)",
+            "Pets",
+            "PET IN CABIN",
+            "UNACCOMPANIED MINOR",
+            "BLND - BLN-Blind Passenger"
+        ]
+    },
+    "UT2": {
+        "standardAncillaryCode": "Stand",
+        "nonStandardAncillaryCode": "NonStand",
+        "nonBaggageAncillaryCode": "P",
+        "baggageAncillaryCode": "Baggage",
+        "bundleAncillaryCode": "Standalone",
+        "baggageGroupDescription": "Baggage",
+        "nonStandardServiceInvGroup": "SPEQ",
+        "excludedNonBaggageGroups": [
+            "Baggage",
+            "BUNDLED SERVICES",
+            "MEDICAL",
+            "Pre-reserved Seat Assignment",
+            "Unaccompanied Travel (Escort)",
+            "Pets",
+            "PET IN CABIN",
+            "UNACCOMPANIED MINOR",
+            "BLND - BLN-Blind Passenger"
+        ]
+    },
+    "UT1EXT": {
+        "standardAncillaryCode": "Stand",
+        "nonStandardAncillaryCode": "NonStand",
+        "nonBaggageAncillaryCode": "P",
+        "baggageAncillaryCode": "Baggage",
+        "bundleAncillaryCode": "Standalone",
+        "baggageGroupDescription": "Baggage",
+        "nonStandardServiceInvGroup": "SPEQ",
+        "excludedNonBaggageGroups": [
+            "Baggage",
+            "BUNDLED SERVICES",
+            "MEDICAL",
+            "Pre-reserved Seat Assignment",
+            "Unaccompanied Travel (Escort)",
+            "Pets",
+            "PET IN CABIN",
+            "UNACCOMPANIED MINOR",
+            "BLND - BLN-Blind Passenger"
+        ]
+    }
+}

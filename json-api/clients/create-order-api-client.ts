@@ -8,6 +8,7 @@ export class CreateOrderApiClient extends BaseApiClient {
     payload: object
   ): Promise<APIResponse> {
     return this.post(
+      'CreateOrder',
       'Send Create Order API Request and Log Request/Response',
       endpoint,
       headers,

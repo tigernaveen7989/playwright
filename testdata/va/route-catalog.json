@@ -1,0 +1,46 @@
+{
+"TC1": {
+    "OW": {
+      "Direct": {
+        "Route": "SYD-BNE"
+      },
+      "EvenExchange": {
+        "Route": "BNE-NAN"
+      },
+      "Codeshare": {
+        "Route": "SYD-LAX"
+      },
+      "Interline": {
+        "Route": "MEL-BNE"
+      },
+      "Connecting": {
+        "Route": "PER-BNE"
+      }
+    },
+    "RT": {
+      "Direct": {
+        "Route": "SYD-BNE"
+      },
+      "EvenExchange": {
+        "Route": "BNE-NAN"
+      },
+    "Codeshare": {
+        "Route": "SYD-LAX"
+      },
+      "Interline": {
+        "Route": "MEL-BNE"
+      },
+      "Connecting": {
+        "Route": "PER-BNE"
+      }
+    },
+    "MS": {
+      "MultiSeg_Continuous_2Seg": {
+        "Route": "MEL-PER,PER-BNE"
+      },
+      "MultiSeg_connectingFlight": {
+        "Route": "SYD-MEL,MEL-BNE"
+      }
+    }
+  }
+}

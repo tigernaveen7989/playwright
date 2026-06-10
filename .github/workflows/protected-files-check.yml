@@ -1,0 +1,66 @@
+name: Protected Files Check
+
+on:
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  check-protected-files:
+    runs-on: copilot-review-s
+    steps:
+      - name: Check protected file modifications
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const owners = [
+              'ThomasGeorge-Mathews_sabre',
+              'Guruprasad-P_sabre',
+              'NaveenX-Kumar-ctr_sabre',
+              'ChidriI-Srinath_sabre'
+            ];
+
+            const protectedPaths = [
+              'utilities/',
+              'architecture/',
+              '.github/agents/',
+              '.github/instructions/',
+              '.gitignore',
+              '.jenkins',
+              'agent-config.json',
+              'agent-manager.ps1',
+              'agent-manager.sh',
+              'azure-pipelines.yml',
+              'docker-compose.yml',
+              'Dockerfile',
+              'package-lock.json',
+              'package.json',
+              'README.md',
+              'sonar-project.properties'
+            ];
+
+            const prAuthor = context.payload.pull_request.user.login;
+
+            if (owners.includes(prAuthor)) {
+              console.log(`✅ ${prAuthor} is an Owner — allowed.`);
+              return;
+            }
+
+            const { data: files } = await github.rest.pulls.listFiles({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.payload.pull_request.number,
+              per_page: 300
+            });
+
+            const violations = files
+              .map(f => f.filename)
+              .filter(f => protectedPaths.some(p => p.endsWith('/') ? f.startsWith(p) : f === p));
+
+            if (violations.length > 0) {
+              core.setFailed(
+                `❌ @${prAuthor} is not an Owner. Cannot modify protected files:\n` +
+                violations.map(f => `  - ${f}`).join('\n')
+              );
+            } else {
+              console.log(`✅ No protected files modified by @${prAuthor}.`);
+            }

@@ -1,0 +1,21 @@
+{
+    "global": [
+        {
+            "cardNumber": "5123456789012346",
+            "cardName": "Test User",
+            "cvc": "123",
+            "expiryDate": "12-29",
+            "mobileNumber": "295293593",
+            "email": "john.smith@test.com"
+        }
+    ],
+    "TC1_Verify_DxVasm_Create_Order_With_Credit_Card": [
+        {
+            "origin": "Sydney",
+            "destination": "Melbourne",
+            "tripType": "OW",
+            "paxType": "1A",
+            "brandType": "Lite"
+        }
+    ]
+}

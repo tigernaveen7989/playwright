@@ -1,0 +1,294 @@
+{
+    "global": [
+        {
+            "userName": "jutcadmin.functional.testing@sabre.com",
+            "password": "Pa$$word@2k32",
+            "cardType": "MasterCard",
+            "cardNumber": "5123456789012346",
+            "cardName": "Naveen Kumar",
+            "cvv": "123",
+            "expirationDate": "1229",
+            "dateFormat": "DD/MM/YYYY"
+        }
+    ],
+    "TC1_Verify_Login_Into_Call_Center_And_Create_Paid_Order": [
+        {
+            "paymentType": "CARD",
+            "seatType": {
+                "PAX1": "PAID"
+            },
+            "tripType": "RT",
+            "origin": "BEG",
+            "destination": "IST",
+            "paxType": "2A1C",
+            "todayPlusDate": "10,15",
+            "cabinType": "ECONOMY",
+            "brandType": "STANDARD"
+        }
+    ],
+    "TC2_Verify_Login_Into_Call_Center_And_Create_Paid_Order_Using_Cash": [
+        {
+            "paymentType": "CARD",
+            "seatType": {
+                "PAX1": "FREE"
+            },
+            "tripType": "OW",
+            "origin": "BEG",
+            "destination": "TIV",
+            "paxType": "1A",
+            "todayPlusDate": "10",
+            "cabinType": "ECONOMY",
+            "brandType": "COMFORT"
+        }
+    ],
+    "TC3_Verify_Multipax_OW_And_Create_Unpaid_Order": [
+        {
+            "paymentType": "Unpaid",
+            "seatType": {
+                "PAX1": "PAID"
+            },
+            "origin": "BEG",
+            "destination": "TIV",
+            "tripType": "RT",
+            "paxType": "1A",
+            "todayPlusDate": "10,18",
+            "cabinType": "ECONOMY",
+            "brandType": "STANDARD"
+        }
+    ],
+    "TC1_Verify_Free_Seats_After_Creating_Paid_Order": [
+        {
+            "paymentType": "CARD",
+            "seatType": {
+                "SEGMENT_1": "PAX1:1F",
+                "SEGMENT_2": "PAX1:1F"
+            },
+            "tripType": "RT",
+            "origin": "BEG",
+            "destination": "IST",
+            "paxType": "1A",
+            "todayPlusDate": "10,15",
+            "cabinType": "ECONOMY",
+            "brandType": "COMFORT"
+        }
+    ],
+    "TC2_Verify_Paid_Seats_After_Creating_Paid_Order": [
+        {
+            "paymentType": "CARD",
+            "seatType": {
+                "SEGMENT_1": "PAX1:1P",
+                "SEGMENT_2": "PAX1:1P"
+            },
+            "tripType": "RT",
+            "origin": "BEG",
+            "destination": "IST",
+            "paxType": "1A",
+            "todayPlusDate": "10,15",
+            "cabinType": "ECONOMY",
+            "brandType": "STANDARD"
+        }
+    ],
+    "TC3_Verify_Emergency_Exit_Seats_After_Creating_Paid_Order": [
+        {
+            "paymentType": "CARD",
+            "seatType": {
+                "SEGMENT_1": "PAX1:1E",
+                "SEGMENT_2": "PAX1:1E"
+            },
+            "tripType": "RT",
+            "origin": "BEG",
+            "destination": "IST",
+            "paxType": "1A",
+            "todayPlusDate": "10,15",
+            "cabinType": "ECONOMY",
+            "brandType": "STANDARD"
+        }
+    ],
+    "TC1_Create_Paid_Order_perform_Even_AirExchange": [
+        {
+            "paymentType": "CARD",
+            "voluntaryType": {
+                "AirExchangeBy": "FutureDate",
+                "ExchangeType": "EvenExchange",
+                "brandType": "STANDARD",
+                "paymentRequired": "No"
+            },
+            "tripType": "RT",
+            "cityPair": "Direct",
+            "paxType": "1A",
+            "TodayPlusDate": "21,25",
+            "cabinType": "ECONOMY",
+            "brandType": "STANDARD"
+        }
+    ],
+    "TC2_Create_Paid_Order_Connecting_Flight_perform_Add_Collect_Air_Exchange": [
+        {
+            "paymentType": "CARD",
+            "voluntaryType": {
+                "AirExchangeBy": "FutureDate",
+                "ExchangeType": "AddCollect",
+                "brandType": "BUSINESS",
+                "paymentRequired": "yes"
+            },
+            "tripType": "OW",
+            "cityPair": "DirectConnecting",
+            "paxType": "1A1C",
+            "TodayPlusDate": "21",
+            "cabinType": "ECONOMY",
+            "brandType": "COMFORT"
+        }
+    ],
+    "TC3_Create_Paid_Order_WIth_CodeShare_perform_Even_AirExchange": [
+        {
+            "paymentType": "CARD",
+            "voluntaryType": {
+                "AirExchangeBy": "FutureDate",
+                "ExchangeType": "EvenExchange",
+                "brandType": "ECONOMY FREEDOM",
+                "paymentRequired": "No"
+            },
+            "tripType": "OW",
+            "cityPair": "Codeshare1",
+            "paxType": "1A1C",
+            "TodayPlusDate": "21",
+            "cabinType": "ECONOMY",
+            "brandType": "ECONOMY FREEDOM"
+        }
+    ],
+    "TC4_Create_Paid_Order_With_Internline_perform_Add_Collect_AirExchange": [
+        {
+            "paymentType": "CARD",
+            "voluntaryType": {
+                "AirExchangeBy": "FutureDate",
+                "ExchangeType": "AddCollect",
+                "brandType": "VALUE",
+                "paymentRequired": "yes"
+            },
+            "tripType": "OW",
+            "cityPair": "Interline",
+            "paxType": "1A1C",
+            "TodayPlusDate": "21",
+            "brandType": "SAVER"
+        }
+    ],
+    "TC5_Create_Paid_Order_Same_Brand_Without_Penalty_perform_Even_AirExchange": [
+        {
+            "paymentType": "CARD",
+            "voluntaryType": {
+                "AirExchangeBy": "FutureDate",
+                "ExchangeType": "EvenExchange",
+                "brandType": "COMFORT",
+                "paymentRequired": "No"
+            },
+            "tripType": "OW",
+            "cityPair": "Direct",
+            "paxType": "1A1C",
+            "TodayPlusDate": "21",
+            "cabinType": "ECONOMY",
+            "brandType": "COMFORT"
+        }
+    ],
+    "TC6_Create_Paid_Order_MS_perform_Even_AirExchange": [
+        {
+            "paymentType": "CARD",
+            "voluntaryType": {
+                "AirExchangeBy": "FutureDate",
+                "ExchangeType": "EvenExchange",
+                "brandType": "COMFORT"
+            },
+            "tripType": "MS",
+            "cityPair": "MultiSeg_Connecting",
+            "paxType": "1A",
+            "TodayPlusDate": "21",
+            "cabinType": "ECONOMY",
+            "brandType": "COMFORT",
+            "currencyType": "EUR"
+        }
+    ],
+    "TC7_Create_Paid_Order_Different_Brand_Without_Penalty_perform_Even_AirExchange": [
+        {
+            "paymentType": "CARD",
+            "voluntaryType": {
+                "AirExchangeBy": "FutureDate",
+                "ExchangeType": "EvenExchange",
+                "brandType": "BUSINESS",
+                "paymentRequired": "No"
+            },
+            "tripType": "OW",
+            "cityPair": "Direct",
+            "paxType": "1A1C",
+            "TodayPlusDate": "21",
+            "cabinType": "ECONOMY",
+            "brandType": "COMFORT"
+        }
+    ],
+    "TC8_Create_Paid_Order_Different_Brand_With_Penalty_perform_Add_Collect_AirExchange": [
+        {
+            "paymentType": "CARD",
+            "voluntaryType": {
+                "AirExchangeBy": "FutureDate",
+                "ExchangeType": "AddCollect",
+                "brandType": "BUSINESS",
+                "paymentRequired": "yes"
+            },
+            "tripType": "OW",
+            "cityPair": "Direct",
+            "paxType": "1A1C",
+            "TodayPlusDate": "21",
+            "cabinType": "ECONOMY",
+            "brandType": "STANDARD"
+        }
+    ],
+    "TC1_Create_Order_Add_Initial_Ancillaries_Complete_Payment_Validate_Ancillaries": [
+        {
+            "paymentType": "CARD",
+            "tripType": "RT",
+            "origin": "BEG",
+            "destination": "IST",
+            "departure": "10",
+            "returnDate": "15",
+            "paxType": "2A",
+            "todayPlusDate": "10,15",
+            "cabinType": "ECONOMY",
+            "brandType": "STANDARD",
+            "initialAncillaryType": {
+                "nonBaggage": {
+                    "segment1": "PAX1:1P,PAX2:0P",
+                    "segment2": "PAX1:1P,PAX2:1P"
+                },
+                "standalone": {
+                    "noSegment": "PAX1:0P,PAX2:1P"
+                },
+                "baggage": {
+                    "segment1": "PAX1:0Stand,PAX2:1NonStand",
+                    "segment2": "PAX1:1Stand,PAX2:1NonStand"
+                }
+            }
+        }
+    ],
+    "TC2_Create_Order_Add_Initial_Baggage_Ancillaries_Complete_Payment_Validate_Ancillaries": [
+        {
+            "paymentType": "CARD",
+            "tripType": "RT",
+            "origin": "BEG",
+            "destination": "IST",
+            "departure": "10",
+            "returnDate": "15",
+            "paxType": "1A1C",
+            "todayPlusDate": "10,15",
+            "cabinType": "ECONOMY",
+            "brandType": "STANDARD",
+            "initialAncillaryType": {
+                "nonBaggage": {
+                    "segment1": "PAX1:1P",
+                    "segment2": "PAX1:1P,PAX2:1P"
+                },
+                "baggage": {
+                    "segment1": "PAX1:0Stand,PAX2:1Stand",
+                    "segment2": "PAX1:1NonStand,PAX2:1Stand"
+                }
+            }
+        }
+    ]
+
+}

@@ -7,9 +7,11 @@ node_modules/
 /playwright/.cache/
 /allure-results/
 /.playwright-mcp/
+/.playwright-cli/
 /logs/
 /allure-reports/
 /allure-report/
+tsconfig.json
 
 # SonarQube
 .scannerwork/

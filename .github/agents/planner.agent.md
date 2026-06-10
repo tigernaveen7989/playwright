@@ -21,6 +21,14 @@ I am a specialized agent focused on test planning and strategy for Playwright Ty
 - Prioritizing test cases based on risk and business value
 - Creating test data strategies and requirements
 - Planning test execution workflows
+- Defining test names that are relevant to each feature flow and key actions (e.g., `TC1_Create_Paid_Order_Add_Paid_Seats_Payment`) while excluding data-variant tokens (`RT`/`OW`, `2A`/`2A1C`, route codes)
+- Enforcing continuous test numbering in each spec (`TC1`, `TC2`, `TC3`, ...) and highlighting missing sequence numbers
+- Enforcing concise testcase documentation so each `test()` has a `/** ... */` comment in 1-2 lines (intent and expected result)
+- Planning specs so business iteration/orchestration stays in page objects/parsers/builders/utilities and not in spec-file loops
+- Planning spec formatting so `test(...)` signatures and page-object/API/assert/logger calls remain single-line and avoid folded multiline argument formatting
+- Planning spec formatting so steps for each page object or API client are grouped together with one blank line between the last step of one and the first step of the next
+- Planning methods to be short, flat, and single-purpose (KISS / DRY / SOLID) — no deeply nested conditionals; duplicated patterns extracted; each method does one thing
+- Planning locator strategy so all stable locators are declared at class top/constructor; only dynamic parameterized selectors and web-table/grid row-cell locators are method-local
 
 ### 🏗️ Project Organization  
 - Structuring Playwright test projects for scalability

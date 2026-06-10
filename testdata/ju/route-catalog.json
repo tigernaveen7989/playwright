@@ -1,0 +1,37 @@
+{
+"TC1": {
+    "OW": {
+      "DirectConnecting": {
+        "Route": "CDG-LHR"
+      },
+      "Direct": {
+        "Route": "BEG-TIV"
+      },
+      "Codeshare1": {
+        "Route": "BEG-AMM"
+      },
+      "Interline": {
+        "Route": "BEG-NCE"
+      }
+    },
+    "RT": {
+      "Direct": {
+        "Route": "BEG-IST"
+      },
+      "DirectConnecting": {
+        "Route": "CDG-LHR"
+      },
+      "Codeshare1": {
+        "Route": "BEG-DOH"
+      },
+      "Interline": {
+        "Route": "BEG-NCE"
+      }
+    },
+    "MS": {
+      "MultiSeg_Connecting": {
+        "Route": "BUD-BEG,BEG-TIV"
+      }
+    }
+  }
+}

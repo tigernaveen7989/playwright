@@ -24,11 +24,14 @@ const logger = LoggerFactory.getLogger(__filename);
 export class ShopXmlPayloadBuilder {
   private readonly xmlProcessor = new XmlTemplateProcessor();
   private readonly shopTemplatePath = `${process.cwd()}/xml-api/payloads/shop/shop.txt`;
+  private readonly shopEnforceAccountCodeTemplatePath = `${process.cwd()}/xml-api/payloads/shop/shop-enforce-account-code.txt`;
   private readonly paxListTemplatePath = `${process.cwd()}/xml-api/payloads/shop/paxlist.txt`;
+  private readonly originDestTemplatePath = `${process.cwd()}/xml-api/payloads/shop/origindest.txt`;
 
   private origin: string = '';
   private destination: string = '';
   private departureDate: string = '';
+  private returnDate: string = '';
   private paxTypeMap: Map<string, string> = new Map();
   private currency: string = 'AUD';
   private agentDuty: string = 'NDC';
@@ -36,6 +39,9 @@ export class ShopXmlPayloadBuilder {
   private countryCode: string = '';
   private sellerOrgId: string = '';
   private carrierOrgId: string = '';
+  private enforceAccountCode: boolean = false;
+  private accountCode: string = '';
+  private airlineCode: string = '';
 
   // ─── Route ───────────────────────────────────────────────────────────────
 
@@ -67,6 +73,15 @@ export class ShopXmlPayloadBuilder {
    */
   withDepartureDate(date: string): this {
     this.departureDate = date;
+    return this;
+  }
+
+  /**
+   * Sets the return date in YYYY-MM-DD format for round-trip requests.
+   * @param date e.g. '2025-12-30'
+   */
+  withReturnDate(date: string): this {
+    this.returnDate = date;
     return this;
   }
 
@@ -142,6 +157,36 @@ export class ShopXmlPayloadBuilder {
     return this;
   }
 
+  // ─── Account Code ────────────────────────────────────────────────────────
+
+  /**
+   * Enables ForceRequestedAccountCode in AugmentationPoint and includes
+   * OfferCriteria/ProgramCriteria in the shop request.
+   * @param enforce true to enforce account code
+   */
+  withEnforceAccountCode(enforce: boolean): this {
+    this.enforceAccountCode = enforce;
+    return this;
+  }
+
+  /**
+   * Sets the account code (AccountID) for the ProgramCriteria block.
+   * @param code e.g. 'EAL74'
+   */
+  withAccountCode(code: string): this {
+    this.accountCode = code;
+    return this;
+  }
+
+  /**
+   * Sets the airline designator code for the ProgramOwner carrier.
+   * @param code e.g. 'VA'
+   */
+  withAirlineCode(code: string): this {
+    this.airlineCode = code;
+    return this;
+  }
+
   // ─── Build ───────────────────────────────────────────────────────────────
 
   /**
@@ -154,6 +199,10 @@ export class ShopXmlPayloadBuilder {
     if (!this.origin || !this.destination) throw new Error('ShopXmlPayloadBuilder: origin and destination are required');
     if (!this.departureDate) throw new Error('ShopXmlPayloadBuilder: departureDate is required');
     if (this.paxTypeMap.size === 0) throw new Error('ShopXmlPayloadBuilder: paxTypeMap must not be empty — call withPassengers()');
+
+    if (this.enforceAccountCode) {
+      return this.buildEnforceAccountCodePayload();
+    }
 
     const paxListXml = this.buildPaxListXml();
     const replacements: Record<string, string> = {
@@ -174,6 +223,33 @@ export class ShopXmlPayloadBuilder {
     return xmlPayload;
   }
 
+  // Builds enforce account code payload with round-trip OriginDest blocks and OfferCriteria
+  private buildEnforceAccountCodePayload(): string {
+    if (!this.accountCode) throw new Error('ShopXmlPayloadBuilder: accountCode is required when enforceAccountCode is true');
+    if (!this.airlineCode) throw new Error('ShopXmlPayloadBuilder: airlineCode is required when enforceAccountCode is true');
+
+    const paxListXml = this.buildPaxListXml();
+    const originDestXml = this.buildOriginDestXml();
+
+    const replacements: Record<string, string> = {
+      '$ENFORCE_ACCOUNT_CODE': 'true',
+      '$CURRENCY': this.currency,
+      '$AGENT_DUTY': this.agentDuty,
+      '$CITY_CODE': this.cityCode,
+      '$COUNTRY_CODE': this.countryCode,
+      '$SELLER_ORGID': this.sellerOrgId,
+      '$CARRIER_ORGID': this.carrierOrgId,
+      '$ACCOUNT_CODE': this.accountCode,
+      '$AIRLINE_CODE': this.airlineCode,
+      '#{@ORIGINDEST}': originDestXml,
+      '#{@PAXLIST}': paxListXml
+    };
+
+    const xmlPayload = this.xmlProcessor.replacePlaceholders(replacements, this.shopEnforceAccountCodeTemplatePath);
+    logger.info(`Enforce Account Code Shop XML payload built for route: ${this.origin} → ${this.destination} (RT: ${this.returnDate || 'N/A'}), account: ${this.accountCode}`);
+    return xmlPayload;
+  }
+
   // Reads paxlist.txt once and repeats it for each passenger in sorted order
   private buildPaxListXml(): string {
     const template = readFileSync(this.paxListTemplatePath, 'utf-8');
@@ -189,5 +265,23 @@ export class ShopXmlPayloadBuilder {
         return template.replace(/\$PAXID/g, paxId).replace(/\$PAXTYPE/g, ptc);
       })
       .join('\n');
+  }
+
+  // Builds one or two OriginDestCriteria blocks for one-way or round-trip
+  private buildOriginDestXml(): string {
+    const template = readFileSync(this.originDestTemplatePath, 'utf-8');
+    const outbound = template
+      .replace(/\$ORIGIN/g, this.origin)
+      .replace(/\$DESTINATION/g, this.destination)
+      .replace(/\$DATE/g, this.departureDate);
+
+    if (!this.returnDate) return outbound;
+
+    const inbound = template
+      .replace(/\$ORIGIN/g, this.destination)
+      .replace(/\$DESTINATION/g, this.origin)
+      .replace(/\$DATE/g, this.returnDate);
+
+    return outbound + '\n' + inbound;
   }
 }

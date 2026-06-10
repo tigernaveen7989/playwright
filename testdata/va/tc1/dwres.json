@@ -1,0 +1,23 @@
+{
+    "global": [
+        {
+            "userName": "tc1hopper1.admin1.va.functional.e2e@sabre.com",
+            "password": "Pa$$word@2k28",
+            "cardType": "MasterCard",
+            "cardNumber": "5123456789012346",
+            "cardName": "Test User",
+            "cvv": "123",
+            "expirationDate": "12/29",
+            "dateFormat": "DD/MMM/YYYY"
+        }
+    ],
+    "TC1_Verify_Login_Into_DWRES_And_Create_Paid_Order": [
+        {
+            "tripType": "RT",
+            "origin": "SYD",
+            "destination": "BNE",
+            "todayPlusDate": "10,17",
+            "brandType": "CHOICE"
+        }
+    ]
+}

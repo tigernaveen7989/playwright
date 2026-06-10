@@ -13,6 +13,7 @@ export abstract class BaseXmlApiClient {
    * Network errors are caught, attached to Allure, and re-thrown.
    */
   protected async post(
+    apiName: string,
     stepName: string,
     endpoint: string,
     headers: Record<string, string>,
@@ -25,6 +26,10 @@ export abstract class BaseXmlApiClient {
 
       try {
         logger.info(`Sending XML request to: ${endpoint}`);
+        await attachment(`${apiName} - URI`, endpoint, { contentType: 'text/plain' });
+        await attachment(`${apiName} - Headers`, JSON.stringify(headers, null, 2), {
+          contentType: 'application/json'
+        });
         await attachment(requestAttachmentName, xmlFormatter.formatXml(xmlPayload), {
           contentType: 'text/plain'
         });

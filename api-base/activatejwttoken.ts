@@ -26,8 +26,6 @@ export class activateJwtToken {
       __dirname,
       '..',
       'testdata',
-      this.environment.toLowerCase(),
-      this.subenvironment.toLowerCase(),
       this.tenant.toLowerCase(),
       'url-and-accounts.json'
     );

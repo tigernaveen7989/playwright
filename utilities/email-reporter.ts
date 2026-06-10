@@ -20,6 +20,8 @@ class EmailReporter implements Reporter {
     let projectName = 'unknown';
 
     if (filePath.includes('call-center-tests')) projectName = 'call-center';
+    else if (filePath.includes('dwres-tests')) projectName = 'dwres';
+    else if (filePath.includes('dx-vasm-tests')) projectName = 'dx-vasm';
     else if (filePath.includes('xml-api-tests')) projectName = 'xml-api';
     else if (filePath.includes('json-api-tests')) projectName = 'json-api';
 
@@ -76,11 +78,59 @@ class EmailReporter implements Reporter {
   }
 
   private classifyErrorType(errorMessage: string): string {
-    const lowerMsg = errorMessage.toLowerCase();
-    if (lowerMsg.includes('expect') || lowerMsg.includes('tobe') || lowerMsg.includes('assert')) return 'AssertionError';
-    if (lowerMsg.includes('locator') || lowerMsg.includes('element not found')) return 'LocatorError';
-    if (lowerMsg.includes('invalid data') || lowerMsg.includes('testdata') || lowerMsg.includes('data mismatch')) return 'TestDataError';
-    if (lowerMsg.includes('timeout') || lowerMsg.includes('exceeded') || lowerMsg.includes('waiting for')) return 'TimeOutError';
+    const msg = errorMessage.toLowerCase();
+
+    // F-06 AuthenticationError — check before timeout (401 inside timeout msg is auth, not timeout)
+    if (msg.includes('401') || msg.includes('403') || msg.includes('unauthorized') ||
+        msg.includes('forbidden') || msg.includes('jwt') || msg.includes('token expired') ||
+        msg.includes('invalid credentials') || msg.includes('session expired')) return 'AuthenticationError';
+
+    // F-01 AssertionError
+    if (msg.includes('expect') || msg.includes('tobe') || msg.includes('toequal') ||
+        msg.includes('tocontain') || msg.includes('tohavetext') || msg.includes('assert') ||
+        msg.includes('received') || msg.includes('expected')) return 'AssertionError';
+
+    // F-02 LocatorError
+    if (msg.includes('locator') || msg.includes('element not found') ||
+        msg.includes('no element matches') || msg.includes('strict mode violation') ||
+        msg.includes('selector') || msg.includes('resolved to')) return 'LocatorError';
+
+    // F-08 APIError — check before timeout (500 inside timeout msg is API, not timeout)
+    if (msg.includes('status code') || msg.includes('bad request') ||
+        msg.includes('internal server error') || msg.includes('service unavailable') ||
+        /\b(400|404|500|502|503|504)\b/.test(msg)) return 'APIError';
+
+    // F-03 TimeOutError
+    if (msg.includes('timeout') || msg.includes('exceeded') || msg.includes('timed out') ||
+        msg.includes('waiting for') || msg.includes('waitforselector') ||
+        msg.includes('waitforloadstate')) return 'TimeOutError';
+
+    // F-04 TestDataError
+    if (msg.includes('testdata') || msg.includes('data mismatch') ||
+        msg.includes('is not defined') || msg.includes('cannot read properties of') ||
+        msg.includes('undefined') || msg.includes('fixture')) return 'TestDataError';
+
+    // F-05 NetworkError
+    if (msg.includes('econnrefused') || msg.includes('econnreset') ||
+        msg.includes('etimedout') || msg.includes('enotfound') ||
+        msg.includes('fetch failed') || msg.includes('net::err_') ||
+        msg.includes('socket hang up') || msg.includes('dns')) return 'NetworkError';
+
+    // F-07 NavigationError
+    if (msg.includes('navigation') || msg.includes('page.goto') ||
+        msg.includes('err_name_not_resolved') || msg.includes('frame detached') ||
+        msg.includes('page crashed') || msg.includes('context closed')) return 'NavigationError';
+
+    // F-09 BrowserError
+    if (msg.includes('browser') || msg.includes('target closed') ||
+        msg.includes('browser has been closed') || msg.includes('protocol error') ||
+        msg.includes('cdpsession')) return 'BrowserError';
+
+    // F-10 ConfigurationError
+    if (msg.includes('process.env') || msg.includes('missing variable') ||
+        msg.includes('loadconfig') || msg.includes('dotenv')) return 'ConfigurationError';
+
+    // F-99 UnknownError
     return 'UnknownError';
   }
 
@@ -113,7 +163,7 @@ class EmailReporter implements Reporter {
       const passRate = total > 0 ? ((passed / total) * 100).toFixed(2) + '%' : '0%';
       return `
         <tr>
-          <td>${project}</td>
+          <td>${project.toUpperCase()}</td>
           <td style="color:#2e7d32;"><b>${passed}</b></td>
           <td style="color:#c62828;"><b>${failed}</b></td>
           <td style="color:#ef6c00;"><b>${skipped}</b></td>
@@ -128,7 +178,7 @@ class EmailReporter implements Reporter {
         <tr><td>${reason}</td><td><b>${count}</b></td></tr>
       `).join('');
       return `
-        <h3 class="section-header">❌ ${project} Failures</h3>
+        <h3 class="section-header">❌ ${project.toUpperCase()} Failures</h3>
         <table class="failed-table">
           <thead><tr><th>Failure Type</th><th>Count</th></tr></thead>
           <tbody>${rows}</tbody>
@@ -141,7 +191,7 @@ class EmailReporter implements Reporter {
         const total = stats.passed + stats.failed + stats.skipped + stats.broken;
         return `
           <tr>
-            <td>${feature}</td>
+            <td>${feature.toUpperCase()}</td>
             <td style="color:#2e7d32;"><b>${stats.passed}</b></td>
             <td style="color:#c62828;"><b>${stats.failed}</b></td>
             <td style="color:#ef6c00;"><b>${stats.skipped}</b></td>
@@ -151,7 +201,7 @@ class EmailReporter implements Reporter {
         `;
       }).join('');
       return `
-        <h3 class="section-header">🧩 ${project} Features</h3>
+        <h3 class="section-header">🧩 ${project.toUpperCase()} Features</h3>
         <table class="feature-table">
           <thead><tr><th>Feature</th><th>Passed</th><th>Failed</th><th>Skipped</th><th>Broken</th><th>Total</th></tr></thead>
           <tbody>${rows}</tbody>
@@ -221,10 +271,16 @@ class EmailReporter implements Reporter {
       tls: { rejectUnauthorized: false },
     });
 
+    const env = (process.env.ENVIRONMENT || '').toUpperCase();
+    const subenv = (process.env.SUBENVIRONMENT || '').toUpperCase();
+    const tenant = (process.env.TENANT || '').toUpperCase();
+    const projects = Object.keys(this.projectStats).join(' ').toUpperCase();
+    const subject = `🔍 ${env} ${subenv} ${tenant} ${projects} TEST REPORT`.trim().replace(/\s+/g, ' ');
+
     await transporter.sendMail({
       from: process.env.EMAIL_FROM,
       to: process.env.EMAIL_TO,
-      subject: '📧 Playwright Test Summary',
+      subject,
       html: htmlContent,
       attachments: [
         {

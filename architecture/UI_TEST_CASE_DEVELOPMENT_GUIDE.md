@@ -1,48 +1,27 @@
-# Call Center UI — Automated Test Cases
+# <span style="color:#6366F1">🖥️ UI Test Case Development Guide</span>
 
-> **Framework:** Playwright + TypeScript  
-> **Reporting:** Allure  
-> **Application:** Sabre Wolverine Call Center (Airline Reservation System)  
-> **Last Updated:** 2026-05-14
+## <span style="color:#3B82F6">🏗️ Architecture Overview</span>
 
----
-
-## Table of Contents
-
-1. [Framework Overview](#framework-overview)
-2. [Page Object Summary](#page-object-summary)
-3. [Test Data Structure](#test-data-structure)
-4. [Test Suite: Create Order](#test-suite-create-order)
-5. [Test Suite: Seats](#test-suite-seats)
-6. [Test Case Details](#test-case-details)
-7. [Assertions Reference](#assertions-reference)
-8. [Future Test Cases to Develop](#future-test-cases-to-develop)
-
----
-
-## Framework Overview
+This project follows a strict Page Object Model (POM) architecture for all UI tests. Each layer has a single responsibility, making tests easy to read, maintain, and extend.
 
 ```
 PlaywrightTypescript/
 ├── tests/
-│   ├── basetest.ts                    # Base class with setup/teardown hooks
+│   ├── basetest.ts                    # Browser lifecycle, page object wiring, proxy exports
 │   └── call-center-tests/
-│       ├── createordertest.spec.ts    # Order creation test suite
-│       └── seatstest.spec.ts          # Seat selection test suite
+│       └── *.spec.ts                  # UI test specs — one file per feature/flow
 ├── pageobjects/
-│   ├── pageobjectmanager.ts           # Central POM factory
-│   ├── loginpage.ts
-│   ├── homepage.ts
-│   ├── passengerdetailspage.ts
-│   ├── addpaymenttonewreservationpage.ts
-│   ├── paybycreditcardpage.ts
-│   └── bookingconfirmationpage.ts
+│   ├── pageobjectmanager.ts           # Central factory — instantiates all page objects
+│   └── *.ts                           # One page object per UI screen
 ├── utilities/
-│   └── blackpanther.ts                # Base utility class (click, fill, dates, pax parsing)
+│   ├── blackpanther.ts                # BASE CLASS — all reusable Playwright actions live here
+│   ├── assertions.ts                  # Custom assertion wrapper with Allure step logging
+│   └── fixtures.ts                    # Playwright fixture extensions (testData, assert, logger)
 └── testdata/
-    └── {env}/{subenv}/{tenant}/
-        ├── url-and-accounts.json
-        └── call-center-ui.json
+    └── {tenant}/
+        ├── url-and-accounts.json      # App URL and credentials (per-tenant)
+        └── {subenv}/
+            └── call-center-ui.json    # Per-TC test data, global config (dateFormat, card details)
 ```
 
 **Execution flow per test:**
@@ -50,11 +29,38 @@ PlaywrightTypescript/
 2. Test body — interacts through Page Objects via proxy-wrapped static references
 3. `BaseTest.teardown()` — closes browser
 
-**Parallel execution:** `test.describe.configure({ mode: 'parallel' })` is applied across both spec files.
+**Parallel execution:** `test.describe.configure({ mode: 'parallel' })` is applied across all spec files.
 
 ---
 
-## Page Object Summary
+## <span style="color:#06B6D4">� Layer Responsibilities</span>
+
+### 🐾 BlackPanther (`utilities/blackpanther.ts`)
+**Purpose:** Single source of truth for all Playwright browser interactions.
+
+- Every page object **must extend** `BlackPanther`
+- All interactions go through its protected methods — never call raw Playwright API in page objects
+- Handles waits, Allure step logging, and error context automatically
+
+| Method | Signature | Purpose |
+|---|---|---|
+| `click` | `click(locator: Locator)` | Waits 1s, asserts visible (20s), clicks, logs to Allure |
+| `fill` | `fill(locator: Locator, value: string)` | Waits 1s, asserts visible (20s), fills, logs to Allure |
+| `selectValueFromDropdown` | `selectValueFromDropdown(locator, value)` | Waits visible (10s), selects by label, logs to Allure |
+| `clickOnCheckbox` | `clickOnCheckbox(locator: Locator)` | Waits visible (20s), only clicks if unchecked |
+| `sleep` | `sleep(ms: number)` | Promise-based delay — use only when a UI transition genuinely requires it |
+| `getTravelDates` | `getTravelDates(tripType, todayPlusDate)` | Returns date strings in tenant-aware format (MM/DD or DD/MM) |
+| `getPaxType` | `getPaxType(paxType: string)` | Parses `2A1C` → Map of PAX1→ADT, PAX2→ADT, PAX3→CNN |
+
+### 📄 Page Objects (`pageobjects/`)
+**Purpose:** Represent a single UI screen and expose named methods for every interaction on that screen.
+
+- One file per screen — `loginpage.ts`, `homepage.ts`, `passengerdetailspage.ts`, etc.
+- Class name matches the screen: `LoginPage`, `HomePage`, `PassengerDetailsPage`
+- All stable locators declared as `private readonly` in the constructor — never create inline locators inside methods
+- Exception: method-local locators are allowed only for dynamic parameterized selectors and web-table/grid row-cell targeting
+- Every public method has a JSDoc comment and logs entry/exit via `LoggerFactory`
+- Registered in `pageobjectmanager.ts` and re-exported as a proxy from `basetest.ts`
 
 | Page Object | File | Responsibilities |
 |---|---|---|
@@ -65,348 +71,247 @@ PlaywrightTypescript/
 | **PayByCreditCardPage** | `paybycreditcardpage.ts` | Enter card number, name, CVV, expiry date, Complete Payment |
 | **BookingConfirmationPage** | `bookingconfirmationpage.ts` | Extract PNR & Order Number, verify itinerary (origin/dest, departure/arrival times), price/payment limit text |
 
+### 📋 Test Specs (`tests/call-center-tests/`)
+**Purpose:** Orchestrate page object calls and assert business outcomes.
+
+- One spec file per feature/flow — `createordertest.spec.ts`, `seatstest.spec.ts`
+- All test data from the `testData` fixture — never hardcode values in specs
+- Assertions use the `assert` fixture — never raw `expect()`
+- All variables declared at the top of each method/test before any logic (see AGENT_INSTRUCTIONS.md section 5.5)
+- Logger at entry and exit of every test
+
 ---
 
-## Test Data Structure
+## <span style="color:#F59E0B">✏️ Writing a New UI Test</span>
 
-Test data is resolved at runtime via environment variables:
+Follow this step-by-step workflow:
 
+### 🤖 Step 1 — Agent Mode Automation [Optional]
+
+If agent mode is selected for implementation, use the `playwright-cli` skill/workflow to automate UI test case development tasks before manual refinements.
+Reference: [PLAYWRIGHT_CLI_GUIDE.md](PLAYWRIGHT_CLI_GUIDE.md)
+
+### 🔧 Step 2 — Create the page object
+Create `pageobjects/mynewpage.ts`:
+
+```typescript
+import { Page, Locator } from '@playwright/test';
+import { BlackPanther } from '../utilities/blackpanther';
+import { LoggerFactory } from '../utilities/logger';
+const logger = LoggerFactory.getLogger(__filename);
+
+export default class MyNewPage extends BlackPanther {
+
+  // ── Locators ────────────────────────────────────────────────────────────────
+  private readonly myButton: Locator;
+  private readonly myInput: Locator;
+  private readonly resultText: Locator;
+
+  constructor(page: Page) {
+    super(page);
+    this.page = page;
+    this.myButton = page.locator('#myButton');
+    this.myInput = page.locator('#myInput');
+    this.resultText = page.locator('#result');
+  }
+
+  // ── Public Methods ──────────────────────────────────────────────────────────
+
+  /**
+   * Fills the input field and clicks the submit button.
+   * @param value - The value to enter into the input field
+   */
+  async submitForm(value: string): Promise<void> {
+    logger.info(`Submitting form with value: ${value}`);
+    await this.fill(this.myInput, value);
+    await this.click(this.myButton);
+    logger.info('Form submitted');
+  }
+
+  /**
+   * Returns the result text displayed after form submission.
+   * @returns The result string extracted from the result element
+   */
+  async getResult(): Promise<string> {
+    logger.info('Getting result text');
+    const text = await this.resultText.innerText();
+    logger.info(`Result: ${text}`);
+    return text;
+  }
+}
 ```
-ENVIRONMENT   = cert
-SUBENVIRONMENT = ut1 | tc1
-TENANT        = ju | va
+
+### 🔗 Step 3 — Register in `pageobjectmanager.ts` and `basetest.ts`
+
+```typescript
+// pageobjectmanager.ts — add import, field, and instantiation
+import MyNewPage from './mynewpage';
+public myNewPage: MyNewPage;
+this.myNewPage = new MyNewPage(page);
+
+// basetest.ts — add static field, assignment in setup(), and proxy export
+static myNewPage: MyNewPage;
+BaseTest.myNewPage = this.poManager.myNewPage;
+export const myNewPage = createPageProxy<MyNewPage>('myNewPage');
 ```
 
-**File:** `testdata/{env}/{subenv}/{tenant}/call-center-ui.json`
+### 📝 Step 4 — Write the test spec
+Create `tests/call-center-tests/mynewtest.spec.ts`:
 
-Each test case key maps to an array of parameter objects. A `global` key provides shared credentials when individual TCs don't override them.
+```typescript
+import { test } from '../../utilities/fixtures';
+import { LoggerFactory } from '../../utilities/logger';
+import { loginPage, homePage, myNewPage } from '../basetest';
+const logger = LoggerFactory.getLogger(__filename);
 
-### Key Parameters
+test.describe.configure({ mode: 'parallel' });
 
-| Parameter | Description | Example |
-|---|---|---|
-| `userName` | Agent login email | `ut1agency2.admin1.ju.functional.e2e@sabre.com` |
-| `password` | Agent login password | `Pa$$word@2k25` |
-| `tripType` | `OW` (One-Way) or `RT` (Round-Trip) | `RT` |
-| `origin` | IATA departure airport code | `DFW` |
-| `destination` | IATA arrival airport code | `LAX` |
-| `todayPlusDate` | Comma-separated day offsets from today | `7` (OW) or `7,14` (RT) |
-| `paxType` | Passenger composition string | `1A`, `2A1C`, `1A1INF`, `1A1INS` |
-| `cabinType` | Cabin class | `ECONOMY` |
-| `brandType` | Offer brand name shown in the flight grid | `BASIC` |
-| `cardType` | Credit card label in dropdown | `MasterCard`, `Visa` |
-| `cardNumber` | Credit card number | `7563828462827483` |
-| `cardName` | Name on card | `John Doe` |
-| `cvv` | Card CVV | `123` |
-| `expirationDate` | Card expiry MM/YY | `12/27` |
-| `paymentType` | Other payment method | `CASH` |
-| `seatType` | Map of pax to seat type | `{ "PAX1": "PAID" \| "FREE" }` |
+test.describe('@allure.label.feature:MY-FEATURE', () => {
+  test('TC1_Verify_My_Feature', async ({ testData, assert }) => {
+    // ── Declare all variables at the top (see AGENT_INSTRUCTIONS.md section 5.5) ──
+    const userName = testData.get('userName')?.toString()!;
+    const password = testData.get('password')?.toString()!;
+    const myValue = testData.get('myValue')?.toString()!;
+    let result: string;
+
+    logger.info('TC1_Verify_My_Feature — started');
+
+    await loginPage.login(userName, password);
+    await myNewPage.submitForm(myValue);
+    result = await myNewPage.getResult();
+    await assert.notToBeNull(result, 'Verify result is not null');
+
+    logger.info('TC1_Verify_My_Feature — completed');
+  });
+});
+```
+
+### 🗃️ Step 5 — Add test data
+Add to `testdata/{tenant}/{subenv}/call-center-ui.json`:
+
+```json
+{
+  "global": [
+    {
+      "userName": "agent@sabre.com",
+      "password": "Pa$$word@2k25",
+      "dateFormat": "DD/MM/YYYY"
+    }
+  ],
+  "TC1_Verify_My_Feature": [
+    {
+      "myValue": "some test value"
+    }
+  ]
+}
+```
 
 ---
 
-## Test Suite: Create Order
+## <span style="color:#D97706">📌 Key Conventions</span>
 
-**File:** `tests/call-center-tests/createordertest.spec.ts`  
-**Allure Feature Tag:** `@allure.label.feature:Call-Center-PaidOrder`  
-**Suite Tag:** `@PaidOrder @WLV_CC_REGRESSION`
-
-### TC1 — Create Paid Order (Credit Card)
-
-| Field | Value |
+| Convention | Rule |
 |---|---|
-| **Test ID** | TC1_Verify_Login_Into_Call_Center_And_Create_Paid_Order |
-| **Priority** | P1 — Critical |
-| **Type** | E2E |
-| **Status** | `test.only` (currently isolated run) |
-
-**Preconditions:**
-- Valid agent credentials exist in test data
-- Application URL is reachable (loaded from `url-and-accounts.json`)
-
-**Test Data Required:**
-`userName`, `password`, `tripType`, `origin`, `destination`, `todayPlusDate`, `paxType`, `cabinType`, `brandType`, `cardType`, `cardNumber`, `cardName`, `cvv`, `expirationDate`
-
-**Steps:**
-
-| # | Step | Page Object Method |
-|---|---|---|
-| 1 | Navigate to Call Center URL | `BaseTest.setup()` → `page.goto(ccUrl)` |
-| 2 | Login with agent credentials | `loginPage.login(userName, password)` |
-| 3 | Verify welcome message is displayed | `homePage.getWelcomeText()` |
-| 4 | Click Reservations in navigation | `homePage.clickReservationsLink()` |
-| 5 | Click New Reservation | `homePage.clickNewReservationLink()` |
-| 6 | Select trip type (OW or RT) | `homePage.selectTripType(tripType)` |
-| 7 | Enter origin and destination | `homePage.selectCityPair(tripType, origin, destination)` |
-| 8 | Enter travel date(s) | `homePage.selectTravelDates(tripType, todayPlusDate)` |
-| 9 | Enter passenger counts | `homePage.selectPassengers(paxType)` |
-| 10 | Click Shop button | `homePage.clickOnShopButton()` |
-| 11 | Select offer/brand radio button | `homePage.clickOnOfferRadioButton(brandType)` |
-| 12 | Capture itinerary details for later validation | `homePage.getOriginAndDestinations()` / `getDepartureDateAndTimes()` / `getArrivalDateAndTimes()` |
-| 13 | Click Book button | `homePage.clickOnBookButton()` |
-| 14 | Dismiss GDPR/cookie agreement if shown | `homePage.clickOnAgreeButton()` |
-| 15 | Enter all passenger details (auto-generated) | `passengerDetailsPage.enterPassengerDetails(paxType)` |
-| 16 | Save passenger details | `passengerDetailsPage.clickOnSaveButton()` |
-| 17 | Confirm proceed to payment (Yes) | `passengerDetailsPage.clickOnYesButton()` |
-| 18 | Fill payer address details | `addPaymentToNewReservationPage.fillPayerDetails()` |
-| 19 | Select credit card type | `addPaymentToNewReservationPage.selectCardType(cardType)` |
-| 20 | Click Continue on payment selection | `addPaymentToNewReservationPage.clickOnContinueButton()` |
-| 21 | Enter credit card details | `payByCreditCardPage.enterCardDetails(cardNumber, cardName, cvv, expirationDate)` |
-| 22 | Complete payment | `payByCreditCardPage.clickOnCompletePaymentButton()` |
-| 23 | Extract PNR and Order Number | `bookingConfirmationPage.getPNRAndOrderNumber()` |
-
-**Assertions:**
-
-| # | Assertion | Expected |
-|---|---|---|
-| A1 | Welcome text starts with | `"Welcome, "` |
-| A2 | PNR Number is not null | PNR is generated |
-| A3 | Order Number is not null | Order is created |
-| A4 | Origin & Destinations match selected itinerary | Strict equality |
-| A5 | Departure dates/times match selected itinerary | Strict equality |
-| A6 | Arrival dates/times match selected itinerary | Strict equality |
+| Page object file name | Must match the UI screen name exactly: `loginpage.ts` → `LoginPage` |
+| Page object base class | Always `extends BlackPanther` — never extend plain `Page` |
+| Locator declarations | All stable locators are `private readonly` in constructor — never inline inside methods (except dynamic parameterized or web-table/grid locators) |
+| Locator strategy | ID → data attribute → starts-with ID → role+text → CSS/XPath compound (in priority order) |
+| Method comments | Every public method must have a JSDoc block with description, `@param`, and `@returns` |
+| Logger | `const logger = LoggerFactory.getLogger(__filename)` at the top of every file |
+| Logger usage | Entry (`logger.info('Starting ...')`) and completion (`logger.info('... completed')`) in every method |
+| Interactions | Always use `BlackPanther` methods — never raw `locator.click()` or `page.waitForTimeout()` |
+| Registration | Every new page object must be added to `pageobjectmanager.ts` and `basetest.ts` |
+| Agent mode automation | If agent mode is selected, use `playwright-cli` to automate UI test case development |
+| Test data | All test data from `testData` fixture — never hardcode values in specs or page objects |
+| Test variables | Declare all `let`/`const` at the **top** of methods/tests before any logic (section 5.5 of AGENT_INSTRUCTIONS.md) — never declare mid-execution |
+| Assertions | Use `assert` fixture only — never raw `expect()` for business assertions |
+| Allure feature label | Must start with project prefix and hyphen, for example: `@allure.label.feature:DWRES-...` or `@allure.label.feature:DXVASM-...` |
+| Parallelism | Add `test.describe.configure({ mode: 'parallel' })` at the top of every spec file |
+| Test case naming | Test names must be relevant to the feature flow and describe key actions in sequence, for example: `TC1_Create_Paid_Order_Add_Paid_Seats_Payment`; do not include data-variant tokens such as `RT`/`OW`, `2A`/`2A1C`, or route codes |
+| Test case numbering | In each spec file, test numbers must be continuous with no gaps or duplicates (`TC1`, `TC2`, `TC3`, ...). Missing numbers must be highlighted and corrected |
+| Test case comments | Every `test()` must have a concise `/** ... */` block comment immediately above it (1–2 lines covering testcase intent and expected result) |
+| Test logging | `logger.info('TC1_... — started')` and `logger.info('TC1_... — completed')` in every test |
+| Shared setup | Place repeated steps in `test.beforeEach` — never in local helper functions |
+| Flat steps only | Every step must be a single page-object call — never fold steps into helper functions, type aliases, or wrapper abstractions within spec files |
+| No spec orchestration loops | Business iteration/orchestration (for example looping parsed assignment maps) must live in page objects/parsers/utilities; spec should call one expressive method |
+| Single-line invocation format | Keep `test(...)` signatures and page-object/assert/logger calls in single-line format; avoid folded multiline argument formatting in specs |
+| Page-object transition spacing | Insert one blank line between the last step of one page object and the first step of the next; steps belonging to the same page object are grouped with no blank lines between them |
+| Code simplicity (KISS) | Methods must be short, flat, and obvious — no deeply nested `if/else` chains; prefer early returns, guard clauses, or iterating a candidate list |
+| Shallow call depth (≤ 3 levels) | A public method may call a helper, which may call one more helper — but chains deeper than 3 levels (A → B → C → D → …) make debugging extremely difficult; flatten intermediate delegation methods that only forward calls |
+| No duplication (DRY) | If a pattern repeats more than twice, extract it into a private helper or `BlackPanther` base method |
+| Single responsibility (SOLID) | Each method does one thing; split methods that locate, fill, and save into focused helpers. SOLID is a guideline — apply where it improves readability |
+| Dead code removal | Remove all unused variables, imports, functions, and commented lines — reviewers will reject PRs containing dead code; use git history if you need old code |
 
 ---
 
-### TC2 — Create Paid Order (Cash Payment)
+## <span style="color:#8B5CF6">⚙️ `BlackPanther` — What it handles automatically</span>
 
-| Field | Value |
-|---|---|
-| **Test ID** | TC2_Verify_Login_Into_Call_Center_And_Create_Paid_Order_Using_Cash |
-| **Priority** | P1 — Critical |
-| **Type** | E2E |
+You do NOT need to manually do any of the following in page objects or tests:
 
-**Test Data Required:**
-`userName`, `password`, `tripType`, `origin`, `destination`, `todayPlusDate`, `paxType`, `cabinType`, `brandType`, `paymentType`
-
-**Steps:**
-
-Steps 1–14 are identical to TC1. Diverges at payment:
-
-| # | Step | Page Object Method |
-|---|---|---|
-| 15 | Enter all passenger details | `passengerDetailsPage.enterPassengerDetails(paxType)` |
-| 16 | Save passenger details | `passengerDetailsPage.clickOnSaveButton()` |
-| 17 | Confirm proceed to payment (Yes) | `passengerDetailsPage.clickOnYesButton()` |
-| 18 | Click "Other" payment tab | `addPaymentToNewReservationPage.selectPaymentType(paymentType)` (clicks Other tab internally) |
-| 19 | Select payment type (e.g., CASH) | (handled inside `selectPaymentType`) |
-| 20 | Click Continue | `addPaymentToNewReservationPage.clickOnContinueButton()` |
-| 21 | Extract PNR and Order Number | `bookingConfirmationPage.getPNRAndOrderNumber()` |
-
-**Assertions:** Same as TC1 (A1–A6).
+- Waiting for elements before clicking or filling ✅ (automatic — 20s visibility wait)
+- Logging each interaction to Allure as a step ✅ (automatic — every `click` and `fill` creates a step)
+- Asserting element visibility before interaction ✅ (automatic — built into `click` and `fill`)
+- Adding a delay before each action ✅ (automatic — 1s wait before every click/fill)
+- Re-throwing errors with context ✅ (automatic — errors include locator and page details)
 
 ---
 
-### TC3 — Multi-Pax One-Way Unpaid Order
+## <span style="color:#10B981">📁 Folder Naming Conventions</span>
 
-| Field | Value |
-|---|---|
-| **Test ID** | TC3_Verify_Multipax_OW_And_Create_Unpaid_Order |
-| **Priority** | P2 — High |
-| **Type** | E2E |
-
-**Test Data Required:**
-`userName`, `password`, `tripType` (OW), `origin`, `destination`, `todayPlusDate`, `paxType` (multi-pax, e.g., `2A1C`), `cabinType`, `brandType`
-
-**Steps:**
-
-Steps 1–14 identical to TC1. Diverges after passenger details:
-
-| # | Step | Page Object Method |
-|---|---|---|
-| 15 | Enter passenger details for all pax | `passengerDetailsPage.enterPassengerDetails(paxType)` |
-| 16 | Save passenger details | `passengerDetailsPage.clickOnSaveButton()` |
-| 17 | Decline payment now (No — unpaid flow) | `passengerDetailsPage.clickOnNoButton()` |
-| 18 | Extract PNR and Order Number | `bookingConfirmationPage.getPNRAndOrderNumber()` |
-
-**Assertions:**
-
-| # | Assertion | Expected |
-|---|---|---|
-| A1–A6 | Same as TC1 | — |
-| A7 | Price Guarantee Time Limit text visible | Contains `"Price Guarantee Time Limit"` |
-| A8 | Payment Time Limit text visible | Contains `"Payment Time Limit"` |
-
-> **Note:** TC3 contains `assert.toBe(orderNumber, "ABCD1234")` — this is a placeholder assertion and should be updated with a dynamic expected value.
-
----
-
-## Test Suite: Seats
-
-**File:** `tests/call-center-tests/seatstest.spec.ts`  
-**Allure Feature Tags:** `@allure.label.feature:Call-Center-Paid-Seats` / `@allure.label.feature:Call-Center-Free-Seats`
-
-> **Current Status:** Seat test cases are partially implemented. Steps are scaffolded but seat selection page object is not yet built.
-
----
-
-### TC1 — Create Paid Order + Add Paid Seat
-
-| Field | Value |
-|---|---|
-| **Test ID** | TC1_Verify_Login_Into_Call_Center_And_Create_Paid_Order_And_Add_Paid_Seats |
-| **Priority** | P2 — High |
-| **Type** | E2E |
-| **Status** | Skeleton — needs implementation |
-
-**Test Data Required:**
-`userName`, `password`, `seatType` (e.g., `{ "PAX1": "PAID" }`)
-
-**Steps to Develop:**
-
-| # | Step | Notes |
-|---|---|---|
-| 1–22 | Full paid order flow (same as TC1 in Create Order suite) | Reuse existing steps |
-| 23 | Navigate to seat map page | New page object required |
-| 24 | Select a paid seat for each passenger | Use `seatType` map to drive selection |
-| 25 | Confirm seat selection | — |
-| 26 | Verify seat charge added to order | Validate on confirmation page |
-
-**Assertions to Add:**
-
-| # | Assertion | Expected |
-|---|---|---|
-| A1 | Seat type matches selected type | `PAID` |
-| A2 | Seat charge appears in order total | Not null / greater than 0 |
-| A3 | Seat assignment visible on confirmation | Seat number/row not empty |
-
----
-
-### TC2 — Create Unpaid Order + Add Free Seat
-
-| Field | Value |
-|---|---|
-| **Test ID** | TC2_Verify_Login_Into_Call_Center_And_Create_Unpaid_Order_And_Add_Free_Seat |
-| **Priority** | P2 — High |
-| **Type** | E2E |
-| **Status** | Skeleton — partially implemented (only validates tenant env var) |
-
-**Test Data Required:**
-`userName`, `password`, `seatType` (e.g., `{ "PAX1": "FREE" }`)
-
-**Steps to Develop:**
-
-| # | Step | Notes |
-|---|---|---|
-| 1–17 | Full unpaid order flow (same as TC3 in Create Order suite) | Reuse existing steps |
-| 18 | Navigate to seat map page | New page object required |
-| 19 | Select a free seat for each passenger | Filter by `FREE` in `seatType` map |
-| 20 | Confirm seat selection | — |
-| 21 | Verify no additional seat charge | Total unchanged |
-
-**Assertions to Add:**
-
-| # | Assertion | Expected |
-|---|---|---|
-| A1 | Seat assigned at no extra cost | Seat charge = `$0.00` or absent |
-| A2 | Seat assignment visible on confirmation | Seat number/row not empty |
-
----
-
-### TC3 — Create Paid Order + Add Free Seat
-
-| Field | Value |
-|---|---|
-| **Test ID** | TC3_Verify_Login_Into_Call_Center_And_Create_Paid_Order_And_Add_Free_Seat |
-| **Priority** | P3 — Medium |
-| **Type** | E2E |
-| **Status** | Skeleton — needs implementation |
-
-**Test Data Required:**
-`userName`, `password`, `seatType` (e.g., `{ "PAX1": "FREE" }`)
-
-**Steps to Develop:**
-
-| # | Step | Notes |
-|---|---|---|
-| 1–22 | Full paid order flow (same as TC1 in Create Order suite) | Reuse existing steps |
-| 23 | Navigate to seat map page | New page object required |
-| 24 | Select a free seat for paid booking | — |
-| 25 | Confirm seat selection | — |
-| 26 | Verify order total unchanged (no seat surcharge) | — |
-
----
-
-## Test Case Details
-
-### Passenger Type Parser (`paxType` string)
-
-The `paxType` string is parsed in `BlackPanther.getPaxType()`:
-
-| Pattern | Meaning | Maps To |
-|---|---|---|
-| `1A` | 1 Adult | `ADT` |
-| `2C` | 2 Children | `CNN` |
-| `1INF` | 1 Infant (lap) | `INF` |
-| `1INS` | 1 Infant with seat | `INF` |
-
-**Examples:**
-- `1A` → 1 adult
-- `2A1C` → 2 adults, 1 child
-- `1A1INF` → 1 adult, 1 lap infant
-- `2A1C1INS` → 2 adults, 1 child, 1 infant with seat
-
-### Date Offset Logic
-
-`todayPlusDate` is a comma-separated offset from today's date (midnight-normalized):
-
-- **OW:** Single value → `"7"` means departure = today + 7 days
-- **RT:** Two values → `"7,14"` means depart today+7, return today+14
-
-Formatted as `MM/DD/YYYY` for the UI date inputs.
-
-### Trip Type Routing (Homepage)
-
-| `tripType` | Radio Button | From/To Locators | Date Inputs |
+| Layer | Folder | Naming Pattern | Example |
 |---|---|---|---|
-| `RT` | Round-Trip | `.first()` | `rtDepartureDateEditbox` + `arrivalDateEditbox` |
-| `OW` | One-Way | `.last()` | `owDepartureDateEditbox` only |
+| Page Object | `pageobjects/` | `<screenname>page.ts` | `loginpage.ts`, `homepage.ts` |
+| Test Spec | `tests/call-center-tests/` | `<feature>test.spec.ts` | `createordertest.spec.ts` |
+| Test Data | `testdata/{tenant}/{subenv}/` | `call-center-ui.json` | fixed filename |
+| Base Class | `utilities/` | `blackpanther.ts` | fixed filename |
 
----
 
-## Assertions Reference
+## <span style="color:#64748B">🌐 Environment Matrix</span>
 
-Custom `assert` fixture wraps Playwright's `expect`:
-
-| Method | Usage |
-|---|---|
-| `assert.toEqual(expected, actual, message)` | Loose equality (e.g., welcome text) |
-| `assert.toStrictEqual(expected, actual, message)` | Deep strict equality (arrays) |
-| `assert.notToBeNull(value, message)` | Value is not null/undefined |
-| `assert.toBe(actual, expected, message)` | `===` equality |
-| `assert.toContain(actual, substring, message)` | String contains substring |
-
----
-
-## Future Test Cases to Develop
-
-The following test cases are identified as gaps based on the current page objects and test data structure:
-
-| TC ID | Description | Priority | Suite |
-|---|---|---|---|
-| TC_Login_InvalidCredentials | Verify login fails with wrong password | P1 | Login |
-| TC_Login_EmptyFields | Verify validation messages when fields are empty | P2 | Login |
-| TC_RT_Booking_CreditCard | Round-trip booking with credit card payment | P1 | Create Order |
-| TC_OW_Booking_MultiPax_CreditCard | One-way multi-pax (ADT+CNN+INF) with credit card | P1 | Create Order |
-| TC_OW_Booking_INS | One-way booking with infant-in-seat (INS) passenger | P2 | Create Order |
-| TC_RT_Booking_Cash | Round-trip booking with cash payment | P2 | Create Order |
-| TC_Flight_ListValidation_OW | Verify flight list details (O&D, times) in shop results | P2 | Create Order |
-| TC_Flight_ListValidation_RT | Verify round-trip flight list details | P2 | Create Order |
-| TC_Seat_PaidOrder_MultiplePax | Add paid seats for all pax on a multi-pax order | P2 | Seats |
-| TC_Seat_UpgradeFromFreeToCharged | Select free seat then change to charged seat | P3 | Seats |
-| TC_BookingConf_PriceBreakdown | Validate price breakdown on confirmation page | P2 | Booking Confirmation |
-| TC_BookingConf_PassengerDetails | Validate passenger names/DOB on confirmation page | P2 | Booking Confirmation |
-| TC_Session_Timeout | Verify session expiry and redirect to login | P3 | Login |
-| TC_GDPR_Agreement_Dismissed | Verify flow continues when GDPR modal is absent | P3 | Home |
-
----
-
-## Environment Matrix
-
-| Environment | Sub-Env | Tenant | Notes |
-|---|---|---|---|
-| `cert` | `ut1` | `ju` | Primary test environment (JU tenant) |
-| `cert` | `ut1` | `va` | VA tenant — used in seat tests |
-| `cert` | `tc1` | *(tbd)* | TC1 sub-environment |
+| Tenant | Sub-Env | Notes |
+|---|---|---|
+| `ju` | `ut1` | Primary test environment (JU tenant) |
+| `va` | `ut1` | VA tenant — used in seat tests |
+| `ju` | `tc1` | TC1 sub-environment (JU tenant) |
+| `va` | `tc1` | TC1 sub-environment (VA tenant) |
 
 Call Center URLs follow the pattern:  
 `https://callcenter-{subenv}-{tenant}.sm.dev.sabre-gcp.com/Login`
+
+---
+
+## <span style="color:#EF4444">⏭️ Data-Driven Test Skipping (`skipTest`)</span>
+
+When a test case is **not applicable** for a specific tenant or environment, use the `skipTest` flag in the test data JSON instead of removing the test case key or modifying the spec file.
+
+### How It Works
+
+The `testData` fixture in `utilities/fixtures.ts` automatically checks for `skipTest: true` after loading test data. If the flag is present, the test is skipped with Playwright's `test.skip()` — no spec file changes required.
+
+### JSON Format
+
+```json
+"TC1_Verify_Login_Into_Call_Center_And_Create_Paid_Order": [
+    {
+        "skipTest": true,
+        "skipReason": "BEG-IST route not applicable for VA",
+        "paymentType": "CARD",
+        "tripType": "RT",
+        "origin": "BEG",
+        "destination": "IST"
+    }
+]
+```
+
+| Field | Required | Description |
+|---|---|---|
+| `skipTest` | Yes | Set to `true` to skip the test for this tenant |
+| `skipReason` | No | Human-readable reason shown in reports (defaults to `"Test skipped for tenant: {tenant}"`) |
+
+### Rules
+
+1. **Always keep the test case key** in every tenant's JSON — never remove it. Use `skipTest: true` instead.
+2. **Always provide `skipReason`** so reports and CI logs clearly explain why a test was skipped.
+3. **Keep the remaining data fields** intact — they serve as documentation of what the test would use if enabled.
+4. **Never add skip logic inside spec files** — the fixture handles it centrally.
+5. If a test case key is **missing entirely** from a tenant's JSON, the fixture auto-skips with a default reason.

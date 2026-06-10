@@ -55,7 +55,7 @@ test.describe('@PaidOrder @WLV_CC_REGRESSION @allure.label.feature:Call-Center-P
     await homePage.clickOnAgreeButton();
 
     logger.info('Entering passenger details');
-    await passengerDetailsPage.enterPassengerDetails(paxType);
+    await passengerDetailsPage.enterAndGetPassengerDetails(paxType);
     await passengerDetailsPage.clickOnSaveButton();
     await passengerDetailsPage.clickOnYesButton();
 
@@ -117,7 +117,7 @@ test.describe('@PaidOrder @WLV_CC_REGRESSION @allure.label.feature:Call-Center-P
     await homePage.clickOnAgreeButton();
 
     logger.info('Entering passenger details');
-    await passengerDetailsPage.enterPassengerDetails(paxType);
+    await passengerDetailsPage.enterAndGetPassengerDetails(paxType);
     await passengerDetailsPage.clickOnSaveButton();
     await passengerDetailsPage.clickOnYesButton();
 
@@ -176,7 +176,7 @@ test.describe('@PaidOrder @WLV_CC_REGRESSION @allure.label.feature:Call-Center-P
     await homePage.clickOnAgreeButton();
 
     logger.info('Entering passenger details and selecting unpaid flow');
-    await passengerDetailsPage.enterPassengerDetails(paxType);
+    const passengerDetails = await passengerDetailsPage.enterAndGetPassengerDetails(paxType);
     await passengerDetailsPage.clickOnSaveButton();
     await passengerDetailsPage.clickOnNoButton();
 

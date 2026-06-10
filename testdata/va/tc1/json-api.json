@@ -1,0 +1,39 @@
+{
+    "global": [
+        {
+
+        }
+    ],
+    "TC1_Verify_Add_One_Way_Single_Pax_One_Way_Create_Paid_Order": [
+        {
+            "paymentType": "CASH",
+            "cardType": "MasterCard",
+            "cardNumber": "7563828462827483",
+            "seatType":{
+                "PAX1": "PAID"
+            }
+        }
+    ],
+    "TC2_Verify_Multi_Pax_One_Way_Create_Paid_Order": [
+        {
+            "paymentType": "CASH",
+            "cardType": "MasterCard",
+            "cardNumber": "7563828462827483",
+            "seatType":{
+                "PAX1": "PAID"
+            },
+            "paxType": "2A1C"
+        }
+    ],
+    "TC3_Verify_Single_Pax_One_Way_Create_Paid_Order": [
+        {
+            "paymentType": "CASH",
+            "cardType": "MasterCard",
+            "cardNumber": "7563828462827483",
+            "seatType":{
+                "PAX1": "PAID"
+            },
+            "paxType": "1A"
+        }
+    ]
+}

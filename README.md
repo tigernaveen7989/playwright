@@ -39,7 +39,46 @@ npm install
 npx playwright install
 ```
 
-### 2. **Set Environment Variables**
+### 1.1 **Install/Enable Playwright CLI Workflow (Agent Mode)**
+
+Use this when UI test case development is done in Copilot agent mode.
+
+> Note: For this project, `playwright-cli` is a Copilot skill/workflow reference, not a separate npm package to install with `npx install playwright-cli`.
+
+1. Ensure VS Code has GitHub Copilot and GitHub Copilot Chat enabled.
+2. Open Copilot Chat and select Agent mode.
+3. Install project dependencies and Playwright browsers:
+```bash
+npm ci
+npx playwright install
+```
+4. Use prompts that explicitly request `playwright-cli` automation for UI test development.
+5. Follow the project guide for examples and usage patterns:
+  [architecture/PLAYWRIGHT_CLI_GUIDE.md](architecture/PLAYWRIGHT_CLI_GUIDE.md)
+
+Example prompt:
+
+```text
+Use playwright-cli to generate UI test skeleton for TC1 login flow with page object + spec updates.
+```
+
+### 2. **Install Allure Packages**
+
+Install the Allure command-line tool and the Allure Playwright reporter to generate and view Allure reports:
+
+```bash
+npm install --save-dev allure-playwright
+npm install --save-dev allure-commandline
+```
+
+To generate and open the Allure report after a test run:
+
+```bash
+npx allure generate allure-results --clean -o allure-reports
+npx allure open allure-reports
+```
+
+### 3. **Set Environment Variables**
 
 Create a file named `environment.env` in the root directory and define:
 
@@ -49,13 +88,13 @@ SUBENVIRONMENT=your_subenvironment
 TENANT=your_tenant
 ```
 
-### 3. **Run All Tests**
+### 4. **Run All Tests**
 
 ```bash
 npx playwright test
 ```
 
-### 4. **Run Specific Project Tests**
+### 5. **Run Specific Project Tests**
 
 ```bash
 npx playwright test --project=call-center
@@ -63,12 +102,19 @@ npx playwright test --project=xml-api
 npx playwright test --project=json-api
 ```
 
-### 5. **Run a Specific Spec File**
+### 6. **Run Tests by Tag**
+
+```bash
+npx playwright test --grep "@TagName"
+```
+
+### 7. **Run a Specific Spec File**
 
 ```bash
 npx playwright test tests/xml-api-tests/createordertest.spec.ts
 npx playwright test tests/json-api-tests/createordertest.spec.ts
 npx playwright test tests/call-center-tests/createordertest.spec.ts
+npx playwright test tests/call-center-tests/createordertest.spec.ts --headed  # launch browser in headed mode
 ```
 
 ---
@@ -109,6 +155,7 @@ npx playwright test tests/call-center-tests/createordertest.spec.ts
 
 - [Playwright Documentation](https://playwright.dev/docs/intro)
 - [Allure Playwright Integration](https://github.com/allure-framework/allure-playwright)
+- [Playwright CLI Guide (Project)](architecture/PLAYWRIGHT_CLI_GUIDE.md)
 
 ---
 

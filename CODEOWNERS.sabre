@@ -1,0 +1,34 @@
+# Refer to CODEOWNERS files throughout this repo to identify owners for
+# various subdirectory trees. CODEOWNERS defined in lower-level directories
+# override those defined in ancestor directories.
+
+@@@Owners @ThomasGeorge-Mathews_sabre @Guruprasad-P_sabre @NaveenX-Kumar-ctr_sabre @ChidriI-Srinath_sabre
+@@@QATeam @ThomasGeorge-Mathews_sabre @Guruprasad-P_sabre @ChidriI-Srinath_sabre @Naveen-Gopal_sabre @SivaSanjeev-Kathiresan_sabre @NaveenX-Kumar-ctr_sabre @praveen-koliwad-ctr_sabre
+
+* @@Owners @@QATeam
+
+# Protected files — only @Owners can approve changes
+utilities/ @@Owners
+utilities/blackpanther.ts @@Owners
+environment.env @@Owners
+architecture/ @@Owners
+.github/agents/ @@Owners
+.github/instructions/ @@Owners
+.github/workflows/ @@Owners
+.gitignore @@Owners
+.jenkins @@Owners
+agent-config.json @@Owners
+agent-manager.ps1 @@Owners
+agent-manager.sh @@Owners
+azure-pipelines.yml @@Owners
+docker-compose.yml @@Owners
+Dockerfile @@Owners
+package-lock.json @@Owners
+package.json @@Owners
+README.md @@Owners
+sonar-project.properties @@Owners
+tsconfig.json @@Owners
+
+Check(@@Owners >= 1)
+Check(@@QATeam >= 1)
+OverallCheck(1)

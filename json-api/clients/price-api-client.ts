@@ -8,6 +8,7 @@ export class PriceApiClient extends BaseApiClient {
     payload: object
   ): Promise<APIResponse> {
     return this.post(
+      'Price',
       'Send Price API Request and Log Request/Response',
       endpoint,
       headers,

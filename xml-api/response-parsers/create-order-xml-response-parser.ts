@@ -40,4 +40,32 @@ export class CreateOrderXmlResponseParser {
     if (message) logger.info(`Create Order response — warning: ${message}`);
     return message;
   }
+
+  /**
+   * Extracts the account code from FareRule RemarkText elements in the Create Order
+   * XML response. Looks for text matching 'ACCOUNT CODE - <code>' pattern.
+   * Returns an empty string if no account code remark is found.
+   *
+   * @param xmlString Raw Create Order XML response text
+   * @returns Account code string (e.g. 'EAL74'), or empty string if none
+   */
+  getAccountCode(xmlString: string): string {
+    const doc = new DOMParser().parseFromString(xmlString, 'text/xml');
+    const nodes = xpath.select(
+      '//*[local-name()="FareRule"]/*[local-name()="Remark"]/*[local-name()="RemarkText"]/text()',
+      doc
+    ) as Node[];
+
+    for (const node of nodes) {
+      const text = (node.nodeValue ?? '').trim();
+      const match = text.match(/ACCOUNT CODE\s*-\s*(\S+)/i);
+      if (match) {
+        logger.info(`Create Order response — account code: ${match[1]}`);
+        return match[1];
+      }
+    }
+
+    logger.info('Create Order response — no account code found in FareRule remarks');
+    return '';
+  }
 }

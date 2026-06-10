@@ -176,4 +176,93 @@ test.describe('@allure.label.feature:XML-PaidOrder', () => {
 
     logger.info('TC2_Verify_Add_One_Way_Multi_Pax_Create_Paid_Order — completed');
   });
+
+  test('TC280_Verify_Mpax_RT_Shop_EnforcedAccountCode_Create_Paid_Order', async ({ testData, assert }) => {
+    // ── Declare all variables at the top ─────────────────────────────────
+    const paxType = testData.get('paxType')?.toString()!;
+    const accountCode = testData.get('accountCode')?.toString()!;
+    const origin = testData.get('origin')?.toString()!;
+    const destination = testData.get('destination')?.toString()!;
+    const departureDate = testData.get('departureDate')?.toString()!;
+    const returnDate = testData.get('returnDate')?.toString()!;
+    const shopParser = new ShopXmlResponseParser();
+    const priceParser = new PriceXmlResponseParser();
+    const createOrderParser = new CreateOrderXmlResponseParser();
+    let paxTypeMap: Map<string, string>;
+    let paxIdOffersItemIdsMap: Map<string, string>;
+    let passengerDetailsMap: Map<string, Map<string, string>>;
+    let offerId: string;
+    let shopResponse: APIResponse;
+    let priceResponse: APIResponse;
+    let createOrderResponse: APIResponse;
+    let shopResponseText: string;
+    let priceResponseText: string;
+    let createOrderResponseText: string;
+    let warningMessage: string;
+    let orderId: string | null;
+    let responseAccountCode: string;
+
+    logger.info('TC280_Verify_Mpax_RT_Shop_EnforcedAccountCode_Create_Paid_Order — started');
+
+    // Shop with Enforce Account Code
+    paxTypeMap = shopParser.getPaxType(paxType);
+    const shopPayload = new ShopXmlPayloadBuilder()
+      .withOrigin(origin)
+      .withDestination(destination)
+      .withDepartureDate(departureDate)
+      .withReturnDate(returnDate)
+      .withPassengers(paxTypeMap)
+      .withCurrency('AUD')
+      .withAgentDuty('NDC')
+      .withCityCode('DNN')
+      .withCountryCode('AU')
+      .withSellerOrgId('')
+      .withCarrierOrgId('')
+      .withEnforceAccountCode(true)
+      .withAccountCode(accountCode)
+      .withAirlineCode('VA')
+      .build();
+
+    shopResponse = await new ShopXmlApiClient().shop(`${rmxNdcXml}/shop`, headers, shopPayload);
+    await assert.toBe(shopResponse.status(), 200, 'Verify shop response status is 200');
+    shopResponseText = await shopResponse.text();
+    paxIdOffersItemIdsMap = shopParser.getPaxOfferItemIdsMap(paxTypeMap, shopResponseText);
+
+    // Price
+    const pricePayload = new PriceXmlPayloadBuilder()
+      .withPaxIdOffersItemIdsMap(paxIdOffersItemIdsMap)
+      .withOwnerCode('VA')
+      .withCurrency('AUD')
+      .withLocationCode('SYD')
+      .withCountryCode('AU')
+      .withSellerOrgId('')
+      .withCarrierOrgId('')
+      .build();
+
+    priceResponse = await new PriceXmlApiClient().price(`${rmxNdcXml}/price`, headers, pricePayload);
+    await assert.toBe(priceResponse.status(), 200, 'Verify price response status is 200');
+    priceResponseText = await priceResponse.text();
+    passengerDetailsMap = priceParser.getPassengerDetailsMap(priceResponseText, paxTypeMap);
+    offerId = priceParser.getOfferId(passengerDetailsMap);
+
+    // Create Order
+    const createOrderPayload = new CreateOrderXmlPayloadBuilder()
+      .withPassengerDetailsMap(passengerDetailsMap)
+      .withOfferId(offerId)
+      .withOwnerCode('VA')
+      .withCountryCode('AU')
+      .build();
+
+    createOrderResponse = await new CreateOrderXmlApiClient().createOrder(`${omsNdcXml}/v21_3/orders/create`, headers, createOrderPayload);
+    await assert.toBe(createOrderResponse.status(), 200, 'Verify create order response status is 200');
+    createOrderResponseText = await createOrderResponse.text();
+    warningMessage = createOrderParser.getWarningMessage(createOrderResponseText);
+    orderId = createOrderParser.getOrderId(createOrderResponseText);
+    responseAccountCode = createOrderParser.getAccountCode(createOrderResponseText);
+    await assert.toBeEmpty(warningMessage, 'Verify Warning Message is Empty');
+    await assert.notToBeNull(orderId, 'Verify Order Id is Not Null');
+    await assert.toBe(responseAccountCode, accountCode, `Verify Account Code '${accountCode}' is present in Create Order response`);
+
+    logger.info('TC280_Verify_Mpax_RT_Shop_EnforcedAccountCode_Create_Paid_Order — completed');
+  });
 });

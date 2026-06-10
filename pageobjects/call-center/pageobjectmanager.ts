@@ -6,6 +6,9 @@ import PassengerDetailsPage from './passengerdetailspage';
 import AddPaymentToNewReservationPage from './addpaymenttonewreservationpage';
 import PayByCreditCardPage from './paybycreditcardpage';
 import BookingConfirmationPage from './bookingconfirmationpage';
+import SeatSelectionPage from './seatselectionpage';
+import AirExchangePage from './airexchangepage';
+import AncillaryPage from './ancillarypage';
 
 export default class pageobjectmanager {
   public loginPage: LoginPage;
@@ -14,6 +17,9 @@ export default class pageobjectmanager {
   public addPaymentToNewReservationPage: AddPaymentToNewReservationPage;
   public payByCreditCardPage: PayByCreditCardPage;
   public bookingConfirmationPage: BookingConfirmationPage;
+  public seatSelectionPage: SeatSelectionPage;
+  public airExchangePage: AirExchangePage;
+  public ancillaryPage: AncillaryPage;
 
   constructor(page: Page, testInfo: TestInfo) {
     this.loginPage = new LoginPage(page, testInfo);
@@ -21,6 +27,9 @@ export default class pageobjectmanager {
     this.passengerDetailsPage = new PassengerDetailsPage(page);
     this.addPaymentToNewReservationPage = new AddPaymentToNewReservationPage(page);
     this.payByCreditCardPage = new PayByCreditCardPage(page);
-    this.bookingConfirmationPage = new BookingConfirmationPage(page);
+    this.bookingConfirmationPage = new BookingConfirmationPage(page, testInfo);
+    this.seatSelectionPage = new SeatSelectionPage(page);
+    this.airExchangePage = new AirExchangePage(page);
+    this.ancillaryPage = new AncillaryPage(page);
   }
 }

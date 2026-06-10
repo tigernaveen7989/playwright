@@ -5,6 +5,7 @@ const logger = LoggerFactory.getLogger(__filename);
 
 export abstract class BaseApiClient {
   protected async post(
+    apiName: string,
     stepName: string,
     endpoint: string,
     headers: Record<string, string>,
@@ -17,6 +18,10 @@ export abstract class BaseApiClient {
 
       try {
         logger.info(`Sending request to: ${endpoint}`);
+        await attachment(`${apiName} - URI`, endpoint, { contentType: 'text/plain' });
+        await attachment(`${apiName} - Headers`, JSON.stringify(headers, null, 2), {
+          contentType: 'application/json'
+        });
         await attachment(requestAttachmentName, JSON.stringify(payload, null, 2), {
           contentType: 'application/json'
         });

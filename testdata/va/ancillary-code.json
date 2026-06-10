@@ -1,0 +1,122 @@
+{
+    "INT1": {
+        "standardAncillaryCode": "ASVC",
+        "nonStandardAncillaryCode": "SPEQ",
+        "nonBaggageAncillaryCode": "P",
+        "baggageAncillaryCode": "Baggage",
+        "bundleAncillaryCode": "Standalone",
+        "baggageGroupDescription": "BAGGAGE",
+        "nonStandardServiceInvGroup": "SPEQ",
+        "excludedNonBaggageGroups": [
+            "Baggage",
+            "BUNDLED SERVICES",
+            "MEDICAL",
+            "Pre-reserved Seat Assignment",
+            "UNACCOMPANIED TRAVEL ESCORT",
+            "Pets",
+            "PET IN CABIN",
+            "UNACCOMPANIED MINOR",
+            "BLND-BLIND PASSENGER"
+        ]
+    },
+    "QA1": {
+        "standardAncillaryCode": "ASVC",
+        "nonStandardAncillaryCode": "SPEQ",
+        "nonBaggageAncillaryCode": "P",
+        "baggageAncillaryCode": "Baggage",
+        "bundleAncillaryCode": "Standalone",
+        "baggageGroupDescription": "BAGGAGE",
+        "nonStandardServiceInvGroup": "SPEQ",
+        "excludedNonBaggageGroups": [
+            "Baggage",
+            "BUNDLED SERVICES",
+            "MEDICAL",
+            "Pre-reserved Seat Assignment",
+            "UNACCOMPANIED TRAVEL ESCORT",
+            "Pets",
+            "PET IN CABIN",
+            "UNACCOMPANIED MINOR",
+            "BLND-BLIND PASSENGER"
+        ]
+    },
+    "TC1": {
+        "standardAncillaryCode": "ASVC",
+        "nonStandardAncillaryCode": "SPEQ",
+        "nonBaggageAncillaryCode": "P",
+        "baggageAncillaryCode": "Baggage",
+        "bundleAncillaryCode": "Standalone",
+        "baggageGroupDescription": "BAGGAGE",
+        "nonStandardServiceInvGroup": "SPEQ",
+        "excludedNonBaggageGroups": [
+            "Baggage",
+            "BUNDLED SERVICES",
+            "MEDICAL",
+            "Pre-reserved Seat Assignment",
+            "UNACCOMPANIED TRAVEL ESCORT",
+            "Pets",
+            "PET IN CABIN",
+            "UNACCOMPANIED MINOR",
+            "BLND-BLIND PASSENGER"
+        ]
+    },
+    "UT1": {
+        "standardAncillaryCode": "ASVC",
+        "nonStandardAncillaryCode": "SPEQ",
+        "nonBaggageAncillaryCode": "P",
+        "baggageAncillaryCode": "Baggage",
+        "bundleAncillaryCode": "Standalone",
+        "baggageGroupDescription": "BAGGAGE",
+        "nonStandardServiceInvGroup": "SPEQ",
+        "excludedNonBaggageGroups": [
+            "Baggage",
+            "BUNDLED SERVICES",
+            "MEDICAL",
+            "Pre-reserved Seat Assignment",
+            "UNACCOMPANIED TRAVEL ESCORT",
+            "Pets",
+            "PET IN CABIN",
+            "UNACCOMPANIED MINOR",
+            "BLND-BLIND PASSENGER"
+        ]
+    },
+    "UT2": {
+        "standardAncillaryCode": "ASVC",
+        "nonStandardAncillaryCode": "SPEQ",
+        "nonBaggageAncillaryCode": "P",
+        "baggageAncillaryCode": "Baggage",
+        "bundleAncillaryCode": "Standalone",
+        "baggageGroupDescription": "BAGGAGE",
+        "nonStandardServiceInvGroup": "SPEQ",
+        "excludedNonBaggageGroups": [
+            "Baggage",
+            "BUNDLED SERVICES",
+            "MEDICAL",
+            "Pre-reserved Seat Assignment",
+            "UNACCOMPANIED TRAVEL ESCORT",
+            "Pets",
+            "PET IN CABIN",
+            "UNACCOMPANIED MINOR",
+            "BLND-BLIND PASSENGER"
+        ]
+    },
+    "UT1EXT": {
+        "standardAncillaryCode": "ASVC",
+        "nonStandardAncillaryCode": "SPEQ",
+        "nonBaggageAncillaryCode": "P",
+        "baggageAncillaryCode": "Baggage",
+        "bundleAncillaryCode": "Standalone",
+        "baggageGroupDescription": "BAGGAGE",
+        "nonStandardServiceInvGroup": "SPEQ",
+        "excludedNonBaggageGroups": [
+            "Baggage",
+            "BUNDLED SERVICES",
+            "MEDICAL",
+            "Pre-reserved Seat Assignment",
+            "UNACCOMPANIED TRAVEL ESCORT",
+            "Pets",
+            "PET IN CABIN",
+            "UNACCOMPANIED MINOR",
+            "BLND-BLIND PASSENGER"
+        ]
+    }
+}

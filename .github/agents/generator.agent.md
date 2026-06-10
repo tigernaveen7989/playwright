@@ -50,12 +50,26 @@ I am a specialized agent focused on generating code for Playwright TypeScript pr
 ## Code Quality Standards
 
 All generated code follows these principles:
+- **One API = One Class Per Layer** — every API method (Shop, Price, CreateOrder, etc.) has exactly ONE builder, ONE client, and ONE parser class; never create multiple variants for the same API; use parameters and conditional logic for variations instead
 - **TypeScript best practices** with proper typing
 - **Playwright conventions** and recommended patterns  
 - **Clean architecture** with separation of concerns
 - **Comprehensive documentation** and inline comments
 - **Error handling** and robust test patterns
 - **Maintainability** with DRY principles
+- **Allure feature naming** where each test spec uses a project-prefixed feature label (e.g., `DWRES-`, `DXVASM-`, `CALLCENTER-`, `JSONAPI-`, `XMLAPI-`)
+- **Test case naming relevance** where each test name reflects the feature flow and key actions (e.g., `TC1_Create_Paid_Order_Add_Paid_Seats_Payment`) and excludes data-variant tokens (`RT`/`OW`, `2A`/`2A1C`, route codes)
+- **Sequential test case numbering** where every spec file uses continuous numbering with no gaps or duplicates (`TC1`, `TC2`, `TC3`, ...); missing numbers must be highlighted
+- **Concise testcase comments** where every `test()` includes a `/** ... */` comment immediately above it using 1-2 lines for intent and expected result
+- **Flat `beforeEach` pattern** — when generating multi-test specs, place shared setup steps in `test.beforeEach` and scenario-specific steps in individual `test()` blocks. Every step must be a single, flat page-object call — never generate local helper functions, type aliases, or wrapper abstractions inside spec files to fold multiple steps
+- **Single-line invocation format** — generate `test(...)` signatures and page-object/API/assert/logger calls on a single line; do not emit folded multiline argument formatting for a single invocation
+- **Page/API client transition spacing** — when generating spec files, insert one blank line between the last step of one page object (or API client) and the first step of the next; group steps for the same page/client with no blank lines between them
+- **Code simplicity (KISS)** — generate methods that are short, flat, and obvious; avoid deeply nested `if/else` chains; prefer early returns, guard clauses, or iterating a candidate list
+- **No duplication (DRY)** — extract repeated patterns into private helpers or base class methods; never duplicate the same block more than twice
+- **Single responsibility (SOLID)** — each generated method does one thing; split methods that locate, fill, and save into focused helpers where practical
+- **No dead code** — never generate unused variables, imports, functions, or commented lines; all generated code must be active and necessary
+- **Locator declaration rule** — declare all stable locators as `private readonly` constructor fields; only dynamic parameterized selectors and web-table/grid row-cell locators may be created inside methods
+- **No business orchestration in specs** — never generate nested loops in spec files to apply parsed domain data; generate a page object/parser/builder/utility method and call that single method from the spec
 
 ## When to Use Me
 
@@ -69,3 +83,15 @@ Ask for the generator agent when you need:
 - "Generate fixtures for authentication"
 
 I focus on creating production-ready code that follows best practices and integrates seamlessly with your existing Playwright project structure.
+
+---
+
+## Data-Driven Test Skipping (`skipTest`)
+
+When generating test data JSON files for multiple tenants:
+
+- **Include every test case key** in every tenant's JSON file — even if the test is not applicable.
+- For non-applicable tests, add `"skipTest": true` and `"skipReason": "..."` with a clear explanation.
+- Keep the remaining data fields populated — they serve as documentation of what the test would use if enabled.
+- **Never add `test.skip()` calls** inside generated spec files for tenant-specific skips — the `testData` fixture in `utilities/fixtures.ts` handles it centrally.
+- Refer to rules SK1–SK5 in `architecture/AGENT_INSTRUCTIONS.md`.

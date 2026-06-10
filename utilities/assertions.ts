@@ -15,18 +15,18 @@ export class Assertions {
         const expectedValue = JSON.stringify(expected, null, 2);
         const actualValue = JSON.stringify(actual, null, 2);
 
-        await step(`${message}`, async () => {
-            //perform assertion
-            await assertionFn();
+            await step(`************* 𝗔𝗦𝗦𝗘𝗥𝗧𝗜𝗢𝗡 : ${message} ****************`, async () => {
+                //perform assertion
+                await assertionFn();
 
-            await step(`Actual   : ${actualValue}`, async () => {
-                // Do nothing — this step just shows the values
-            });
+                await step(`Actual   : ${actualValue}`, async () => {
+                    // Do nothing — this step just shows the values
+                });
 
-            await step(`Expected : ${expectedValue}`, async () => {
-                // Do nothing — this step just shows the values
+                await step(`Expected : ${expectedValue}`, async () => {
+                    // Do nothing — this step just shows the values
+                });
             });
-        });
     }
 
     async toBe(actual: any, expected: any, message?: string) {

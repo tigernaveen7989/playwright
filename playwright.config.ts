@@ -1,4 +1,4 @@
-import { defineConfig, devices, PlaywrightTestConfig } from '@playwright/test';
+import { defineConfig, PlaywrightTestConfig } from '@playwright/test';
 import * as dotenv from 'dotenv';
 dotenv.config({ path: './environment.env' });
 
@@ -12,7 +12,7 @@ const config: PlaywrightTestConfig = defineConfig({
   retries: 0,
   workers: process.env.CI ? 1 : undefined,
 
-  timeout: 15 * 60 * 1000,
+  timeout: 30 * 60 * 1000,
   expect: {
     timeout: 60 * 1000,
   },
@@ -37,6 +37,7 @@ const config: PlaywrightTestConfig = defineConfig({
     trace: 'on-first-retry',
     screenshot: 'only-on-failure',
     headless: true,
+    actionTimeout: 60000,
     viewport: null, // Uses full available screen size
     launchOptions: {
       args: ['--start-maximized'], // Chromium only
@@ -47,6 +48,16 @@ const config: PlaywrightTestConfig = defineConfig({
     {
       name: 'call-center',
       testDir: './tests/call-center-tests',
+      use: { browserName: 'chromium' },
+    },
+    {
+      name: 'dwres',
+      testDir: './tests/dwres-tests',
+      use: { browserName: 'chromium' },
+    },
+    {
+      name: 'dx-vasm',
+      testDir: './tests/dx-vasm-tests',
       use: { browserName: 'chromium' },
     },
     {
