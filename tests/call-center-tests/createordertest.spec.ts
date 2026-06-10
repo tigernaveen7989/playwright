@@ -1,4 +1,4 @@
-import { test } from '../../utilities/fixtures';
+import { test, Page, expect } from '../../utilities/fixtures';
 import { LoggerFactory } from '../../utilities/logger';
 import { loginPage, homePage, passengerDetailsPage, addPaymentToNewReservationPage, payByCreditCardPage, bookingConfirmationPage } from '../basetest';
 
@@ -18,7 +18,6 @@ test.describe('@PaidOrder @WLV_CC_REGRESSION @allure.label.feature:Call-Center-P
     const tripType = testData.get('tripType')?.toString()!;
     const origin = testData.get('origin')?.toString()!;
     const destination = testData.get('destination')?.toString()!;
-    const departure = testData.get('departure')?.toString()!;
     const paxType = testData.get('paxType')?.toString()!;
     const todayPlusDate = testData.get('todayPlusDate')?.toString()!;
     const cabinType = testData.get('cabinType')?.toString()!;
@@ -176,7 +175,7 @@ test.describe('@PaidOrder @WLV_CC_REGRESSION @allure.label.feature:Call-Center-P
     await homePage.clickOnAgreeButton();
 
     logger.info('Entering passenger details and selecting unpaid flow');
-    const passengerDetails = await passengerDetailsPage.enterAndGetPassengerDetails(paxType);
+    await passengerDetailsPage.enterAndGetPassengerDetails(paxType);
     await passengerDetailsPage.clickOnSaveButton();
     await passengerDetailsPage.clickOnNoButton();
 
@@ -191,5 +190,32 @@ test.describe('@PaidOrder @WLV_CC_REGRESSION @allure.label.feature:Call-Center-P
     await assert.toContain(await bookingConfirmationPage.getPaymentTimeLimitText(), "Payment Time Limit", "Verify Payment Time Limit Text is Visible");
     await assert.toBe(pnrAndOrderNumberMap.get("orderNumber"), "ABCD1234", "Verify Order Number is ABCD1234");
     logger.info(`TC3 completed successfully. PNR=${pnrAndOrderNumberMap.get("pnrNumber")}, Order=${pnrAndOrderNumberMap.get("orderNumber")}`);
+  });
+
+  /**
+   * 
+   */
+  test('TC4_Verify_Multipax_OW_And_Create_Unpaid_Order', async ({ testData, assert, page }) => {
+    const userName = testData.get('userName')?.toString()!;
+    const password = testData.get('password')?.toString()!;
+    const tripType = testData.get('tripType')?.toString()!;
+
+    console.log('TC4 started: Placeholder test for future implementation');
+    // Navigate to website
+    await page.goto('https://playwright.dev/');
+
+    // Verify page title
+    await expect(page).toHaveTitle(/Playwright/);
+
+    // Verify Get Started button is visible
+    const getStartedBtn = page.getByRole('link', { name: 'Get started' });
+
+    await expect(getStartedBtn).toBeVisible();
+
+    // Click button
+    await getStartedBtn.click();
+
+    // Verify URL after navigation
+    await expect(page).toHaveURL(/.*intro/);
   });
 });
