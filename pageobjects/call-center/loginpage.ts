@@ -5,7 +5,7 @@ import { BlackPanther } from '../../utilities/blackpanther';
 const logger = LoggerFactory.getLogger(__filename);
 
 
-export default class loginpage extends BlackPanther{
+export default class loginpage extends BlackPanther {
   private usernameInput: Locator;
   private passwordInput: Locator;
   private loginButton: Locator;
@@ -28,12 +28,12 @@ export default class loginpage extends BlackPanther{
     const { ccUrl } = this.loadConfig();
     this.testInfo.annotations.push({ type: 'ccUrl', description: ccUrl });
     await step('Login into call center', async () => {
-      await step(`Url: ${ccUrl}`, async () => {});
-      await step(`Username: ${username}`, async () => {});
-      await step(`Password: ${password}`, async () => {});
+      await step(`Url: ${ccUrl}`, async () => { });
+      await step(`Username: ${username}`, async () => { });
+      await step(`Password: ${password}`, async () => { });
     });
 
-    await this.page.goto(ccUrl, { timeout: 60000 });
+    await this.navigateTo(ccUrl);
     await this.click(this.loginButton);
     await this.fill(this.usernameInput, username);
     await this.click(this.nextButton);
