@@ -191,4 +191,31 @@ test.describe('@PaidOrder @WLV_CC_REGRESSION @allure.label.feature:Call-Center-P
     await assert.toBe(pnrAndOrderNumberMap.get("orderNumber"), "ABCD1234", "Verify Order Number is ABCD1234");
     logger.info(`TC3 completed successfully. PNR=${pnrAndOrderNumberMap.get("pnrNumber")}, Order=${pnrAndOrderNumberMap.get("orderNumber")}`);
   });
+
+  /**
+   * 
+   */
+  test('TC4_Verify_Multipax_OW_And_Create_Unpaid_Order', async ({ testData, assert, page }) => {
+    const userName = testData.get('userName')?.toString()!;
+    const password = testData.get('password')?.toString()!;
+    const tripType = testData.get('tripType')?.toString()!;
+
+    console.log('TC4 started: Placeholder test for future implementation');
+    // Navigate to website
+    await page.goto('https://playwright.dev/');
+
+    // Verify page title
+    await expect(page).toHaveTitle(/Playwright/);
+
+    // Verify Get Started button is visible
+    const getStartedBtn = page.getByRole('link', { name: 'Get started' });
+
+    await expect(getStartedBtn).toBeVisible();
+
+    // Click button
+    await getStartedBtn.click();
+
+    // Verify URL after navigation
+    await expect(page).toHaveURL(/.*intro/);
+  });
 });

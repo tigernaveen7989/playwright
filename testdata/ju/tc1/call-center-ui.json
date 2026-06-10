@@ -289,6 +289,10 @@
                 }
             }
         }
+    ],
+    "TC2_Create_Order_Add_Initial_Baggage_Ancillaries_Complete_Payment_Validate_Ancillaries": [
+        {
+            "Hello": "Dummy TestCase"
+        }
     ]
-
 }

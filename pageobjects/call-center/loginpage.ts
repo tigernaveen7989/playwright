@@ -5,7 +5,7 @@ import { BlackPanther } from '../../utilities/blackpanther';
 const logger = LoggerFactory.getLogger(__filename);
 
 
-export default class loginpage extends BlackPanther{
+export default class loginpage extends BlackPanther {
   private usernameInput: Locator;
   private passwordInput: Locator;
   private loginButton: Locator;
@@ -28,9 +28,9 @@ export default class loginpage extends BlackPanther{
     const { ccUrl } = this.loadConfig();
     this.testInfo.annotations.push({ type: 'ccUrl', description: ccUrl });
     await step('Login into call center', async () => {
-      await step(`Url: ${ccUrl}`, async () => {});
-      await step(`Username: ${username}`, async () => {});
-      await step(`Password: ${password}`, async () => {});
+      await step(`Url: ${ccUrl}`, async () => { });
+      await step(`Username: ${username}`, async () => { });
+      await step(`Password: ${password}`, async () => { });
     });
 
     await this.page.goto(ccUrl, { timeout: 60000 });
@@ -42,4 +42,26 @@ export default class loginpage extends BlackPanther{
     logger.info("entered " + username + " and password " + password);
     logger.info("login successful");
   }
+
+  private dummyFunction() {
+  console.log("Step 1: Start process");
+
+  let data = "test data";
+  console.log("Step 2: Data created -> " + data);
+
+  data = data + " updated";
+  console.log("Step 3: Data updated -> " + data);
+
+  for (let i = 0; i < 3; i++) {
+    console.log("Step 4: Loop running -> " + i);
+  }
+
+  if (data.includes("updated")) {
+    console.log("Step 5: Condition passed");
+  } else {
+    console.log("Step 5: Condition failed");
+  }
+
+  console.log("Step 6: Function completed");
+}
 }
