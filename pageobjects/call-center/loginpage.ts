@@ -42,26 +42,4 @@ export default class loginpage extends BlackPanther {
     logger.info("entered " + username + " and password " + password);
     logger.info("login successful");
   }
-
-  private dummyFunction() {
-  console.log("Step 1: Start process");
-
-  let data = "test data";
-  console.log("Step 2: Data created -> " + data);
-
-  data = data + " updated";
-  console.log("Step 3: Data updated -> " + data);
-
-  for (let i = 0; i < 3; i++) {
-    console.log("Step 4: Loop running -> " + i);
-  }
-
-  if (data.includes("updated")) {
-    console.log("Step 5: Condition passed");
-  } else {
-    console.log("Step 5: Condition failed");
-  }
-
-  console.log("Step 6: Function completed");
-}
 }
