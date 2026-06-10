@@ -177,7 +177,7 @@ test.describe('@allure.label.feature:XML-PaidOrder', () => {
     logger.info('TC2_Verify_Add_One_Way_Multi_Pax_Create_Paid_Order — completed');
   });
 
-  test('TC280_Verify_Mpax_RT_Shop_EnforcedAccountCode_Create_Paid_Order @accountcode', async ({ testData, assert }) => {
+  test('TC280_Verify_Mpax_RT_Shop_EnforcedAccountCode_Create_Paid_Order', async ({ testData, assert }) => {
     // ── Declare all variables at the top ─────────────────────────────────
     const paxType = testData.get('paxType')?.toString()!;
     const accountCode = testData.get('accountCode')?.toString()!;
