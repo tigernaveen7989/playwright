@@ -200,7 +200,7 @@ test.describe('@PaidOrder @WLV_CC_REGRESSION @allure.label.feature:Call-Center-P
     const password = testData.get('password')?.toString()!;
     const tripType = testData.get('tripType')?.toString()!;
 
-    console.log('TC4 started: Placeholder test for future implementation');
+    logger.info('TC4 started: Placeholder test for future implementation');
     // Navigate to website
     await page.goto('https://playwright.dev/');
 
