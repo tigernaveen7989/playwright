@@ -66,6 +66,10 @@ function pushFindingsForPattern(findings, filePath, content, options) {
   });
 }
 
+function isConstructorLocatorAssignment(snippet) {
+  return /^\s*this\.[A-Za-z0-9_]+\s*=\s*page\.(?:locator|getBy[A-Za-z]+)\s*\(/.test(snippet);
+}
+
 function getExpectedFeaturePrefixForSpec(filePath) {
   if (filePath.includes('/tests/dwres-tests/') || filePath.includes('\\tests\\dwres-tests\\')) {
     return 'DWRES-';
@@ -161,10 +165,17 @@ function analyzeChangedFiles(changedFiles) {
     });
 
     if (filePath.includes('pageobjects/') && filePath.endsWith('.ts')) {
-      pushFindingsForPattern(findings, filePath, content, {
-        regex: /\bpage\.(?:locator|getBy[A-Za-z]+|click|fill|press|check|uncheck|selectOption|waitForSelector|waitForTimeout|goto)\s*\(/,
-        severity: 'medium',
-        message: 'Raw Playwright page usage in page object. Prefer BlackPanther wrapper methods.'
+      const pageUsageMatches = findLineNumbers(content, /\bpage\.(?:locator|getBy[A-Za-z]+|click|fill|press|check|uncheck|selectOption|waitForSelector|waitForTimeout|goto)\s*\(/g)
+        .filter((match) => !isConstructorLocatorAssignment(match.snippet));
+
+      pageUsageMatches.forEach((match) => {
+        findings.push({
+          severity: 'medium',
+          file: filePath,
+          line: match.line,
+          message: 'Raw Playwright page usage in page object. Prefer BlackPanther wrapper methods.',
+          snippet: match.snippet
+        });
       });
     }
 
