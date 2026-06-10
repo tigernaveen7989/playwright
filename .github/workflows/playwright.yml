@@ -23,12 +23,8 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     env:
-      SMTP_SERVER: ${{ secrets.SMTP_SERVER }}
-      SMTP_PORT: ${{ secrets.SMTP_PORT }}
-      SMTP_SECURE: ${{ secrets.SMTP_SECURE }}
       SMTP_USERNAME: ${{ secrets.SMTP_USERNAME }}
       SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
-      REVIEW_EMAIL_FROM: ${{ secrets.REVIEW_EMAIL_FROM }}
       PR_AUTHOR_EMAIL_MAP: ${{ vars.PR_AUTHOR_EMAIL_MAP }}
 
     if: github.event_name == 'pull_request'
@@ -76,15 +72,54 @@ jobs:
         run: |
           node .github/workflows/code-reviewer-agent.js
 
+      - name: Load Email Config from environment.env
+        id: load-email-config
+        shell: bash
+        run: |
+          ENV_FILE="environment.env"
+
+          read_env() {
+            local key="$1"
+            local value
+            value=$(grep -E "^${key}[[:space:]]*=" "$ENV_FILE" | tail -n 1 | sed -E "s/^${key}[[:space:]]*=[[:space:]]*//" | tr -d '\r')
+            echo "$value"
+          }
+
+          SMTP_SERVER="$(read_env EMAIL_HOST)"
+          SMTP_PORT="$(read_env EMAIL_PORT)"
+          EMAIL_FROM="$(read_env EMAIL_FROM)"
+          DEFAULT_TO="$(read_env EMAIL_TO)"
+
+          if [ "$SMTP_PORT" = "465" ]; then
+            SMTP_SECURE="true"
+          else
+            SMTP_SECURE="false"
+          fi
+
+          echo "smtp_server=$SMTP_SERVER" >> "$GITHUB_OUTPUT"
+          echo "smtp_port=$SMTP_PORT" >> "$GITHUB_OUTPUT"
+          echo "smtp_secure=$SMTP_SECURE" >> "$GITHUB_OUTPUT"
+          echo "email_from=$EMAIL_FROM" >> "$GITHUB_OUTPUT"
+          echo "default_to=$DEFAULT_TO" >> "$GITHUB_OUTPUT"
+
+          echo "SMTP_SERVER=$SMTP_SERVER" >> "$GITHUB_ENV"
+          echo "SMTP_PORT=$SMTP_PORT" >> "$GITHUB_ENV"
+          echo "SMTP_SECURE=$SMTP_SECURE" >> "$GITHUB_ENV"
+          echo "EMAIL_FROM=$EMAIL_FROM" >> "$GITHUB_ENV"
+          echo "DEFAULT_TO=$DEFAULT_TO" >> "$GITHUB_ENV"
+
       - name: Resolve PR Author Email
         id: pr-author-email
         uses: actions/github-script@v7
+        env:
+          DEFAULT_TO: ${{ steps.load-email-config.outputs.default_to }}
         with:
           script: |
             const user = context.payload.pull_request?.user || {};
             const login = user.login || '';
             const userId = user.id || '';
             const directEmail = user.email || '';
+            const defaultTo = process.env.DEFAULT_TO || '';
             const emailMapRaw = process.env.PR_AUTHOR_EMAIL_MAP || '{}';
             let commitAuthorEmail = '';
 
@@ -117,7 +152,7 @@ jobs:
 
             const mappedEmail = login ? (emailMap[login] || emailMap[login.toLowerCase()] || '') : '';
             const fallbackNoReply = login && userId ? `${userId}+${login}@users.noreply.github.com` : '';
-            const recipient = directEmail || commitAuthorEmail || mappedEmail || fallbackNoReply;
+            const recipient = directEmail || commitAuthorEmail || mappedEmail || fallbackNoReply || defaultTo;
 
             core.setOutput('recipient', recipient);
             core.setOutput('login', login);
@@ -138,17 +173,17 @@ jobs:
           fi
 
       - name: Send Review Report Email
-        if: always() && steps.pr-author-email.outputs.recipient != '' && env.SMTP_SERVER != '' && env.SMTP_USERNAME != '' && env.SMTP_PASSWORD != '' && env.REVIEW_EMAIL_FROM != ''
+        if: always() && steps.pr-author-email.outputs.recipient != '' && steps.load-email-config.outputs.smtp_server != '' && steps.load-email-config.outputs.email_from != ''
         uses: dawidd6/action-send-mail@v3
         with:
-          server_address: ${{ env.SMTP_SERVER }}
-          server_port: ${{ env.SMTP_PORT != '' && env.SMTP_PORT || '587' }}
-          secure: ${{ env.SMTP_SECURE != '' && env.SMTP_SECURE || 'false' }}
+          server_address: ${{ steps.load-email-config.outputs.smtp_server }}
+          server_port: ${{ steps.load-email-config.outputs.smtp_port != '' && steps.load-email-config.outputs.smtp_port || '25' }}
+          secure: ${{ steps.load-email-config.outputs.smtp_secure != '' && steps.load-email-config.outputs.smtp_secure || 'false' }}
           username: ${{ env.SMTP_USERNAME }}
           password: ${{ env.SMTP_PASSWORD }}
           subject: "AI Code Review Report - PR #${{ github.event.pull_request.number }}"
           to: ${{ steps.pr-author-email.outputs.recipient }}
-          from: ${{ env.REVIEW_EMAIL_FROM }}
+          from: ${{ steps.load-email-config.outputs.email_from }}
           body: file://review-report-email.md
           convert_markdown: true
           attachments: review-report.md
@@ -159,15 +194,15 @@ jobs:
         with:
           script: |
             const recipient = '${{ steps.pr-author-email.outputs.recipient }}';
-            const hasSmtp = Boolean('${{ env.SMTP_SERVER }}' && '${{ env.SMTP_USERNAME }}' && '${{ env.SMTP_PASSWORD }}' && '${{ env.REVIEW_EMAIL_FROM }}');
+            const hasSmtp = Boolean('${{ steps.load-email-config.outputs.smtp_server }}' && '${{ steps.load-email-config.outputs.email_from }}' && recipient);
 
             if (!recipient) {
-              console.log('Email skipped: PR author email could not be resolved.');
+              console.log('Email skipped: PR author email could not be resolved and EMAIL_TO fallback is empty.');
               return;
             }
 
             if (!hasSmtp) {
-              console.log('Email skipped: SMTP secrets are not configured.');
+              console.log('Email skipped: EMAIL_HOST or EMAIL_FROM missing in environment.env.');
               return;
             }
 
