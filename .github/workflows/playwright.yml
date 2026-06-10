@@ -20,7 +20,7 @@ on:
 jobs:
   code-review:
     name: AI Code Review
-    runs-on: copilot-review-s
+    runs-on: ubuntu-latest
     timeout-minutes: 30
 
     if: github.event_name == 'pull_request'
